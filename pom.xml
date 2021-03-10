@@ -9,7 +9,7 @@
 		<version>2.4.3</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.teamn1</groupId>
+	<groupId>com.teamn1.kopiko</groupId>
 	<artifactId>Kopiko</artifactId>
 	<version>1.0</version>
 	<packaging>war</packaging>
