@@ -7,16 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kopiko.entity.ProductImage;
-import com.kopiko.repository.ProductImageRepository;
+import com.kopiko.repository.IProductImageRepository;
 import com.kopiko.service.IProductImageService;
 
 @Service
 public class ProductImageService implements IProductImageService{
 	@Autowired
-	private ProductImageRepository productImageRepository;
+	private IProductImageRepository productImageRepository;
 
 	@Override
-	public List<ProductImage> getAll() {
+	public List<ProductImage> findAll() {
 		return (List<ProductImage>) productImageRepository.findAll();
 	}
 
