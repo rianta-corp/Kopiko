@@ -1,4 +1,4 @@
-package com.teamn1;
+package com.kopiko;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
