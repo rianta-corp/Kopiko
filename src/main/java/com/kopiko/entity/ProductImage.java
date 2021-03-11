@@ -14,6 +14,12 @@ public class ProductImage {
 	private String imageUrl;
 	private Long accountID;
 	
+	/**
+	 * For create a new object
+	 * @param productID
+	 * @param imageUrl
+	 * @param accountID
+	 */
 	public ProductImage(Long productID, String imageUrl, Long accountID) {
 		super();
 		this.productID = productID;
@@ -21,8 +27,27 @@ public class ProductImage {
 		this.accountID = accountID;
 	}
 	
+	/**
+	 * For create a new empty object
+	 */
 	public ProductImage() {
 		super();
+	}
+
+	
+	/**
+	 * For get data from database
+	 * @param imageID
+	 * @param productID
+	 * @param imageUrl
+	 * @param accountID
+	 */
+	public ProductImage(Long imageID, Long productID, String imageUrl, Long accountID) {
+		super();
+		this.imageID = imageID;
+		this.productID = productID;
+		this.imageUrl = imageUrl;
+		this.accountID = accountID;
 	}
 
 	public Long getImageID() {

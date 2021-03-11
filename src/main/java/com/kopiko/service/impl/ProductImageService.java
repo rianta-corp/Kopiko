@@ -43,6 +43,11 @@ public class ProductImageService implements IProductImageService{
 		ProductImage result = productImageRepository.findByImageID(id);
 		return result;
 	}
+
+	@Override
+	public List<ProductImage> findByImageIDAndAccountID(Long productID, Long accountID) {
+		return productImageRepository.findByProductIDAndAccountID(productID, accountID);
+	}
 	
 	
 	
