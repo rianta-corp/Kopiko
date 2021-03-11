@@ -13,6 +13,13 @@ public class Brand {
 	private String brandName;
 	private String brandImgUrl;
 	private String info;
+	
+	/**
+	 * For create a new object
+	 * @param brandName
+	 * @param brandImgUrl
+	 * @param info
+	 */
 	public Brand(String brandName, String brandImgUrl, String info) {
 		super();
 		this.brandName = brandName;
@@ -20,10 +27,20 @@ public class Brand {
 		this.info = info;
 	}
 	
+	/**
+	 * For create a new empty object
+	 */
 	public Brand() {
 		super();
 	}
 
+	/**
+	 * For get data from database
+	 * @param brandID
+	 * @param brandName
+	 * @param brandImgUrl
+	 * @param info
+	 */
 	public Brand(Long brandID, String brandName, String brandImgUrl, String info) {
 		super();
 		this.brandID = brandID;
