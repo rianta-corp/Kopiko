@@ -10,4 +10,3 @@ public class KopikoApplication {
 		SpringApplication.run(KopikoApplication.class, args);
 	}
 
-}
