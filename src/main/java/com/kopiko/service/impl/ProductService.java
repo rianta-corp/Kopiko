@@ -18,15 +18,13 @@ public class ProductService implements IProductService{
 	}
 
 	@Override
-	public boolean insert(Product product) {
-		productRepository.save(product);
-		return true;
+	public Product insert(Product product) {
+		return productRepository.saveAndFlush(product);
 	}
 
 	@Override
-	public boolean update(Product product) {
-		productRepository.save(product);
-		return true;
+	public Product update(Product product) {
+		return productRepository.saveAndFlush(product);
 	}
 
 	@Override

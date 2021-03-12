@@ -2,15 +2,14 @@ package com.kopiko.service;
 
 import java.util.List;
 
-import com.kopiko.entity.Brand;
-import com.kopiko.entity.ProductImage;
+import org.springframework.stereotype.Service;
 
+import com.kopiko.entity.Brand;
+
+@Service
 public interface IBrandService {
-	List<ProductImage> getAll();
-	boolean insert(Brand brand);
-	boolean update(Brand brand);
-	boolean delete(Long id);
-	ProductImage findByImageId(Long id);
-	
-	
+	List<Brand> findAll();
+	Brand insert(Brand brand);
+	Brand update(Brand brand);
+	boolean delete(Long id);	
 }
