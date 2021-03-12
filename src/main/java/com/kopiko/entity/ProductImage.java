@@ -8,7 +8,7 @@ import javax.persistence.Id;
 @Entity
 public class ProductImage {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long imageID;
 	private Long productID;
 	private String imageUrl;
