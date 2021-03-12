@@ -13,13 +13,14 @@ public class Brand {
 	private String brandName;
 	private String brandImgUrl;
 	private String info;
+
 	public Brand(String brandName, String brandImgUrl, String info) {
 		super();
 		this.brandName = brandName;
 		this.brandImgUrl = brandImgUrl;
 		this.info = info;
 	}
-	
+
 	public Brand() {
 		super();
 	}
@@ -63,8 +64,5 @@ public class Brand {
 	public void setInfo(String info) {
 		this.info = info;
 	}
-	
-	
-	
-	
+
 }

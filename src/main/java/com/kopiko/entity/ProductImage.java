@@ -8,19 +8,19 @@ import javax.persistence.Id;
 @Entity
 public class ProductImage {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long imageID;
 	private Long productID;
 	private String imageUrl;
 	private Long accountID;
-	
+
 	public ProductImage(Long productID, String imageUrl, Long accountID) {
 		super();
 		this.productID = productID;
 		this.imageUrl = imageUrl;
 		this.accountID = accountID;
 	}
-	
+
 	public ProductImage() {
 		super();
 	}
@@ -48,11 +48,11 @@ public class ProductImage {
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
 	}
-	
+
 	public Long getAccountID() {
 		return this.accountID;
 	}
-	
+
 	public void setAccountID(Long accountID) {
 		this.accountID = accountID;
 	}
