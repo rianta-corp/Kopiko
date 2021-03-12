@@ -8,23 +8,39 @@ import javax.persistence.Id;
 @Entity
 public class Brand {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long brandID;
 	private String brandName;
 	private String brandImgUrl;
 	private String info;
-
+	
+	/**
+	 * For create a new object
+	 * @param brandName
+	 * @param brandImgUrl
+	 * @param info
+	 */
 	public Brand(String brandName, String brandImgUrl, String info) {
 		super();
 		this.brandName = brandName;
 		this.brandImgUrl = brandImgUrl;
 		this.info = info;
 	}
-
+	
+	/**
+	 * For create a new empty object
+	 */
 	public Brand() {
 		super();
 	}
 
+	/**
+	 * For get data from database
+	 * @param brandID
+	 * @param brandName
+	 * @param brandImgUrl
+	 * @param info
+	 */
 	public Brand(Long brandID, String brandName, String brandImgUrl, String info) {
 		super();
 		this.brandID = brandID;
@@ -64,5 +80,8 @@ public class Brand {
 	public void setInfo(String info) {
 		this.info = info;
 	}
-
+	
+	
+	
+	
 }

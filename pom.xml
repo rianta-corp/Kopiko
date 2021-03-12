@@ -27,7 +27,32 @@
 
 	<dependencies>
 
+<<<<<<< HEAD
 		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web -->
+=======
+		<!-- Spring -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jdbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-rest</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+>>>>>>> 80bf5d914d2a88f52b5ce2a4a3abd02325de3da1
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -37,9 +62,15 @@
 		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+<<<<<<< HEAD
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 			<version>2.4.3</version>
 		</dependency>
+=======
+			<artifactId>spring-boot-starter-web-services</artifactId>
+		</dependency>
+
+>>>>>>> 80bf5d914d2a88f52b5ce2a4a3abd02325de3da1
 
 		<!-- https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc -->
 		<dependency>
@@ -69,6 +100,12 @@
 			<artifactId>jsp-api</artifactId>
 			<version>${jsp.api.version}</version>
 		</dependency>
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 80bf5d914d2a88f52b5ce2a4a3abd02325de3da1
 		<!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
 		<dependency>
 			<groupId>jstl</groupId>

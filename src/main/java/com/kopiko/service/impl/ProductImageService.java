@@ -21,15 +21,13 @@ public class ProductImageService implements IProductImageService{
 	}
 
 	@Override
-	public boolean insert(ProductImage productImage) {
-		productImageRepository.save(productImage);
-		return true;
+	public ProductImage insert(ProductImage productImage) {
+		return productImageRepository.saveAndFlush(productImage);
 	}
 
 	@Override
-	public boolean update(ProductImage productImage) {
-		productImageRepository.save(productImage);
-		return true;
+	public ProductImage update(ProductImage productImage) {
+		return productImageRepository.save(productImage);
 	}
 
 	@Override
@@ -42,6 +40,11 @@ public class ProductImageService implements IProductImageService{
 	public ProductImage findByImageId(Long id) {
 		ProductImage result = productImageRepository.findByImageID(id);
 		return result;
+	}
+
+	@Override
+	public List<ProductImage> findByImageIDAndAccountID(Long productID, Long accountID) {
+		return productImageRepository.findByProductIDAndAccountID(productID, accountID);
 	}
 	
 	

@@ -2,12 +2,16 @@ package com.kopiko.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.kopiko.entity.ProductImage;
 
+@Service
 public interface IProductImageService {
 	List<ProductImage> findAll();
-	boolean insert(ProductImage productImage);
-	boolean update(ProductImage productImage);
+	ProductImage insert(ProductImage productImage);
+	ProductImage update(ProductImage productImage);
 	boolean delete(Long id);
 	ProductImage findByImageId(Long id);
+	List<ProductImage> findByImageIDAndAccountID(Long productID, Long accountID);
 }
