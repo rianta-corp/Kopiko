@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.kopiko.entity.Comment
 ;
-public interface ICommentRespository extends JpaRepository<Comment, Long>{
+public interface ICommentRepository extends JpaRepository<Comment, Long>{
 
 	Comment findBycommentID(Long id);
 //	List<ProductImage> findByProductIDAndAccountID(Long productID, Long accountID);

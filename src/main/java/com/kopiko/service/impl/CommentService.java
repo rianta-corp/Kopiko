@@ -5,14 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.kopiko.entity.Comment;
-import com.kopiko.repository.ICommentRespository;
+import com.kopiko.repository.ICommentRepository;
 import com.kopiko.service.ICommentService;
 
 public class CommentService implements ICommentService{
 
 	
 	@Autowired
-	private ICommentRespository commentRespository;
+	private ICommentRepository commentRespository;
 
 	
 	

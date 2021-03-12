@@ -5,12 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.kopiko.entity.Brand;
-import com.kopiko.repository.IBrandRespository;
+import com.kopiko.repository.IBrandRepository;
 import com.kopiko.service.IBrandService;
 
 public class BrandService implements IBrandService{
 	@Autowired
-	private IBrandRespository brandRespository;
+	private IBrandRepository brandRespository;
 
 	@Override
 	public List<Brand> findAll() {

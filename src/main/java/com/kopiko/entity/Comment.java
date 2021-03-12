@@ -1,6 +1,5 @@
 package com.kopiko.entity;
 
-import java.sql.Timestamp;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,7 +13,7 @@ public class Comment {
 	private long commentID;
 	private long accountID;
 	private long productID;
-	private String dateCreated;
+	private java.sql.Timestamp  dateCreated;
 	private String noiDung;
 	private long parentsCommentID;
 
@@ -29,7 +28,8 @@ public class Comment {
 	public long getCommentID() {
 		return commentID;
 	}
-	public Comment( long accountID, long productID, String dateCreated, String noiDung,
+	public Comment( long accountID, long productID, java.sql.Timestamp
+ dateCreated, String noiDung,
 			long parentsCommentID) {
 		super();
 		
@@ -39,7 +39,8 @@ public class Comment {
 		this.noiDung = noiDung;
 		this.parentsCommentID = parentsCommentID;
 	}
-	public Comment(long commentID, long accountID, long productID, String dateCreated, String noiDung,
+	public Comment(long commentID, long accountID, long productID, java.sql.Timestamp
+ dateCreated, String noiDung,
 		long parentsCommentID) {
 	super();
 	this.commentID = commentID;
@@ -69,11 +70,13 @@ public class Comment {
 		this.productID = productID;
 	}
 
-	public String getDateCreated() {
+	public java.sql.Timestamp
+ getDateCreated() {
 		return dateCreated;
 	}
 
-	public void setDateCreated(String dateCreated) {
+	public void setDateCreated(java.sql.Timestamp
+ dateCreated) {
 		this.dateCreated = dateCreated;
 	}
 

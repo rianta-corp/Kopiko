@@ -5,13 +5,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.kopiko.entity.Account;
-import com.kopiko.repository.IAccountRespository;
+import com.kopiko.repository.IAccountRepository;
 import com.kopiko.service.IAccountService;
 
 public class AccountService implements IAccountService {
 
 	@Autowired
-	private IAccountRespository accountRepository;
+	private IAccountRepository accountRepository;
 	
 	
 	@Override

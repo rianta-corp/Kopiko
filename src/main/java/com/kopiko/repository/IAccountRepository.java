@@ -7,8 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.kopiko.entity.Account;
 import com.kopiko.entity.ProductImage;
 
-public interface IAccountRespository extends JpaRepository<Account , Long>{
+public interface IAccountRepository extends JpaRepository<Account , Long>{
 
-	Account findByaccountID(Long id);
+	Account findByAccountID(Long id);
 
 }

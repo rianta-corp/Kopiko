@@ -1,6 +1,6 @@
 package com.kopiko.entity;
 
-import java.sql.Timestamp;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,8 +19,7 @@ public class Account {
 	private String address;
 	private String avatar;
 	private String email;
-	private java.sql.Timestamp
-	dataCreate;
+	private java.sql.Timestamp dataCreate;
 	private String Role;
 	private short Status;
 
