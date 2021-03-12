@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Thu Mar 11 09:49:22 ICT 2021:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0178-1f30-4a9b-000001be70f0 
+on database directory memory:C:\SourcesCode\SourcesJavaWeb\Kopiko\17e986fa-b42e-42ad-8163-86f9c9f5fcc2 with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@11028347 
+Loaded from file:/C:/Users/tranp/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
+java.vendor=Oracle Corporation
+java.runtime.version=15.0.1+9-18
+user.dir=C:\SourcesCode\SourcesJavaWeb\Kopiko
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
