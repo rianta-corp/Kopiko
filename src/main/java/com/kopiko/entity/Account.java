@@ -24,6 +24,19 @@ public class Account {
 	private String Role;
 	private short Status;
 
+	/**
+	 * 
+	 * @param userName
+	 * @param phone
+	 * @param passWord
+	 * @param fullName
+	 * @param address
+	 * @param avatar
+	 * @param email
+	 * @param dataCreate
+	 * @param role
+	 * @param status
+	 */
 	public Account(String userName, String phone, String passWord, String fullName, String address, String avatar,
 			String email, java.sql.Timestamp
 			dataCreate, String role, short status) {
