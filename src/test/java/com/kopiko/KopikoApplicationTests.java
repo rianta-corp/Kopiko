@@ -1,4 +1,4 @@
-package com.teamn1;
+package com.kopiko;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
