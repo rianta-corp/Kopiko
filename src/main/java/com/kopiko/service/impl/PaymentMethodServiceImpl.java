@@ -4,7 +4,7 @@
  * @date Mar 10, 2021
  */
 
-package com.kopiko.serviceimp;
+package com.kopiko.service.impl;
 
 import java.util.List;
 

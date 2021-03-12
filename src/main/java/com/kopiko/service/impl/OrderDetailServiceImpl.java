@@ -4,7 +4,7 @@
  * @date Mar 11, 2021
  */
 
-package com.kopiko.serviceimp;
+package com.kopiko.service.impl;
 
 import org.springframework.stereotype.Service;
 
