@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.kopiko.entity.Brand;
 
 @Repository
-public interface IBrandRespository extends JpaRepository<Brand, Long>{
+public interface IBrandRepository extends JpaRepository<Brand, Long>{
 	
 }
