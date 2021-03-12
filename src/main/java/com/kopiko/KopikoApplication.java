@@ -9,4 +9,4 @@ public class KopikoApplication {
 	public static void main(String[] args) {	
 		SpringApplication.run(KopikoApplication.class, args);
 	}
-
+}
