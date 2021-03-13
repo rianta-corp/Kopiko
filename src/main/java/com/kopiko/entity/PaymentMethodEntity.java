@@ -22,7 +22,7 @@ public class PaymentMethodEntity {
 	@Column(columnDefinition = "bigint", name = "payment_method_id")
 	private Long paymentMethodId;
 
-	@Column(nullable = false)
+	@Column(nullable = false, columnDefinition = "nvarchar(50)")
 	private String paymentMethodName;
 
 	public PaymentMethodEntity(String paymentMethodName) {

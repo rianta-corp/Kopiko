@@ -21,7 +21,8 @@ public class OrderStatusEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(columnDefinition = "bigint", name = "order_status_id")
 	private Long orderStatusId;
-
+	
+	@Column(nullable = false, columnDefinition = "nvarchar(50)")
 	private String statusName;
 
 	public OrderStatusEntity( String statusName) {

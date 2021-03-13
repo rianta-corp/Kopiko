@@ -22,23 +22,25 @@ public class Account {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(columnDefinition = "bigint", name = "account_id")
 	private Long accountId;
-	private String userName;
+	private String username;
 	
 	@Column(nullable = false)
 	private String phone;
 	
 	@Column(nullable = false)
-	private String passWord;
+	private String password;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, columnDefinition = "nvarchar(30)")
 	private String fullName;
+	
+	@Column(columnDefinition = "nvarchar(250)")
 	private String address;
 	private String avatar;
 	private String email;
 	
 	@Column(nullable = false, columnDefinition = "timestamp")
 	@CreationTimestamp
-	private Timestamp dataCreated;
+	private Timestamp dateCreated;
 	
 	@Column(nullable = false)
 	@ColumnDefault("0") // User
@@ -50,9 +52,9 @@ public class Account {
 
 	/**
 	 * 
-	 * @param userName
+	 * @param username
 	 * @param phone
-	 * @param passWord
+	 * @param password
 	 * @param fullName
 	 * @param address
 	 * @param avatar
@@ -61,19 +63,19 @@ public class Account {
 	 * @param role
 	 * @param status
 	 */
-	public Account(String userName, String phone, String passWord, String fullName, String address, String avatar,
+	public Account(String username, String phone, String password, String fullName, String address, String avatar,
 			String email, Timestamp
-			dataCreated, String role, Integer status) {
+			dateCreated, String role, Integer status) {
 		super();
 
-		this.userName = userName;
+		this.username = username;
 		this.phone = phone;
-		this.passWord = passWord;
+		this.password = password;
 		this.fullName = fullName;
 		this.address = address;
 		this.avatar = avatar;
 		this.email = email;
-		this.dataCreated = dataCreated;
+		this.dateCreated = dateCreated;
 		this.role = role;
 		this.status = status;
 	}
@@ -83,19 +85,19 @@ public class Account {
 		// TODO Auto-generated constructor stub
 	}
 
-		public Account(Long accountId, String userName, String phone, String passWord, String fullName, String address,
+		public Account(Long accountId, String username, String phone, String password, String fullName, String address,
 				String avatar, String email, Timestamp
-				dataCreated, String role, Integer status) {
+				dateCreated, String role, Integer status) {
 			super();
 			this.accountId = accountId;
-			this.userName = userName;
+			this.username = username;
 			this.phone = phone;
-			this.passWord = passWord;
+			this.password = password;
 			this.fullName = fullName;
 			this.address = address;
 			this.avatar = avatar;
 			this.email = email;
-			this.dataCreated = dataCreated;
+			this.dateCreated = dateCreated;
 			this.role = role;
 			this.status = status;
 		}
@@ -109,11 +111,11 @@ public class Account {
 	}
 
 	public String getUserName() {
-		return userName;
+		return username;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUserName(String username) {
+		this.username = username;
 	}
 
 	public String getPhone() {
@@ -125,11 +127,11 @@ public class Account {
 	}
 
 	public String getPassWord() {
-		return passWord;
+		return password;
 	}
 
-	public void setPassWord(String passWord) {
-		this.passWord = passWord;
+	public void setPassWord(String password) {
+		this.password = password;
 	}
 
 	public String getFullName() {
@@ -165,13 +167,13 @@ public class Account {
 	}
 
 	public Timestamp
-	getDataCreated() {
-		return dataCreated;
+	getDateCreated() {
+		return dateCreated;
 	}
 
-	public void setDataCreated(Timestamp
-			dataCreated) {
-		this.dataCreated = dataCreated;
+	public void setDateCreated(Timestamp
+			dateCreated) {
+		this.dateCreated = dateCreated;
 	}
 
 	public String getRole() {

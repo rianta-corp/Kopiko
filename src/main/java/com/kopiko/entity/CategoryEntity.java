@@ -25,7 +25,7 @@ public class CategoryEntity {
 	@Column(nullable = false)
 	private String categoryCode;
 
-	@Column(nullable = false)
+	@Column(nullable = false, columnDefinition = "nvarchar(50)")
 	private String categoryName;
 
 	@Column(columnDefinition = "bigint")

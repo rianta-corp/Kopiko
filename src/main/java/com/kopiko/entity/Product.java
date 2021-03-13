@@ -25,7 +25,7 @@ public class Product {
 	@Column(columnDefinition = "bigint", name = "product_id")
 	private Long productId;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, columnDefinition = "nvarchar(100)")
 	private String productName;
 	
 	@ManyToOne
@@ -39,6 +39,8 @@ public class Product {
 	@Column(nullable = false, columnDefinition = "timestamp")
 	@CreationTimestamp
 	private Timestamp dateCreated;
+	
+	@Column(columnDefinition = "ntext")
 	private String description;
 	
 	@Column(nullable = false)

@@ -20,7 +20,7 @@ public class Brand {
 	@Column(columnDefinition = "bigint", name = "brand_id")
 	private Long brandId;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, columnDefinition = "nvarchar(50)")
 	private String brandName;
 	
 	@Column(nullable = false)

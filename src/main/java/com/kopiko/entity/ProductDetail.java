@@ -23,10 +23,10 @@ public class ProductDetail {
 	@JoinColumn(name = "product_id", nullable = false)
 	private Product product;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, columnDefinition = "nvarchar(20)")
 	private String size;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, columnDefinition = "nvarchar(20)")
 	private String color;
 	
 	@Column(nullable = false, columnDefinition = "money")

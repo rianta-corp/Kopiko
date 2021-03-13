@@ -28,6 +28,10 @@ public class ProductImage {
 	@JoinColumn(name = "account_id", nullable = false)
 	private Account account;
 	
+	@ManyToOne
+	@JoinColumn(name = "comment_id")
+	private Comment comment;
+	
 	/**
 	 * For create a new object
 	 * @param productID
@@ -95,4 +99,14 @@ public class ProductImage {
 	public void setAccount(Account account) {
 		this.account = account;
 	}
+
+	public Comment getComment() {
+		return comment;
+	}
+
+	public void setComment(Comment comment) {
+		this.comment = comment;
+	}
+	
+	
 }

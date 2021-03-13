@@ -1,6 +1,7 @@
 package com.kopiko.entity;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -33,11 +35,14 @@ public class Comment {
 	@CreationTimestamp
 	private Timestamp dateCreated;
 	
-	@Column(name = "[content]", nullable = false)
+	@Column(name = "[content]", nullable = false, columnDefinition = "ntext")
 	private String content;
 	
 	@Column(columnDefinition = "bigint")
 	private Long parentsCommentId;
+	
+	@OneToMany(mappedBy = "comment")
+	private List<ProductImage> listImage;
 
 	public Comment(Long commentId, Account account, Product product, Timestamp dateCreated, String content,
 			Long parentsCommentId) {
@@ -112,4 +117,14 @@ public class Comment {
 	public void setParentsCommentId(Long parentsCommentId) {
 		this.parentsCommentId = parentsCommentId;
 	}
+
+	public List<ProductImage> getListImage() {
+		return listImage;
+	}
+
+	public void setListImage(List<ProductImage> listImage) {
+		this.listImage = listImage;
+	}
+	
+	
 }

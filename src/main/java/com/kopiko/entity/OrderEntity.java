@@ -41,7 +41,7 @@ public class OrderEntity {
 	@JoinColumn(name = "order_status_id", nullable = false)
 	private OrderStatusEntity orderStatus;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, columnDefinition = "nvarchar(250)")
 	private String deliveryInfo;
 	
 	@ManyToOne
