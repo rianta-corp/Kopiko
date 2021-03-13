@@ -14,8 +14,8 @@ import javax.persistence.Table;
 public class ProductImage {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(columnDefinition = "bigint", name = "image_id")
-	private Long imageId;
+	@Column(columnDefinition = "bigint", name = "product_image_id")
+	private Long productImageId;
 	
 	@ManyToOne
 	@JoinColumn(nullable = false, name = "product_id")
@@ -24,25 +24,16 @@ public class ProductImage {
 	@Column(nullable = false)
 	private String imageUrl;
 	
-	@ManyToOne
-	@JoinColumn(name = "account_id", nullable = false)
-	private Account account;
-	
-	@ManyToOne
-	@JoinColumn(name = "comment_id")
-	private Comment comment;
 	
 	/**
 	 * For create a new object
 	 * @param productID
 	 * @param imageUrl
-	 * @param accountID
 	 */
-	public ProductImage(Product product, String imageUrl, Account account) {
+	public ProductImage(Product product, String imageUrl) {
 		super();
 		this.product = product;
 		this.imageUrl = imageUrl;
-		this.account = account;
 	}
 	
 	/**
@@ -55,25 +46,23 @@ public class ProductImage {
 	
 	/**
 	 * For get data from database
-	 * @param imageId
+	 * @param productImageId
 	 * @param productId
 	 * @param imageUrl
-	 * @param accountId
 	 */
-	public ProductImage(Long imageId, Product product, String imageUrl, Account account) {
+	public ProductImage(Long productImageId, Product product, String imageUrl) {
 		super();
-		this.imageId = imageId;
+		this.productImageId = productImageId;
 		this.product = product;
 		this.imageUrl = imageUrl;
-		this.account = account;
 	}
 
 	public Long getImageId() {
-		return imageId;
+		return productImageId;
 	}
 
-	public void setImageId(Long imageId) {
-		this.imageId = imageId;
+	public void setImageId(Long productImageId) {
+		this.productImageId = productImageId;
 	}
 
 	public Product getProduct() {
@@ -90,23 +79,5 @@ public class ProductImage {
 
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
-	}
-	
-	public Account getAccount() {
-		return this.account;
-	}
-	
-	public void setAccount(Account account) {
-		this.account = account;
-	}
-
-	public Comment getComment() {
-		return comment;
-	}
-
-	public void setComment(Comment comment) {
-		this.comment = comment;
-	}
-	
-	
+	}	
 }

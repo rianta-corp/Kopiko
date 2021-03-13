@@ -42,7 +42,7 @@ public class Comment {
 	private Long parentsCommentId;
 	
 	@OneToMany(mappedBy = "comment")
-	private List<ProductImage> listImage;
+	private List<CommentImage> listCommentImage;
 
 	public Comment(Long commentId, Account account, Product product, Timestamp dateCreated, String content,
 			Long parentsCommentId) {
@@ -118,12 +118,12 @@ public class Comment {
 		this.parentsCommentId = parentsCommentId;
 	}
 
-	public List<ProductImage> getListImage() {
-		return listImage;
+	public List<CommentImage> getListCommentImage() {
+		return listCommentImage;
 	}
 
-	public void setListImage(List<ProductImage> listImage) {
-		this.listImage = listImage;
+	public void setListCommentImage(List<CommentImage> listCommentImage) {
+		this.listCommentImage = listCommentImage;
 	}
 	
 	

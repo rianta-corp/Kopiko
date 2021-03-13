@@ -48,7 +48,7 @@ public class Product {
 	private Integer status;
 	
 	@OneToMany(mappedBy = "product")
-	private List<ProductImage> listImage;
+	private List<ProductImage> listProductImage;
 	
 	@OneToMany(mappedBy = "product")
 	private List<Comment> listComment;
@@ -56,6 +56,8 @@ public class Product {
 	@OneToMany(mappedBy = "product")
 	private List<ProductDetail> listProductDetail;
 
+	
+	
 	public Product(Long productId, String productName, CategoryEntity category, Brand brand, Timestamp dateCreated,
 			String description, Integer status) {
 		super();
@@ -139,12 +141,12 @@ public class Product {
 		this.status = status;
 	}
 
-	public List<ProductImage> getListImage() {
-		return listImage;
+	public List<ProductImage> getListProductImage() {
+		return listProductImage;
 	}
 
-	public void setListImage(List<ProductImage> listImage) {
-		this.listImage = listImage;
+	public void setListProductImage(List<ProductImage> listProductImage) {
+		this.listProductImage = listProductImage;
 	}
 
 	public List<Comment> getListComment() {
@@ -153,6 +155,14 @@ public class Product {
 
 	public void setListComment(List<Comment> listComment) {
 		this.listComment = listComment;
+	}
+
+	public List<ProductDetail> getListProductDetail() {
+		return listProductDetail;
+	}
+
+	public void setListProductDetail(List<ProductDetail> listProductDetail) {
+		this.listProductDetail = listProductDetail;
 	}
 	
 	

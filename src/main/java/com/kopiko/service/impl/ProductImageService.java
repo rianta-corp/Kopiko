@@ -1,7 +1,6 @@
 package com.kopiko.service.impl;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,16 +36,14 @@ public class ProductImageService implements IProductImageService{
 	}
 
 	@Override
-	public ProductImage findByImageId(Long id) {
-		ProductImage result = productImageRepository.findByImageId(id);
+	public ProductImage findByProductImageId(Long id) {
+		ProductImage result = productImageRepository.findByProductImageId(id);
 		return result;
 	}
 
 	@Override
-	public List<ProductImage> findAllByImageIdAndAccountId(Long productId, Long accountId) {
-		return productImageRepository.findAllByProductProductIdAndAccountAccountId(productId, accountId);
+	public List<ProductImage> findAllByProductId(Long productId) {
+		return productImageRepository.findAllByProductProductId(productId);
 	}
-	
-	
 	
 }
