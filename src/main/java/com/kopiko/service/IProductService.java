@@ -11,9 +11,9 @@ public interface IProductService {
 	List<Product> findAll();
 	Product insert(Product product);
 	Product update(Product product);
-	boolean delete(Long id);
-	Product findByProductID(Long id);
-	List<Product> findByCategoryID(Long categoryID);
-	List<Product> findByBrandID(Long brandID);
+	boolean delete(Long Id);
+	Product findByProductId(Long Id);
+	List<Product> findAllByCategoryId(Long categoryId);
+	List<Product> findAllByBrandId(Long brandId);
 	List<Product> searchByProductName(String text);
 }

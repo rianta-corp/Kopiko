@@ -13,5 +13,5 @@ public interface IProductImageService {
 	ProductImage update(ProductImage productImage);
 	boolean delete(Long id);
 	ProductImage findByImageId(Long id);
-	List<ProductImage> findByImageIDAndAccountID(Long productID, Long accountID);
+	List<ProductImage> findAllByImageIdAndAccountId(Long productId, Long accountId);
 }

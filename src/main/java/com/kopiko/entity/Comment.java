@@ -1,99 +1,130 @@
 package com.kopiko.entity;
 
+import java.sql.Timestamp;
+import java.util.List;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
+@Table(name = "comment")
 public class Comment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-
-	private long commentID;
-	private long accountID;
-	private long productID;
-	private java.sql.Timestamp  dateCreated;
-	private String noiDung;
-	private long parentsCommentID;
-
-
+	@Column(columnDefinition = "bigint", name = "comment_id")
+	private Long commentId;
 	
+	@ManyToOne
+	@JoinColumn(name = "account_id")
+	private Account account;
+	
+	@ManyToOne
+	@JoinColumn(nullable = false, name = "product_id")
+	private Product product;
+	
+	@Column(nullable = false, columnDefinition = "timestamp")
+	@CreationTimestamp
+	private Timestamp dateCreated;
+	
+	@Column(name = "[content]", nullable = false, columnDefinition = "ntext")
+	private String content;
+	
+	@Column(columnDefinition = "bigint")
+	private Long parentsCommentId;
+	
+	@OneToMany(mappedBy = "comment")
+	private List<ProductImage> listImage;
+
+	public Comment(Long commentId, Account account, Product product, Timestamp dateCreated, String content,
+			Long parentsCommentId) {
+		super();
+		this.commentId = commentId;
+		this.account = account;
+		this.product = product;
+		this.dateCreated = dateCreated;
+		this.content = content;
+		this.parentsCommentId = parentsCommentId;
+	}
+
+	public Comment(Account account, Product product, Timestamp dateCreated, String content, Long parentsCommentId) {
+		super();
+		this.account = account;
+		this.product = product;
+		this.dateCreated = dateCreated;
+		this.content = content;
+		this.parentsCommentId = parentsCommentId;
+	}
 
 	public Comment() {
 		super();
-		
+	}
+	
+	
+
+	public Long getCommentId() {
+		return commentId;
 	}
 
-	public long getCommentID() {
-		return commentID;
-	}
-	public Comment( long accountID, long productID, java.sql.Timestamp
- dateCreated, String noiDung,
-			long parentsCommentID) {
-		super();
-		
-		this.accountID = accountID;
-		this.productID = productID;
-		this.dateCreated = dateCreated;
-		this.noiDung = noiDung;
-		this.parentsCommentID = parentsCommentID;
-	}
-	public Comment(long commentID, long accountID, long productID, java.sql.Timestamp
- dateCreated, String noiDung,
-		long parentsCommentID) {
-	super();
-	this.commentID = commentID;
-	this.accountID = accountID;
-	this.productID = productID;
-	this.dateCreated = dateCreated;
-	this.noiDung = noiDung;
-	this.parentsCommentID = parentsCommentID;
-}
-	public void setCommentID(long commentID) {
-		this.commentID = commentID;
+	public void setCommentId(Long commentId) {
+		this.commentId = commentId;
 	}
 
-	public long getAccountID() {
-		return accountID;
+	public Account getAccount() {
+		return account;
 	}
 
-	public void setAccountID(long accountID) {
-		this.accountID = accountID;
+	public void setAccount(Account account) {
+		this.account = account;
 	}
 
-	public long getProductID() {
-		return productID;
+	public Product getProduct() {
+		return product;
 	}
 
-	public void setProductID(long productID) {
-		this.productID = productID;
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 
-	public java.sql.Timestamp
- getDateCreated() {
+	public Timestamp getDateCreated() {
 		return dateCreated;
 	}
 
-	public void setDateCreated(java.sql.Timestamp
- dateCreated) {
+	public void setDateCreated(Timestamp dateCreated) {
 		this.dateCreated = dateCreated;
 	}
 
-	public String getNoiDung() {
-		return noiDung;
+	public String getContent() {
+		return content;
 	}
 
-	public void setNoiDung(String noiDung) {
-		this.noiDung = noiDung;
+	public void setContent(String content) {
+		this.content = content;
 	}
 
-	public long getParentsCommentID() {
-		return parentsCommentID;
+	public Long getParentsCommentId() {
+		return parentsCommentId;
 	}
 
-	public void setParentsCommentID(long parentsCommentID) {
-		this.parentsCommentID = parentsCommentID;
+	public void setParentsCommentId(Long parentsCommentId) {
+		this.parentsCommentId = parentsCommentId;
 	}
 
+	public List<ProductImage> getListImage() {
+		return listImage;
+	}
+
+	public void setListImage(List<ProductImage> listImage) {
+		this.listImage = listImage;
+	}
+	
+	
 }

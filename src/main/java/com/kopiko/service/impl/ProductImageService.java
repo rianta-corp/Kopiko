@@ -38,13 +38,13 @@ public class ProductImageService implements IProductImageService{
 
 	@Override
 	public ProductImage findByImageId(Long id) {
-		ProductImage result = productImageRepository.findByImageID(id);
+		ProductImage result = productImageRepository.findByImageId(id);
 		return result;
 	}
 
 	@Override
-	public List<ProductImage> findByImageIDAndAccountID(Long productID, Long accountID) {
-		return productImageRepository.findByProductIDAndAccountID(productID, accountID);
+	public List<ProductImage> findAllByImageIdAndAccountId(Long productId, Long accountId) {
+		return productImageRepository.findAllByProductProductIdAndAccountAccountId(productId, accountId);
 	}
 	
 	

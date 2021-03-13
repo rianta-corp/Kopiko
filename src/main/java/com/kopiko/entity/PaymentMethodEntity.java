@@ -14,15 +14,15 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "PaymentMethod")
+@Table(name = "payment_method")
 public class PaymentMethodEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "paymentMethodId")
+	@Column(columnDefinition = "bigint", name = "payment_method_id")
 	private Long paymentMethodId;
 
-	@Column(name = "paymentMethodName", nullable = false)
+	@Column(nullable = false, columnDefinition = "nvarchar(50)")
 	private String paymentMethodName;
 
 	public PaymentMethodEntity(String paymentMethodName) {

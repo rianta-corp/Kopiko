@@ -1,18 +1,36 @@
 package com.kopiko.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "product_image")
 public class ProductImage {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long imageID;
-	private Long productID;
+	@Column(columnDefinition = "bigint", name = "image_id")
+	private Long imageId;
+	
+	@ManyToOne
+	@JoinColumn(nullable = false, name = "product_id")
+	private Product product;
+	
+	@Column(nullable = false)
 	private String imageUrl;
-	private Long accountID;
+	
+	@ManyToOne
+	@JoinColumn(name = "account_id", nullable = false)
+	private Account account;
+	
+	@ManyToOne
+	@JoinColumn(name = "comment_id")
+	private Comment comment;
 	
 	/**
 	 * For create a new object
@@ -20,11 +38,11 @@ public class ProductImage {
 	 * @param imageUrl
 	 * @param accountID
 	 */
-	public ProductImage(Long productID, String imageUrl, Long accountID) {
+	public ProductImage(Product product, String imageUrl, Account account) {
 		super();
-		this.productID = productID;
+		this.product = product;
 		this.imageUrl = imageUrl;
-		this.accountID = accountID;
+		this.account = account;
 	}
 	
 	/**
@@ -37,33 +55,33 @@ public class ProductImage {
 	
 	/**
 	 * For get data from database
-	 * @param imageID
-	 * @param productID
+	 * @param imageId
+	 * @param productId
 	 * @param imageUrl
-	 * @param accountID
+	 * @param accountId
 	 */
-	public ProductImage(Long imageID, Long productID, String imageUrl, Long accountID) {
+	public ProductImage(Long imageId, Product product, String imageUrl, Account account) {
 		super();
-		this.imageID = imageID;
-		this.productID = productID;
+		this.imageId = imageId;
+		this.product = product;
 		this.imageUrl = imageUrl;
-		this.accountID = accountID;
+		this.account = account;
 	}
 
-	public Long getImageID() {
-		return imageID;
+	public Long getImageId() {
+		return imageId;
 	}
 
-	public void setImageID(Long imageID) {
-		this.imageID = imageID;
+	public void setImageId(Long imageId) {
+		this.imageId = imageId;
 	}
 
-	public Long getProductID() {
-		return productID;
+	public Product getProduct() {
+		return product;
 	}
 
-	public void setProductID(Long productID) {
-		this.productID = productID;
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 
 	public String getImageUrl() {
@@ -74,11 +92,21 @@ public class ProductImage {
 		this.imageUrl = imageUrl;
 	}
 	
-	public Long getAccountID() {
-		return this.accountID;
+	public Account getAccount() {
+		return this.account;
 	}
 	
-	public void setAccountID(Long accountID) {
-		this.accountID = accountID;
+	public void setAccount(Account account) {
+		this.account = account;
 	}
+
+	public Comment getComment() {
+		return comment;
+	}
+
+	public void setComment(Comment comment) {
+		this.comment = comment;
+	}
+	
+	
 }
