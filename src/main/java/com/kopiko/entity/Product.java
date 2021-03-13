@@ -1,76 +1,92 @@
 package com.kopiko.entity;
 
 import java.sql.Timestamp;
+import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.CreationTimestamp;
+
 
 @Entity
+@Table(name = "product")
 public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long productID;
+	@Column(columnDefinition = "bigint", name = "product_id")
+	private Long productId;
+	
+	@Column(nullable = false)
 	private String productName;
-	private Long categoryID;
-	private Long brandID;
+	
+	@ManyToOne
+	@JoinColumn(name = "category_id", referencedColumnName = "category_id")
+	private CategoryEntity category;
+	
+	@ManyToOne
+	@JoinColumn(name = "brand_id")
+	private Brand brand;
+	
+	@Column(nullable = false, columnDefinition = "timestamp")
+	@CreationTimestamp
 	private Timestamp dateCreated;
 	private String description;
+	
+	@Column(nullable = false)
+	@ColumnDefault("1")
 	private Integer status;
 	
-	/**
-	 * For create a new product object
-	 * @param productName
-	 * @param categoryID
-	 * @param brandID
-	 * @param description
-	 * @param status
-	 */
-	public Product(String productName, Long categoryID, Long brandID, Timestamp dateCreated, String description, Integer status) {
+	@OneToMany(mappedBy = "product")
+	private List<ProductImage> listImage;
+	
+	@OneToMany(mappedBy = "product")
+	private List<Comment> listComment;
+	
+	@OneToMany(mappedBy = "product")
+	private List<ProductDetail> listProductDetail;
+
+	public Product(Long productId, String productName, CategoryEntity category, Brand brand, Timestamp dateCreated,
+			String description, Integer status) {
 		super();
+		this.productId = productId;
 		this.productName = productName;
-		this.categoryID = categoryID;
-		this.brandID = brandID;
+		this.category = category;
+		this.brand = brand;
 		this.dateCreated = dateCreated;
 		this.description = description;
 		this.status = status;
 	}
-	
-	/**
-	 * For create a new empty product object
-	 */
+
+	public Product(String productName, CategoryEntity category, Brand brand, Timestamp dateCreated, String description,
+			Integer status) {
+		super();
+		this.productName = productName;
+		this.category = category;
+		this.brand = brand;
+		this.dateCreated = dateCreated;
+		this.description = description;
+		this.status = status;
+	}
+
 	public Product() {
 		super();
 	}
 
-	/**
-	 * For get data from database
-	 * @param productID
-	 * @param productName
-	 * @param categoryID
-	 * @param brandID
-	 * @param description
-	 * @param status
-	 */
-	public Product(Long productID, String productName, Long categoryID, Long brandID, Timestamp dateCreated, String description,
-			Integer status) {
-		super();
-		this.productID = productID;
-		this.productName = productName;
-		this.categoryID = categoryID;
-		this.brandID = brandID;
-		this.dateCreated = dateCreated;
-		this.description = description;
-		this.status = status;
+	public Long getProductId() {
+		return productId;
 	}
 
-	public Long getProductID() {
-		return productID;
-	}
-
-	public void setProductID(Long productID) {
-		this.productID = productID;
+	public void setProductId(Long productId) {
+		this.productId = productId;
 	}
 
 	public String getProductName() {
@@ -81,20 +97,28 @@ public class Product {
 		this.productName = productName;
 	}
 
-	public Long getCategoryID() {
-		return categoryID;
+	public CategoryEntity getCategory() {
+		return category;
 	}
 
-	public void setCategoryID(Long categoryID) {
-		this.categoryID = categoryID;
+	public void setCategory(CategoryEntity category) {
+		this.category = category;
 	}
 
-	public Long getBrandID() {
-		return brandID;
+	public Brand getBrand() {
+		return brand;
 	}
 
-	public void setBrandID(Long brandID) {
-		this.brandID = brandID;
+	public void setBrand(Brand brand) {
+		this.brand = brand;
+	}
+
+	public Timestamp getDateCreated() {
+		return dateCreated;
+	}
+
+	public void setDateCreated(Timestamp dateCreated) {
+		this.dateCreated = dateCreated;
 	}
 
 	public String getDescription() {
@@ -113,12 +137,20 @@ public class Product {
 		this.status = status;
 	}
 
-	public Timestamp getDateCreated() {
-		return dateCreated;
+	public List<ProductImage> getListImage() {
+		return listImage;
 	}
 
-	public void setDateCreated(Timestamp dateCreated) {
-		this.dateCreated = dateCreated;
+	public void setListImage(List<ProductImage> listImage) {
+		this.listImage = listImage;
+	}
+
+	public List<Comment> getListComment() {
+		return listComment;
+	}
+
+	public void setListComment(List<Comment> listComment) {
+		this.listComment = listComment;
 	}
 	
 	

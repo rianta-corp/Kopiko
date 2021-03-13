@@ -1,16 +1,29 @@
 package com.kopiko.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.Table;
+/**
+ * @author rianta9
+ * @datecreated 13 thg 3, 2021 11:17:28
+ * @lastupdated 2021-03-13 11:17:28.504
+ */
 @Entity
+@Table(name = "brand")
 public class Brand {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long brandID;
+	@Column(columnDefinition = "bigint", name = "brand_id")
+	private Long brandId;
+	
+	@Column(nullable = false)
 	private String brandName;
+	
+	@Column(nullable = false)
 	private String brandImgUrl;
 	private String info;
 	
@@ -41,20 +54,20 @@ public class Brand {
 	 * @param brandImgUrl
 	 * @param info
 	 */
-	public Brand(Long brandID, String brandName, String brandImgUrl, String info) {
+	public Brand(Long brandId, String brandName, String brandImgUrl, String info) {
 		super();
-		this.brandID = brandID;
+		this.brandId = brandId;
 		this.brandName = brandName;
 		this.brandImgUrl = brandImgUrl;
 		this.info = info;
 	}
 
-	public Long getBrandID() {
-		return brandID;
+	public Long getBrandId() {
+		return brandId;
 	}
 
-	public void setBrandID(Long brandID) {
-		this.brandID = brandID;
+	public void setBrandId(Long brandId) {
+		this.brandId = brandId;
 	}
 
 	public String getBrandName() {

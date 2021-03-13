@@ -1,20 +1,41 @@
 package com.kopiko.entity;
 
+import java.math.BigDecimal;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "product_detail")
 public class ProductDetail {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long productDetailID;
-	private Long productID;
+	@Column(columnDefinition = "bigint", name = "product_detail_id")
+	private Long productDetailId;
+	
+	@ManyToOne
+	@JoinColumn(name = "product_id", nullable = false)
+	private Product product;
+	
+	@Column(nullable = false)
 	private String size;
+	
+	@Column(nullable = false)
 	private String color;
-	private Long price;
-	private Long salePrice;
+	
+	@Column(nullable = false, columnDefinition = "money")
+	private BigDecimal price;
+	
+	@Column(nullable = false, columnDefinition = "money")
+	private BigDecimal salePrice;
+	
+	@Column(nullable = false)
 	private Integer quantity;
 	
 	/**
@@ -26,9 +47,9 @@ public class ProductDetail {
 	 * @param salePrice
 	 * @param quantity
 	 */
-	public ProductDetail(Long productID, String size, String color, Long price, Long salePrice, Integer quantity) {
+	public ProductDetail(Product product, String size, String color, BigDecimal price, BigDecimal salePrice, Integer quantity) {
 		super();
-		this.productID = productID;
+		this.product = product;
 		this.size = size;
 		this.color = color;
 		this.price = price;
@@ -54,11 +75,11 @@ public class ProductDetail {
 	 * @param salePrice
 	 * @param quantity
 	 */
-	public ProductDetail(Long productDetailID, Long productID, String size, String color, Long price, Long salePrice,
+	public ProductDetail(Long productDetailId, Product product, String size, String color, BigDecimal price, BigDecimal salePrice,
 			Integer quantity) {
 		super();
-		this.productDetailID = productDetailID;
-		this.productID = productID;
+		this.productDetailId = productDetailId;
+		this.product = product;
 		this.size = size;
 		this.color = color;
 		this.price = price;
@@ -68,20 +89,20 @@ public class ProductDetail {
 
 
 
-	public Long getProductDetailID() {
-		return productDetailID;
+	public Long getProductDetailId() {
+		return productDetailId;
 	}
 
-	public void setProductDetailID(Long productDetailID) {
-		this.productDetailID = productDetailID;
+	public void setProductDetailId(Long productDetailId) {
+		this.productDetailId = productDetailId;
 	}
 
-	public Long getProductID() {
-		return productID;
+	public Product getProduct() {
+		return product;
 	}
 
-	public void setProductID(Long productID) {
-		this.productID = productID;
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 
 	public String getSize() {
@@ -100,19 +121,19 @@ public class ProductDetail {
 		this.color = color;
 	}
 
-	public Long getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
 
-	public void setPrice(Long price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 
-	public Long getSalePrice() {
+	public BigDecimal getSalePrice() {
 		return salePrice;
 	}
 
-	public void setSalePrice(Long salePrice) {
+	public void setSalePrice(BigDecimal salePrice) {
 		this.salePrice = salePrice;
 	}
 
