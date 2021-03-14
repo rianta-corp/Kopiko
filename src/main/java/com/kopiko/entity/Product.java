@@ -29,8 +29,8 @@ public class Product {
 	private String productName;
 	
 	@ManyToOne
-	@JoinColumn(name = "category_id", referencedColumnName = "category_id")
-	private CategoryEntity category;
+	@JoinColumn(name = "category_id", referencedColumnName = "category_id", nullable = false)
+	private CategoryEntity categoryId;
 	
 	@ManyToOne
 	@JoinColumn(name = "brand_id")
@@ -63,7 +63,7 @@ public class Product {
 		super();
 		this.productId = productId;
 		this.productName = productName;
-		this.category = category;
+		this.categoryId = category;
 		this.brand = brand;
 		this.dateCreated = dateCreated;
 		this.description = description;
@@ -74,7 +74,7 @@ public class Product {
 			Integer status) {
 		super();
 		this.productName = productName;
-		this.category = category;
+		this.categoryId = category;
 		this.brand = brand;
 		this.dateCreated = dateCreated;
 		this.description = description;
@@ -102,11 +102,11 @@ public class Product {
 	}
 
 	public CategoryEntity getCategory() {
-		return category;
+		return categoryId;
 	}
 
 	public void setCategory(CategoryEntity category) {
-		this.category = category;
+		this.categoryId = category;
 	}
 
 	public Brand getBrand() {
