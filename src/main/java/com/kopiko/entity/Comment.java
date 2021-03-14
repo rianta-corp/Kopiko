@@ -1,6 +1,6 @@
 package com.kopiko.entity;
 
-import java.sql.Timestamp;
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -31,9 +31,9 @@ public class Comment {
 	@JoinColumn(nullable = false, name = "product_id")
 	private Product product;
 	
-	@Column(nullable = false, columnDefinition = "timestamp")
+	@Column(nullable = false, columnDefinition = "datetime")
 	@CreationTimestamp
-	private Timestamp dateCreated;
+	private Date dateCreated;
 	
 	@Column(name = "[content]", nullable = false, columnDefinition = "ntext")
 	private String content;
@@ -44,7 +44,7 @@ public class Comment {
 	@OneToMany(mappedBy = "comment")
 	private List<CommentImage> listCommentImage;
 
-	public Comment(Long commentId, Account account, Product product, Timestamp dateCreated, String content,
+	public Comment(Long commentId, Account account, Product product, Date dateCreated, String content,
 			Long parentsCommentId) {
 		super();
 		this.commentId = commentId;
@@ -55,7 +55,7 @@ public class Comment {
 		this.parentsCommentId = parentsCommentId;
 	}
 
-	public Comment(Account account, Product product, Timestamp dateCreated, String content, Long parentsCommentId) {
+	public Comment(Account account, Product product, Date dateCreated, String content, Long parentsCommentId) {
 		super();
 		this.account = account;
 		this.product = product;
@@ -94,11 +94,11 @@ public class Comment {
 		this.product = product;
 	}
 
-	public Timestamp getDateCreated() {
+	public Date getDateCreated() {
 		return dateCreated;
 	}
 
-	public void setDateCreated(Timestamp dateCreated) {
+	public void setDateCreated(Date dateCreated) {
 		this.dateCreated = dateCreated;
 	}
 

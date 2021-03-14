@@ -5,7 +5,7 @@
  */
 
 package com.kopiko.entity;
-import java.sql.Timestamp;
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -34,8 +34,8 @@ public class OrderEntity {
 	private Account account;
 	
 	@CreationTimestamp
-	@Column(nullable = false, columnDefinition = "timestamp")
-	private Timestamp dateCreated;
+	@Column(nullable = false, columnDefinition = "datetime")
+	private Date dateCreated;
 	
 	@ManyToOne
 	@JoinColumn(name = "order_status_id", nullable = false)
@@ -51,7 +51,7 @@ public class OrderEntity {
 	@OneToMany(mappedBy = "order")
 	private List<OrderDetailEntity> listOrderDetail;
 	
-	public OrderEntity(Account account, Timestamp dateCreated, OrderStatusEntity orderStatus, String deliveryInfo, PaymentMethodEntity paymentMethod) {
+	public OrderEntity(Account account, Date dateCreated, OrderStatusEntity orderStatus, String deliveryInfo, PaymentMethodEntity paymentMethod) {
 		super();
 		this.account = account;
 		this.dateCreated = dateCreated;
@@ -95,14 +95,14 @@ public class OrderEntity {
 	/**
 	 * @return the dateCreated
 	 */
-	public Timestamp getDateCreated() {
+	public Date getDateCreated() {
 		return dateCreated;
 	}
 
 	/**
 	 * @param dateCreated the dateCreated to set
 	 */
-	public void setDateCreated(Timestamp dateCreated) {
+	public void setDateCreated(Date dateCreated) {
 		this.dateCreated = dateCreated;
 	}
 

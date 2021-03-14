@@ -1,6 +1,6 @@
 package com.kopiko.entity;
 
-import java.sql.Timestamp;
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -36,9 +36,9 @@ public class Product {
 	@JoinColumn(name = "brand_id")
 	private Brand brand;
 	
-	@Column(nullable = false, columnDefinition = "timestamp")
+	@Column(nullable = false, columnDefinition = "datetime")
 	@CreationTimestamp
-	private Timestamp dateCreated;
+	private Date dateCreated;
 	
 	@Column(columnDefinition = "ntext")
 	private String description;
@@ -58,7 +58,7 @@ public class Product {
 
 	
 	
-	public Product(Long productId, String productName, CategoryEntity category, Brand brand, Timestamp dateCreated,
+	public Product(Long productId, String productName, CategoryEntity category, Brand brand, Date dateCreated,
 			String description, Integer status) {
 		super();
 		this.productId = productId;
@@ -70,7 +70,7 @@ public class Product {
 		this.status = status;
 	}
 
-	public Product(String productName, CategoryEntity category, Brand brand, Timestamp dateCreated, String description,
+	public Product(String productName, CategoryEntity category, Brand brand, Date dateCreated, String description,
 			Integer status) {
 		super();
 		this.productName = productName;
@@ -117,11 +117,11 @@ public class Product {
 		this.brand = brand;
 	}
 
-	public Timestamp getDateCreated() {
+	public Date getDateCreated() {
 		return dateCreated;
 	}
 
-	public void setDateCreated(Timestamp dateCreated) {
+	public void setDateCreated(Date dateCreated) {
 		this.dateCreated = dateCreated;
 	}
 
