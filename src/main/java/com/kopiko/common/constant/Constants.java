@@ -27,4 +27,15 @@ public class Constants {
 	
 	/* Encrypt password contants */
 	public static final String ENCRYPT_CONSTANTS = "!#$%^&*!#$%^&*";
+	
+	/*Default variable for Role*/
+	public static class Role{
+		public static final Integer ROLE_USER = 0;
+		public static final Integer ROLE_ADMIN = 1;
+	}
+	
+	/*Default variable for Role*/
+	public static class Account{
+		public static final Integer ACTIVE_STATUS = 1;
+	}
 }

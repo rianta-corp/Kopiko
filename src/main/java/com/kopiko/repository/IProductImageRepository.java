@@ -10,7 +10,6 @@ import com.kopiko.entity.ProductImage;
 @Repository
 public interface IProductImageRepository extends JpaRepository<ProductImage, Long>{
 
-	ProductImage findByImageID(Long id);
-	List<ProductImage> findByProductIDAndAccountID(Long productID, Long accountID);
-	List<ProductImage> findByProductID(Long productID);
+	ProductImage findByProductImageId(Long Id);
+	List<ProductImage> findAllByProductProductId(Long productId);
 }

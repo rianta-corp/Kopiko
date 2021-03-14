@@ -14,21 +14,21 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Category")
+@Table(name = "category")
 public class CategoryEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "CategoryID")
+	@Column(columnDefinition = "bigint", name = "category_id")
 	private Long categoryId;
 
-	@Column(name = "categoryCode")
+	@Column(nullable = false)
 	private String categoryCode;
 
-	@Column(name = "categoryName")
+	@Column(nullable = false, columnDefinition = "nvarchar(50)")
 	private String categoryName;
 
-	@Column(name = "parentCategoryId")
+	@Column(columnDefinition = "bigint")
 	private Long parentCategoryId;
 
 	public CategoryEntity(String categoryCode, String categoryName, Long parentCategoryId) {
