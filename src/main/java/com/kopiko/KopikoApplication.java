@@ -10,5 +10,5 @@ public class KopikoApplication {
 		SpringApplication.run(KopikoApplication.class, args);
 	}
 	
-	// Test merge trungns4
+	// Test merge trungns4 --> developer
 }
