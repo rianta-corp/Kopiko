@@ -17,6 +17,9 @@ import javax.persistence.Table;
 @Table(name = "category")
 public class CategoryEntity {
 
+	/**
+	 * a
+	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(columnDefinition = "bigint", name = "category_id")
