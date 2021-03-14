@@ -16,6 +16,5 @@ public interface IProductRepository extends JpaRepository<Product, Long>{
 	@Query(value = "select * from product as p where p.brand_id = ?1", nativeQuery = true)
 	List<Product> findAllByBrandBrandId(Long brandId);
 	
-	@Query(value = "select * from product as p where p.student_name like ?1", nativeQuery = true)
-    List<Product> searchByProductName(String studentName);
+    List<Product> findByProductNameIgnoreCaseContaining(String studentName);
 }
