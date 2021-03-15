@@ -26,7 +26,6 @@ public class BrandService implements IBrandService{
 	public Brand update(Brand brand) {
 		return brandRespository.saveAndFlush(brand);
 	}
-
 	@Override
 	public boolean delete(Long id) {
 		brandRespository.deleteById(id);
