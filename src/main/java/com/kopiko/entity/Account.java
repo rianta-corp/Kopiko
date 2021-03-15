@@ -2,7 +2,7 @@ package com.kopiko.entity;
 
 
 
-import java.sql.Timestamp;
+import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -38,9 +38,9 @@ public class Account {
 	private String avatar;
 	private String email;
 	
-	@Column(nullable = false, columnDefinition = "timestamp")
+	@Column(nullable = false, columnDefinition = "datetime")
 	@CreationTimestamp
-	private Timestamp dateCreated;
+	private Date dateCreated;
 	
 	@Column(nullable = false)
 	@ColumnDefault("0") // User
@@ -64,7 +64,7 @@ public class Account {
 	 * @param status
 	 */
 	public Account(String username, String phone, String password, String fullName, String address, String avatar,
-			String email, Timestamp
+			String email, Date
 			dateCreated, String role, Integer status) {
 		super();
 
@@ -86,7 +86,7 @@ public class Account {
 	}
 
 		public Account(Long accountId, String username, String phone, String password, String fullName, String address,
-				String avatar, String email, Timestamp
+				String avatar, String email, Date
 				dateCreated, String role, Integer status) {
 			super();
 			this.accountId = accountId;
@@ -166,12 +166,12 @@ public class Account {
 		this.email = email;
 	}
 
-	public Timestamp
+	public Date
 	getDateCreated() {
 		return dateCreated;
 	}
 
-	public void setDateCreated(Timestamp
+	public void setDateCreated(Date
 			dateCreated) {
 		this.dateCreated = dateCreated;
 	}

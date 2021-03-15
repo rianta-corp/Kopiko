@@ -49,8 +49,8 @@ public class ProductService implements IProductService{
 	}
 
 	@Override
-	public List<Product> searchByProductName(String text) {
-		return productRepository.searchByProductName("%"+text+"%");
+	public List<Product> findByProductNameIgnoreCaseContaining(String text) {
+		return productRepository.findByProductNameIgnoreCaseContaining(text);
 	}
 
 }

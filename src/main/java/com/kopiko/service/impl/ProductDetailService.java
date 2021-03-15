@@ -51,6 +51,6 @@ public class ProductDetailService implements IProductDetailService{
 
 	@Override
 	public List<ProductDetail> findAllBySalePrice(BigDecimal minPrice, BigDecimal maxPrice) {
-		return productDetailRepository.findAllBySalePrice(minPrice, maxPrice);
+		return productDetailRepository.findAllBySalePriceBetween(minPrice, maxPrice);
 	}
 }
