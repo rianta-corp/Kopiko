@@ -33,7 +33,7 @@ public class Account {
 	@Column(nullable = false, columnDefinition = "nvarchar(30)")
 	private String fullName;
 	
-	@Column(columnDefinition = "nvarchar(250)")
+	@Column(columnDefinition = "nvarchar(255)")
 	private String address;
 	private String avatar;
 	private String email;
