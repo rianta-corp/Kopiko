@@ -5,11 +5,13 @@ import java.util.List;
 import javax.persistence.Entity;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.kopiko.entity.Account;
 import com.kopiko.repository.IAccountRepository;
 import com.kopiko.service.IAccountService;
 
+@Service
 public class AccountService implements IAccountService {
 
 	@Autowired

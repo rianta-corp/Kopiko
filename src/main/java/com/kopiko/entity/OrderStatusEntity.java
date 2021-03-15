@@ -13,8 +13,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Entity
 @Table(name = "order_status")
+@Data
+@NoArgsConstructor
 public class OrderStatusEntity {
 
 	@Id
@@ -24,42 +29,4 @@ public class OrderStatusEntity {
 	
 	@Column(nullable = false, columnDefinition = "nvarchar(50)")
 	private String statusName;
-
-	public OrderStatusEntity( String statusName) {
-		super();
-		this.statusName = statusName;
-	}
-
-	public OrderStatusEntity() {
-		super();
-	}
-
-	/**
-	 * @return the orderStatusId
-	 */
-	public Long getOrderStatusId() {
-		return orderStatusId;
-	}
-
-	/**
-	 * @param orderStatusId the orderStatusId to set
-	 */
-	public void setOrderStatusId(Long orderStatusId) {
-		this.orderStatusId = orderStatusId;
-	}
-
-	/**
-	 * @return the statusName
-	 */
-	public String getStatusName() {
-		return statusName;
-	}
-
-	/**
-	 * @param statusName the statusName to set
-	 */
-	public void setStatusName(String statusName) {
-		this.statusName = statusName;
-	}
-
 }

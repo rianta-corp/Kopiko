@@ -16,9 +16,14 @@ import javax.persistence.Table;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 
 @Entity
 @Table(name = "product")
+@Data
+@NoArgsConstructor
 public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -56,114 +61,4 @@ public class Product {
 	@OneToMany(mappedBy = "product")
 	private List<ProductDetail> listProductDetail;
 
-	
-	
-	public Product(Long productId, String productName, CategoryEntity category, Brand brand, Date dateCreated,
-			String description, Integer status) {
-		super();
-		this.productId = productId;
-		this.productName = productName;
-		this.category = category;
-		this.brand = brand;
-		this.dateCreated = dateCreated;
-		this.description = description;
-		this.status = status;
-	}
-
-	public Product(String productName, CategoryEntity category, Brand brand, Date dateCreated, String description,
-			Integer status) {
-		super();
-		this.productName = productName;
-		this.category = category;
-		this.brand = brand;
-		this.dateCreated = dateCreated;
-		this.description = description;
-		this.status = status;
-	}
-
-	public Product() {
-		super();
-	}
-
-	public Long getProductId() {
-		return productId;
-	}
-
-	public void setProductId(Long productId) {
-		this.productId = productId;
-	}
-
-	public String getProductName() {
-		return productName;
-	}
-
-	public void setProductName(String productName) {
-		this.productName = productName;
-	}
-
-	public CategoryEntity getCategory() {
-		return category;
-	}
-
-	public void setCategory(CategoryEntity category) {
-		this.category = category;
-	}
-
-	public Brand getBrand() {
-		return brand;
-	}
-
-	public void setBrand(Brand brand) {
-		this.brand = brand;
-	}
-
-	public Date getDateCreated() {
-		return dateCreated;
-	}
-
-	public void setDateCreated(Date dateCreated) {
-		this.dateCreated = dateCreated;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public Integer getStatus() {
-		return status;
-	}
-
-	public void setStatus(Integer status) {
-		this.status = status;
-	}
-
-	public List<ProductImage> getListProductImage() {
-		return listProductImage;
-	}
-
-	public void setListProductImage(List<ProductImage> listProductImage) {
-		this.listProductImage = listProductImage;
-	}
-
-	public List<Comment> getListComment() {
-		return listComment;
-	}
-
-	public void setListComment(List<Comment> listComment) {
-		this.listComment = listComment;
-	}
-
-	public List<ProductDetail> getListProductDetail() {
-		return listProductDetail;
-	}
-
-	public void setListProductDetail(List<ProductDetail> listProductDetail) {
-		this.listProductDetail = listProductDetail;
-	}
-	
-	
 }
