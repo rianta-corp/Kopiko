@@ -9,8 +9,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Entity
 @Table(name = "product_image")
+@Data
+@NoArgsConstructor
 public class ProductImage {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -23,61 +28,4 @@ public class ProductImage {
 	
 	@Column(nullable = false)
 	private String imageUrl;
-	
-	
-	/**
-	 * For create a new object
-	 * @param productID
-	 * @param imageUrl
-	 */
-	public ProductImage(Product product, String imageUrl) {
-		super();
-		this.product = product;
-		this.imageUrl = imageUrl;
-	}
-	
-	/**
-	 * For create a new empty object
-	 */
-	public ProductImage() {
-		super();
-	}
-
-	
-	/**
-	 * For get data from database
-	 * @param productImageId
-	 * @param productId
-	 * @param imageUrl
-	 */
-	public ProductImage(Long productImageId, Product product, String imageUrl) {
-		super();
-		this.productImageId = productImageId;
-		this.product = product;
-		this.imageUrl = imageUrl;
-	}
-
-	public Long getImageId() {
-		return productImageId;
-	}
-
-	public void setImageId(Long productImageId) {
-		this.productImageId = productImageId;
-	}
-
-	public Product getProduct() {
-		return product;
-	}
-
-	public void setProduct(Product product) {
-		this.product = product;
-	}
-
-	public String getImageUrl() {
-		return imageUrl;
-	}
-
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
-	}	
 }

@@ -20,8 +20,13 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Entity
 @Table(name = "[order]")
+@Data
+@NoArgsConstructor
 public class OrderEntity {
 	
 	@Id
@@ -50,116 +55,5 @@ public class OrderEntity {
 
 	@OneToMany(mappedBy = "order")
 	private List<OrderDetailEntity> listOrderDetail;
-	
-	public OrderEntity(Account account, Date dateCreated, OrderStatusEntity orderStatus, String deliveryInfo, PaymentMethodEntity paymentMethod) {
-		super();
-		this.account = account;
-		this.dateCreated = dateCreated;
-		this.orderStatus = orderStatus;
-		this.deliveryInfo = deliveryInfo;
-		this.paymentMethod = paymentMethod;
-	}
-
-	public OrderEntity() {
-		super();
-	}
-
-	/**
-	 * @return the orderId
-	 */
-	public Long getOrderId() {
-		return orderId;
-	}
-
-	/**
-	 * @param orderId the orderId to set
-	 */
-	public void setOrderId(Long orderId) {
-		this.orderId = orderId;
-	}
-
-	/**
-	 * @return the accountId
-	 */
-	public Account getAccount() {	
-		return account;
-	}
-
-	/**
-	 * @param accountId the accountId to set
-	 */
-	public void setAccount(Account account) {
-		this.account = account;
-	}
-
-	/**
-	 * @return the dateCreated
-	 */
-	public Date getDateCreated() {
-		return dateCreated;
-	}
-
-	/**
-	 * @param dateCreated the dateCreated to set
-	 */
-	public void setDateCreated(Date dateCreated) {
-		this.dateCreated = dateCreated;
-	}
-
-	/**
-	 * @return the orderStatusId
-	 */
-	public OrderStatusEntity getOrderStatus() {
-		return orderStatus;
-	}
-
-	/**
-	 * @param orderStatusId the orderStatusId to set
-	 */
-	public void setOrderStatus(OrderStatusEntity orderStatus) {
-		this.orderStatus = orderStatus;
-	}
-
-	/**
-	 * @return the deliveryInfo
-	 */
-	public String getDeliveryInfo() {
-		return deliveryInfo;
-	}
-
-	/**
-	 * @param deliveryInfo the deliveryInfo to set
-	 */
-	public void setDeliveryInfo(String deliveryInfo) {
-		this.deliveryInfo = deliveryInfo;
-	}
-
-	/**
-	 * @return the paymentMethodId
-	 */
-	public PaymentMethodEntity getPaymentMethod() {
-		return paymentMethod;
-	}
-
-	/**
-	 * @param paymentMethodId the paymentMethodId to set
-	 */
-	public void setPaymentMethodId(PaymentMethodEntity paymentMethod) {
-		this.paymentMethod = paymentMethod;
-	}
-
-	public List<OrderDetailEntity> getListOrderDetail() {
-		return listOrderDetail;
-	}
-
-	public void setListOrderDetail(List<OrderDetailEntity> listOrderDetail) {
-		this.listOrderDetail = listOrderDetail;
-	}
-
-	public void setPaymentMethod(PaymentMethodEntity paymentMethod) {
-		this.paymentMethod = paymentMethod;
-	}
-	
-	
 	
 }

@@ -17,8 +17,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Entity
 @Table(name = "order_detail")
+@Data
+@NoArgsConstructor
 public class OrderDetailEntity {
 
 	@Id
@@ -39,102 +44,4 @@ public class OrderDetailEntity {
 
 	@Column(nullable = false, columnDefinition = "money")
 	private BigDecimal salePrice;
-
-	public OrderDetailEntity(OrderEntity order, Product product, Integer quantity, BigDecimal salePrice) {
-		super();
-		this.order = order;
-		this.product = product;
-		this.quantity = quantity;
-		this.salePrice = salePrice;
-	}
-
-	
-	
-	public OrderDetailEntity() {
-		super();
-	}
-
-	
-
-	public OrderDetailEntity(Long orderDetailId, OrderEntity order, Product product, int quantity, BigDecimal salePrice) {
-		super();
-		this.orderDetailId = orderDetailId;
-		this.order = order;
-		this.product = product;
-		this.quantity = quantity;
-		this.salePrice = salePrice;
-	}
-
-
-
-	/**
-	 * @return the orderDetailId
-	 */
-	public Long getOrderDetailId() {
-		return orderDetailId;
-	}
-
-	/**
-	 * @param orderDetailId the orderDetailId to set
-	 */
-	public void setOrderDetailId(Long orderDetailId) {
-		this.orderDetailId = orderDetailId;
-	}
-
-	/**
-	 * @return the orderId
-	 */
-	public OrderEntity getOrder() {
-		return order;
-	}
-
-	/**
-	 * @param orderId the orderId to set
-	 */
-	public void setOrder(OrderEntity order) {
-		this.order = order;
-	}
-
-	/**
-	 * @return the productId
-	 */
-	public Product getProduct() {
-		return product;
-	}
-
-	/**
-	 * @param productId the productId to set
-	 */
-	public void setProduct(Product product) {
-		this.product = product;
-	}
-
-	/**
-	 * @return the quantity
-	 */
-	public int getQuantity() {
-		return quantity;
-	}
-
-	/**
-	 * @param quantity the quantity to set
-	 */
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-
-	/**
-	 * @return the salePrice
-	 */
-	public BigDecimal getSalePrice() {
-		return salePrice;
-	}
-
-	/**
-	 * @param salePrice the salePrice to set
-	 */
-	public void setSalePrice(BigDecimal salePrice) {
-		this.salePrice = salePrice;
-	}
-
 }

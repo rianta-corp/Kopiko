@@ -15,8 +15,13 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Entity
 @Table(name = "comment")
+@Data
+@NoArgsConstructor
 public class Comment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,88 +48,4 @@ public class Comment {
 	
 	@OneToMany(mappedBy = "comment")
 	private List<CommentImage> listCommentImage;
-
-	public Comment(Long commentId, Account account, Product product, Date dateCreated, String content,
-			Long parentsCommentId) {
-		super();
-		this.commentId = commentId;
-		this.account = account;
-		this.product = product;
-		this.dateCreated = dateCreated;
-		this.content = content;
-		this.parentsCommentId = parentsCommentId;
-	}
-
-	public Comment(Account account, Product product, Date dateCreated, String content, Long parentsCommentId) {
-		super();
-		this.account = account;
-		this.product = product;
-		this.dateCreated = dateCreated;
-		this.content = content;
-		this.parentsCommentId = parentsCommentId;
-	}
-
-	public Comment() {
-		super();
-	}
-	
-	
-
-	public Long getCommentId() {
-		return commentId;
-	}
-
-	public void setCommentId(Long commentId) {
-		this.commentId = commentId;
-	}
-
-	public Account getAccount() {
-		return account;
-	}
-
-	public void setAccount(Account account) {
-		this.account = account;
-	}
-
-	public Product getProduct() {
-		return product;
-	}
-
-	public void setProduct(Product product) {
-		this.product = product;
-	}
-
-	public Date getDateCreated() {
-		return dateCreated;
-	}
-
-	public void setDateCreated(Date dateCreated) {
-		this.dateCreated = dateCreated;
-	}
-
-	public String getContent() {
-		return content;
-	}
-
-	public void setContent(String content) {
-		this.content = content;
-	}
-
-	public Long getParentsCommentId() {
-		return parentsCommentId;
-	}
-
-	public void setParentsCommentId(Long parentsCommentId) {
-		this.parentsCommentId = parentsCommentId;
-	}
-
-	public List<CommentImage> getListCommentImage() {
-		return listCommentImage;
-	}
-
-	public void setListCommentImage(List<CommentImage> listCommentImage) {
-		this.listCommentImage = listCommentImage;
-	}
-	
-	
 }

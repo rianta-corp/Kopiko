@@ -12,12 +12,17 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * @author rianta9
  * @datecreated 13 thg 3, 2021 19:59:10
  */
 @Entity
 @Table(name = "comment_image")
+@Data
+@NoArgsConstructor
 public class CommentImage {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -30,37 +35,4 @@ public class CommentImage {
 	@ManyToOne
 	@JoinColumn(name = "comment_id")
 	private Comment comment;
-
-	/**
-	 * For new empty object
-	 */
-	public CommentImage() {
-		super();
-	}
-
-	public Long getCommentImageId() {
-		return commentImageId;
-	}
-
-	public void setCommentImageId(Long commentImageId) {
-		this.commentImageId = commentImageId;
-	}
-
-	public String getImageUrl() {
-		return imageUrl;
-	}
-
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
-	}
-
-	public Comment getComment() {
-		return comment;
-	}
-
-	public void setComment(Comment comment) {
-		this.comment = comment;
-	}
-	
-	
 }
