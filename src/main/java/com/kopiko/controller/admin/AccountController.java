@@ -57,13 +57,13 @@ public String delete(@PathVariable Long id, RedirectAttributes redirect) {
 	return "redirect:/account";
 }
 
-@GetMapping("/employee/search")
+@GetMapping("/comment/search")
 public String search(@RequestParam("s") String s, Model model) {
 	if (s.equals("")) {
-		return "redirect:/employee";
+		return "redirect:/comment";
 	}
 
-	model.addAttribute("employees", accountService.search(s));
+	model.addAttribute("comment", accountService.search(s));
 	return "list";
 }
 }
