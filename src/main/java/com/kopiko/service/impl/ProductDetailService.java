@@ -1,13 +1,16 @@
 package com.kopiko.service.impl;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.kopiko.entity.ProductDetail;
 import com.kopiko.repository.IProductDetailRepository;
 import com.kopiko.service.IProductDetailService;
 
+@Service
 public class ProductDetailService implements IProductDetailService{
 	@Autowired
 	private IProductDetailRepository productDetailRepository;
@@ -34,22 +37,22 @@ public class ProductDetailService implements IProductDetailService{
 	}
 
 	@Override
-	public ProductDetail findByProductDetailID(Long id) {
-		return productDetailRepository.findByProductDetailID(id);
+	public ProductDetail findByProductDetailId(Long id) {
+		return productDetailRepository.findByProductDetailId(id);
 	}
 
 	@Override
-	public List<ProductDetail> findBySize(String size) {
-		return productDetailRepository.findBySize(size);
+	public List<ProductDetail> findAllBySize(String size) {
+		return productDetailRepository.findAllBySize(size);
 	}
 
 	@Override
-	public List<ProductDetail> findByColor(String color) {
-		return productDetailRepository.findByColor(color);
+	public List<ProductDetail> findAllByColor(String color) {
+		return productDetailRepository.findAllByColor(color);
 	}
 
 	@Override
-	public List<ProductDetail> findBySalePrice(Long minPrice, Long maxPrice) {
-		return productDetailRepository.findBySalePrice(minPrice, maxPrice);
+	public List<ProductDetail> findAllBySalePrice(BigDecimal minPrice, BigDecimal maxPrice) {
+		return productDetailRepository.findAllBySalePriceBetween(minPrice, maxPrice);
 	}
 }

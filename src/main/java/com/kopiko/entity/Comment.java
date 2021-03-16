@@ -1,99 +1,51 @@
 package com.kopiko.entity;
 
+import java.sql.Date;
+import java.util.List;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.CreationTimestamp;
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
+@Table(name = "comment")
+@Data
+@NoArgsConstructor
 public class Comment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-
-	private long commentID;
-	private long accountID;
-	private long productID;
-	private java.sql.Timestamp  dateCreated;
-	private String noiDung;
-	private long parentsCommentID;
-
-
+	@Column(columnDefinition = "bigint", name = "comment_id")
+	private Long commentId;
 	
-
-	public Comment() {
-		super();
-		
-	}
-
-	public long getCommentID() {
-		return commentID;
-	}
-	public Comment( long accountID, long productID, java.sql.Timestamp
- dateCreated, String noiDung,
-			long parentsCommentID) {
-		super();
-		
-		this.accountID = accountID;
-		this.productID = productID;
-		this.dateCreated = dateCreated;
-		this.noiDung = noiDung;
-		this.parentsCommentID = parentsCommentID;
-	}
-	public Comment(long commentID, long accountID, long productID, java.sql.Timestamp
- dateCreated, String noiDung,
-		long parentsCommentID) {
-	super();
-	this.commentID = commentID;
-	this.accountID = accountID;
-	this.productID = productID;
-	this.dateCreated = dateCreated;
-	this.noiDung = noiDung;
-	this.parentsCommentID = parentsCommentID;
-}
-	public void setCommentID(long commentID) {
-		this.commentID = commentID;
-	}
-
-	public long getAccountID() {
-		return accountID;
-	}
-
-	public void setAccountID(long accountID) {
-		this.accountID = accountID;
-	}
-
-	public long getProductID() {
-		return productID;
-	}
-
-	public void setProductID(long productID) {
-		this.productID = productID;
-	}
-
-	public java.sql.Timestamp
- getDateCreated() {
-		return dateCreated;
-	}
-
-	public void setDateCreated(java.sql.Timestamp
- dateCreated) {
-		this.dateCreated = dateCreated;
-	}
-
-	public String getNoiDung() {
-		return noiDung;
-	}
-
-	public void setNoiDung(String noiDung) {
-		this.noiDung = noiDung;
-	}
-
-	public long getParentsCommentID() {
-		return parentsCommentID;
-	}
-
-	public void setParentsCommentID(long parentsCommentID) {
-		this.parentsCommentID = parentsCommentID;
-	}
-
+	@ManyToOne
+	@JoinColumn(name = "account_id")
+	private Account account;
+	
+	@ManyToOne
+	@JoinColumn(nullable = false, name = "product_id")
+	private Product product;
+	
+	@Column(nullable = false, columnDefinition = "datetime")
+	@CreationTimestamp
+	private Date dateCreated;
+	
+	@Column(name = "[content]", nullable = false, columnDefinition = "ntext")
+	private String content;
+	
+	@Column(columnDefinition = "bigint")
+	private Long parentsCommentId;
+	
+	@OneToMany(mappedBy = "comment")
+	private List<CommentImage> listCommentImage;
 }

@@ -3,11 +3,13 @@ package com.kopiko.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.kopiko.entity.Product;
 import com.kopiko.repository.IProductRepository;
 import com.kopiko.service.IProductService;
 
+@Service
 public class ProductService implements IProductService{
 	@Autowired
 	private IProductRepository productRepository;
@@ -34,23 +36,23 @@ public class ProductService implements IProductService{
 	}
 
 	@Override
-	public Product findByProductID(Long id) {
+	public Product findByProductId(Long id) {
 		return productRepository.getOne(id);
 	}
 
 	@Override
-	public List<Product> findByCategoryID(Long categoryID) {
-		return productRepository.findByCategoryID(categoryID);
+	public List<Product> findAllByCategoryId(Long categoryId) {
+		return productRepository.findAllByCategoryCategoryId(categoryId);
 	}
 
 	@Override
-	public List<Product> findByBrandID(Long brandID) {
-		return productRepository.findByBrandID(brandID);
+	public List<Product> findAllByBrandId(Long brandId) {
+		return productRepository.findAllByBrandBrandId(brandId);
 	}
 
 	@Override
-	public List<Product> searchByProductName(String text) {
-		return productRepository.searchByProductName("%"+text+"%");
+	public List<Product> findByProductNameIgnoreCaseContaining(String text) {
+		return productRepository.findByProductNameIgnoreCaseContaining(text);
 	}
 
 }

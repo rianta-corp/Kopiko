@@ -2,17 +2,18 @@ package com.kopiko.repository;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import com.kopiko.entity.Comment
 ;
 public interface ICommentRepository extends JpaRepository<Comment, Long>{
 
-	Comment findBycommentID(Long id);
-//	List<ProductImage> findByProductIDAndAccountID(Long productID, Long accountID);
+	Comment findByCommentId(Long id);
+	List<Comment> findAllByProductProductIdAndAccountAccountId(Long productID, Long accountID);
+	List<Comment> findAllByProductProductIdAndAccountAccountIdAndParentsCommentId(Long productId, Long accountId, Long parentsCommentId);
 	
-	
-	List<Comment> findByProductIDAndAccountIDAndParentsCommentID(Long productID, Long accountID,Long parentsCommentID);
-	List<Comment> findByProductID(Long productID);
-	List<Comment> findByAccountID(Long accountID);
-	List<Comment> findByParentsCommentID(Long parentsCommentID);
+	@Query(value = "select * from comment as c where c.product_id = ?1", nativeQuery = true)
+	List<Comment> findAllByProductProductId(Long productId);
+	List<Comment> findAllByAccountAccountId(Long accountId);
+	List<Comment> findAllByParentsCommentId(Long parentsCommentId);
 }

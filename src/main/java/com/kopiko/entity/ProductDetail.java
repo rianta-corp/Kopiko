@@ -1,128 +1,46 @@
 package com.kopiko.entity;
 
+import java.math.BigDecimal;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
+@Table(name = "product_detail")
+@Data
+@NoArgsConstructor
 public class ProductDetail {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long productDetailID;
-	private Long productID;
+	@Column(columnDefinition = "bigint", name = "product_detail_id")
+	private Long productDetailId;
+	
+	@ManyToOne
+	@JoinColumn(name = "product_id", nullable = false)
+	private Product product;
+	
+	@Column(nullable = false, columnDefinition = "nvarchar(20)")
 	private String size;
+	
+	@Column(nullable = false, columnDefinition = "nvarchar(20)")
 	private String color;
-	private Long price;
-	private Long salePrice;
+	
+	@Column(nullable = false, columnDefinition = "money")
+	private BigDecimal price;
+	
+	@Column(nullable = false, columnDefinition = "money")
+	private BigDecimal salePrice;
+	
+	@Column(nullable = false)
 	private Integer quantity;
-	
-	/**
-	 * For create new object
-	 * @param productID
-	 * @param size
-	 * @param color
-	 * @param price
-	 * @param salePrice
-	 * @param quantity
-	 */
-	public ProductDetail(Long productID, String size, String color, Long price, Long salePrice, Integer quantity) {
-		super();
-		this.productID = productID;
-		this.size = size;
-		this.color = color;
-		this.price = price;
-		this.salePrice = salePrice;
-		this.quantity = quantity;
-	}
-	
-	/**
-	 * For create empty object
-	 */
-	public ProductDetail() {
-		super();
-	}
 
-	
-	/**
-	 * For get data from database
-	 * @param productDetailID
-	 * @param productID
-	 * @param size
-	 * @param color
-	 * @param price
-	 * @param salePrice
-	 * @param quantity
-	 */
-	public ProductDetail(Long productDetailID, Long productID, String size, String color, Long price, Long salePrice,
-			Integer quantity) {
-		super();
-		this.productDetailID = productDetailID;
-		this.productID = productID;
-		this.size = size;
-		this.color = color;
-		this.price = price;
-		this.salePrice = salePrice;
-		this.quantity = quantity;
-	}
-
-
-
-	public Long getProductDetailID() {
-		return productDetailID;
-	}
-
-	public void setProductDetailID(Long productDetailID) {
-		this.productDetailID = productDetailID;
-	}
-
-	public Long getProductID() {
-		return productID;
-	}
-
-	public void setProductID(Long productID) {
-		this.productID = productID;
-	}
-
-	public String getSize() {
-		return size;
-	}
-
-	public void setSize(String size) {
-		this.size = size;
-	}
-
-	public String getColor() {
-		return color;
-	}
-
-	public void setColor(String color) {
-		this.color = color;
-	}
-
-	public Long getPrice() {
-		return price;
-	}
-
-	public void setPrice(Long price) {
-		this.price = price;
-	}
-
-	public Long getSalePrice() {
-		return salePrice;
-	}
-
-	public void setSalePrice(Long salePrice) {
-		this.salePrice = salePrice;
-	}
-
-	public Integer getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(Integer quantity) {
-		this.quantity = quantity;
-	}
-	
-	
 }

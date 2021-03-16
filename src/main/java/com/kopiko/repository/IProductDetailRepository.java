@@ -1,5 +1,6 @@
 package com.kopiko.repository;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -10,12 +11,11 @@ import com.kopiko.entity.ProductDetail;
 
 @Repository
 public interface IProductDetailRepository extends JpaRepository<ProductDetail, Long>{
-	List<ProductDetail> findByProductID(Long productID);
-	ProductDetail findByProductDetailID(Long productDetailID);
-	List<ProductDetail> findByColor(String color);
-	List<ProductDetail> findBySize(String size);
+	List<ProductDetail> findAllByProductProductId(Long productId);
+	ProductDetail findByProductDetailId(Long productDetailId);
+	List<ProductDetail> findAllByColor(String color);
+	List<ProductDetail> findAllBySize(String size);
 	
-	@Query(value = "select * from ProductDetail where SalePrice between ?1 and ?2", nativeQuery = true)
-	List<ProductDetail> findBySalePrice(Long minPrice, Long maxPrice);
+	List<ProductDetail> findAllBySalePriceBetween(BigDecimal minPrice, BigDecimal maxPrice);
 	
 }

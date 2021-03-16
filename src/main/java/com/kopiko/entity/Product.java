@@ -1,125 +1,64 @@
 package com.kopiko.entity;
 
-import java.sql.Timestamp;
+import java.sql.Date;
+import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.CreationTimestamp;
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 
 @Entity
+@Table(name = "product")
+@Data
+@NoArgsConstructor
 public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long productID;
+	@Column(columnDefinition = "bigint", name = "product_id")
+	private Long productId;
+	
+	@Column(nullable = false, columnDefinition = "nvarchar(100)")
 	private String productName;
-	private Long categoryID;
-	private Long brandID;
-	private Timestamp dateCreated;
+	
+	@ManyToOne
+	@JoinColumn(name = "category_id", referencedColumnName = "category_id")
+	private CategoryEntity category;
+	
+	@ManyToOne
+	@JoinColumn(name = "brand_id")
+	private Brand brand;
+	
+	@Column(nullable = false, columnDefinition = "datetime")
+	@CreationTimestamp
+	private Date dateCreated;
+	
+	@Column(columnDefinition = "ntext")
 	private String description;
+	
+	@Column(nullable = false)
+	@ColumnDefault("1")
 	private Integer status;
 	
-	/**
-	 * For create a new product object
-	 * @param productName
-	 * @param categoryID
-	 * @param brandID
-	 * @param description
-	 * @param status
-	 */
-	public Product(String productName, Long categoryID, Long brandID, Timestamp dateCreated, String description, Integer status) {
-		super();
-		this.productName = productName;
-		this.categoryID = categoryID;
-		this.brandID = brandID;
-		this.dateCreated = dateCreated;
-		this.description = description;
-		this.status = status;
-	}
+	@OneToMany(mappedBy = "product")
+	private List<ProductImage> listProductImage;
 	
-	/**
-	 * For create a new empty product object
-	 */
-	public Product() {
-		super();
-	}
-
-	/**
-	 * For get data from database
-	 * @param productID
-	 * @param productName
-	 * @param categoryID
-	 * @param brandID
-	 * @param description
-	 * @param status
-	 */
-	public Product(Long productID, String productName, Long categoryID, Long brandID, Timestamp dateCreated, String description,
-			Integer status) {
-		super();
-		this.productID = productID;
-		this.productName = productName;
-		this.categoryID = categoryID;
-		this.brandID = brandID;
-		this.dateCreated = dateCreated;
-		this.description = description;
-		this.status = status;
-	}
-
-	public Long getProductID() {
-		return productID;
-	}
-
-	public void setProductID(Long productID) {
-		this.productID = productID;
-	}
-
-	public String getProductName() {
-		return productName;
-	}
-
-	public void setProductName(String productName) {
-		this.productName = productName;
-	}
-
-	public Long getCategoryID() {
-		return categoryID;
-	}
-
-	public void setCategoryID(Long categoryID) {
-		this.categoryID = categoryID;
-	}
-
-	public Long getBrandID() {
-		return brandID;
-	}
-
-	public void setBrandID(Long brandID) {
-		this.brandID = brandID;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public Integer getStatus() {
-		return status;
-	}
-
-	public void setStatus(Integer status) {
-		this.status = status;
-	}
-
-	public Timestamp getDateCreated() {
-		return dateCreated;
-	}
-
-	public void setDateCreated(Timestamp dateCreated) {
-		this.dateCreated = dateCreated;
-	}
+	@OneToMany(mappedBy = "product")
+	private List<Comment> listComment;
 	
-	
+	@OneToMany(mappedBy = "product")
+	private List<ProductDetail> listProductDetail;
+
 }
