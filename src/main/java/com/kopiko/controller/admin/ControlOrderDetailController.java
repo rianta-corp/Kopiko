@@ -1,13 +1,18 @@
+/**
+ * 
+ */
 package com.kopiko.controller.admin;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller
-public class HelloController {
+/**
+ * @author rianta9
+ * @datecreated 16 thg 3, 2021 11:17:51
+ */
 
-	@RequestMapping("/admin/home")
-	public String index() {
-		return "admin/home";
-	}
+@Controller
+@RequestMapping("/admin/order/detail")
+public class ControlOrderDetailController {
+
 }
