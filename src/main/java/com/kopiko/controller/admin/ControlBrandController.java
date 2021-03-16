@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -21,6 +22,7 @@ import com.kopiko.service.IBrandService;
  */
 
 @Controller
+@RequestMapping("/admin/brand")
 public class ControlBrandController {
 	@Autowired
 	private IBrandService brandService;
@@ -50,9 +52,14 @@ public class ControlBrandController {
 		return "admin/update-brand";
 	}
 	
-	@RequestMapping(value = "/admin/brand/update", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/brand/update", method = RequestMethod.PUT)
 	public String doUpdateBrand(Model model, @ModelAttribute Brand newBrand) {
 		brandService.insert(newBrand);
 		return "redirect:admin/update-brand";
+	}
+	
+	@RequestMapping(value = "admin/brand/delete/{id}", method = RequestMethod.DELETE)
+	public String doDeleteBrand(Model model, @PathVariable Long id) {
+		return "redirect:admin/brand/view";
 	}
 }
