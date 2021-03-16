@@ -42,6 +42,6 @@
 	<script src="<c:url value='/plugins/jquery/jquery.validate.min.js'/>"></script>
 	<script src="<c:url value='/plugins/bootstrap/js/bootstrap.min.js'/>"></script>
 	<script src="<c:url value='/plugins/bootstrap/js/bootstrap-notify.min.js'/>"></script>
-	<script src="<c:url value='/js/base.js'/>"></script>
+	<script src="<c:url value='/js/payment-method.js'/>"></script>
 </body>
 </html>
