@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.kopiko.entity.Comment;
 import com.kopiko.entity.CommentImage;
 import com.kopiko.service.impl.CommentImageService;
 import com.kopiko.service.impl.CommentService;
@@ -62,20 +63,15 @@ public String delete(@PathVariable Long id, RedirectAttributes redirect) {
 }
 
 @GetMapping("/commentImage/search")
-public String search(@RequestParam("s") String s, Model model) {
-	if (s.equals("")) {
+public String search(@RequestParam("a") String a, Model model) {
+	if (a.equals("")) {
 		return "redirect:/commentImage";
 	}
 
-	model.addAttribute("employees", commentImageService.search(s));
+	model.addAttribute("commentImage", commentImageService.search(a));
 	return "list";
 }
 
 }
-
-
-
-
-
 
 

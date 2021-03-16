@@ -20,7 +20,8 @@ public interface ICommentImageService {
 	CommentImage insert(CommentImage commentImage);
 	CommentImage update(CommentImage commentImage);
 	boolean delete(CommentImage commentImage);
-	Comment findOne(Long commentImageId);
+	CommentImage findOne(Long commentImageId);
 	List<CommentImage> findAll();
-	void save(Comment comment);
+
+	void save(CommentImage commentImage);
 }

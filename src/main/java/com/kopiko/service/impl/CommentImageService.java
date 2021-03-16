@@ -47,12 +47,12 @@ public class CommentImageService implements ICommentImageService{
 
 	
 	
-	@Override
-	
-	public CommentImage findOne(Long commentImageId) {
-		
-		return commentImageRespository.getOne( commentImageId);
-	}
+//	@Override
+//	
+//	public CommentImage findOne(Long commentImageId) {
+//		
+//		return commentImageRespository.getOne( commentImageId);
+//	}
 
 	
 	
@@ -61,6 +61,19 @@ public class CommentImageService implements ICommentImageService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public CommentImage findOne(Long commentImageId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Object search(String a) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 
 
 
