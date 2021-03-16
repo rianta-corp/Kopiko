@@ -53,7 +53,7 @@ public String save(@Validated Account account, BindingResult result, RedirectAtt
 public String delete(@PathVariable Long id, RedirectAttributes redirect) {
 	Account account = accountService.findOne(id); 
             accountService.delete(account);
-	redirect.addFlashAttribute("success", "Deleted employee successfully!");
+	redirect.addFlashAttribute("success", "Deleted account successfully!");
 	return "redirect:/account";
 }
 

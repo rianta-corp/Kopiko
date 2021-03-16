@@ -1,8 +1,8 @@
 package com.kopiko.service.impl;
 
 import java.util.List;
-
-import javax.persistence.Entity;
+//
+//import javax.persistence.Entity;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -13,6 +13,9 @@ List<Comment>findAll();
 Comment insert(Comment comment);
 Comment update(Comment comment);
 
-boolean delete(Long id);	
+
+boolean delete(Comment comment);
+Comment findOne(Long commentId);
+void save(Comment comment);	
 
 }
