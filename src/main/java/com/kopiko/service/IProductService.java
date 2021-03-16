@@ -8,12 +8,12 @@ import com.kopiko.entity.Product;
 
 @Service
 public interface IProductService {
-	List<Product> findAll();
-	Product insert(Product product);
-	Product update(Product product);
-	boolean delete(Long Id);
-	Product findByProductId(Long Id);
-	List<Product> findAllByCategoryId(Long categoryId);
-	List<Product> findAllByBrandId(Long brandId);
-	List<Product> searchByProductName(String text);
+//	List<Product> findAll();
+//	Product insert(Product product);
+//	Product update(Product product);
+//	boolean delete(Long Id);
+//	Product findByProductId(Long Id);
+//	List<Product> findAllByCategoryId(Long categoryId);
+//	List<Product> findAllByBrandId(Long brandId);
+//	List<Product> searchByProductName(String text);
 }
