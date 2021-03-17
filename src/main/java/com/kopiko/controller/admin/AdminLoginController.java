@@ -17,11 +17,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class AdminLoginController {
 	@RequestMapping("admin/login")
 	public String viewLogin(@RequestParam(required = false) String message, Model model) {
-		if(message != null && !message.isEmpty()) {
-			if(message.equals("logout")) {
+		if (message != null && !message.isEmpty()) {
+			if (message.equals("logout")) {
 				model.addAttribute("message", "Đăng xuất!");
-			}
-			else if(message.equals("error")) {
+			} else if (message.equals("error")) {
 				model.addAttribute("message", "Đăng nhập thất bại!");
 			}
 		}
