@@ -12,17 +12,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kopiko.entity.Comment;
-import com.kopiko.service.impl.CommentService;
+import com.kopiko.service.ICommentService;
+
 
 @Controller
 public class CommentController {
 
-
-
-
-
 @Autowired
-private CommentService commentService;
+private ICommentService commentService;
+
 
 @GetMapping("/comment")
 public String index(Model model) {
