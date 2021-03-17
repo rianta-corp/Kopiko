@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
 /**
  * @author rianta9
  * @datecreated 16 thg 3, 2021 11:22:17
@@ -29,3 +30,4 @@ public class LoginController {
 		return "web/login";
 	}
 }	
+

@@ -13,13 +13,14 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kopiko.entity.Comment;
 import com.kopiko.service.ICommentService;
-import com.kopiko.service.impl.CommentService;
+
 
 @Controller
 public class CommentController {
 
 @Autowired
 private ICommentService commentService;
+
 
 @GetMapping("/comment")
 public String index(Model model) {

@@ -22,5 +22,4 @@ void save(Comment comment);
  * @return
  */
 Object search(String s);	
-
 }
