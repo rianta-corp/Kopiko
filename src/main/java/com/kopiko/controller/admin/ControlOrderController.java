@@ -6,9 +6,9 @@ package com.kopiko.controller.admin;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -35,5 +35,20 @@ public class ControlOrderController {
 	@GetMapping("/order/list/status/{id}")
 	public List<OrderEntity> getListOrderByStatusId(@PathVariable(name = "id") Long statusId){
 		return orderService.findAllByOrderStatusOrderStatusId(statusId);
+	}
+	
+	@GetMapping("/order/list/account/{id}")
+	public List<OrderEntity> getListOrderByAccountId(@PathVariable(name = "id") Long accountId){
+		return orderService.findAllByAccountAccountId(accountId);
+	}
+	
+	@GetMapping("/order/{id}")
+	public OrderEntity getOrderByOrderId(Long orderId) {
+		return orderService.findByOrderId(orderId);
+	}
+	
+	@PutMapping("/order/{orderid}/status/{statusid}")
+	public OrderEntity updateOrderStatus(@PathVariable("orderid") Long orderId, @PathVariable("statusid") Long statusId) {
+		return orderService.updateStatus(orderId, statusId);
 	}
 }

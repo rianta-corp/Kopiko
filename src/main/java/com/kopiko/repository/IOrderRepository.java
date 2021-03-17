@@ -22,4 +22,9 @@ public interface IOrderRepository  extends JpaRepository<OrderEntity, Long>{
 	 * @return
 	 */
 	List<OrderEntity> findAllByAccountAccountId(Long accountId);
+
+	/**
+	 * @param statusId
+	 * @return
+	 */
 }
