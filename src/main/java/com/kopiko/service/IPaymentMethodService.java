@@ -9,6 +9,7 @@ package com.kopiko.service;
 import java.util.List;
 
 import com.kopiko.entity.PaymentMethodEntity;
+import com.kopiko.model.ResponseModel;
 
 public interface IPaymentMethodService {
 
@@ -61,4 +62,10 @@ public interface IPaymentMethodService {
 	 * 
 	 */
 	List<PaymentMethodEntity> findByPaymentMethodNameContaining(String paymentMethodName);
+	
+	/**
+	 * Test get info for Home page
+	 * @return
+	 */
+	ResponseModel getInfoHomePage();
 }

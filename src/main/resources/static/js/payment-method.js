@@ -1,7 +1,7 @@
 $(document).ready(function() {
-	findAllPaymentMethod();
+	
+	findAllCategoryAndPaymentMethod();
 	var $paymentMethodName = $('#paymentMethodName');
-	var $paymentMethodId = $('#paymentMethodId');
 	$('#btnAddPayment').on('click', function() {
 		var paymentMethodEntity = {
 			paymentMethodName: $paymentMethodName.val()
@@ -23,7 +23,7 @@ $(document).ready(function() {
 	})
 
 	/** Show form update payment method */
-	$('#pyamentMethodInfo').on('click', '.edit-btn', function() {
+	$('#paymentMethodInfo').on('click', '.edit-btn', function() {
 		$.ajax({
 			url: '/payment/api/find/' + $(this).data("id"),
 			type: 'GET',
@@ -62,7 +62,7 @@ $(document).ready(function() {
 	})
 
 	/** Delete payment method*/
-	$('#pyamentMethodInfo').on('click', '.delete-btn', function() {
+	$('#paymentMethodInfo').on('click', '.delete-btn', function() {
 		$.ajax({
 			url: '/payment/api/delete/' + $(this).data('id'),
 			type: 'DELETE',
@@ -94,27 +94,58 @@ $(document).ready(function() {
 	})
 })
 
-function searchPaymentMethodByName() {
-	
-}
-
 function findAllPaymentMethod() {
 	$.ajax({
 		url: '/payment/api/findAll',
 		type: 'GET',
 		dataType: 'JSON',
 		success: function(paymentMethods) {
-			renderPaymentMethod(paymentMethods);
+			 renderPaymentMethod(paymentMethods);
+			console.log('findAllPaymentMethod');
+			console.log(paymentMethods);
 		},
 		error: function() {
 			alert('Find all failed');
 		}
 	})
 }
-function renderPaymentMethod(paymentMethods) {
-	var $pyamentMethodInfo = $('#pyamentMethodInfo');
+function findAllCategoryAndPaymentMethod() {
+	$.ajax({
+		url: '/payment/v1/api/home',
+		type: 'GET',
+		dataType: 'JSON',
+		success: function(responseModel) {
+			console.log(responseModel.object.categoryList);
+			renderCategory(responseModel.object.categoryList);
+			renderPaymentMethod(responseModel.object.paymentMethodList);
+		},
+		error: function() {
+			alert('Find all failed');
+		}
+	})
+}
+function renderCategory(categoryList) {
+	var $categoryInfo = $('#categoryInfo');
 	var rowHTML = "";
-	$('#pyamentMethodInfo tbody').empty();
+	$('#categoryInfo tbody').empty();
+	$.each(categoryList, function(key, value) {
+		rowHTML = "<tr class='text-center'>"
+			+ "<td >" + value.categoryId + "</td>"
+			+ "<td >" + value.categoryCode + "</td>"
+			+ "<td >" + value.categoryName + "</td>"
+			+ "<td >" + value.parentCategoryId + "</td>"
+			+ "<td class='actions-btn'>"
+			+ "<a class='edit-btn' data-id='" + value.categoryId + "'>Update</a> | <a class='delete-btn' data-id='" + value.categoryId + "'>Delete</a> "
+			+ "</td>"
+			+ "</tr> "
+		$categoryInfo.append(rowHTML);
+	})
+}
+
+function renderPaymentMethod(paymentMethods) {
+	var $paymentMethodInfo = $('#paymentMethodInfo');
+	var rowHTML = "";
+	$('#paymentMethodInfo tbody').empty();
 	$.each(paymentMethods, function(i, paymentMethod) {
 		rowHTML = "<tr class='text-center'><td class='paymentMethodId'>" + paymentMethod.paymentMethodId + "</td>"
 			+ "<td class='paymentMethodId'>" + paymentMethod.paymentMethodName + "</td>"
@@ -122,6 +153,6 @@ function renderPaymentMethod(paymentMethods) {
 			+ "<a class='edit-btn' data-id='" + paymentMethod.paymentMethodId + "'>Update</a> | <a class='delete-btn' data-id='" + paymentMethod.paymentMethodId + "'>Delete</a> "
 			+ "</td>"
 			+ "</tr> "
-		$pyamentMethodInfo.append(rowHTML);
+		$paymentMethodInfo.append(rowHTML);
 	})
 }

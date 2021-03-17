@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kopiko.entity.PaymentMethodEntity;
+import com.kopiko.model.ResponseModel;
 import com.kopiko.service.IPaymentMethodService;
 
 @Controller
@@ -29,6 +30,8 @@ public class PaymentMethodController {
 
 	@Autowired
 	private IPaymentMethodService paymentMethodService;
+	
+	
 	
 	@GetMapping()
 	public String initIndexPage(Model model) {
@@ -71,4 +74,12 @@ public class PaymentMethodController {
 		return paymentMethodService.findByPaymentMethodNameContaining(paymentMethodName);
 	}
 	
+	/**
+	 * Test get info for home page
+	 */
+	@GetMapping(value = "/v1/api/home")
+	@ResponseBody
+	public ResponseModel getInfoHomePage() {
+		return paymentMethodService.getInfoHomePage();
+	}
 }

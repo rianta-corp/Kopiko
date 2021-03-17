@@ -13,7 +13,7 @@
 	href="<c:url value='/plugins/font-awesome/css/all.min.css'/>">
 </head>
 <body>
-	<div><input type="text" id="keyword"><button class="btn btn-success" id="btnSearch">Search</button></div>
+	<!-- <div><input type="text" id="keyword"><button class="btn btn-success" id="btnSearch">Search</button></div>
 	<table id="pyamentMethodInfo">
 		<thead>
 			<tr>
@@ -34,9 +34,37 @@
 		<input id="paymentMethodIdUpdate" type="text" readonly="readonly">
 		<label>Name:<input id="paymentMethodNameUpdate" type="text" placeholder="Enter name payment method"></label> 
 		<button id="btnUpdatePayment" class="btn btn-primary">Update</button>
-	</div>
+	</div> -->
 	
-	<div>
+	<div class="container col-md-12" style="display: flex;">
+		<div class="col-md-6">
+			<h3>Payment Method</h3>
+			<table class="table table-hover" id="paymentMethodInfo">
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col" class="text-center">No</th>
+						<th scope="col" class="text-center">Payment Method Name</th>
+						<th scope="col" class="text-center">Action</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+		</div>
+		<div class="col-md-6">
+			<h3>Category</h3>
+			<table class="table table-hover" id="categoryInfo">
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col" class="text-center">No</th>
+						<th scope="col" class="text-center">Category Code</th>
+						<th scope="col" class="text-center">Category Name</th>
+						<th scope="col" class="text-center">Parent Category Id</th>
+						<th scope="col" class="text-center">Action</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+		</div>
 	</div>
 	<script src="<c:url value='/plugins/jquery/jquery-3.5.1.min.js'/>"></script>
 	<script src="<c:url value='/plugins/jquery/jquery.validate.min.js'/>"></script>
