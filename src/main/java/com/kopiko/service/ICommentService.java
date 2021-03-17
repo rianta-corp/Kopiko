@@ -16,6 +16,11 @@ Comment update(Comment comment);
 
 boolean delete(Comment comment);
 Comment findOne(Long commentId);
-void save(Comment comment);	
+void save(Comment comment);
+/**
+ * @param s
+ * @return
+ */
+Object search(String s);	
 
 }
