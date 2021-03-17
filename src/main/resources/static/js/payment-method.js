@@ -109,6 +109,7 @@ function findAllPaymentMethod() {
 		}
 	})
 }
+/** Test home page */
 function findAllCategoryAndPaymentMethod() {
 	$.ajax({
 		url: '/payment/v1/api/home',
