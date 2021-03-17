@@ -1,0 +1,146 @@
+@media only screen and (min-width: 1200px) {
+    .carousel-item img {
+        width: 550px;
+        height: 450px;
+        padding-top: 15px ;
+    }
+} 
+.carousel-item img {
+    margin: auto;
+}
+htnl {
+    overflow-x: hidden;
+}
+@media only screen and (max-width: 767.98px) { 
+    .carousel-indicators img {
+        display: none;      
+    } 
+    .link-menu-name {
+        font-size: 15px !important;
+    }
+    .add-respon {
+        display: flex;
+        flex-direction: column;
+    }
+    .btn-add-card a {
+        margin-top: 15px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+    .category-information {
+        padding-left: 0 !important;
+    }
+    .btn-add-card {
+        padding-left: 0 !important
+    }
+    
+}
+.carousel-indicators {
+    bottom: -100px;
+}
+.carousel-indicators img {
+      max-width: 120px;
+      height: 80px;
+      padding: 5px;
+      cursor: pointer;      
+}
+
+.carousel-indicators .active {
+    opacity: 0.7;
+    box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.1);   
+}
+
+.category-infor-name {
+    text-align: left;
+
+}
+
+.category-infor {
+    margin-bottom: 35px;
+}
+
+.category-information {
+    font-size: 16px;
+    padding-left: 55px;
+    padding-top: 25px;
+    
+}
+
+.product-name {
+    color: var(--primary-color);
+}
+
+.category-size:active {
+    color: #000;
+    border-color: #000;
+}
+
+.btn-add-card {
+    display: flex;
+    padding-left: 50px;
+}
+.btn-add-card input {
+    width: 50px;
+    height: 40px;
+    font-size: 16px;
+    margin: 0 5px;
+
+    text-align: center;
+}
+.btn-add-card .btn {
+    min-width: auto;
+}
+.btn-add-card button {
+    width: 40px !important;
+    height: 40px;
+}
+.btn-add-card a {
+    min-width: 150px !important;
+    margin: 0px  15px ;
+    height: 40px;
+    font-size: 16px;
+}
+
+.add-respon {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+}
+.add-respon-sl {
+    padding-top: 15px;
+}
+
+.connect {
+    background-color: var(--background-color);
+}
+
+.connect-menu {
+    width: 100%;
+}
+.connect-menu-name {
+    font-size: 2.5rem;
+}
+
+.tab-content {
+    font-size: 1.75rem;
+}
+
+.report img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.report-star {
+    cursor: pointer;
+}
+.report-star:hover, .report-star:active {
+    
+}
+
+.report-star-active {
+    border: 1px solid var(--border-color);
+    background-color: var(--text-color);
+}
+
+
