@@ -11,5 +11,10 @@ public interface IBrandService {
 	List<Brand> findAll();
 	Brand insert(Brand brand);
 	Brand update(Brand brand);
-	boolean delete(Long id);	
+	boolean delete(Long id);
+	/**
+	 * @param brand
+	 * @return
+	 */
+	Brand findByBrandId(Long id);	
 }
