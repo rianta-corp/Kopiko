@@ -10,9 +10,12 @@ import com.kopiko.entity.Account;
 public interface IAccountService {
 
 List<Account>findAll();
+Account findOne(Long accountId);
 Account insert(Account account);
 Account update(Account account);
-boolean delete(Long id);	
+List<Account> search(String A);
+boolean delete(Account account);
+void save(Account account);	
 }
 
 

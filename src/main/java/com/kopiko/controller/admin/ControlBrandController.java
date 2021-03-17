@@ -3,14 +3,19 @@
  */
 package com.kopiko.controller.admin;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.kopiko.entity.Brand;
 import com.kopiko.service.IBrandService;
@@ -20,39 +25,38 @@ import com.kopiko.service.IBrandService;
  * @datecreated 15 thg 3, 2021 09:22:18
  */
 
-@Controller
+@RestController
+@RequestMapping("/api/v1/admin")
 public class ControlBrandController {
 	@Autowired
 	private IBrandService brandService;
 	
-	@RequestMapping(value = "/admin/brand/view")
-	public String viewBrandList(Model model) {
+	
+	@GetMapping("/brand")
+	public List<Brand> getListBrand(){
 		List<Brand> list = brandService.findAll();
-		model.addAttribute("list-brand", list);
-		return "admin/brand";
+		return list;
 	}
 	
-	@RequestMapping(value = "/admin/brand/insert", method = RequestMethod.GET)
-	public String viewInsertBrand(Model model) {
-		model.addAttribute("brand", new Brand());
-		return "admin/insert-brand";
+	@GetMapping("/brand/{id}")
+	public Brand getBrand(@PathVariable(name = "id") Long id) {
+		return brandService.findByBrandId(id);
 	}
 	
-	@RequestMapping(value = "/admin/brand/insert", method = RequestMethod.POST)
-	public String doInsertBrand(Model model, @ModelAttribute Brand newBrand) {
-		brandService.insert(newBrand);
-		return "redirect:admin/insert-brand";
+	@PostMapping("/brand")
+	public Brand  insertBrand(@RequestBody Brand brand) {
+		return brandService.insert(brand);
 	}
 	
-	@RequestMapping(value = "/admin/brand/update", method = RequestMethod.GET)
-	public String viewUpdateBrand(Model model) {
-		model.addAttribute("brand", new Brand());
-		return "admin/update-brand";
+	@PutMapping("/brand/{id}")
+	public Brand updateBrand(@PathVariable(name = "id") Long id, @RequestBody Brand brand) {
+		return brandService.update(brand);
 	}
 	
-	@RequestMapping(value = "/admin/brand/update", method = RequestMethod.POST)
-	public String doUpdateBrand(Model model, @ModelAttribute Brand newBrand) {
-		brandService.insert(newBrand);
-		return "redirect:admin/update-brand";
+	@DeleteMapping("/brand/{id}")
+	public ResponseEntity deleteBrand(@PathVariable(name = "id") Long id) {
+		brandService.delete(id);
+		return ResponseEntity.ok().build();
 	}
+	
 }
