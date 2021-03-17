@@ -1,0 +1,273 @@
+/* Cart */
+.cart-content-container {
+    align-items: unset !important;
+}
+
+.cart-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.no-cart {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: none;
+}
+
+.no-cart__content {
+    font-size: 1.8rem;
+    margin-bottom: 16px;
+}
+
+.btn-return {
+    background-color: #333;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 30%;
+    height: 50px;
+    font-size: 1.4rem;
+}
+
+.btn-return:hover {
+    background-color: var(--white-color);
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    opacity: 0.8;
+}
+
+/* Cart Content */
+.has-cart {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.has-cart__list-item {
+    width: 60%;
+    height: 50%;
+    margin-right: 16px;
+    padding-right: 16px;
+}
+
+.cart-list__table {
+    width: 100%;
+    height: 100%;
+}
+
+.cart-list__table-header {
+    font-size: 1.6rem;
+    font-weight: 1000;
+    padding-bottom: 8px;
+    border-bottom: 3px double var(--border-color);
+}
+
+.cart-list__table-body {
+    font-size: 1.4rem;
+
+}
+
+.cart-list__table-item {
+    height: 110px;
+    border-bottom: 1px solid var(--border-color);
+    margin: 12px 0;
+    padding: 12px 0;
+}
+
+.cart-list__table-header-1 {
+    width: 35%;
+    margin-right    : 16px;
+}
+
+.cart-list__table-header-2 {
+    margin: 0 16px;
+    width: 20%;
+}
+
+.cart-list__table-header-3 {
+    margin: 0 16px;
+    width: 20%;
+}
+
+.cart-list__table-header-4 {
+    /* width: 25%; */
+    float: right;
+}
+
+
+.table-item__header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.4rem;
+    align-items: center;
+}
+
+.table-item__header-delete {
+
+}
+
+.table-item__header-delete i {
+    font-size: 2.6rem;
+    color: #666;
+}
+
+.table-item__header-img {
+    width: 30%;
+    border: 1px solid #888;
+}
+
+.table-item__header-type {
+    margin-right: 24px;
+}
+
+.table-item__price {
+    width: 100%;
+    font-weight: 1000;
+}
+
+.table-item__quantity {
+    font-size: 1.4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.table-item__quantity .btn {
+    min-width: 30px;
+    height: 28px;
+}
+
+.btn-quantity {
+    background-color: #333;
+    color: var(--white-color);
+}
+
+.btn-quantity:hover {
+    background-color: var(--white-color);
+    border: 1px solid #333;
+}
+
+.form-control {
+    font-size: 1.3rem;
+}
+
+.table-item__total {
+    width: 100%;
+    font-weight: 1000;
+    text-align: right;
+}
+
+.btn-continue {
+    width: 100% !important;
+}
+
+.btn-update-cart {
+    width: calc(100% + 32px);
+}
+
+.cart-list__table-item-icon {
+    margin-right: 6px;
+}
+
+
+/* Cart Pay */
+.has-cart__pay {
+    width: 40%;
+    border-left: 1px solid var(--border-color);
+    padding-left: 32px;
+}
+
+.cart-list__table-pay {
+    width: 100%;
+    padding: 0;
+}
+
+.has-cart__pay-detail {
+    width: 100%;
+}
+
+.table-pay__header {
+    border-bottom: 3px double var(--border-color);
+}
+
+.table-pay__header-total {
+    font-size: 1.6rem;
+    font-weight: 1000;
+    padding-bottom: 3px;
+    width: 60%;
+}
+
+.table-pay__header-total {
+    width: 40%;
+}
+
+.table-pay__body {
+    font-size: 1.4rem;
+}
+
+.table-pay__body-row {
+    border-bottom: 1px solid var(--border-color);
+    height: 60px;
+}
+
+.table-pay__body-total {
+
+}
+
+.table-pay__body-price {
+    width: 150px;
+}  
+
+.has-cart__pay-offer {
+    width: 100%;
+    margin-top: 24px;
+}
+
+.cart-list__table-pay-offer {
+    width: 100%;
+}
+
+.table-pay__offer-header {
+    font-size: 1.6rem;
+    font-weight: 1000;
+    padding-bottom: 3px;
+    border-bottom: 3px double var(--border-color);
+}
+
+.table-pay-offer__body {
+    font-size: 1.4rem;
+}
+
+.table-pay-offer__body-input {
+    width: 100%;
+}
+
+.table-pay-offer__body-input-btn {
+    width: 100%;
+    margin-top: 8px;
+    height: 40px;
+}
+
+.btn-offer {
+    width: 100% !important;
+}
+
+.table-pay__body-ship-detail {
+    list-style: none;
+    padding: 0;
+}
+
+.table-pay__body-col {
+    display: flex;
+    align-items: center;
+}

@@ -22,7 +22,7 @@ public class AccountController {
 @Autowired
 private AccountService accountService;
 
-@GetMapping("/account")
+@GetMapping("/api/v1")
 public String index(Model model) {
 	model.addAttribute("account", accountService.findAll());
 	return"list";
