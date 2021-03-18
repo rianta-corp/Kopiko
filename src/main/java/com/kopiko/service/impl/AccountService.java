@@ -13,53 +13,37 @@ import com.kopiko.service.IAccountService;
 
 @Service
 public class AccountService implements IAccountService {
-
 	@Autowired
-	private IAccountRepository accountRepository;
-	
-	
+	private IAccountRepository accountRespository;
+
 	@Override
 	public List<Account> findAll() {
-		// TODO Auto-generated method stub
-		return accountRepository.findAll();
+		return accountRespository.findAll();
 	}
 
 	@Override
 	public Account insert(Account account) {
-		// TODO Auto-generated method stub
-		return null;
+		return accountRespository.saveAndFlush(account);
 	}
 
 	@Override
 	public Account update(Account account) {
+		Account oldAccount = accountRespository.getOne(account.getAccountId());
+		if(account.getEmail() != null) oldAccount.setEmail(account.getEmail());
+		if(account.getUsername() != null) oldAccount .setUsername(account.getUsername());
+		return accountRespository.saveAndFlush(oldAccount);
+	}
+	@Override
+	public boolean delete(Long id) {
+		accountRespository.deleteById(id);
+		return true;
+	}
+
+	@Override
+	public Account findByAccountId(Long id) {
 		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	@Override
-	public boolean delete(Account account) {
-	
-		return false;
+		return accountRespository.getOne(id);
 	}
 	
-	@Override
-	public void  save(Account account) {
-		 accountRepository.save(account);
-	}
-	
-	
-	@Override
-	public Account findOne(Long accountId) {
-		
-		return accountRepository.getOne( accountId);
-	}
-
-	@Override
-	public List<Account> search(String A) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	
 }
