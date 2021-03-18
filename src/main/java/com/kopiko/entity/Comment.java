@@ -2,7 +2,7 @@ package com.kopiko.entity;
 
 import java.sql.Date;
 import java.util.List;
-
+import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,6 +14,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.format.annotation.DateTimeFormat;
+
+//import org.hibernate.annotations.CreationTimestamp;
+
+//import org.hibernate.annotations.CreationTimestamp;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -37,7 +42,7 @@ public class Comment {
 	private Product product;
 	
 	@Column(nullable = false, columnDefinition = "datetime")
-	@CreationTimestamp
+	@DateTimeFormat
 	private Date dateCreated;
 	
 	@Column(name = "[content]", nullable = false, columnDefinition = "ntext")

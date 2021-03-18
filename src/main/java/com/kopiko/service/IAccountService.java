@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.kopiko.entity.Account;
-import com.kopiko.entity.Brand;
 
 @Service
 public interface IAccountService {
