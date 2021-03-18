@@ -26,10 +26,10 @@ public class BrandService implements IBrandService{
 
 	@Override
 	public Brand update(Brand brand) {
-		Brand oldBrand = brandRespository.getOne(brand.getBrandId());
-		if(brand.getBrandImgUrl() != null) oldBrand.setBrandImgUrl(brand.getBrandImgUrl());
-		if(brand.getBrandName() != null) oldBrand .setBrandName(brand.getBrandName());
-		return brandRespository.saveAndFlush(oldBrand);
+//		Brand oldBrand = brandRespository.getOne(brand.getBrandId());
+//		if(brand.getBrandImgUrl() != null) oldBrand.setBrandImgUrl(brand.getBrandImgUrl());
+//		if(brand.getBrandName() != null) oldBrand .setBrandName(brand.getBrandName());
+		return brandRespository.saveAndFlush(brand);
 	}
 	@Override
 	public boolean delete(Long id) {
