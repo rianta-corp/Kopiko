@@ -14,73 +14,60 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kopiko.entity.Comment;
-import com.kopiko.service.impl.CommentService;
+import com.kopiko.service.ICommentService;
 
 @RestController
 @RequestMapping("/api/v1/admin")
 @Controller
 public class CommentController {
 
+	@Autowired
+	private ICommentService commentService;
 
+	@GetMapping("/comment")
+	public String index(Model model) {
+		model.addAttribute("comment", commentService.findAll());
+		return "list";
+	}
 
-
-
-@Autowired
-private CommentService commentService;
-
-@GetMapping("/comment")
-public String index(Model model) {
-	model.addAttribute("comment", commentService.findAll());
-	return"list";
-}
-
-@GetMapping("/comment/create")
-public String create(Model model) {
-	model.addAttribute("comment",new Comment());
-	return"form";
-}
-@GetMapping("/comment/{commentId}/insert")
-public String edit(@PathVariable Long commentId, Model model) {
-	model.addAttribute("comment",  commentService.findOne(commentId));
-	return "form";
-}
-
-@PostMapping("/comment/save")
-public String save(@Validated Comment comment, BindingResult result, RedirectAttributes redirect) {
-	if (result.hasErrors()) {
+	@GetMapping("/comment/create")
+	public String create(Model model) {
+		model.addAttribute("comment", new Comment());
 		return "form";
 	}
-	commentService.save(comment);
-	redirect.addFlashAttribute("success", "Saved comment successfully!");
-	return "redirect:/comment";
-}
 
-@GetMapping("/comment/{commentId}/delete")
-public String delete(@PathVariable Long id, RedirectAttributes redirect) {
-	Comment comment = commentService.findOne(id); 
-            commentService.delete(comment);
-	redirect.addFlashAttribute("success", "Deleted comment successfully!");
-	return "redirect:/comment";
-}
+	@GetMapping("/comment/{commentId}/insert")
+	public String edit(@PathVariable Long commentId, Model model) {
+		model.addAttribute("comment", commentService.findOne(commentId));
+		return "form";
+	}
 
-@GetMapping("/comment/search")
-public String search(@RequestParam("s") String s, Model model) {
-	if (s.equals("")) {
+	@PostMapping("/comment/save")
+	public String save(@Validated Comment comment, BindingResult result, RedirectAttributes redirect) {
+		if (result.hasErrors()) {
+			return "form";
+		}
+		commentService.save(comment);
+		redirect.addFlashAttribute("success", "Saved comment successfully!");
 		return "redirect:/comment";
 	}
 
-	model.addAttribute("comment", commentService.search(s));
-	return "list";
-}
+	@GetMapping("/comment/{commentId}/delete")
+	public String delete(@PathVariable Long id, RedirectAttributes redirect) {
+		Comment comment = commentService.findOne(id);
+		commentService.delete(comment);
+		redirect.addFlashAttribute("success", "Deleted comment successfully!");
+		return "redirect:/comment";
+	}
+
+	@GetMapping("/comment/search")
+	public String search(@RequestParam("s") String s, Model model) {
+		if (s.equals("")) {
+			return "redirect:/comment";
+		}
+
+		model.addAttribute("comment", commentService.search(s));
+		return "list";
+	}
 
 }
-
-
-
-
-
-
-
-
-
-
