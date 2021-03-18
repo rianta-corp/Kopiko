@@ -19,9 +19,8 @@ import com.kopiko.entity.CommentImage;
 public interface ICommentImageService {
 	CommentImage insert(CommentImage commentImage);
 	CommentImage update(CommentImage commentImage);
-	boolean delete(CommentImage commentImage);
-	CommentImage findOne(Long commentImageId);
+	
 	List<CommentImage> findAll();
-
-	void save(CommentImage commentImage);
+	boolean delete(Long id);
+	CommentImage findByCommentImageId(Long id);
 }

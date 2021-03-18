@@ -12,9 +12,6 @@ public interface ICommentService {
 	Comment insert(Comment comment);
 	Comment update(Comment comment);
 	boolean delete(Long id);
-	/**
-	 * @param comment
-	 * @return
-	 */
+	
 	Comment findByCommentId(Long id);	
 }

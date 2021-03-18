@@ -15,10 +15,7 @@ import javax.persistence.Table;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/**
- * @author rianta9
- * @datecreated 13 thg 3, 2021 19:59:10
- */
+
 @Entity
 @Table(name = "comment_image")
 @Data
