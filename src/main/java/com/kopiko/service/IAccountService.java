@@ -18,5 +18,6 @@ public interface IAccountService {
 	 * @return
 	 */
 	
-	Account findByAccountId(Long id);	
+	Account findByAccountId(Long id);
+		
 }

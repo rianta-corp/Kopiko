@@ -8,22 +8,13 @@ import com.kopiko.entity.Comment;
 
 @Service
 public interface ICommentService {
-
 	List<Comment> findAll();
-
 	Comment insert(Comment comment);
-
 	Comment update(Comment comment);
-
-	boolean delete(Comment comment);
-
-	Comment findOne(Long commentId);
-
-	void save(Comment comment);
-
+	boolean delete(Long id);
 	/**
-	 * @param s
+	 * @param comment
 	 * @return
 	 */
-	Object search(String s);
+	Comment findByCommentId(Long id);	
 }
