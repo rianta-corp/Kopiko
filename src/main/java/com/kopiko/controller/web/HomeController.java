@@ -47,10 +47,18 @@ public class HomeController {
 		return "web/control-order-detail";
 	}
 	
-	@RequestMapping(value = {"account"})
+	@RequestMapping(value = {"account/profile"})
 	public String controlAccountPage() {
 		return "web/control-account";
 	}
 	
+	@RequestMapping(value = {"login"})
+	public String loginPage() {
+		return "web/login";
+	}
 	
+	@RequestMapping(value = {"register"})
+	public String registerPage() {
+		return "web/register";
+	}
 }

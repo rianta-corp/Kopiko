@@ -16,15 +16,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class LoginController {
 
-	@RequestMapping("/login")
-	public String viewLogin(@RequestParam(required = false) String message, Model model) {
-		if (message != null && !message.isEmpty()) {
-			if (message.equals("logout")) {
-				model.addAttribute("message", "Đăng xuất!");
-			} else if (message.equals("error")) {
-				model.addAttribute("message", "Đăng nhập thất bại!");
-			}
-		}
-		return "web/login";
-	}
+//	@RequestMapping("/login")
+//	public String viewLogin(@RequestParam(required = false) String message, Model model) {
+//		if (message != null && !message.isEmpty()) {
+//			if (message.equals("logout")) {
+//				model.addAttribute("message", "Đăng xuất!");
+//			} else if (message.equals("error")) {
+//				model.addAttribute("message", "Đăng nhập thất bại!");
+//			}
+//		}
+//		return "web/login";
+//	}
 }

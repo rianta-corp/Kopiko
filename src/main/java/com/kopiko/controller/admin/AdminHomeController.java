@@ -9,4 +9,9 @@ public class AdminHomeController {
 	public String index() {
 		return "admin/home";
 	}
+	
+	@RequestMapping("/admin/login")
+	public String loginPage() {
+		return "admin/login";
+	}
 }
