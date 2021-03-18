@@ -4,11 +4,13 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.kopiko.entity.ProductDetail;
 import com.kopiko.repository.IProductDetailRepository;
 import com.kopiko.service.IProductDetailService;
 
+@Service
 public class ProductDetailService implements IProductDetailService{
 	@Autowired
 	private IProductDetailRepository productDetailRepository;
@@ -51,6 +53,6 @@ public class ProductDetailService implements IProductDetailService{
 
 	@Override
 	public List<ProductDetail> findAllBySalePrice(BigDecimal minPrice, BigDecimal maxPrice) {
-		return productDetailRepository.findAllBySalePrice(minPrice, maxPrice);
+		return productDetailRepository.findAllBySalePriceBetween(minPrice, maxPrice);
 	}
 }

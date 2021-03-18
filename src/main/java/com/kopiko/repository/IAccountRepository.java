@@ -8,5 +8,5 @@ import com.kopiko.entity.Account;
 public interface IAccountRepository extends JpaRepository<Account , Long>{
 
 	Account findByAccountId(long id);
-
+//	   List<Employee> findByNameContaining(String A);
 }

@@ -16,7 +16,6 @@ public interface IProductDetailRepository extends JpaRepository<ProductDetail, L
 	List<ProductDetail> findAllByColor(String color);
 	List<ProductDetail> findAllBySize(String size);
 	
-	@Query(value = "select * from product_detail where sale_price between ?1 and ?2", nativeQuery = true)
-	List<ProductDetail> findAllBySalePrice(BigDecimal minPrice, BigDecimal maxPrice);
+	List<ProductDetail> findAllBySalePriceBetween(BigDecimal minPrice, BigDecimal maxPrice);
 	
 }

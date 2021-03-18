@@ -47,4 +47,8 @@ public interface ICategoryService {
 	List<CategoryEntity> searchCategoryByName(String categoryName);
 	
 	List<CategoryEntity> getAllCategory();
+	CategoryEntity insert(CategoryEntity categoryEntity);
+	CategoryEntity update(CategoryEntity categoryEntity);
+	boolean delete(Long id);
+	List<CategoryEntity> findAll();
 }

@@ -11,8 +11,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Entity
 @Table(name = "product_detail")
+@Data
+@NoArgsConstructor
 public class ProductDetail {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,113 +42,5 @@ public class ProductDetail {
 	
 	@Column(nullable = false)
 	private Integer quantity;
-	
-	/**
-	 * For create new object
-	 * @param productID
-	 * @param size
-	 * @param color
-	 * @param price
-	 * @param salePrice
-	 * @param quantity
-	 */
-	public ProductDetail(Product product, String size, String color, BigDecimal price, BigDecimal salePrice, Integer quantity) {
-		super();
-		this.product = product;
-		this.size = size;
-		this.color = color;
-		this.price = price;
-		this.salePrice = salePrice;
-		this.quantity = quantity;
-	}
-	
-	/**
-	 * For create empty object
-	 */
-	public ProductDetail() {
-		super();
-	}
 
-	
-	/**
-	 * For get data from database
-	 * @param productDetailID
-	 * @param productID
-	 * @param size
-	 * @param color
-	 * @param price
-	 * @param salePrice
-	 * @param quantity
-	 */
-	public ProductDetail(Long productDetailId, Product product, String size, String color, BigDecimal price, BigDecimal salePrice,
-			Integer quantity) {
-		super();
-		this.productDetailId = productDetailId;
-		this.product = product;
-		this.size = size;
-		this.color = color;
-		this.price = price;
-		this.salePrice = salePrice;
-		this.quantity = quantity;
-	}
-
-
-
-	public Long getProductDetailId() {
-		return productDetailId;
-	}
-
-	public void setProductDetailId(Long productDetailId) {
-		this.productDetailId = productDetailId;
-	}
-
-	public Product getProduct() {
-		return product;
-	}
-
-	public void setProduct(Product product) {
-		this.product = product;
-	}
-
-	public String getSize() {
-		return size;
-	}
-
-	public void setSize(String size) {
-		this.size = size;
-	}
-
-	public String getColor() {
-		return color;
-	}
-
-	public void setColor(String color) {
-		this.color = color;
-	}
-
-	public BigDecimal getPrice() {
-		return price;
-	}
-
-	public void setPrice(BigDecimal price) {
-		this.price = price;
-	}
-
-	public BigDecimal getSalePrice() {
-		return salePrice;
-	}
-
-	public void setSalePrice(BigDecimal salePrice) {
-		this.salePrice = salePrice;
-	}
-
-	public Integer getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(Integer quantity) {
-		this.quantity = quantity;
-	}
-	
-	
 }

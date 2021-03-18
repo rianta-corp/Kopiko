@@ -1,6 +1,6 @@
 package com.kopiko.entity;
 
-import java.sql.Timestamp;
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -16,9 +16,14 @@ import javax.persistence.Table;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 
 @Entity
 @Table(name = "product")
+@Data
+@NoArgsConstructor
 public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,9 +41,9 @@ public class Product {
 	@JoinColumn(name = "brand_id")
 	private Brand brand;
 	
-	@Column(nullable = false, columnDefinition = "timestamp")
+	@Column(nullable = false, columnDefinition = "datetime")
 	@CreationTimestamp
-	private Timestamp dateCreated;
+	private Date dateCreated;
 	
 	@Column(columnDefinition = "ntext")
 	private String description;
@@ -56,6 +61,7 @@ public class Product {
 	@OneToMany(mappedBy = "product")
 	private List<ProductDetail> listProductDetail;
 
+<<<<<<< HEAD
 	
 	
 	public Product(Long productId, String productName, CategoryEntity category, Brand brand, Timestamp dateCreated,
@@ -166,4 +172,6 @@ public class Product {
 	}
 	
 	
+=======
+>>>>>>> master
 }

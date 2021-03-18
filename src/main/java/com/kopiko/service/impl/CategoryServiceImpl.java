@@ -21,13 +21,16 @@ public class CategoryServiceImpl implements ICategoryService {
 	@Autowired
 	private ICategoryRepository categoryRepository;
 	
+
+	@Autowired
+	private ICategoryRepository categoryRepository;
+
 	@Override
 	public CategoryEntity addCategory(CategoryEntity categoryEntity) {
 		return categoryRepository.saveAndFlush(categoryEntity);
 	}
 
-	@Override
-	public CategoryEntity updateCategory(CategoryEntity categoryEntity) {
+	public CategoryEntity insert(CategoryEntity categoryEntity) {
 		return categoryRepository.saveAndFlush(categoryEntity);
 	}
 
@@ -43,6 +46,20 @@ public class CategoryServiceImpl implements ICategoryService {
 
 	@Override
 	public List<CategoryEntity> getAllCategory() {
+		return categoryRepository.findAll();
+	}
+	public CategoryEntity update(CategoryEntity categoryEntity) {
+		return categoryRepository.saveAndFlush(categoryEntity);
+	}
+
+	@Override
+	public boolean delete(Long id) {
+		categoryRepository.deleteById(id);
+		return true;
+	}
+
+	@Override
+	public List<CategoryEntity> findAll() {
 		return categoryRepository.findAll();
 	}
 }
