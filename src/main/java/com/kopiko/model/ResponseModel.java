@@ -6,30 +6,16 @@
 
 package com.kopiko.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class ResponseModel {
 
-	private Object object;
-
-	/**
-	 * @param object
-	 */
-	public ResponseModel(Object object) {
-		super();
-		this.object = object;
-	}
-
-	/**
-	 * @return the object
-	 */
-	public Object getObject() {
-		return object;
-	}
-
-	/**
-	 * @param object the object to set
-	 */
-	public void setObject(Object object) {
-		this.object = object;
-	}
-
+	private Object data;
+	
 }

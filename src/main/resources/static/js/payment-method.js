@@ -1,13 +1,34 @@
 $(document).ready(function() {
-	
-	findAllCategoryAndPaymentMethod();
+
+	$.ajax({
+		url: '/admin/category/view',
+		type: 'GET',
+		dataType: 'JSON',
+		success: function(data) {
+			var result = "";
+			console.log(data);
+			data.forEach(item => {
+				const{categoryId, categoryCode, categoryName, parentCategoryId} = item;
+				result +=`
+						<tr>
+							<td>${categoryId}</td>
+							<td>${categoryCode}</td>
+							<td>${categoryName}</td>
+							<td>${parentCategoryId}</td>
+						</tr>`;
+			});
+			$('#categoryInfo').append(result);
+		},
+	})
+
+	/* findAllCategoryAndPaymentMethod(); */
 	var $paymentMethodName = $('#paymentMethodName');
 	$('#btnAddPayment').on('click', function() {
 		var paymentMethodEntity = {
 			paymentMethodName: $paymentMethodName.val()
 		}
 		$.ajax({
-			url: '/payment/api/add',
+			url: '/api/v1/admin/payment/add',
 			type: 'POST',
 			dataType: 'JSON',
 			data: paymentMethodEntity, /**Must to have data from clinet */
@@ -25,7 +46,7 @@ $(document).ready(function() {
 	/** Show form update payment method */
 	$('#paymentMethodInfo').on('click', '.edit-btn', function() {
 		$.ajax({
-			url: '/payment/api/find/' + $(this).data("id"),
+			url: '/api/v1/admin/payment/find/' + $(this).data("id"),
 			type: 'GET',
 			dataType: 'JSON',
 			success: function(responseData) {
@@ -47,7 +68,7 @@ $(document).ready(function() {
 			paymentMethodName: $paymentMethodName.val(),
 		}
 		$.ajax({
-			url: '/payment/api/update',
+			url: '/api/v1/admin/payment/update',
 			type: 'PUT',
 			dataType: 'JSON',
 			data: paymentMethodEntity,
@@ -64,10 +85,10 @@ $(document).ready(function() {
 	/** Delete payment method*/
 	$('#paymentMethodInfo').on('click', '.delete-btn', function() {
 		$.ajax({
-			url: '/payment/api/delete/' + $(this).data('id'),
+			url: '/api/v1/admin/payment/' + $(this).data('id'),
 			type: 'DELETE',
 			success: function() {
-				findAllPaymentMethod();
+				findAllCategoryAndPaymentMethod();
 				alert('Delete payment method success')
 			},
 			error: function() {
@@ -80,11 +101,11 @@ $(document).ready(function() {
 	$('#btnSearch').on('click', function() {
 		var paymentMethodName = $('#keyword').val();
 		$.ajax({
-			url: '/payment/api/search/' + paymentMethodName,
+			url: '/api/v1/admin/payment/search/' + paymentMethodName,
 			type: 'GET',
 			data: paymentMethodName,
 			success: function(paymentMethods) {
-			  	renderPaymentMethod(paymentMethods);
+				renderPaymentMethod(paymentMethods);
 				console.log('Search payment method by keyword: ' + paymentMethodName + ' success');
 			},
 			error: function() {
@@ -96,11 +117,11 @@ $(document).ready(function() {
 
 function findAllPaymentMethod() {
 	$.ajax({
-		url: '/payment/api/findAll',
+		url: '/payment',
 		type: 'GET',
 		dataType: 'JSON',
 		success: function(paymentMethods) {
-			 renderPaymentMethod(paymentMethods);
+			renderPaymentMethod(paymentMethods);
 			console.log('findAllPaymentMethod');
 			console.log(paymentMethods);
 		},
@@ -112,13 +133,14 @@ function findAllPaymentMethod() {
 /** Test home page */
 function findAllCategoryAndPaymentMethod() {
 	$.ajax({
-		url: '/payment/v1/api/home',
+		url: '/api/v1/admin/home',
 		type: 'GET',
 		dataType: 'JSON',
 		success: function(responseModel) {
-			console.log(responseModel.object.categoryList);
-			renderCategory(responseModel.object.categoryList);
-			renderPaymentMethod(responseModel.object.paymentMethodList);
+			console.log(responseModel);
+			console.log(responseModel.data.categoryList);
+			renderCategory(responseModel.data.categoryList);
+			renderPaymentMethod(responseModel.data.paymentMethodList);
 		},
 		error: function() {
 			alert('Find all failed');
@@ -142,6 +164,7 @@ function renderCategory(categoryList) {
 		$categoryInfo.append(rowHTML);
 	})
 }
+
 
 function renderPaymentMethod(paymentMethods) {
 	var $paymentMethodInfo = $('#paymentMethodInfo');

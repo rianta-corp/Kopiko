@@ -81,12 +81,12 @@ public class PaymentMethodServiceImpl implements IPaymentMethodService {
 	private ICategoryRepository categoryRepository;
 	@Override
 	public ResponseModel getInfoHomePage() {
-		Map<String, Object> object = new HashMap<>();
+		Map<String, Object> responseMap = new HashMap<>();
 		List<PaymentMethodEntity> paymentMethods = paymentMethodRepository.findAll();
 		List<CategoryEntity> categories = categoryRepository.findAll();
-		object.put("paymentMethodList", paymentMethods);
-		object.put("categoryList", categories);
-		return new ResponseModel(object);
+		responseMap.put("paymentMethodList", paymentMethods);
+		responseMap.put("categoryList", categories);
+		return new ResponseModel(responseMap);
 	}
 
 }

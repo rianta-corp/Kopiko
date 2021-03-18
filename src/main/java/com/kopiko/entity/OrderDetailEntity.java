@@ -48,13 +48,9 @@ public class OrderDetailEntity {
 		this.salePrice = salePrice;
 	}
 
-	
-	
 	public OrderDetailEntity() {
 		super();
 	}
-
-	
 
 	public OrderDetailEntity(Long orderDetailId, OrderEntity order, Product product, int quantity, BigDecimal salePrice) {
 		super();
@@ -64,8 +60,6 @@ public class OrderDetailEntity {
 		this.quantity = quantity;
 		this.salePrice = salePrice;
 	}
-
-
 
 	/**
 	 * @return the orderDetailId
