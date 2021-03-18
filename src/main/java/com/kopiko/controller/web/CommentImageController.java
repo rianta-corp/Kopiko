@@ -1,72 +1,52 @@
 package com.kopiko.controller.web;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import com.kopiko.entity.CommentImage;
-import com.kopiko.service.impl.CommentImageService;
+import com.kopiko.service.ICommentImageService;
 
 @RestController
 @RequestMapping("api/v1/admin")
 public class CommentImageController {
-
-@Autowired
-private CommentImageService commentImageService;
-
-@GetMapping("/commentImage")
-public String index(Model model) {
-	model.addAttribute("commentImage", commentImageService.findAll());
-	return"list";
-}
-
-@GetMapping("/commentImage/create")
-public String create(Model model) {
-	model.addAttribute("commentImage",new CommentImage());
-	return"form";
-}
-@GetMapping("/commentImage/{commentImageId}/insert")
-public String edit(@PathVariable Long commentImageId, Model model) {
-	model.addAttribute("commentImage",  commentImageService.findOne(commentImageId));
-	return "form";
-}
-
-@PostMapping("/commentImage/save")
-public String save(@Validated CommentImage commentImage, BindingResult result, RedirectAttributes redirect) {
-	if (result.hasErrors()) {
-		return "form";
+	@Autowired
+	private ICommentImageService commentImageService;
+	
+	
+	@GetMapping("/commentImage")
+	public List<CommentImage> getListCommentImage(){
+		List<CommentImage> list = commentImageService.findAll();
+		return list;
 	}
-	commentImageService.save(commentImage);
-	redirect.addFlashAttribute("success", "Saved commentImage successfully!");
-	return "redirect:/commentImage";
-}
-
-@GetMapping("/commentImage/{commentImageId}/delete")
-public String delete(@PathVariable Long id, RedirectAttributes redirect) {
-	CommentImage commentImage = commentImageService.findOne(id); 
-            commentImageService.delete(commentImage);
-	redirect.addFlashAttribute("success", "Deleted commentImage successfully!");
-	return "redirect:/commentImage";
-}
-
-@GetMapping("/commentImage/search")
-public String search(@RequestParam("a") String a, Model model) {
-	if (a.equals("")) {
-		return "redirect:/commentImage";
+	
+	@GetMapping("/commentImage/{id}")
+	public CommentImage getCommentImage(@PathVariable(name = "id") Long id) {
+		return commentImageService.findByCommentImageId(id);
 	}
-
-	model.addAttribute("commentImage", commentImageService.search(a));
-	return "list";
+	
+	@PostMapping("/commentImage")
+	public CommentImage  insertCommentImage(@RequestBody CommentImage commentImage) {
+		return commentImageService.insert(commentImage);
+	}
+	
+	@PutMapping("/commentImage/{id}")
+	public CommentImage updateCommentImage(@PathVariable(name = "id") Long id, @RequestBody CommentImage commentImage) {
+		return commentImageService.update(commentImage);
+	}
+	
+	@DeleteMapping("/commentImage/{id}")
+	public ResponseEntity deleteCommentImage(@PathVariable(name = "id") Long id) {
+		commentImageService.delete(id);
+		return ResponseEntity.ok().build();
+	}
+	
 }
-
-}
-
-
