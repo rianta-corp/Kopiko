@@ -32,7 +32,7 @@ public class HomeImpl {
 		List<CategoryEntity> categories = categoryRepository.findAll();
 		object.put("paymentMethodList", paymentMethods);
 		object.put("categoryList", categories);
-		return new ResponseModel(object);
+		return new ResponseModel(object, 100);
 	}
 	
 }

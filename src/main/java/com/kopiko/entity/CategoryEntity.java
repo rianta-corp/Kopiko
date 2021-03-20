@@ -13,20 +13,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-<<<<<<< HEAD
 import lombok.AllArgsConstructor;
-=======
->>>>>>> master
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "category")
 @Data
-<<<<<<< HEAD
 @AllArgsConstructor
-=======
->>>>>>> master
 @NoArgsConstructor
 public class CategoryEntity {
 
@@ -41,11 +35,4 @@ public class CategoryEntity {
 	@Column(nullable = false, columnDefinition = "nvarchar(50)")
 	private String categoryName;
 
-	@Column(columnDefinition = "bigint")
-	private Long parentCategoryId;
-<<<<<<< HEAD
-
 }
-=======
-}
->>>>>>> master

@@ -12,15 +12,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kopiko.entity.CategoryEntity;
+import com.kopiko.model.ResponseModel;
 import com.kopiko.service.ICategoryService;
 
 @Controller
@@ -32,18 +32,18 @@ public class CategoryControllerAdmin {
 
 	@GetMapping
 	public String initPage() {
-		return "payment-method";
+		return "admin/category-admin";
 	}
 	
 	@PostMapping(value = "/add")
 	@ResponseBody
-	public CategoryEntity addCategory(@RequestBody CategoryEntity categoryEntity) {
+	public ResponseModel addCategory(@ModelAttribute CategoryEntity categoryEntity) {
 		return categoryService.addCategory(categoryEntity);
 	}
 
-	@PutMapping(value = "/update")
+	@RequestMapping(value = "/update", method = {RequestMethod.PUT, RequestMethod.POST})
 	@ResponseBody
-	public CategoryEntity updateCategory(@RequestBody CategoryEntity categoryEntity) {
+	public ResponseModel updateCategory(@ModelAttribute CategoryEntity categoryEntity) {
 		return categoryService.updateCategory(categoryEntity);
 	}
 
@@ -54,9 +54,9 @@ public class CategoryControllerAdmin {
 		return "Delete Success";
 	}
 	
-	@GetMapping(value = "/search")
+	@GetMapping(value = "/search/{keyword}")
 	@ResponseBody
-	public List<CategoryEntity> searchCategory(@RequestParam(value = "keyword") String categoryName) {
+	public List<CategoryEntity> searchCategory(@PathVariable(value = "keyword") String categoryName) {
 		return categoryService.searchCategoryByName(categoryName);
 	}
 	
@@ -64,6 +64,12 @@ public class CategoryControllerAdmin {
 	@ResponseBody
 	public List<CategoryEntity> getAllCategory() {
 		return categoryService.getAllCategory();
+	}
+	
+	@GetMapping(value = "/find/{id}")
+	@ResponseBody
+	public CategoryEntity findByCategoryId(@PathVariable("id") Long id) {
+		return categoryService.findByCategoryId(id);
 	}
 
 }

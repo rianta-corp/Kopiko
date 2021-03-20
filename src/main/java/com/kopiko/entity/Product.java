@@ -34,8 +34,8 @@ public class Product {
 	private String productName;
 	
 	@ManyToOne
-	@JoinColumn(name = "category_id", referencedColumnName = "category_id", nullable = false)
-	private CategoryEntity categoryId;
+	@JoinColumn(name = "category_id", referencedColumnName = "category_id")
+	private CategoryEntity category;
 	
 	@ManyToOne
 	@JoinColumn(name = "brand_id")
@@ -61,117 +61,4 @@ public class Product {
 	@OneToMany(mappedBy = "product")
 	private List<ProductDetail> listProductDetail;
 
-<<<<<<< HEAD
-	
-	
-	public Product(Long productId, String productName, CategoryEntity category, Brand brand, Timestamp dateCreated,
-			String description, Integer status) {
-		super();
-		this.productId = productId;
-		this.productName = productName;
-		this.categoryId = category;
-		this.brand = brand;
-		this.dateCreated = dateCreated;
-		this.description = description;
-		this.status = status;
-	}
-
-	public Product(String productName, CategoryEntity category, Brand brand, Timestamp dateCreated, String description,
-			Integer status) {
-		super();
-		this.productName = productName;
-		this.categoryId = category;
-		this.brand = brand;
-		this.dateCreated = dateCreated;
-		this.description = description;
-		this.status = status;
-	}
-
-	public Product() {
-		super();
-	}
-
-	public Long getProductId() {
-		return productId;
-	}
-
-	public void setProductId(Long productId) {
-		this.productId = productId;
-	}
-
-	public String getProductName() {
-		return productName;
-	}
-
-	public void setProductName(String productName) {
-		this.productName = productName;
-	}
-
-	public CategoryEntity getCategory() {
-		return categoryId;
-	}
-
-	public void setCategory(CategoryEntity category) {
-		this.categoryId = category;
-	}
-
-	public Brand getBrand() {
-		return brand;
-	}
-
-	public void setBrand(Brand brand) {
-		this.brand = brand;
-	}
-
-	public Timestamp getDateCreated() {
-		return dateCreated;
-	}
-
-	public void setDateCreated(Timestamp dateCreated) {
-		this.dateCreated = dateCreated;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public Integer getStatus() {
-		return status;
-	}
-
-	public void setStatus(Integer status) {
-		this.status = status;
-	}
-
-	public List<ProductImage> getListProductImage() {
-		return listProductImage;
-	}
-
-	public void setListProductImage(List<ProductImage> listProductImage) {
-		this.listProductImage = listProductImage;
-	}
-
-	public List<Comment> getListComment() {
-		return listComment;
-	}
-
-	public void setListComment(List<Comment> listComment) {
-		this.listComment = listComment;
-	}
-
-	public List<ProductDetail> getListProductDetail() {
-		return listProductDetail;
-	}
-
-	public void setListProductDetail(List<ProductDetail> listProductDetail) {
-		this.listProductDetail = listProductDetail;
-	}
-	
-	
-=======
->>>>>>> master
 }

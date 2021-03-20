@@ -86,7 +86,7 @@ public class PaymentMethodServiceImpl implements IPaymentMethodService {
 		List<CategoryEntity> categories = categoryRepository.findAll();
 		responseMap.put("paymentMethodList", paymentMethods);
 		responseMap.put("categoryList", categories);
-		return new ResponseModel(responseMap);
+		return new ResponseModel(responseMap, 100);
 	}
 
 }

@@ -9,6 +9,7 @@ package com.kopiko.service;
 import java.util.List;
 
 import com.kopiko.entity.CategoryEntity;
+import com.kopiko.model.ResponseModel;
 
 public interface ICategoryService {
 
@@ -19,7 +20,7 @@ public interface ICategoryService {
 	 * @return new categoryEntity
 	 * 
 	 */
-	CategoryEntity addCategory(CategoryEntity categoryEntity);
+	ResponseModel addCategory(CategoryEntity categoryEntity);
 	
 	/**
 	 * Update category
@@ -28,7 +29,7 @@ public interface ICategoryService {
 	 * @return categoryEntity
 	 * 
 	 */
-	CategoryEntity updateCategory(CategoryEntity categoryEntity);
+	ResponseModel updateCategory(CategoryEntity categoryEntity);
 	
 	/**
 	 * Delete category
@@ -46,9 +47,51 @@ public interface ICategoryService {
 	 */
 	List<CategoryEntity> searchCategoryByName(String categoryName);
 	
+	/**
+	 * Get all category
+	 * @return
+	 */
 	List<CategoryEntity> getAllCategory();
-	CategoryEntity insert(CategoryEntity categoryEntity);
-	CategoryEntity update(CategoryEntity categoryEntity);
-	boolean delete(Long id);
-	List<CategoryEntity> findAll();
+
+	/**
+	 * 
+	 * Find category by id
+	 * 
+	 * @param categoryId
+	 * @return CategoryEntity
+	 * 
+	 */
+	CategoryEntity findByCategoryId(Long categoryId);
+	
+	/**
+	 * 
+	 * Find category by category name 
+	 * 
+	 * 
+	 * @param categoryName
+	 * @return CategoryEntity
+	 * 
+	 */
+	CategoryEntity findByCategoryName(String categoryName);
+	
+	/**
+	 * Find category by category code
+	 *
+	 * @param categoryCode
+	 * @return CategoryEntity
+	 * 
+	 */
+	CategoryEntity findByCategoryCode(String categoryCode);
+	
+	/**
+	 * 
+	 * Find category by category code and category not
+	 * 
+	 * @param categoryCode
+	 * @param categoryName
+	 * @return CategoryEntity
+	 * 
+	 */
+	CategoryEntity findByCategoryCodeAndCategoryCodeNot(String categoryCode, String categoryName);
+	
 }

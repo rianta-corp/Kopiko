@@ -17,4 +17,12 @@ import com.kopiko.entity.CategoryEntity;
 public interface ICategoryRepository extends JpaRepository<CategoryEntity, Long> {
 
 	List<CategoryEntity> findByCategoryNameContaining(String categoryName);
+	
+	CategoryEntity findByCategoryId(Long categoryId);
+	
+	CategoryEntity findByCategoryName(String categoryName);
+	
+	CategoryEntity findByCategoryCode(String categoryCode);
+	
+	CategoryEntity findByCategoryCodeAndCategoryCodeNot(String categoryCode, String categoryName);
 }
