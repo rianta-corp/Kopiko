@@ -17,4 +17,7 @@ public interface IProductRepository extends JpaRepository<Product, Long>{
 	List<Product> findAllByBrandBrandId(Long brandId);
 	
     List<Product> findByProductNameIgnoreCaseContaining(String studentName);
+    
+    @Query(value = "select * from product as p join product_detail as pd on p.product_id = pd.product_id where 100-(pd.sale_price/pd.price)*100 >= 40", nativeQuery = true)
+    List<Product> findByProductSale();
 }
