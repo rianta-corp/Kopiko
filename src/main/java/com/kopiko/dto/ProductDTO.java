@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package com.kopiko.dto;
 
 import java.sql.Date;
@@ -27,7 +25,6 @@ public class ProductDTO {
 	private Date dateCreated;
 	private String description;
 	private Integer status;
-	
 	
 	public static ProductDTO convert(Product product) {
 		ProductDTO dto = new ProductDTO();

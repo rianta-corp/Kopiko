@@ -44,6 +44,37 @@ public class AccountService implements IAccountService {
 		// TODO Auto-generated method stub
 		return accountRespository.getOne(id);
 	}
+<<<<<<< HEAD
+=======
+
+	@Override
+	public Account findByUsername(String userName) {
+		// TODO Auto-generated method stub
+		return accountRepository.findByUsername(userName);
+	}
+
+	@Override
+	public boolean checkLogin(String username, String password) {
+		Account result = accountRepository.findByUsernameAndPassword(username, password);
+		if(result != null) return true;
+		return false;
+	}
+
+	@Override
+	public boolean checkAdmin(String username, String password) {
+		Account result = accountRepository.findByUsernameAndPassword(username, password);
+		if(result != null && result.getRole().equalsIgnoreCase("admin")) return true;
+		return false;
+	}
+
+	@Override
+	public boolean checkUser(String username, String password) {
+		Account result = accountRepository.findByUsernameAndPassword(username, password);
+		if(result != null && result.getRole().equalsIgnoreCase("user")) return true;
+		return false;
+	}
+
+>>>>>>> f2c8361b5fae5ba51032de01c58b6cfbb5df14f1
 	
 	
 }

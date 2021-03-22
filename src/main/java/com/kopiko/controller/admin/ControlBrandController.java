@@ -31,7 +31,6 @@ public class ControlBrandController {
 	@Autowired
 	private IBrandService brandService;
 	
-	
 	@GetMapping("/brand")
 	public List<Brand> getListBrand(){
 		List<Brand> list = brandService.findAll();

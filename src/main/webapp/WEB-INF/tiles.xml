@@ -4,6 +4,11 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
 
+	<definition name="base-layout" template="/tiles/base.jsp">
+		<put-attribute name="title" value="Kopiko Shop" />
+		<put-attribute name="body" value="*" />
+	</definition>
+
 	<!-- Admin Layout -->
 	<definition name="admin-layout" template="/tiles/admin.jsp">
 		<put-attribute name="title" value="" />
@@ -22,6 +27,11 @@
 			value="/WEB-INF/views/admin/{1}.jsp" />
 	</definition>
 
+	<definition name="admin/login" extends="base-layout">
+		<put-attribute name="title" value="Login" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/login.jsp" />
+	</definition>
 
 	<!-- WEB LAYOUT -->
 
@@ -37,6 +47,18 @@
 		<put-attribute name="title" value="Kopiko Shop" />
 		<put-attribute name="body"
 			value="/WEB-INF/views/web/{1}.jsp" />
+	</definition>
+	
+	<definition name="web/login" extends="base-layout">
+		<put-attribute name="title" value="Kopiko Shop" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/web/login.jsp" />
+	</definition>
+	
+	<definition name="web/register" extends="base-layout">
+		<put-attribute name="title" value="Kopiko Shop" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/web/register.jsp" />
 	</definition>
 
 	<!-- TEST TILES -->

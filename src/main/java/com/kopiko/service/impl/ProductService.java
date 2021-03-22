@@ -55,4 +55,9 @@ public class ProductService implements IProductService{
 		return productRepository.findByProductNameIgnoreCaseContaining(text);
 	}
 
+	@Override
+	public List<Product> findByProductSale() {
+		return productRepository.findByProductSale();
+	}
+
 }

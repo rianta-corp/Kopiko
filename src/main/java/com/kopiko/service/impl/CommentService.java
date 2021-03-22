@@ -37,6 +37,7 @@ public class CommentService implements ICommentService{
 //		if(comment.getCommentName() != null) oldComment .setCommentName(comment.getCommentName());
 		return commentRespository.saveAndFlush(oldComment);
 	}
+	
 	@Override
 	public boolean delete(Long id) {
 		commentRespository.deleteById(id);
