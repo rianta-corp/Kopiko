@@ -1,10 +1,12 @@
 package com.kopiko.controller.web;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class HomeController {
+	
 	@RequestMapping(value = {"/", "home"})
 	public String homePage() {
 		return "web/home";
@@ -43,19 +45,31 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = {"account/order"})
+	@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
 	public String controlOrderPage() {
 		return "web/control-order";
 	}
 	
 	@RequestMapping(value = {"account/order/detail"})
+	@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
 	public String controlOrderDetailPage() {
 		return "web/control-order-detail";
 	}
 	
-	@RequestMapping(value = {"account"})
+	@RequestMapping(value = {"account/profile"})
+	@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
 	public String controlAccountPage() {
 		return "web/control-account";
 	}
 	
+	@RequestMapping(value = {"login"})
+	public String loginPage() {
+		System.out.println("loginPage");
+		return "web/login";
+	}
 	
+	@RequestMapping(value = {"register"})
+	public String registerPage() {
+		return "web/register";
+	}
 }
