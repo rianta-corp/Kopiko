@@ -1,4 +1,4 @@
-var quantity=0;
+/*var quantity=0;
 let btnPlus = document.querySelector('.quantity-right-plus');
 btnPlus.onclick = function() {
     // Stop acting like a button
@@ -54,4 +54,4 @@ function myFunction() {
     }
 }
 window.onscroll = function() {myFunction()};
-   
+   */
