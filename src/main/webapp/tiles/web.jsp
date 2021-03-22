@@ -52,11 +52,6 @@
 	</div>
 
 
-	<!-- Script -->
-	<script
-		src="<c:url value='/template/web/plugins/jquery/jquery-3.5.1.min.js'/>"></script>
-	<script
-		src="<c:url value='/template/web/plugins/bootstrap/js/bootstrap.min.js'/>"></script>
-	<script src="<c:url value='/template/web/js/app.js'/>"></script>
+	
 </body>
 </html>

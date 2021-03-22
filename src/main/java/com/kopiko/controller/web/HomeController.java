@@ -15,6 +15,11 @@ public class HomeController {
 		return "web/search";
 	}
 	
+	@RequestMapping(value = {"search/sale"})
+	public String searchSalePage() {
+		return "web/search-sale";
+	}
+	
 	@RequestMapping(value = {"checkout/cart"})
 	public String cartPage() {
 		return "web/cart";

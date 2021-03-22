@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!-- Header -->
+
+<!-- Script -->
+	<script
+		src="<c:url value='/template/web/plugins/jquery/jquery-3.5.1.min.js'/>"></script>
+	<script
+		src="<c:url value='/template/web/plugins/bootstrap/js/bootstrap.min.js'/>"></script>
+	<script src="<c:url value='/template/web/js/app.js'/>"></script>
 <header class="header">
 	<!-- Heading -->
 	<div class="heading">
