@@ -25,15 +25,15 @@ public class ControlProductController {
 	@Autowired
 	private IProductService productService;
 	
-	@GetMapping("/product/list")
-	public List<ProductDTO> getListProduct(){
-		return ProductDTO.convertList(productService.findAll());
-	}
-	
-	@GetMapping("/product/list/category/{id}")
-	public List<ProductDTO> getListProductByCategoryId(@PathVariable(name = "id") Long categoryId){
-		return ProductDTO.convertList(productService.findAllByCategoryId(categoryId));
-	}
+//	@GetMapping("/product/list")
+//	public List<ProductDTO> getListProduct(){
+//		return ProductDTO.convertList(productService.findAll());
+//	}
+//	
+//	@GetMapping("/product/list/category/{id}")
+//	public List<ProductDTO> getListProductByCategoryId(@PathVariable(name = "id") Long categoryId){
+//		return ProductDTO.convertList(productService.findAllByCategoryId(categoryId));
+//	}
 	
 	
 }

@@ -16,6 +16,5 @@ public interface IProductService {
 	List<Product> findAllByCategoryId(Long categoryId);
 	List<Product> findAllByBrandId(Long brandId);
 	List<Product> findByProductNameIgnoreCaseContaining(String text);
-	
 	List<Product> findByProductSale();
 }
