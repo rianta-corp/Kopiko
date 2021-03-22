@@ -53,5 +53,7 @@ boolean checkAdmin(String username, String password);
  */
 boolean checkUser(String username, String password);	
 //>>>>>>> f2c8361b5fae5ba51032de01c58b6cfbb5df14f1
+Account findByAccountId(Long id);
+
 
 }

@@ -41,6 +41,16 @@ public Account getAccount(@PathVariable(name = "id") Long id) {
 	return accountService.findByAccountId(id);
 }
 
+//@GetMapping("/brand")
+//public List<Brand> getListBrand(){
+//	List<Brand> list = brandService.findAll();
+//	return list;
+//}
+//
+//@GetMapping("/brand/{id}")
+//public Brand getBrand(@PathVariable(name = "id") Long id) {
+//	return brandService.findByBrandId(id);
+//}
 @PostMapping("/account")
 public Account  insertAccount(@RequestBody Account account) {
 	return accountService.insert(account);
@@ -53,7 +63,7 @@ public Account updateAccount(@PathVariable(name = "id") Long id, @RequestBody Ac
 
 @DeleteMapping("/account/{id}")
 public ResponseEntity deleteAccount(@PathVariable(name = "id") Long id) {
-	accountService.delete(id);
+	accountService.deleteById(id);
 	return ResponseEntity.ok().build();
 }
 
