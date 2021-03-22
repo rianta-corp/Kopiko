@@ -15,7 +15,30 @@ Account insert(Account account);
 Account update(Account account);
 List<Account> search(String A);
 boolean delete(Account account);
-void save(Account account);	
+void save(Account account);
+/**
+ * @param userName
+ * @return
+ */
+Account findByUsername(String userName);
+/**
+ * @param username
+ * @param password
+ * @return
+ */
+boolean checkLogin(String username, String password);
+/**
+ * @param username
+ * @param password
+ * @return
+ */
+boolean checkAdmin(String username, String password);
+/**
+ * @param username
+ * @param password
+ * @return
+ */
+boolean checkUser(String username, String password);	
 }
 
 

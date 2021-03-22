@@ -9,7 +9,7 @@
                     THÔNG TIN LIÊN HỆ
                 </h2>
                 <ul class="footer-list__contact">
-                    <li><i class="fas fa-map-marked-alt"></i>Thừa Thiên Huế</li>
+                    <li><i class="fas fa-map-marked-alt"></i>01 Nguyễn Huệ, Huế</li>
                     <li>
                         <a href="#" class="link___phone"><i class="fas fa-phone-square"></i>076 922 0162</a>
                     </li>
