@@ -14,38 +14,40 @@ import com.kopiko.service.IAccountService;
 @Service
 public class AccountService implements IAccountService {
 	@Autowired
-	private IAccountRepository accountRespository;
+	private IAccountRepository accountRepository;
 
 	@Override
 	public List<Account> findAll() {
-		return accountRespository.findAll();
+		return accountRepository.findAll();
 	}
 
 	@Override
 	public Account insert(Account account) {
-		return accountRespository.saveAndFlush(account);
+		return accountRepository.saveAndFlush(account);
 	}
 
 	@Override
 	public Account update(Account account) {
-		Account oldAccount = accountRespository.getOne(account.getAccountId());
+		Account oldAccount = accountRepository.getOne(account.getAccountId());
 		if(account.getEmail() != null) oldAccount.setEmail(account.getEmail());
 		if(account.getUsername() != null) oldAccount .setUsername(account.getUsername());
-		return accountRespository.saveAndFlush(oldAccount);
+		return accountRepository.saveAndFlush(oldAccount);
 	}
+	
 	@Override
-	public boolean delete(Long id) {
-		accountRespository.deleteById(id);
+	public boolean deleteById(Long id) {
+		accountRepository.deleteById(id);
 		return true;
 	}
 
-	@Override
-	public Account findByAccountId(Long id) {
-		// TODO Auto-generated method stub
-		return accountRespository.getOne(id);
-	}
-<<<<<<< HEAD
-=======
+//	@Override
+//	@Override
+//	public Account findByAccountId(Long id) {
+//		// TODO Auto-generated method stub
+//		return accountRepository.getOne(id);
+//	}
+//<<<<<<< HEAD
+//=======
 
 	@Override
 	public Account findByUsername(String userName) {
@@ -74,7 +76,25 @@ public class AccountService implements IAccountService {
 		return false;
 	}
 
->>>>>>> f2c8361b5fae5ba51032de01c58b6cfbb5df14f1
+	@Override
+	public Account findOne(Long accountId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Account> search(String A) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void save(Account account) {
+		// TODO Auto-generated method stub
+		
+	}
+
+//>>>>>>> f2c8361b5fae5ba51032de01c58b6cfbb5df14f1
 	
 	
 }

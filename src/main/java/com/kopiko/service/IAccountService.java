@@ -9,17 +9,17 @@ import com.kopiko.entity.Account;
 @Service
 public interface IAccountService {
 //<<<<<<< HEAD
-	List<Account> findAll();
-	Account insert(Account account);
-	Account update(Account account);
-	boolean delete(Long id);
-	/**
-	 * @param brand
-	 * @return
-	 */
-	
-	Account findByAccountId(Long id);
-		
+//	List<Account> findAll();
+//	Account insert(Account account);
+//	Account update(Account account);
+//	boolean delete(Long id);
+//	/**
+//	 * @param brand
+//	 * @return
+//	 */
+//	
+//	Account findByAccountId(Long id);
+//		
 //=======
 
 List<Account>findAll();
@@ -27,7 +27,7 @@ Account findOne(Long accountId);
 Account insert(Account account);
 Account update(Account account);
 List<Account> search(String A);
-boolean delete(Account account);
+boolean deleteById(Long Id);
 void save(Account account);
 /**
  * @param userName
@@ -53,4 +53,5 @@ boolean checkAdmin(String username, String password);
  */
 boolean checkUser(String username, String password);	
 //>>>>>>> f2c8361b5fae5ba51032de01c58b6cfbb5df14f1
+
 }
