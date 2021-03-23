@@ -56,11 +56,20 @@ public class Product {
 	
 	@OneToMany(mappedBy = "product")
 	private List<ProductImage> listProductImage;
-	
+
 	@OneToMany(mappedBy = "product")
 	private List<Comment> listComment;
-	
+
 	@OneToMany(mappedBy = "product")
 	private List<ProductDetail> listProductDetail;
+
+	@Override
+	public String toString() {
+		return "Product [productId=" + productId + ", productName=" + productName + ", category=" + category
+				+ ", brand=" + brand + ", dateCreated=" + dateCreated + ", description=" + description + ", status="
+				+ status + "]";
+	}
+	
+	
 
 }

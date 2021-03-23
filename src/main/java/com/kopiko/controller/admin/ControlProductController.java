@@ -82,7 +82,7 @@ public class ControlProductController {
 		model.addAttribute("listStatus", statusService.findAll());
 		return "admin/update-product";
 	}
-	
+
 	@GetMapping("/product/{id}/view")
 	public String viewProduct(Model model, @PathVariable(name = "id") Long productId) {
 		model.addAttribute("productDTO", productService.findByProductId(productId));
