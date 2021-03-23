@@ -79,6 +79,12 @@ public class CategoryServiceImpl implements ICategoryService {
 	}
 
 	@Override
+	public CategoryEntity findOne(Long categoryId) {
+		// TODO Auto-generated method stub
+		return categoryRepository.getOne(categoryId);
+	}
+
+	// To do someting
 	public CategoryEntity findByCategoryName(String categoryName) {
 		return categoryRepository.findByCategoryName(categoryName);
 	}

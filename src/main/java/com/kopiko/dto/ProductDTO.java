@@ -36,35 +36,4 @@ public class ProductDTO {
 	private String description;
 
 	private Integer status;
-
-	private List<ProductImage> listProductImage;
-
-	private List<Comment> listComment;
-
-	private List<ProductDetail> listProductDetail;
-
-	
-	
-//	public static ProductDTO convert(Product product) {
-//		ProductDTO dto = new ProductDTO();
-//		dto.setProductId(product.getProductId());
-//		dto.setProductName(product.getProductName());
-//		dto.setCategoryId(product.getCategory().getCategoryId());
-//		dto.setBrandId(product.getBrand().getBrandId());
-//		dto.setDateCreated(product.getDateCreated());
-//		dto.setDescription(product.getDescription());
-//		dto.setStatus(product.getStatus());
-//		dto.setListProductDetail(product.getListProductDetail());
-//		return dto;
-//	}
-//
-//	public static List<ProductDTO> convertList(List<Product> list) {
-//		List<ProductDTO> result = new ArrayList<>();
-//		for (Product product : list) {
-//			result.add(convert(product));
-//		}
-//
-//		return result;
-//	}
-
 }

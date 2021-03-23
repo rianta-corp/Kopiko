@@ -13,6 +13,15 @@ import com.kopiko.model.ResponseModel;
 
 public interface ICategoryService {
 
+	CategoryEntity insert(CategoryEntity categoryEntity);
+	CategoryEntity update(CategoryEntity categoryEntity);
+	boolean delete(Long id);
+	List<CategoryEntity> findAll();
+	/**
+	 * @param categoryId
+	 * @return
+	 */
+	CategoryEntity findOne(Long categoryId);
 	/**
 	 * Add new category entity
 	 * 

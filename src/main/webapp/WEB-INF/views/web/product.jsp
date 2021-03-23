@@ -24,8 +24,7 @@
 			</br>
 		</div>
 		<div class="row pl-5">
-			<h2 class=" pl-4 category-infor-name text-uppercase font-weight-bold">Ao
-				phong nam</h2>
+			<h2 class=" pl-4 category-infor-name text-uppercase font-weight-bold">${product.getProductName()}</h2>
 		</div>
 		<div class="row pb-5">
 			<div class="col-sm-6">
@@ -75,27 +74,21 @@
 					<div
 						class="card-text text-left font-weight-bold d-flex justify-content-center p-2">
 						<span class="product__price product__price-old"
-							style="font-size: 20px;">599,000 ₫</span> <span
+							style="font-size: 20px;">${product.getListProductDetail().get(0).getPrice()}</span> <span
 							class="product__price product__price-new pl-3"
-							style="font-size: 24px;">500,000 ₫</span>
+							style="font-size: 24px;">${product.getListProductDetail().get(0).getSalePrice()}</span>
 					</div>
 					<div class="col-lg-12 pt-3 ">
-						<p class="font-weight-bold float-left">Nhãn hiệu: &nbsp</p>
+						<p class="font-weight-bold float-left">${product.getBrand().getBrandName()}</p>
 						<a href="#" class="font-weight-bold product-name float-left">
 							bibits hunter</a>
 					</div>
 
 					<div class=" p-4">
-						<p style="text-align: justify">Lorem ipsum dolor sit amet,
-							consectetur adipiscing elit. Nam fringilla augue nec est
-							tristique auctor. Donec non est at libero vulputate rutrum. Morbi
-							ornare lectus quis justo gravida semper. Nulla tellus mi,
-							vulputate adipiscing cursus eu, suscipit id nulla.</p>
+						<p style="text-align: justify">${product.getDescription()}</p>
 					</div>
 
-					<div class="col-lg-6">
-						<p class="font-weight-bold">Kho hàng: &nbsp 1999</p>
-					</div>
+					
 					<div class="col-lg-12 pt-3 ">
 						<p class="font-weight-bold">Chọn kích cỡ:</p>
 						<a href="#"
