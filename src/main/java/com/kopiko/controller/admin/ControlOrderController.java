@@ -6,49 +6,59 @@ package com.kopiko.controller.admin;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.kopiko.converter.OrderConverter;
 import com.kopiko.entity.OrderEntity;
 import com.kopiko.service.IOrderService;
+import com.kopiko.service.IOrderStatusService;
 
 /**
  * @author rianta9
  * @datecreated 16 thg 3, 2021 11:09:03
  */
 
-@RestController
-@RequestMapping("api/v1/admin")
+@Controller
+@RequestMapping("/admin")
 public class ControlOrderController {
 	@Autowired
 	private IOrderService orderService;
 	
+	@Autowired
+	private IOrderStatusService orderStatus;
+	
+	@Autowired
+	private OrderConverter orderConverter;
+	
 	@GetMapping("/order/list")
-	public List<OrderEntity> getListOrder(){
-		List<OrderEntity> list = orderService.findAll();
-		return list;
+	public String viewListOrder(Model model){
+		return "admin/list-order";
 	}
 	
 	@GetMapping("/order/list/status/{id}")
-	public List<OrderEntity> getListOrderByStatusId(@PathVariable(name = "id") Long statusId){
-		return orderService.findAllByOrderStatusOrderStatusId(statusId);
+	public String viewListOrderByStatusId(Model model, @PathVariable(name = "id") Long statusId){
+		model.addAttribute(statusId);
+		return "admin/list-order";
 	}
 	
 	@GetMapping("/order/list/account/{id}")
-	public List<OrderEntity> getListOrderByAccountId(@PathVariable(name = "id") Long accountId){
-		return orderService.findAllByAccountAccountId(accountId);
+	public String viewListOrderByAccountId(Model model, @PathVariable(name = "id") Long accountId){
+		model.addAttribute(accountId);
+		return "admin/list-order";
 	}
 	
-	@GetMapping("/order/{id}")
-	public OrderEntity getOrderByOrderId(Long orderId) {
-		return orderService.findByOrderId(orderId);
+	@GetMapping("/order/{id}/edit")
+	public String updateStatus(Model model, @PathVariable(name = "id") Long orderId) {
+		OrderEntity orderEntity = orderService.findByOrderId(orderId);
+		model.addAttribute("orderDTO", orderConverter.toDTO(orderEntity));
+		model.addAttribute("listOrderStatus", orderStatus.findAll());
+		return "admin/update-order";
 	}
-	
-	@PutMapping("/order/{orderid}/status/{statusid}")
-	public OrderEntity updateOrderStatus(@PathVariable("orderid") Long orderId, @PathVariable("statusid") Long statusId) {
-		return orderService.updateStatus(orderId, statusId);
-	}
+
 }
