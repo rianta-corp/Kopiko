@@ -24,16 +24,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ProductDTO {
 	private Long productId;
-
 	private String productName;
-
-	private CategoryEntity category;
-
-	private Brand brand;
-
+	private Long categoryId;
+	private Long brandId;
 	private Date dateCreated;
-
 	private String description;
-
 	private Integer status;
 }

@@ -99,4 +99,29 @@ public class CategoryServiceImpl implements ICategoryService {
 		return categoryRepository.findByCategoryCodeAndCategoryCodeNot(categoryCode, categoryName);
 	}
 
+	@Override
+	public CategoryEntity insert(CategoryEntity categoryEntity) {
+		// TODO Auto-generated method stub
+		return categoryRepository.saveAndFlush(categoryEntity);
+	}
+
+	@Override
+	public CategoryEntity update(CategoryEntity categoryEntity) {
+		// TODO Auto-generated method stub
+		return categoryRepository.saveAndFlush(categoryEntity);
+	}
+
+	@Override
+	public boolean delete(Long id) {
+		// TODO Auto-generated method stub
+		categoryRepository.deleteById(id);
+		return true;
+	}
+
+	@Override
+	public List<CategoryEntity> findAll() {
+		// TODO Auto-generated method stub
+		return categoryRepository.findAll();
+	}
+
 }
