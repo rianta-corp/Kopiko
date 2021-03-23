@@ -1,10 +1,10 @@
 package com.kopiko.service.impl;
+
 /**
  * 
  * @author ADMIN
  * @date Mar 10, 2021
  */
-
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ import com.kopiko.repository.ICategoryRepository;
 import com.kopiko.service.ICategoryService;
 
 @Service
-public class CategoryServiceImpl implements ICategoryService  {
+public class CategoryServiceImpl implements ICategoryService {
 
 	@Autowired
 	private ICategoryRepository categoryRepository;
@@ -46,6 +46,12 @@ public class CategoryServiceImpl implements ICategoryService  {
 	public List<CategoryEntity> findAll() {
 		return categoryRepository.findAll();
 	}
-	
+
+	@Override
+	public CategoryEntity findOne(Long categoryId) {
+		// TODO Auto-generated method stub
+		return categoryRepository.getOne(categoryId);
+	}
+
 	// To do someting
 }

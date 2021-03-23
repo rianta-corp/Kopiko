@@ -17,4 +17,9 @@ public interface ICategoryService {
 	CategoryEntity update(CategoryEntity categoryEntity);
 	boolean delete(Long id);
 	List<CategoryEntity> findAll();
+	/**
+	 * @param categoryId
+	 * @return
+	 */
+	CategoryEntity findOne(Long categoryId);
 }
