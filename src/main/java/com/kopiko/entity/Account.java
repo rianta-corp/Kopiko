@@ -48,7 +48,7 @@ public class Account {
 	private Date dateCreated;
 	
 	@Column(nullable = false)
-	@ColumnDefault("0") // User
+	@ColumnDefault("USER") // User
 	private String role;
 	
 	@Column(nullable = false)

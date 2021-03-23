@@ -1,17 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ include file="/common/taglib.jsp"%>
 <!-- Header -->
+
+<!-- Script -->
+	<script
+		src="<c:url value='/template/web/plugins/jquery/jquery-3.5.1.min.js'/>"></script>
+	<script
+		src="<c:url value='/template/web/plugins/bootstrap/js/bootstrap.min.js'/>"></script>
+	<script src="<c:url value='/template/web/js/app.js'/>"></script>
 <header class="header">
 	<!-- Heading -->
 	<div class="heading">
 		<div class="container-private">
 			<div class="heading__socials">
 				<ul class="heading__socials-list">
-					<li><a href=""><i
+					<li><a href = "#"><i
 							class="heading__socials-icon fab fa-facebook"></i></a></li>
-					<li><a href=""><i
+					<li><a href = "#"><i
 							class="heading__socials-icon fab fa-instagram"></i></a></li>
-					<li><a href=""><i
+					<li><a href = "#"><i
 							class="heading__socials-icon fab fa-twitter-square"></i></a></li>
 				</ul>
 			</div>
@@ -23,8 +31,8 @@
 
 			<!-- <div class="heading__log">
                 <ul class="heading__log-io">
-                    <li class="heading__log-items"><a onclick="document.getElementById('login').style.display='block'" class="heading__log-link" href="#">Đăng nhập</a></li>
-                    <li class="heading__log-items"><a onclick="document.getElementById('register').style.display='block'" class="heading__log-link" href="#">Đăng ký</a></li>
+                    <li class="heading__log-items"><a onclick="document.getElementById('login').style.display='block'" class="heading__log-link" href = "#">Đăng nhập</a></li>
+                    <li class="heading__log-items"><a onclick="document.getElementById('register').style.display='block'" class="heading__log-link" href = "#">Đăng ký</a></li>
                 </ul>
             </div> -->
 
@@ -32,17 +40,15 @@
 			<div class="heading__navbar-user">
 
 				<img src="/img/avatar.jpg" alt=""
-					class="heading__navbar-user-img"> <a href="#"
+					class="heading__navbar-user-img"> <a href = "/account"
 					class="heading__navbar-user-name">Nghĩa</a>
 
 				<ul class="heading__navbar-user-menu">
-					<li class="heading__navbar-user-item"><a href="">Tài khoản
+					<li class="heading__navbar-user-item"><a href = "/account/profile">Tài khoản
 							của tôi</a></li>
-					<li class="heading__navbar-user-item"><a href="">Địa chỉ
+					<li class="heading__navbar-user-item"><a href = "/account/order">Đơn hàng
 							của tôi</a></li>
-					<li class="heading__navbar-user-item"><a href="">Đơn mua
-							của tôi</a></li>
-					<li class="heading__navbar-user-item"><a href="">Đăng xuất</a>
+					<li class="heading__navbar-user-item"><a href = "/logout">Đăng xuất</a>
 					</li>
 				</ul>
 			</div>
@@ -77,11 +83,11 @@
 										<h3 class="header__search-history-heading">Lịch sử tìm
 											kiếm</h3>
 										<ul class="header__search-history-list">
-											<li class="header__search-history-item"><a href="">Áo
+											<li class="header__search-history-item"><a href = "">Áo
 													khoác</a></li>
-											<li class="header__search-history-item"><a href="">Áo
+											<li class="header__search-history-item"><a href = "">Áo
 													sơ mi</a></li>
-											<li class="header__search-history-item"><a href="">Quần
+											<li class="header__search-history-item"><a href = "">Quần
 													ka ki</a></li>
 										</ul>
 									</div>
@@ -91,17 +97,17 @@
 								</button>
 							</div>
 						</li>
-						<li class="nav__mobile-list-item"><a href="#"
-							class="nav__mobile-link">TRANG CHỦ</a></li>
-						<li class="nav__mobile-list-item"><a href="#"
+						<li class="nav__mobile-list-item"><a class="nav__mobile-link" href = "/home"
+							>TRANG CHỦ</a></li>
+						<li class="nav__mobile-list-item"><a href = "/search/new"
 							class="nav__mobile-link">MỚI</a></li>
-						<li class="nav__mobile-list-item"><a href="#"
+						<li class="nav__mobile-list-item"><a href = "/search/man"
 							class="nav__mobile-link">THỜI TRANG NAM</a></li>
-						<li class="nav__mobile-list-item"><a href="#"
+						<li class="nav__mobile-list-item"><a href = "/search/woman"
 							class="nav__mobile-link">THỜI TRANG NỮ</a></li>
-						<li class="nav__mobile-list-item"><a href="#"
+						<li class="nav__mobile-list-item"><a href = "/search/sale"
 							class="nav__mobile-link">SALE</a></li>
-						<li class="nav__mobile-list-item"><a href="#"
+						<li class="nav__mobile-list-item"><a href = "/search/brand"
 							class="nav__mobile-link">THƯƠNG HIỆU</a></li>
 					</ul>
 				</nav>
@@ -109,7 +115,7 @@
 			<!--End Header responsive -->
 
 			<div class="header__logo">
-				<a href="index.html"><img src="/img/KopiKo.png"
+				<a href = "/home"><img src="/img/KopiKo.png"
 					alt="Logo" class="header__logo-img"></a>
 			</div>
 
@@ -120,11 +126,11 @@
 					<div class="header__search-history">
 						<h3 class="header__search-history-heading">Lịch sử tìm kiếm</h3>
 						<ul class="header__search-history-list">
-							<li class="header__search-history-item"><a href="">Áo
+							<li class="header__search-history-item"><a href = "">Áo
 									khoác</a></li>
-							<li class="header__search-history-item"><a href="">Áo sơ
+							<li class="header__search-history-item"><a href = "">Áo sơ
 									mi</a></li>
-							<li class="header__search-history-item"><a href="">Quần
+							<li class="header__search-history-item"><a href = "">Quần
 									ka ki</a></li>
 						</ul>
 					</div>
@@ -206,12 +212,12 @@
 									</div>
 									<div class="header__cart-item-body">
 										<span class="header__cart-item-desc"> Phân loại: Bạc </span> <a
-											href="#" class="header__cart-item-remove">Xoá</a>
+											href = "#" class="header__cart-item-remove">Xoá</a>
 									</div>
 								</div></li>
 						</ul>
 
-						<a href="cart-page.html" class="header__cart-view btn btn-primary">Xem
+						<a href = "/checkout/cart" class="header__cart-view btn btn-primary">Xem
 							giỏ hàng</a>
 					</div>
 				</div>
@@ -227,41 +233,41 @@
 			<div class="header__navbar">
 				<ul class="header__navbar-list">
 					<li class="header__navbar-items"><a
-						class="header__navbar-items-link" href="">TRANG CHỦ</a></li>
+						class="header__navbar-items-link" href = "/home">TRANG CHỦ</a></li>
 					<li class="header__navbar-items"><a
-						class="header__navbar-items-link" href="">MỚI</a></li>
+						class="header__navbar-items-link" href = "/search/new">MỚI</a></li>
 					<li class="header__navbar-items"><a
-						class="header__navbar-items-link" href="">THỜI TRANG NAM</a>
+						class="header__navbar-items-link" href = "/search/men">THỜI TRANG NAM</a>
 						<div class="header__navbar-detail">
 							<ul class="header__navbar-detail-list">
-								<li class="header__navbar-detail-items"><a href=""
+								<li class="header__navbar-detail-items"><a href = ""
 									class="header__navbar-detail-link">Hoodie</a></li>
-								<li class="header__navbar-detail-items"><a href=""
+								<li class="header__navbar-detail-items"><a href = ""
 									class="header__navbar-detail-link">Coat</a></li>
-								<li class="header__navbar-detail-items"><a href=""
+								<li class="header__navbar-detail-items"><a href = ""
 									class="header__navbar-detail-link">T-Shirt</a></li>
-								<li class="header__navbar-detail-items"><a href=""
+								<li class="header__navbar-detail-items"><a href = ""
 									class="header__navbar-detail-link">Sweater</a></li>
 							</ul>
 						</div></li>
 					<li class="header__navbar-items"><a
-						class="header__navbar-items-link" href="">THỜI TRANG NỮ</a>
+						class="header__navbar-items-link" href = "/search/women">THỜI TRANG NỮ</a>
 						<div class="header__navbar-detail">
 							<ul class="header__navbar-detail-list">
-								<li class="header__navbar-detail-items"><a href=""
+								<li class="header__navbar-detail-items"><a href = ""
 									class="header__navbar-detail-link">Hoodie</a></li>
-								<li class="header__navbar-detail-items"><a href=""
+								<li class="header__navbar-detail-items"><a href = ""
 									class="header__navbar-detail-link">Coat</a></li>
-								<li class="header__navbar-detail-items"><a href=""
+								<li class="header__navbar-detail-items"><a href = ""
 									class="header__navbar-detail-link">T-Shirt</a></li>
-								<li class="header__navbar-detail-items"><a href=""
+								<li class="header__navbar-detail-items"><a href = ""
 									class="header__navbar-detail-link">Sweater</a></li>
 							</ul>
 						</div></li>
 					<li class="header__navbar-items"><a
-						class="header__navbar-items-link" href="">SALE</a></li>
+						class="header__navbar-items-link" href = "/search/sale">SALE</a></li>
 					<li class="header__navbar-items"><a
-						class="header__navbar-items-link" href="">THƯƠNG HIỆU</a></li>
+						class="header__navbar-items-link" href = "/search/brand">THƯƠNG HIỆU</a></li>
 				</ul>
 			</div>
 		</div>
@@ -297,7 +303,7 @@
 				<button class="btn-log" type="submit">ĐĂNG NHẬP</button>
 				<label> <input type="checkbox" checked="checked"
 					name="remember"> Remember me
-				</label> <span class="psw">Forgot <a href="#">password?</a></span>
+				</label> <span class="psw">Forgot <a href = "#">password?</a></span>
 			</div>
 		</form>
 	</div>
@@ -332,8 +338,7 @@
 					class="log__input" type="password" placeholder="Nhập mật khẩu"
 					name="psw" required>
 
-				<button class="btn-log" type="submit">ĐĂNG KÍ</button>
-				<label>
+				<button class="btn-log" type="submit">ĐĂNG KÝ</button>
 			</div>
 		</form>
 	</div>
