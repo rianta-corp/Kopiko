@@ -2,10 +2,13 @@
 package com.kopiko.dto;
 
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
 
-import com.kopiko.entity.Product;
+import com.kopiko.entity.Brand;
+import com.kopiko.entity.CategoryEntity;
+import com.kopiko.entity.Comment;
+import com.kopiko.entity.ProductDetail;
+import com.kopiko.entity.ProductImage;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,12 +22,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ProductDTO {
 	private Long productId;
+
 	private String productName;
-	private Long categoryId;
-	private Long brandId;
+
+	private CategoryEntity category;
+
+	private Brand brand;
+
 	private Date dateCreated;
+
 	private String description;
+
 	private Integer status;
+<<<<<<< HEAD
 	
 	public static ProductDTO convert(Product product) {
 		ProductDTO dto = new ProductDTO();
@@ -47,3 +57,6 @@ public class ProductDTO {
 		return result;
 	}
 }
+=======
+}
+>>>>>>> 03ac1ebc9710ca6c101d00c2da850d6e88735e2c
