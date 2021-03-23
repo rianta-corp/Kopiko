@@ -3,8 +3,8 @@
  */
 package com.kopiko.controller.admin;
 
-import java.util.ArrayList;
-import java.util.List;
+//import java.util.ArrayList;
+//import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kopiko.converter.ProductConverter;
-import com.kopiko.entity.Status;
+//import com.kopiko.entity.Status;
 import com.kopiko.service.IBrandService;
 import com.kopiko.service.ICategoryService;
 import com.kopiko.service.IProductService;
