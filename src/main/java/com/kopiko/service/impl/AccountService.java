@@ -94,6 +94,12 @@ public class AccountService implements IAccountService {
 		
 	}
 
+	@Override
+	public Account findByAccountId(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 //>>>>>>> f2c8361b5fae5ba51032de01c58b6cfbb5df14f1
 	
 	
