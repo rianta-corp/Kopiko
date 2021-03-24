@@ -88,5 +88,13 @@ public class AccountService implements IAccountService {
 		return false;
 	}
 
+	@Override
+	public boolean checkIdentity(String username, String email, String phone) {
+		if(accountRepository.findByUsername(username) != null) return false;
+		if(accountRepository.findByEmail(email) != null) return false;
+		if(accountRepository.findByPhone(phone) != null) return false;
+		return true;
+	}
+
 	
 }

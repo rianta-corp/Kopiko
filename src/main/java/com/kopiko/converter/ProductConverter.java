@@ -38,6 +38,8 @@ public class ProductConverter {
 		result.setBrand(brand);
 		result.setDateCreated(productDTO.getDateCreated());
 		result.setCategory(category);
+		result.setPrice(productDTO.getPrice());
+		result.setSalePrice(productDTO.getSalePrice());
 		result.setDescription(productDTO.getDescription());
 		result.setStatus(productDTO.getStatus());
 		return result;
@@ -51,6 +53,8 @@ public class ProductConverter {
 		result.setDateCreated(product.getDateCreated());
 		result.setBrandId(product.getBrand().getBrandId());
 		result.setCategoryId(product.getCategory().getCategoryId());
+		result.setPrice(product.getPrice());
+		result.setSalePrice(product.getSalePrice());
 		result.setDescription(product.getDescription());
 		result.setStatus(product.getStatus());
 		return result;

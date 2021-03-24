@@ -8,7 +8,7 @@ import com.kopiko.entity.Account;
 
 public interface IAccountRepository extends JpaRepository<Account , Long>{
 
-	Account findByAccountId(long id);
+	Account findByAccountId(Long id);
 //	   List<Employee> findByNameContaining(String A);
 
 	/**
@@ -24,4 +24,16 @@ public interface IAccountRepository extends JpaRepository<Account , Long>{
 	 */
 	@Query(value="select * from account as a where a.username=?1 and a.password=?2", nativeQuery=true)
 	Account findByUsernameAndPassword(String username, String password);
+
+	/**
+	 * @param email
+	 * @return
+	 */
+	Account findByEmail(String email);
+
+	/**
+	 * @param phone
+	 * @return
+	 */
+	Account findByPhone(String phone);
 }

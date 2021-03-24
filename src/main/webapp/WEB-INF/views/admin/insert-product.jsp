@@ -37,6 +37,16 @@
 			</div>
 
 			<div class="form-group">
+				<label for="price">Giá Gốc</label> <input type="number"
+					class="form-control" id="price">
+			</div>
+
+			<div class="form-group">
+				<label for="salePrice">Giá Sale</label> <input type="number"
+					class="form-control" id="salePrice">
+			</div>
+
+			<div class="form-group">
 				<label for="description">Mô Tả</label>
 				<textarea class="form-control" id="description" rows="10">${productDTO.getDescription()}</textarea>
 			</div>
