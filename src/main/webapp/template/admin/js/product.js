@@ -6,6 +6,8 @@ $(document).ready(function () {
 		brandId: $().val(),
 		categoryId: $().val(),
 		dateCreated: $().val(),
+		price: $().val(),
+		salePrice: $().val(),
 		status: $().val(),
 		description: $().val()
 	};
@@ -26,6 +28,8 @@ $(document).ready(function () {
 			{ "data": "brandId" },
 			{ "data": "categoryId" },
 			{ "data": "dateCreated" },
+			{ "data": "price" },
+			{ "data": "salePrice" },
 			{ "data": "status" },
 			{ 'data': null, title: 'Action', wrap: true, "render": function (item) { return '<div class="btn-group"> <button type="button" onclick="' + updateUrl + item.productId + '/view' + endUrl + '" class="btn btn-primary">View</button><button type="button" onclick="' + updateUrl + item.productId + '/edit' + endUrl + '" class="btn btn-success">Edit</button><button class="btn btn-danger delete" id="' + item.productId + '">Delete</button></td></div>' } }
 		]

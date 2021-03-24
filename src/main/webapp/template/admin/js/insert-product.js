@@ -8,6 +8,8 @@ $(document).ready(function () {
 		var categoryId = $('#categoryId').val();
 		var brandId = $("#brandId").val();
 		var description = $("#description").val();
+		var price = $('#price').val();
+		var salePrice = $('#salePrice').val();
 		var status = $("#status").val();
 		if ($("form").valid()) {
 			$.ajax({
@@ -20,6 +22,8 @@ $(document).ready(function () {
 						'categoryId': categoryId,
 						'brandId': brandId,
 						'description': description,
+						'price': price,
+						'salePrice': salePrice,
 						'status': status
 					}
 				),

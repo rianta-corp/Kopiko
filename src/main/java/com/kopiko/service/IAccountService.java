@@ -38,7 +38,14 @@ boolean checkAdmin(String username, String password);
  * @param password
  * @return
  */
-boolean checkUser(String username, String password);	
+boolean checkUser(String username, String password);
+/**
+ * @param username
+ * @param email
+ * @param phone
+ * @return
+ */
+boolean checkIdentity(String username, String email, String phone);	
 }
 
 

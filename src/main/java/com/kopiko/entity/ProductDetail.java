@@ -31,16 +31,9 @@ public class ProductDetail {
 	@Column(nullable = false, columnDefinition = "nvarchar(20)")
 	private String size;
 	
-	@Column(nullable = false, columnDefinition = "nvarchar(20)")
-	private String color;
-	
-	@Column(nullable = false, columnDefinition = "money")
-	private BigDecimal price;
-	
-	@Column(nullable = false, columnDefinition = "money")
-	private BigDecimal salePrice;
-	
 	@Column(nullable = false)
 	private Integer quantity;
+	
+	
 
 }
