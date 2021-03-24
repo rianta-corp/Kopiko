@@ -60,5 +60,13 @@ public class ControlOrderController {
 		model.addAttribute("listOrderStatus", orderStatus.findAll());
 		return "admin/update-order";
 	}
+	
+	@GetMapping("/order/{id}/view")
+	public String viewOrderDetail(Model model, @PathVariable(name = "id") Long orderId) {
+		OrderEntity orderEntity = orderService.findByOrderId(orderId);
+		model.addAttribute("order", orderEntity);
+		model.addAttribute("listOrderStatus", orderStatus.findAll());
+		return "admin/order-detail";
+	}
 
 }
