@@ -4,7 +4,8 @@
 
 <ol class="breadcrumb mb-4">
 	<li class="breadcrumb-item"><a href="/admin/home">Dashboard</a></li>
-	<li class="breadcrumb-item"><a href="/admin/product/list">Control Product</a></li>
+	<li class="breadcrumb-item"><a href="/admin/product/list">Control
+			Product</a></li>
 	<li class="breadcrumb-item active">Add Product</li>
 </ol>
 <div class="card mb-4 mt-3">
@@ -27,7 +28,7 @@
 				</select>
 			</div>
 			<div class="form-group">
-				<label for="brandId" class="font-weight-bold">Thương Hiệu</label> <select
+				<label for="brandId">Thương Hiệu</label> <select
 					class="form-control" id="brandId">
 					<c:forEach items="${listBrand}" var="brand">
 						<option value="${brand.getBrandId()}">${brand.getBrandName()}</option>
@@ -36,13 +37,13 @@
 			</div>
 
 			<div class="form-group">
-				<label for="description" class="font-weight-bold">Mô Tả</label>
-				<textarea class="form-control" id="description" rows="10" required></textarea>
+				<label for="description">Mô Tả</label>
+				<textarea class="form-control" id="description" rows="10">${productDTO.getDescription()}</textarea>
 			</div>
 
 			<div class="form-group">
-				<label for="status" class="font-weight-bold">Trạng Thái</label> <select
-					class="form-control" id="status">
+				<label for="status">Trạng Thái</label> <select class="form-control"
+					id="status">
 					<c:forEach items="${listStatus}" var="status">
 						<option value="${status.getStatusId()}">${status.getStatusName()}</option>
 					</c:forEach>

@@ -30,7 +30,7 @@
 
 				</nav>
 			</div>
-			<a class="nav-link" href="/admin/order">
+			<a class="nav-link" href="/admin/order/list">
 				<div class="sb-nav-link-icon">
 					<i class="fas fa-table"></i>
 				</div> Control Order
