@@ -57,18 +57,6 @@ $(document).ready(function() {
 		}
 	})
 
-	/** Add input search header datatable */
-	$('#dataTable thead tr').clone(true).appendTo('#dataTable thead');
-	$('#dataTable thead tr:eq(1) th').each(function(i) {
-		var title = $(this).text();
-		$(this).html('<input type="text" placeholder="Search ' + title + '" />');
-		$('input', this).on('keyup change', function() {
-			if (table.column(i).search() !== this.value) {
-				table.column(i).search(this.value).draw();
-			}
-		});
-	});
-
 	/** Show modal form update category */
 	$("#dataTable").on('click', '.edit-btn', function() {
 		$('#categoryId').parent().removeClass("d-none");
@@ -133,11 +121,12 @@ $(document).ready(function() {
 				dataType: 'JSON',
 				data: categoryEntity,
 				success: function(responseData) {
-					if (responseData.resonseCode == 100) {
+					if (responseData.responseCode == 100) {
 						/**Reload datatable */
 						reloadDataTable();
 						$('#myModal').modal('toggle');
 						$('#announcemnet strong:eq(0)').removeClass("text-warning").addClass("text-success");
+						$('#notification').text((isAction ? "Add New Category " : "Update Category ") + "Success!");
 						$("#announcemnet").toast('show');
 					} else {
 						$('#announcemnet strong:eq(0)').removeClass("text-success").addClass("text-warning");
@@ -156,27 +145,31 @@ $(document).ready(function() {
 
 	/** Show modal delete category */
 	$("#dataTable").on('click', '.delete-btn', function() {
-		console.log($(this).data("name"))
 		$("#deleteCategoryName").text($(this).data("name"));
-		$("#btnSubmitDelete").attr("data-id", $(this).data("id"));
+		$("#btnSubmitDelete").attr('data-id', $(this).data('id'));
 	})
 
 	/** Submit delete category */
 	$("#btnSubmitDelete").on('click', function() {
-		console.log($(this).data('id'))
+		console.log('.data("") = ' + $(this).data('id') + ', .attr= ' + $(this).attr('data-id'));
 		$.ajax({
-			url: '/admin/category/delete/' + $(this).data('id'),
+			url: '/admin/category/delete/' + $(this).attr('data-id'),
 			type: 'DELETE',
 			success: function(responseData) {
-				alert(responseData)
-				$('#confirmDeleteModal').modal('toggle');
 				reloadDataTable();
+				$('#confirmDeleteModal').modal('toggle');
+				$('#announcemnet strong:eq(0)').removeClass("text-warning").addClass("text-success");
+				$('#notification').text("Delete Category Success!");
+				$("#announcemnet").toast('show');
+				console.log(responseData + ' success: ' + $(this).data('id'))
 			},
 			error: function(e) {
+				console.log('error: ' + $(this).data('id'))
 				alert('Delete category failed ' + JSON.stringify(e));
 			}
 
 		})
+		console.log('Category id after:' + $(this).data('id'))
 	})
 })
 
@@ -190,7 +183,5 @@ function resetForm() {
 	$("#categoryCode").val('');
 	$("#categoryName").val('');
 }
-function showNotification(){
-	$('.toast').toast('show').delay(5000).fadeOut(4000);
-}
+
 

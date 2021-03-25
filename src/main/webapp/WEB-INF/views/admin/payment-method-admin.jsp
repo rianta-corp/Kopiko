@@ -2,10 +2,10 @@
 	pageEncoding="UTF-8"%>
 
 <%@include file="/common/taglib.jsp" %>
-<h1 class="mt-4">Tables</h1>
+<h1 class="mt-4">Kopiko</h1>
 <ol class="breadcrumb mb-4">
-	<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-	<li class="breadcrumb-item active">Tables</li>
+	<li class="breadcrumb-item"><a href="index.html">Management</a></li>
+	<li class="breadcrumb-item active">Payment Method</li>
 </ol>
 
 
@@ -27,7 +27,7 @@
 
 <div class="card mb-4">
 	<div class="card-header">
-		<i class="fas fa-table mr-1"></i> Category Management
+		<i class="fas fa-table mr-1"></i> Payment Method Management
 	</div>
 	<div class="card-body">
 		<div class="table-responsive">
@@ -36,19 +36,10 @@
 				<thead data-detail-formatter="detailFormatter">
 					<tr id="list-header">
 						<th>No</th>
-						<th>Category Code</th>
-						<th>Category Name</th>
+						<th>Payment Method Name</th>
 						<th>Action</th>
 					</tr>
 				</thead>
-				<tfoot>
-					<tr>
-						<th>No</th>
-						<th>Category Code</th>
-						<th>Category Name</th>
-						<th>Action</th>
-					</tr>
-				</tfoot>
 				<tbody>
 				</tbody>
 			</table>
@@ -63,26 +54,22 @@
 
 			<!-- Modal Header -->
 			<div class="modal-header">
-				<h4 class="modal-title">Edit Category</h4>
+				<h4 class="modal-title">Add New Payment Method</h4>
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 			</div>
 
 			<!-- Modal body -->
 			<div class="modal-body">
-				<form action="" method="POST" id="categoryInfoForm">
+				<form action="" method="POST" id="paymentMethodInfoForm">
 					<div class="form-group">
-						<label for="categoryId">Category Id: </label>
-						<input type="number" class="form-control" id="categoryId" readonly="readonly" required="required">
+						<label for="paymentMethodId">Payment Method Id: </label>
+						<input type="number" class="form-control" id="paymentMethodId" name="paymentMethodId" readonly="readonly" required="required">
 					</div>
 					<div class="form-group">
-						<label for="categoryCode">Category Code:</label>
-						<input type="text" class="form-control" placeholder="Enter category code" id="categoryCode" name="categoryCode" required="required">
+						<label for="paymentMethodName">Payment Method Name:</label>
+						<input type="text" class="form-control" placeholder="Enter payment method name" id="paymentMethodName" name="paymentMethodName" required="required">
 					</div>
-					<div class="form-group">
-						<label for="categoryName">Category Name:</label>
-						<input type="text" class="form-control" placeholder="Enter category name" name="categoryName" id="categoryName" required="required">
-					</div>
-					<button type="submit" class="btn btn-primary" id="btnSubmitCategory">Submit</button>
+					<button type="submit" class="btn btn-primary" id="btnSubmitPaymentMethod">Submit</button>
 				</form>
 			</div>
 
@@ -99,13 +86,13 @@
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title">Delete Category</h5>
+				<h5 class="modal-title">Delete Payment Method</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
 			<div class="modal-body">
-				<p>Do you want to delete <b id="deleteCategoryName"></b>?</p>
+				<p>Do you want to delete <b id="deletePaymentMethodName"></b>?</p>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -121,5 +108,5 @@
 <script src="<c:url value='/template/web/plugins/datatables/js/dataTables.buttons.min.js'/>"></script>
 <script src="<c:url value='/template/web/plugins/datatables/js/dataTables.bootstrap4.min.js'/>"></script>
 <script src="<c:url value='/template/admin/dist/js/scripts.js'/>"></script>
-<script src="<c:url value='/template/admin/dist/assets/demo/category-admin.js'/>"></script> 
+<script src="<c:url value='/template/admin/dist/assets/demo/payment-method.js'/>"></script> 
 

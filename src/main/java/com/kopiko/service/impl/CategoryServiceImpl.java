@@ -42,8 +42,20 @@ public class CategoryServiceImpl implements ICategoryService {
 	}
 
 	@Override
-	public void deleteCategory(Long categortId) {
-		categoryRepository.deleteById(categortId);
+	public void deleteCategory(Long categorytId) {
+		CategoryEntity categoryEntity = categoryRepository.findByCategoryId(categorytId);
+		try {
+			if(categoryEntity != null) {
+				categoryRepository.deleteById(categorytId);
+				categoryRepository.flush();
+			} else {
+				System.out.println("CategoryEntity not exists");
+			}
+		} catch (Exception e) {
+			System.out.println("Delete category failed: " + e.getMessage());
+		}
+		
+	
 	}
 
 	@Override

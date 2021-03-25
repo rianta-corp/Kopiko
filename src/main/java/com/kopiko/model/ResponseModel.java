@@ -16,14 +16,15 @@ import lombok.NoArgsConstructor;
 public class ResponseModel {
 
 	private Object data;
-	private int resonseCode;
+	private int responseCode;
 	
 	
 	/**
 	 * @param resonseCode
 	 */
-	public ResponseModel(int resonseCode) {
-		this.resonseCode = resonseCode;
+	public ResponseModel(int responseCode) {
+		this.responseCode = responseCode;
 	}
+	
 	
 }
