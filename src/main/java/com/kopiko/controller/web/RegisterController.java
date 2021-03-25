@@ -31,13 +31,20 @@ public class RegisterController {
 	@PostMapping("/register")
 	public String doRegister(@ModelAttribute Account account) {
 		if(account != null) {
+			System.out.println("Add account: " + account.toString());
+			account.setRole("USER");
+			account.setStatus(1);
 			if(accountService.checkIdentity(account.getUsername(), account.getEmail(), account.getPhone())) {
 				if(account.getFullName() != null && account.getPassword() != null) {
-					accountService.save(account);
+					Account result = accountService.save(account);
 					return "redirect:login";
 				}
+				else System.out.println("info illegal");
 			}
+			else System.out.println("identity illegal");
+
 		}
-		return "/register?message=error";
+		else System.out.println("Get account null");
+		return "redirect:register?message=error";
 	}
 }
