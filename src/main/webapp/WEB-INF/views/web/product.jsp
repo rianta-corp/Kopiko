@@ -33,6 +33,9 @@
 							value="${product.getListProductImage().size()-1}" />
 						<c:set var="listImage" scope="session"
 							value="${product.getListProductImage()}" />
+
+						<c:set var="listProductDetail" scope="session"
+							value="${product.getListProductDetail()}" />
 						<div class="carousel-indicators">
 							<img src="${listImage.get(0).getImageUrl()}" alt="#"
 								data-target="#myCarousel" data-slide-to="0"
@@ -81,21 +84,21 @@
 							<span style="font-size: 12px; text-decoration: line-through;">${product.getLongPrice()}đ</span>
 						</p>
 					</div>
+					<form action="/checkout/cart/add/${product.productId}"
+						method="POST">
 
-					<div class="col-lg-12 pt-3">
-						<p class="font-weight-normal">Chọn size:</p>
-						<a href="#"
-							class="m-2 btn btn-light product-name float-left category-size">M
-						</a> <a href="#"
-							class="m-2 btn btn-light product-name float-left category-size">S</a>
-						<a href="#"
-							class="m-2 btn btn-light product-name float-left category-size">L</a>
-						<a href="#"
-							class="m-2 btn btn-light product-name float-left category-size">XL</a>
-					</div>
+						<div class="col-lg-12 pt-3">
+							<p class="font-weight-normal">Chọn size:</p>
+							<select name="size" id="size"
+								class="m-2 btn btn-light product-name float-left category-size">
+								<c:forEach var="detail" items="${listProductDetail}">
+									<option value="${detail.size}">${detail.size}</option>
+								</c:forEach>
+							</select>
+						</div>
 
-					<div class="col-lg-12">
-						<form action="#" method="POST" class="btn-add-card">
+						<div class="col-lg-12 btn-add-card"">
+							<p class="font-weight-normal">Số lượng:</p>
 							<div class="btn-group mt-3" style="margin-right: 15%">
 								<button type="button" class="fas fa-minus" data-type="minus"
 									data-field="" onclick="sub()"></button>
@@ -104,11 +107,11 @@
 								<button type="button" class="fas fa-plus" data-type="plus"
 									data-field="" onclick="add()"></button>
 							</div>
-							<button type="submit"
-								class="btn margin__btn-add-cart mt-2  submit"
+							<button class="btn margin__btn-add-cart mt-2  submit"
 								style="margin-left: 24%">Thêm Vào Giỏ</button>
-						</form>
-					</div>
+						</div>
+					</form>
+
 
 				</div>
 
@@ -136,15 +139,14 @@
 					<div class="row">
 						<form action="/comment">
 							<div class="mb-3">
-								<label for="commentTitle" class="form-label">Tiêu
-									đề</label> <input type="text" class="form-control"
-									id="commentTitle" placeholder="Nhập tiêu đề">
+								<label for="commentTitle" class="form-label">Tiêu đề</label> <input
+									type="text" class="form-control" id="commentTitle"
+									placeholder="Nhập tiêu đề">
 							</div>
 							<div class="mb-3">
-								<label for="commentContent" class="form-label">Nội
-									dung</label>
-								<textarea class="form-control" id="commentContent"
-									rows="3" placeholder="Nhập nội dung"></textarea>
+								<label for="commentContent" class="form-label">Nội dung</label>
+								<textarea class="form-control" id="commentContent" rows="3"
+									placeholder="Nhập nội dung"></textarea>
 							</div>
 							<button type="submit">Bình luận</button>
 						</form>
