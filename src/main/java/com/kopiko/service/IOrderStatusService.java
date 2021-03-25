@@ -6,6 +6,21 @@
 
 package com.kopiko.service;
 
+import java.util.List;
+
+import com.kopiko.entity.OrderStatusEntity;
+
 public interface IOrderStatusService {
+
+	/**
+	 * @param orderStatusId
+	 * @return
+	 */
+	OrderStatusEntity findOne(Long orderStatusId);
+
+	/**
+	 * @return
+	 */
+	List<OrderStatusEntity> findAll();
 
 }

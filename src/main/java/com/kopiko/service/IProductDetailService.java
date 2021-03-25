@@ -1,6 +1,5 @@
 package com.kopiko.service;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -15,7 +14,5 @@ public interface IProductDetailService {
 	boolean delete(Long Id);
 	ProductDetail findByProductDetailId(Long Id);
 	List<ProductDetail> findAllBySize(String size);
-	List<ProductDetail> findAllByColor(String color);
-	List<ProductDetail> findAllBySalePrice(BigDecimal minPrice, BigDecimal maxPrice);
 	
 }

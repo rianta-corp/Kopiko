@@ -17,6 +17,7 @@ public class AdminHomeController {
 	public String initCategoryPage() {
 		return "admin/category-admin";
 	}
+	
 	@RequestMapping("/admin/login")
 	public String loginPage() {
 		return "admin/login";

@@ -47,11 +47,9 @@ public class Account {
 	@CreationTimestamp
 	private Date dateCreated;
 	
-	@Column(nullable = false)
 	@ColumnDefault("USER") // User
 	private String role;
 	
-	@Column(nullable = false)
 	@ColumnDefault("1") // Active
 	private Integer status;
 

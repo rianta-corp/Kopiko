@@ -1,5 +1,6 @@
 package com.kopiko.entity;
 
+import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.List;
 
@@ -16,6 +17,8 @@ import javax.persistence.Table;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -30,7 +33,7 @@ public class Product {
 	@Column(columnDefinition = "bigint", name = "product_id")
 	private Long productId;
 	
-	@Column(nullable = false, columnDefinition = "nvarchar(100)")
+	@Column(nullable = false, columnDefinition = "nvarchar(255)")
 	private String productName;
 	
 	@ManyToOne
@@ -48,17 +51,32 @@ public class Product {
 	@Column(columnDefinition = "ntext")
 	private String description;
 	
+	@Column(nullable = false, columnDefinition = "money")
+	private BigDecimal price;
+	
+	@Column(nullable = false, columnDefinition = "money")
+	private BigDecimal salePrice;
+	
 	@Column(nullable = false)
 	@ColumnDefault("1")
 	private Integer status;
 	
 	@OneToMany(mappedBy = "product")
 	private List<ProductImage> listProductImage;
-	
+
 	@OneToMany(mappedBy = "product")
 	private List<Comment> listComment;
-	
+
 	@OneToMany(mappedBy = "product")
 	private List<ProductDetail> listProductDetail;
+	
+	public Long getLongPrice() {
+		return price.longValue();
+	}
+	
+	public Long getLongSalePrice() {
+		return salePrice.longValue();
+	}
+	
 
 }

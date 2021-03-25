@@ -44,8 +44,24 @@ public class AccountService implements IAccountService {
 	}
 	
 	@Override
-	public void  save(Account account) {
-		 accountRepository.save(account);
+	public Account  save(Account account) {
+		Account data;
+		if(account.getAccountId() == null) {
+			data = account;
+		}
+		else {
+			data = accountRepository.findByAccountId(account.getAccountId());
+			if(account.getAddress() != null) data.setAddress(account.getAddress());
+			if(account.getAvatar() != null) data.setAvatar(account.getAvatar());
+			if(account.getEmail() != null) data.setEmail(account.getEmail());
+			if(account.getFullName() != null) data.setFullName(account.getFullName());
+			if(account.getPhone() != null) data.setPhone(account.getPhone());
+			if(account.getUsername() != null) data.setUsername(account.getUsername());
+			if(account.getPassword() != null) data.setPassword(account.getPassword());
+			if(account.getRole() != null) data.setRole(account.getRole());
+			if(account.getStatus() != null) data.setStatus(account.getStatus());
+		}
+		 return accountRepository.saveAndFlush(account);
 	}
 	
 	
@@ -86,6 +102,14 @@ public class AccountService implements IAccountService {
 		Account result = accountRepository.findByUsernameAndPassword(username, password);
 		if(result != null && result.getRole().equalsIgnoreCase("user")) return true;
 		return false;
+	}
+
+	@Override
+	public boolean checkIdentity(String username, String email, String phone) {
+		if(accountRepository.findByUsername(username) != null) return false;
+		if(accountRepository.findByEmail(email) != null) return false;
+		if(accountRepository.findByPhone(phone) != null) return false;
+		return true;
 	}
 
 	

@@ -1,11 +1,13 @@
 package com.kopiko.service.impl;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kopiko.entity.Product;
+import com.kopiko.entity.ProductDetail;
 import com.kopiko.repository.IProductRepository;
 import com.kopiko.service.IProductService;
 
@@ -58,6 +60,31 @@ public class ProductService implements IProductService{
 	@Override
 	public List<Product> findByProductSale() {
 		return productRepository.findByProductSale();
+	}
+
+	@Override
+	public List<Product> findAllBySalePrice(BigDecimal minPrice, BigDecimal maxPrice) {
+		return productRepository.findAllBySalePriceBetween(minPrice, maxPrice);
+	}
+	
+	@Override
+	public Product save(Product product) {
+		Product data;
+		if(product.getProductId() != null) { //update
+			data = productRepository.getOne(product.getProductId());
+			if(product.getBrand() != null) data.setBrand(product.getBrand());
+			if(product.getCategory() != null) data.setCategory(product.getCategory());
+			if(product.getProductName() != null) data.setProductName(product.getProductName());
+			if(product.getDescription() != null) data.setDescription(product.getDescription());
+			if(product.getStatus() != null) data.setStatus(product.getStatus());
+			if(product.getPrice() != null) data.setPrice(product.getPrice());
+			if(product.getSalePrice() != null) data.setSalePrice(product.getSalePrice());
+			if(product.getListComment() != null) data.setListComment(product.getListComment());
+			if(product.getListProductDetail() != null) data.setListProductDetail(product.getListProductDetail());
+			if(product.getListProductImage() != null) data.setListProductImage(product.getListProductImage());
+		}
+		else data = product;
+		return productRepository.saveAndFlush(data);
 	}
 
 }

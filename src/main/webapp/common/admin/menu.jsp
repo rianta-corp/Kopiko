@@ -21,16 +21,16 @@
 			<div class="collapse" id="collapseLayouts"
 				aria-labelledby="headingOne" data-parent="#sidenavAccordion">
 				<nav class="sb-sidenav-menu-nested nav">
-					<a class="nav-link" href="/admin/account">Account</a>
-					<a class="nav-link" href="/admin/brand">Brand</a>
-					<a class="nav-link" href="/admin/category">Category</a>
-					<a class="nav-link" href="/admin/order-status">Order Status</a>
-					<a class="nav-link" href="/admin/payment-method">Payment Method</a>
-					<a class="nav-link" href="/admin/product">Product</a>
+					<a class="nav-link" href="/admin/account/list">Account</a>
+					<a class="nav-link" href="/admin/brand/list">Brand</a>
+					<a class="nav-link" href="/admin/category/list">Category</a>
+					<a class="nav-link" href="/admin/order-status/list">Order Status</a>
+					<a class="nav-link" href="/admin/payment-method/list">Payment Method</a>
+					<a class="nav-link" href="/admin/product/list">Product</a>
 
 				</nav>
 			</div>
-			<a class="nav-link" href="/admin/order">
+			<a class="nav-link" href="/admin/order/list">
 				<div class="sb-nav-link-icon">
 					<i class="fas fa-table"></i>
 				</div> Control Order
