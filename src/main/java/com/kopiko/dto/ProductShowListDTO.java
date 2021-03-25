@@ -22,4 +22,12 @@ public class ProductShowListDTO {
 	private BigDecimal price; // có nhiều productdetail, => lựa chọn cái đầu tiên để show
 	private BigDecimal salePrice;
 	private String imageUrl;
+	
+	public Long getLongPrice() {
+		return price.longValue();
+	}
+	
+	public Long getLongSalePrice() {
+		return salePrice.longValue();
+	}
 }

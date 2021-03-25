@@ -3,6 +3,7 @@
  */
 package com.kopiko.model;
 
+import com.kopiko.dto.ProductShowListDTO;
 import com.kopiko.entity.Product;
 
 import lombok.Data;
@@ -16,6 +17,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class Cart {
-	private Product product;
+	private ProductShowListDTO product;
+	private String size;
 	private Integer quantity;
 }

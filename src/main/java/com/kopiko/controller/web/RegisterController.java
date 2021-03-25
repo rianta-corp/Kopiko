@@ -3,9 +3,15 @@
  */
 package com.kopiko.controller.web;
 
+import java.util.HashMap;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -47,4 +53,6 @@ public class RegisterController {
 		else System.out.println("Get account null");
 		return "redirect:register?message=error";
 	}
+	
+	
 }
