@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 /**
  * @author rianta9
  * @datecreated 17 thg 3, 2021 15:54:58
+ * Sử dụng để truy xuất thông tin product trong quản lý
  */
 
 @Data
