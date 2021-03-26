@@ -2,7 +2,7 @@ package com.kopiko.service;
 
 import java.util.List;
 
-import com.kopiko.entity.BrandEntity;
+import com.kopiko.entity.Brand;
 import com.kopiko.model.ResponseModel;
 
 public interface IBrandService {
@@ -11,10 +11,10 @@ public interface IBrandService {
 	 * 
 	 * Get all brand
 	 * 
-	 * @returnList<BrandEntity>
+	 * @returnList<Brand>
 	 * 
 	 */
-	List<BrandEntity> findAllBrand();
+	List<Brand> findAllBrand();
 
 	/**
 	 * 
@@ -24,7 +24,7 @@ public interface IBrandService {
 	 * @return ResponseModel
 	 * 
 	 */
-	ResponseModel addNewBrand(BrandEntity brandEntity);
+	ResponseModel addNewBrand(Brand brandEntity);
 
 	/**
 	 * 
@@ -34,7 +34,7 @@ public interface IBrandService {
 	 * @return ResponseModel
 	 * 
 	 */
-	ResponseModel updateBrand(BrandEntity brandEntity);
+	ResponseModel updateBrand(Brand brandEntity);
 
 	/**
 	 * 
@@ -44,7 +44,7 @@ public interface IBrandService {
 	 * @return
 	 * 
 	 */
-	BrandEntity findByBrandId(Long brandId);
+	Brand findByBrandId(Long brandId);
 
 	/**
 	 * 
@@ -59,10 +59,15 @@ public interface IBrandService {
 	 * Find brand by brand name 
 	 * 
 	 * @param brandName
-	 * @return BrandEntity
+	 * @return Brand
 	 * 
 	 */
-	BrandEntity findByBrandName(String brandName);
+	Brand findByBrandName(String brandName);
+
+	/**
+	 * @return
+	 */
+	List<Brand> findAll();
 	
 	
 }

@@ -29,7 +29,7 @@ public class ControlAccountController {
 	private AccountConverter accountConverter;
 	
 	
-	@GetMapping("/view/list")
+	@GetMapping("/list")
 	public String viewListAccount() {
 		return "admin/list-account" ;
 	}

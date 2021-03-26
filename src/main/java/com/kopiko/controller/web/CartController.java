@@ -84,7 +84,7 @@ public class CartController {
             	item.setQuantity(0);
             }
             item.setProduct(productShowListConverter.toDTO(product));
-            if(quantity != null) item.setQuantity(item.getQuantity() + quantity);
+            if(quantity != null) item.setQuantity(quantity);
             else item.setQuantity(1);
             cartItems.put(productId, item);
         }

@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.kopiko.dto.ProductDTO;
 import com.kopiko.dto.ProductImageDTO;
 import com.kopiko.entity.Brand;
 import com.kopiko.entity.CategoryEntity;
