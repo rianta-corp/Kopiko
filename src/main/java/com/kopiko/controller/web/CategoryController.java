@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -28,7 +29,12 @@ public class CategoryController {
 	private ICategoryService categoryService;
 
 	@GetMapping
-	public String initPageCategory() {
+	public String initPageCategory(Model model) {
+		List<CategoryEntity> categories = categoryService.findAll();
+		model.addAttribute("categories", categories);
+		for(CategoryEntity category : categories) {
+			System.out.println("Name: " +  category.getCategoryName());
+		}
 		return "web/category";
 	}
 	

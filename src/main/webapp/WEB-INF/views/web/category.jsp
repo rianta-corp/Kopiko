@@ -42,43 +42,22 @@
 				id="categoryMenu">
 				<h5 class="font-weight-bold text-dark">DANH MỤC SẢN PHẨM</h5>
 				<ul class="navbar-nav flex-column mt-3">
-					<li class="nav-item"><a href="#"
-						class="nav-link px-3 category-list-name active"> Áo phông nam
-					</a></li>
-					<li class="nav-item"><a href="#"
-						class="nav-link  px-3 mb-2 category-list-name"> Sơ mi nam </a></li>
-					<li class="nav-item"><a href="#"
-						class="nav-link px-3 mb-2 category-list-name"> Áo phông nam </a></li>
-					<li class="nav-item"><a href="#"
-						class="nav-link  px-3 mb-2 category-list-name "> Sơ mi nam </a></li>
-					<li class="nav-item"><a href="#"
-						class="nav-link px-3 mb-2 category-list-name"> Áo phông nam </a></li>
-					<li class="nav-item"><a href="#"
-						class="nav-link  px-3 mb-2 category-list-name"> Sơ mi nam </a></li>
-					<li class="nav-item"><a href="#"
-						class="nav-link px-3 category-list-name"> Áo phông nam </a></li>
-					<li class="nav-item"><a href="#"
-						class="nav-link px-3 category-list-name"> Áo phông nam </a></li>
-					<li class="nav-item"><a href="#"
-						class="nav-link px-3 category-list-name"> Áo phông nam </a></li>
-					<li class="nav-item"><a href="#"
-						class="nav-link px-3 category-list-name"> Áo phông nam </a></li>
-					<li class="nav-item"><a href="#"
-						class="nav-link px-3 category-list-name"> Áo phông nam </a></li>
-					<li class="nav-item"><a href="#"
-						class="nav-link px-3 category-list-name"> Áo phông nam </a></li>
-					<li class="nav-item"><a href="#"
-						class="nav-link px-3 category-list-name"> Áo phông nam </a></li>
-					<li class="nav-item"><a href="#"
-						class="nav-link px-3 category-list-name"> Áo phông nam </a></li>
-					<li class="nav-item"><a href="#"
-						class="nav-link px-3 category-list-name"> Áo phông nam </a></li>
+				<c:forEach items="categories" var="category">
+					<li class="nav-item">
+						<a href="#"class="nav-link px-3 category-list-name active">${ category.getCategoryName() }</a>
+					</li>
+				</c:forEach>
 				</ul>
 			</div>
 			<div class="col-lg-2 col-md-4  category-menu-1  pt-3">
 				<h5 class="font-weight-bold text-dark">DANH MỤC SẢN PHẨM</h5>
 				<ul class="navbar-nav flex-column mt-3">
-					<li class="nav-item"><a href="#"
+				<c:forEach items="categories" var="category">
+					<li class="nav-item">
+						<a href="#"class="nav-link px-3 category-list-name active">${ category.getCategoryName()}</a>
+					</li>
+				</c:forEach>
+					<!-- <li class="nav-item"><a href="#"
 						class="nav-link px-3 category-list-name"> Áo phông nam </a></li>
 					<li class="nav-item"><a href="#"
 						class="nav-link  px-3 mb-2 category-list-name"> Sơ mi nam </a></li>
@@ -107,7 +86,7 @@
 					<li class="nav-item"><a href="#"
 						class="nav-link px-3 category-list-name"> Áo phông nam </a></li>
 					<li class="nav-item"><a href="#"
-						class="nav-link px-3 category-list-name"> Áo phông nam </a></li>
+						class="nav-link px-3 category-list-name"> Áo phông nam </a></li> -->
 				</ul>
 			</div>
 			<div class="col-lg-10 col-md-8 category-list">
