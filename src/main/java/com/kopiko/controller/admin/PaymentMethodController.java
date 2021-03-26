@@ -31,7 +31,7 @@ public class PaymentMethodController {
 	@Autowired
 	private IPaymentMethodService paymentMethodService;
 	
-	@GetMapping()
+	@GetMapping("/list")
 	public String initIndexPage(Model model) {
 		return "admin/payment-method-admin";
 	}

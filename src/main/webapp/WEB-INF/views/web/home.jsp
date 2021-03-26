@@ -13,7 +13,7 @@
                 <div class="carousel-inner">
                   <div class="carousel-item active">
                     <img src="/img/slider-1.jpg" class="d-block carousel-item-img w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block scroll__starup-banner-top scroll-delay">
+                    <div class="carousel-caption d-none d-md-block  ">
                         <h3>Mona Watch</h3>
                         <h1>Đồng hồ Classico</h1>
                         <p>Cùng với sự phát triển không ngừng của thời trang thế giới, rất nhiều thương hiệu cho ra đời những mẫu đồng hồ nam chính hãng đa dạng về 
@@ -24,7 +24,7 @@
                     </div>
                   </div>
                   <div class="carousel-item">
-                    <img src="/img/slider-2.jpg"ass="d-block carousel-item-img w-100" alt="...">
+                    <img src="/img/slider-2.jpg" class="d-block carousel-item-img w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h3>Mona Watch</h3>
                         <h1>Đồng hồ Classico</h1>

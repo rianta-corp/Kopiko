@@ -27,7 +27,7 @@ public class PaymentMethodEntity {
 	@Column(columnDefinition = "bigint", name = "payment_method_id")
 	private Long paymentMethodId;
 
-	@Column(nullable = false, columnDefinition = "nvarchar(50)")
+	@Column(nullable = false, columnDefinition = "nvarchar(50)", unique = true)
 	private String paymentMethodName;
 
 }

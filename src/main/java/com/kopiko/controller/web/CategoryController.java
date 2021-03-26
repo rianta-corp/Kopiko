@@ -21,7 +21,7 @@ import com.kopiko.service.ICategoryService;
  */
 
 @Controller
-@RequestMapping("/category")
+@RequestMapping("/search/category")
 public class CategoryController {
 	
 	@Autowired

@@ -27,9 +27,11 @@ public class Account {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(columnDefinition = "bigint", name = "account_id")
 	private Long accountId;
+	
+	@Column(unique = true)
 	private String username;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, unique = true)
 	private String phone;
 	
 	@Column(nullable = false)
@@ -41,6 +43,8 @@ public class Account {
 	@Column(columnDefinition = "nvarchar(255)")
 	private String address;
 	private String avatar;
+	
+	@Column(unique = true)
 	private String email;
 	
 	@Column(nullable = false, columnDefinition = "datetime")

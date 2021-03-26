@@ -37,12 +37,14 @@
 						<c:set var="listProductDetail" scope="session"
 							value="${product.getListProductDetail()}" />
 						<div class="carousel-indicators">
-							<img src="${listImage.get(0).getImageUrl()}" alt="#"
-								data-target="#myCarousel" data-slide-to="0"
+							<img
+								src="<c:url value='/uploads/images/${listImage.get(0).getImageUrl()}'/>"
+								alt="#" data-target="#myCarousel" data-slide-to="0"
 								class="active img img-responsive" />
 							<c:forEach var="i" begin="1" end="${listImageSize}">
-								<img src="${listImage.get(i).getImageUrl()}" alt="#"
-									data-target="#myCarousel" data-slide-to="${i}"
+								<img
+									src="<c:url value='/uploads/images/${listImage.get(i).getImageUrl()}'/>"
+									alt="#" data-target="#myCarousel" data-slide-to="${i}"
 									class="img img-responsive" />
 							</c:forEach>
 						</div>
@@ -50,13 +52,15 @@
 						<!-- The slideshow -->
 						<div class="carousel-inner">
 							<div class="carousel-item active">
-								<img src="${listImage.get(0).getImageUrl()}" alt="#"
-									width="100%" class="img img-responsive ">
+								<img
+									src="<c:url value='/uploads/images/${listImage.get(0).getImageUrl()}'/>"
+									alt="#" width="100%" class="img img-responsive ">
 							</div>
 							<c:forEach var="i" begin="1" end="${listImageSize}">
 								<div class="carousel-item">
-									<img src="${listImage.get(i).getImageUrl()}" alt="#"
-										width="100%" class="img img-responsive">
+									<img
+										src="<c:url value='/uploads/images/${listImage.get(i).getImageUrl()}'/>"
+										alt="#" width="100%" class="img img-responsive">
 								</div>
 							</c:forEach>
 						</div>
@@ -74,6 +78,7 @@
 				<div class="row category-information">
 
 					<div class="col-lg-12 pt-3 ">
+
 						<p class="font-weight-normal" style="font-size: 20px;">${product.getProductName()}</p>
 						<p class="font-weight-light">
 							Thương hiệu: <a
@@ -91,9 +96,17 @@
 							<p class="font-weight-normal">Chọn size:</p>
 							<select name="size" id="size"
 								class="m-2 btn btn-light product-name float-left category-size">
-								<c:forEach var="detail" items="${listProductDetail}">
-									<option value="${detail.size}">${detail.size}</option>
-								</c:forEach>
+								<c:choose>
+									<c:when test="${listProductDetail != null && listProductDetail.size() != 0}">
+										<c:forEach var="detail" items="${listProductDetail}">
+											<option value="${detail.size}">${detail.size}</option>
+										</c:forEach>
+									</c:when>
+									<c:otherwise>
+									<option value="default">Mặc định</option>
+									</c:otherwise>
+								</c:choose>
+
 							</select>
 						</div>
 

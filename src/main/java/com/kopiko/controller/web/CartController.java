@@ -69,6 +69,32 @@ public class CartController {
         return "redirect:" + referer;
 	}
 	
+	@PostMapping("/update/{productId}")
+	public String updateCart(@PathVariable Long productId, @RequestParam Integer quantity, HttpSession session, HttpServletRequest request) {
+		HashMap<Long, Cart> cartItems = (HashMap<Long, Cart>) session.getAttribute("myCartItems");
+        if (cartItems == null) {
+            cartItems = new HashMap<>();
+        }
+        Product product = productService.findByProductId(productId);
+        if (product != null) {
+        	Cart item;
+            if (cartItems.containsKey(productId)) item = cartItems.get(productId);
+            else {
+            	item = new Cart();
+            	item.setQuantity(0);
+            }
+            item.setProduct(productShowListConverter.toDTO(product));
+            if(quantity != null) item.setQuantity(quantity);
+            else item.setQuantity(1);
+            cartItems.put(productId, item);
+        }
+        session.setAttribute("myCartItems", cartItems);
+        session.setAttribute("myCartNum", cartItems.size());
+        session.setAttribute("myCartTotal", totalPrice(cartItems));
+        String referer = request.getHeader("Referer");
+        return "redirect:" + referer;
+	}
+	
 	public double totalPrice(HashMap<Long, Cart> cartItems) {
         int count = 0;
         for (Map.Entry<Long, Cart> list : cartItems.entrySet()) {
@@ -83,6 +109,8 @@ public class CartController {
         if (cartItems == null) {
             cartItems = new HashMap<>();
         }
+        String username = (String)session.getAttribute("username");
+        //TODO: lấy use ra để push lên
         session.setAttribute("myCartItems", cartItems);
         session.setAttribute("myCartNum", cartItems.size());
         session.setAttribute("myCartTotal", totalPrice(cartItems));

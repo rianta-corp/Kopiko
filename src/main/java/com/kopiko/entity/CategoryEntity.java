@@ -29,10 +29,10 @@ public class CategoryEntity {
 	@Column(columnDefinition = "bigint", name = "category_id")
 	private Long categoryId;
 
-	@Column(nullable = false)
+	@Column(nullable = false, unique = true)
 	private String categoryCode;
 
-	@Column(nullable = false, columnDefinition = "nvarchar(50)")
+	@Column(nullable = false, columnDefinition = "nvarchar(50)", unique = true)
 	private String categoryName;
 
 }

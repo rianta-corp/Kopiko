@@ -45,5 +45,18 @@ public class ProductImageService implements IProductImageService{
 	public List<ProductImage> findAllByProductId(Long productId) {
 		return productImageRepository.findAllByProductProductId(productId);
 	}
-	
+
+	@Override
+	public ProductImage save(ProductImage image) {
+		ProductImage data;
+		if(image.getProductImageId() == null)  data = image; // đang tạo mới dữ liệu
+		else { // đang update dữ liệu
+			data = productImageRepository.findByProductImageId(image.getProductImageId()); // lấy dữ liệu cũ ra
+			if(image.getImageUrl() != null) data.setImageUrl(image.getImageUrl());
+			else return null;
+			if(image.getProduct() != null && image.getProduct().getProductId() != null) data.setProduct(image.getProduct());
+			else return null;
+		}
+		return productImageRepository.saveAndFlush(data);
+	}
 }
