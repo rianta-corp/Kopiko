@@ -42,7 +42,7 @@ public class Product {
 	
 	@ManyToOne
 	@JoinColumn(name = "brand_id")
-	private BrandEntity brand;
+	private Brand brand;
 	
 	@Column(nullable = false, columnDefinition = "datetime")
 	@CreationTimestamp

@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kopiko.common.constant.Constants;
-import com.kopiko.entity.BrandEntity;
+import com.kopiko.entity.Brand;
 import com.kopiko.model.ResponseModel;
 import com.kopiko.repository.IBrandRepository;
 import com.kopiko.service.IBrandService;
@@ -17,13 +17,9 @@ public class BrandService implements IBrandService{
 	@Autowired
 	private IBrandRepository brandRepository;
 	
-	@Override
-	public List<BrandEntity> findAllBrand() {
-		return brandRepository.findAll();
-	}
 
 	@Override
-	public ResponseModel addNewBrand(BrandEntity brandEntity) {
+	public ResponseModel addNewBrand(Brand brandEntity) {
 		int responseCode = Constants.RESULT_CD_FAIL;
 		try {
 			if(brandRepository.findByBrandName(brandEntity.getBrandName()) != null) {
@@ -39,7 +35,35 @@ public class BrandService implements IBrandService{
 	}
 
 	@Override
-	public ResponseModel updateBrand(BrandEntity brandEntity) {
+	public Brand findByBrandId(Long brandId) {
+		return brandRepository.findByBrandId(brandId);
+	}
+
+	@Override
+	public ResponseModel deleteBrandById(Long brandId) {
+		int responseCode = Constants.RESULT_CD_FAIL;
+		Brand brandEntity = brandRepository.findByBrandId(brandId);
+		try {
+			if(brandEntity != null) {
+				brandRepository.deleteById(brandEntity.getBrandId());
+				responseCode = Constants.RESULT_CD_SUCCESS;
+			} else {
+				System.out.println("BrandEntity is not exist!");
+			}
+		} catch (Exception e) {
+			System.out.println("Delete brand failed!" + e.getMessage());
+		}
+		return new ResponseModel(responseCode);
+	}
+
+
+	@Override
+	public List<Brand> findAll() {
+		return brandRepository.findAll();
+	}
+
+	@Override
+	public ResponseModel updateBrand(Brand brandEntity) {
 		int responseCode = Constants.RESULT_CD_FAIL;
 		try {
 			if(brandRepository.findByBrandName(brandEntity.getBrandName()) != null) {
@@ -55,30 +79,9 @@ public class BrandService implements IBrandService{
 	}
 
 	@Override
-	public BrandEntity findByBrandId(Long brandId) {
-		return brandRepository.findByBrandId(brandId);
-	}
-
-	@Override
-	public ResponseModel deleteBrandById(Long brandId) {
-		int responseCode = Constants.RESULT_CD_FAIL;
-		BrandEntity brandEntity = brandRepository.findByBrandId(brandId);
-		try {
-			if(brandEntity != null) {
-				brandRepository.deleteById(brandEntity.getBrandId());
-				responseCode = Constants.RESULT_CD_SUCCESS;
-			} else {
-				System.out.println("BrandEntity is not exist!");
-			}
-		} catch (Exception e) {
-			System.out.println("Delete brand failed!" + e.getMessage());
-		}
-		return new ResponseModel(responseCode);
-	}
-
-	@Override
-	public BrandEntity findByBrandName(String brandName) {
+	public Brand findByBrandName(String brandName) {
 		return brandRepository.findByBrandName(brandName);
 	}
+
 	
 }
