@@ -45,14 +45,4 @@ public class ProductDetailService implements IProductDetailService{
 	public List<ProductDetail> findAllBySize(String size) {
 		return productDetailRepository.findAllBySize(size);
 	}
-
-	@Override
-	public List<ProductDetail> findAllByColor(String color) {
-		return productDetailRepository.findAllByColor(color);
-	}
-
-	@Override
-	public List<ProductDetail> findAllBySalePrice(BigDecimal minPrice, BigDecimal maxPrice) {
-		return productDetailRepository.findAllBySalePriceBetween(minPrice, maxPrice);
-	}
 }

@@ -22,7 +22,7 @@ htnl {
         display: flex;
         flex-direction: column;
     }
-    .btn-add-card a {
+    .btn-add-card button.submit {
         margin-top: 15px !important;
         margin-left: auto !important;
         margin-right: auto !important;
@@ -77,24 +77,20 @@ htnl {
 
 .btn-add-card {
     display: flex;
-    padding-left: 50px;
 }
 .btn-add-card input {
     width: 50px;
-    height: 40px;
+    height: 30px;
     font-size: 16px;
     margin: 0 5px;
-
     text-align: center;
 }
-.btn-add-card .btn {
-    min-width: auto;
+
+.btn-add-card .fas {
+    width: 30px !important;
+    height: 30px;
 }
-.btn-add-card button {
-    width: 40px !important;
-    height: 40px;
-}
-.btn-add-card a {
+.btn-add-card .submit {
     min-width: 150px !important;
     margin: 0px  15px ;
     height: 40px;
@@ -125,6 +121,12 @@ htnl {
     font-size: 1.75rem;
 }
 
+.report{
+    background-color: rgb(250, 250, 250);
+    margin-bottom: 1px;
+    border-radius: 4px;
+}
+
 .report img {
     width: 50px;
     height: 50px;
@@ -134,13 +136,28 @@ htnl {
 .report-star {
     cursor: pointer;
 }
-.report-star:hover, .report-star:active {
-    
-}
+
 
 .report-star-active {
     border: 1px solid var(--border-color);
     background-color: var(--text-color);
+}
+
+.btn-report {
+    min-width: 142px;
+    height: 34px;
+    text-decoration: none;
+    border: none;
+    border-radius: 2px;
+    font-size: 1.5rem;
+    padding: 0 12px;
+    outline: none;
+    cursor: pointer;
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.6rem;
 }
 
 

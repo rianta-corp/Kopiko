@@ -23,6 +23,8 @@
 						<th>Brand ID</th>
 						<th>Category ID</th>
 						<th>Date Created</th>
+						<th>Price</th>
+						<th>Sale Price</th>
 						<th>Status</th>
 						<th>Action</th>
 					</tr>
@@ -34,6 +36,8 @@
 						<th>Brand ID</th>
 						<th>Category ID</th>
 						<th>Date Created</th>
+						<th>Price</th>
+						<th>Sale Price</th>
 						<th>Status</th>
 						<th>Action</th>
 					</tr>

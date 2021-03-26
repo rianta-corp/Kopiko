@@ -53,6 +53,18 @@
 					</c:forEach>
 				</select>
 			</div>
+			
+			<div class="form-group">
+				<label for="price">Giá Gốc</label> <input type="number"
+					class="form-control" id="price"
+					value="${productDTO.getPrice()}">
+			</div>
+			
+			<div class="form-group">
+				<label for="salePrice">Giá Sale</label> <input type="number"
+					class="form-control" id="salePrice"
+					value="${productDTO.getSalePrice()}">
+			</div>
 
 			<div class="form-group">
 				<label for="description">Mô Tả</label>

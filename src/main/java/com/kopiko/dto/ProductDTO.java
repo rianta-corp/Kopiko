@@ -3,6 +3,7 @@
  */
 package com.kopiko.dto;
 
+import java.math.BigDecimal;
 import java.sql.Date;
 
 import lombok.Data;
@@ -21,6 +22,8 @@ public class ProductDTO {
 	private Long categoryId;
 	private Long brandId;
 	private Date dateCreated;
+	private BigDecimal price;
+	private BigDecimal salePrice;
 	private String description;
 	private Integer status;
 }

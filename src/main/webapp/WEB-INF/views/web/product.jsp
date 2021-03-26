@@ -23,41 +23,42 @@
 			</div>
 			</br>
 		</div>
-		<div class="row pl-5">
-			<h2 class=" pl-4 category-infor-name text-uppercase font-weight-bold">${product.getProductName()}</h2>
-		</div>
-		<div class="row pb-5">
+		<div class="row pb-5 mt-4">
 			<div class="col-sm-6">
 				<div class="row" style="display: flex; justify-content: center;">
 					<div id="myCarousel" class="carousel slide" data-ride="carousel">
 
 						<!-- Indicators -->
+						<c:set var="listImageSize" scope="session"
+							value="${product.getListProductImage().size()-1}" />
+						<c:set var="listImage" scope="session"
+							value="${product.getListProductImage()}" />
+
+						<c:set var="listProductDetail" scope="session"
+							value="${product.getListProductDetail()}" />
 						<div class="carousel-indicators">
-							<img src="/img/category2.jpg" alt="#"
+							<img src="${listImage.get(0).getImageUrl()}" alt="#"
 								data-target="#myCarousel" data-slide-to="0"
-								class="active img img-responsive"> <img
-								src="/img/category3.jpg" alt="#"
-								data-target="#myCarousel" data-slide-to="1"
-								class="img img-responsive"> <img
-								src="/img/category2.jpg" alt="#"
-								data-target="#myCarousel" data-slide-to="2"
-								class="img img-responsive">
+								class="active img img-responsive" />
+							<c:forEach var="i" begin="1" end="${listImageSize}">
+								<img src="${listImage.get(i).getImageUrl()}" alt="#"
+									data-target="#myCarousel" data-slide-to="${i}"
+									class="img img-responsive" />
+							</c:forEach>
 						</div>
 
 						<!-- The slideshow -->
 						<div class="carousel-inner">
 							<div class="carousel-item active">
-								<img src="/img/category2.jpg" alt="#" width="100%"
-									class="img img-responsive">
+								<img src="${listImage.get(0).getImageUrl()}" alt="#"
+									width="100%" class="img img-responsive ">
 							</div>
-							<div class="carousel-item">
-								<img src="/img/category3.jpg" alt="#" width="100%"
-									class="img img-responsive">
-							</div>
-							<div class="carousel-item">
-								<img src="/img/category2.jpg" alt="#" width="100%"
-									class="img img-responsive">
-							</div>
+							<c:forEach var="i" begin="1" end="${listImageSize}">
+								<div class="carousel-item">
+									<img src="${listImage.get(i).getImageUrl()}" alt="#"
+										width="100%" class="img img-responsive">
+								</div>
+							</c:forEach>
 						</div>
 
 						<!-- Left and right controls -->
@@ -71,54 +72,50 @@
 			</div>
 			<div class="col-sm-6">
 				<div class="row category-information">
-					<div
-						class="card-text text-left font-weight-bold d-flex justify-content-center p-2">
-						<span class="product__price product__price-old"
-							style="font-size: 20px;">${product.getListProductDetail().get(0).getPrice()}</span> <span
-							class="product__price product__price-new pl-3"
-							style="font-size: 24px;">${product.getListProductDetail().get(0).getSalePrice()}</span>
-					</div>
+
 					<div class="col-lg-12 pt-3 ">
-						<p class="font-weight-bold float-left">Thương hiệu:</p>
-						<a href="#" class="font-weight-bold product-name float-left ml-2">
-							${product.getBrand().getBrandName()}</a>
+
+						<p class="font-weight-normal" style="font-size: 20px;">${product.getProductName()}</p>
+						<p class="font-weight-light">
+							Thương hiệu: <a
+								href="/search/brand/${product.getBrand().getBrandName()}">${product.getBrand().getBrandName()}</a>
+						</p>
+						<p class="font-weight-bold float-right">
+							<span style="font-size: 32px;">${product.getLongSalePrice()}đ</span>
+							<span style="font-size: 12px; text-decoration: line-through;">${product.getLongPrice()}đ</span>
+						</p>
 					</div>
+					<form action="/checkout/cart/add/${product.productId}"
+						method="POST">
 
-					<div class=" p-4">
-						<p style="text-align: justify">${product.getDescription()}</p>
-					</div>
+						<div class="col-lg-12 pt-3">
+							<p class="font-weight-normal">Chọn size:</p>
+							<select name="size" id="size"
+								class="m-2 btn btn-light product-name float-left category-size">
+								<c:forEach var="detail" items="${listProductDetail}">
+									<option value="${detail.size}">${detail.size}</option>
+								</c:forEach>
+							</select>
+						</div>
 
-					
-					<div class="col-lg-12 pt-3 ">
-						<p class="font-weight-bold">Chọn kích cỡ:</p>
-						<c:forEach items="${product.getListProductDetail() }" var="productdetail">
-						<a href="#" class="m-2 btn btn-light product-name float-left category-size">${productdetail.getColor() }</a>
-						</c:forEach> 
-					</div>
-
-				</div>
-				<div class="row">
-					<div class="col-lg-12">
-						<form action="#" method="POST" class="btn-add-card">
-							<div class="add-respon">
-								<div class="add-respon-sl">
-									<button type="button"
-										class="quantity-left-minus btn btn-danger btn-number float-left fas fa-minus"
-										data-type="minus" data-field=""></button>
-									<input type="text" id="quantity" name="quantity"
-										class="form-control input-number float-left" value="1" min="1"
-										max="100">
-									<button type="button"
-										class="quantity-right-plus btn btn-success btn-number float-left fas fa-plus"
-										data-type="plus" data-field=""></button>
-								</div>
-								<a href="" class="btn  margin__btn-add-cart mt-4">Thêm vào
-									Giỏ</a>
-
+						<div class="col-lg-12 btn-add-card"">
+							<p class="font-weight-normal">Số lượng:</p>
+							<div class="btn-group mt-3" style="margin-right: 15%">
+								<button type="button" class="fas fa-minus" data-type="minus"
+									data-field="" onclick="sub()"></button>
+								<input type="number" id="quantity" name="quantity"
+									class="form-control input-number" value="1" min="1" max="100">
+								<button type="button" class="fas fa-plus" data-type="plus"
+									data-field="" onclick="add()"></button>
 							</div>
-						</form>
-					</div>
+							<button class="btn margin__btn-add-cart mt-2  submit"
+								style="margin-left: 24%">Thêm Vào Giỏ</button>
+						</div>
+					</form>
+
+
 				</div>
+
 			</div>
 		</div>
 		<div class="row connect pt-5 mt-5">
@@ -126,9 +123,10 @@
 			<ul class="nav nav-tabs connect-menu" role="tablist">
 				<li class="nav-item"><a
 					class="nav-link  connect-menu-name active" data-toggle="tab"
-					href="#mota">Mô tả</a></li>
+					href="#mota" style="color: black; font-size: 20px">Mô Tả</a></li>
 				<li class="nav-item"><a class="nav-link connect-menu-name"
-					data-toggle="tab" href="#danhgia">Đánh giá</a></li>
+					data-toggle="tab" href="#danhgia"
+					style="color: black; font-size: 20px">Bình Luận</a></li>
 			</ul>
 
 			<!-- Tab panes -->
@@ -136,117 +134,56 @@
 				<div id="mota" class="container tab-pane active">
 					<br>
 					<h3 class="font-weight-bold py-3">Thông tin chi tiết</h3>
-					<div>
-						${product.getDescription()}
-					</div>
+					<div>${product.getDescription()}</div>
 				</div>
 				<div id="danhgia" class="container tab-pane fade ">
-					<br>
-					<h3 class="font-weight-bold py-3">Khách hàng đánh giá</h3>
-					<div class="report">
-						<img src="/img/avatar.jpg" alt="#"
-							class="img img-resonsive float-left m-4">
-
-						<div class="p-4">
-							<h4 class="text-dark  text-uppercase font-weight-bold m-auto">Hồ
-								Xuân Lâm</h4>
-							<i class="fas fa-star text-warning"></i> <i
-								class="fas fa-star text-warning"></i> <i
-								class="fas fa-star text-warning"></i> <i
-								class="fas fa-star text-warning"></i> <i
-								class="fas fa-star text-warning"></i>
-						</div>
-						<p class="p-4">Lorem, ipsumm dolor sit amet consectetur
-							adipisicing elit. Rriciendis earum modi delectus fuglat
-							consectetur weaque haru obcaecati, saepe id vitae, dolore
-							aliquam! Quos, doloribus quisquam.</p>
+					<div class="row">
+						<form action="/comment">
+							<div class="mb-3">
+								<label for="commentTitle" class="form-label">Tiêu đề</label> <input
+									type="text" class="form-control" id="commentTitle"
+									placeholder="Nhập tiêu đề">
+							</div>
+							<div class="mb-3">
+								<label for="commentContent" class="form-label">Nội dung</label>
+								<textarea class="form-control" id="commentContent" rows="3"
+									placeholder="Nhập nội dung"></textarea>
+							</div>
+							<button type="submit">Bình luận</button>
+						</form>
 					</div>
+					<br>
+					<c:forEach items="${product.getListComment()}" var="comment">
+						<div class="report">
+							<img src="https://tiki.vn/assets/img/avatar.png" alt="#"
+								class="img img-resonsive float-left m-4">
 
-					<h3 class="font-weight-bold py-3">Viết đánh giá</h3>
-					<form action="#" method="POST" class="new-report">
-						<div class="row">
-							<div class="report-star col-lg-2">
-								<div class="d-flex  ">
-									<div class="">
-										<i class="fas fa-star text-warning "></i> <i
-											class="fas fa-star text-warning "></i> <i
-											class="fas fa-star text-warning "></i> <i
-											class="fas fa-star text-warning "></i> <i
-											class="fas fa-star  text-warning"></i>
-									</div>
-								</div>
-								<div class="d-flex">
-									<div class="">
-										<i class="fas fa-star text-warning"></i> <i
-											class="fas fa-star text-warning"></i> <i
-											class="fas fa-star text-warning"></i> <i
-											class="fas fa-star text-warning"></i> <i
-											class="fas fa-star text-dark"></i>
-									</div>
-								</div>
-								<div class="d-flex">
-									<div class="">
-										<i class="fas fa-star text-warning"></i> <i
-											class="fas fa-star text-warning"></i> <i
-											class="fas fa-star text-warning"></i> <i
-											class="fas fa-star text-dark"></i> <i
-											class="fas fa-star text-dark"></i>
-									</div>
-								</div>
-								<div class="d-flex">
-									<div class="">
-										<i class="fas fa-star text-warning"></i> <i
-											class="fas fa-star text-warning"></i> <i
-											class="fas fa-star text-dark"></i> <i
-											class="fas fa-star text-dark"></i> <i
-											class="fas fa-star text-dark"></i>
-									</div>
-								</div>
-								<div class="d-flex">
-									<div class="">
-										<i class="fas fa-star text-warning"></i> <i
-											class="fas fa-star text-dark"></i> <i
-											class="fas fa-star text-dark"></i> <i
-											class="fas fa-star text-dark"></i> <i
-											class="fas fa-star text-dark"></i>
-									</div>
-								</div>
-							</div>
-							<div class="report-star col-lg-3 float-left">
-								<div class="row">
-									<label for="">Mức độ hài lòng:</label> <select
-										name="report-stars" id="report">
-										<option value="5">Rất hài lòng</option>
-										<option value="4">Hài lòng</option>
-										<option value="3">Trung bình</option>
-										<option value="2">Không hài lòng</option>
-										<option value="1">Rất không hài lòng</option>
-									</select>
-								</div>
-								<div class="row py-3">
-									<label for="#">Thêm hình ảnh:</label> <input type="file"
-										id="img-report" name="Chọn File">
-								</div>
-							</div>
-							<div class="col-lg7" style="overflow: scroll;">
-								<div class="row">
-									<label for="#">&nbsp; Nhận xét của bạn:</label>
-								</div>
-
-								<textarea id="comment" name="comment" cols="55" rows="6"
-									required=""></textarea>
-
-							</div>
-							<div class="row">
-								<a class="btn margin__btn-add-cart" type="button"> Viết đánh
-									giá</a>
+							<div class="p-4">
+								<h4 class="text-dark  text-uppercase font-weight-bold m-auto">${comment.getAccount().getFullName()}</h4>
+								<p class="p-4">${comment.getContent()}</p>
+								<p class="p-4 text-muted" style="font-size: 12px">Nhận xét
+									vào: ${comment.getDateCreated()}</p>
 							</div>
 
 						</div>
-					</form>
+					</c:forEach>
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
+<script type="text/javascript">
+	function add() {
+		var quantity = parseInt(document.getElementById("quantity").value);
+		quantity = quantity + 1;
+		document.getElementById("quantity").value = quantity;
+	}
 
+	function sub() {
+		var quantity = parseInt(document.getElementById("quantity").value);
+		quantity = quantity - 1;
+		if (quantity < 1)
+			quantity = 1;
+		document.getElementById("quantity").value = quantity;
+	}
+</script>

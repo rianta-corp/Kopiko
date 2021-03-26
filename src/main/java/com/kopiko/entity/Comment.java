@@ -40,6 +40,9 @@ public class Comment {
 	@CreationTimestamp
 	private Date dateCreated;
 	
+	@Column(name = "title", nullable = false, columnDefinition = "nvarchar(100)")
+	private String title;
+	
 	@Column(name = "[content]", nullable = false, columnDefinition = "ntext")
 	private String content;
 	

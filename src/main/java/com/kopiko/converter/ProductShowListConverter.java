@@ -33,13 +33,8 @@ public class ProductShowListConverter {
 			ProductImage productImage = listImage.get(0);
 			result.setImageUrl(productImage.getImageUrl());
 		}
-		
-		List<ProductDetail> listProductDetail = product.getListProductDetail();
-		if(listProductDetail != null && !listProductDetail.isEmpty()) {
-			ProductDetail productDetail = listProductDetail.get(0);
-			result.setPrice(productDetail.getPrice());
-			result.setSalePrice(productDetail.getSalePrice());
-		}
+		result.setPrice(product.getPrice());
+		result.setSalePrice(product.getSalePrice());
 		
 		return result;
 	}
