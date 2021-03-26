@@ -79,9 +79,9 @@
 							style="font-size: 24px;">${product.getListProductDetail().get(0).getSalePrice()}</span>
 					</div>
 					<div class="col-lg-12 pt-3 ">
-						<p class="font-weight-bold float-left">${product.getBrand().getBrandName()}</p>
-						<a href="#" class="font-weight-bold product-name float-left">
-							bibits hunter</a>
+						<p class="font-weight-bold float-left">Thương hiệu:</p>
+						<a href="#" class="font-weight-bold product-name float-left ml-2">
+							${product.getBrand().getBrandName()}</a>
 					</div>
 
 					<div class=" p-4">
@@ -91,15 +91,9 @@
 					
 					<div class="col-lg-12 pt-3 ">
 						<p class="font-weight-bold">Chọn kích cỡ:</p>
-						<a href="#"
-							class="m-2 btn btn-light product-name float-left category-size">Đen
-							M (45-50kg) </a> <a href="#"
-							class="m-2 btn btn-light product-name float-left category-size">Trắng
-							L (50-55kg) </a> <a href="#"
-							class="m-2 btn btn-light product-name float-left category-size">Xanh
-							Dương XL (55-65kg) </a> <a href="#"
-							class="m-2 btn btn-light product-name float-left category-size">
-							Tím XXL (>65kg) </a>
+						<c:forEach items="${product.getListProductDetail() }" var="productdetail">
+						<a href="#" class="m-2 btn btn-light product-name float-left category-size">${productdetail.getColor() }</a>
+						</c:forEach> 
 					</div>
 
 				</div>
@@ -143,19 +137,7 @@
 					<br>
 					<h3 class="font-weight-bold py-3">Thông tin chi tiết</h3>
 					<div>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-						fringilla augue nec est tristique auctor. Donec non est at libero
-						vulputate rutrum. Morbi ornare lectus quis justo gravida semper.
-						Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id
-						nulla. Pellentesque aliquet, sem eget laoreet ultrices, ipsum
-						metus feugiat sem, quis fermentum turpis eros eget velit.<br>
-						<br> Donec ac tempus ante. Fusce ultricies massa massa. Fusce
-						aliquam, purus eget sagittis vulputate, sapien libero hendrerit
-						est, sed commodo augue nisi non neque. Lorem ipsum dolor sit amet,
-						consectetur adipiscing elit. Sed tempor, lorem et placerat
-						vestibulum, metus nisi posuere nisl, in accumsan elit odio quis
-						mi. Cras neque metus, consequat et blandit et, luctus a nunc.
-						Etiam gravida vehicula tellus, in imperdiet ligula euismod eget.
+						${product.getDescription()}
 					</div>
 				</div>
 				<div id="danhgia" class="container tab-pane fade ">

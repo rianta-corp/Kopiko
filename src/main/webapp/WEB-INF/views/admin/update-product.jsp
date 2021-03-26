@@ -13,20 +13,21 @@
 		<i class="fas fa-table mr-1"></i> Sản Phẩm
 	</div>
 	<div class="card-body">
-		<form>
+		<form action="/admin/product/${productDTO.getProductId() }/edit"
+			enctype="multipart/form-data" method="post">
 			<div class="form-group">
 				<label for="productId">ID Sản Phẩm</label> <input type="text"
-					class="form-control" id="productId"
+					class="form-control" id="productId" name="productId"
 					value="${productDTO.getProductId()}" readonly="readonly">
 			</div>
 			<div class="form-group">
 				<label for="productName">Tên Sản Phẩm</label> <input type="text"
-					class="form-control" id="productName"
+					name="productName" class="form-control" id="productName"
 					value="${productDTO.getProductName()}">
 			</div>
 			<div class="form-group">
 				<label for="categoryId">Danh Mục</label> <select
-					class="form-control" id="categoryId">
+					class="form-control" id="categoryId" name="categoryId">
 					<c:forEach items="${listCategory}" var="category">
 						<c:if
 							test="${productDTO.getCategoryId() ==  category.getCategoryId()}">
@@ -41,7 +42,7 @@
 			</div>
 			<div class="form-group">
 				<label for="brandId">Thương Hiệu</label> <select
-					class="form-control" id="brandId">
+					class="form-control" id="brandId" name="brandId">
 					<c:forEach items="${listBrand}" var="brand">
 						<c:if test="${productDTO.getBrandId() ==  brand.getBrandId()}">
 							<option value="${brand.getBrandId()}" selected="selected">${brand.getBrandName()}</option>
@@ -55,12 +56,27 @@
 
 			<div class="form-group">
 				<label for="description">Mô Tả</label>
-				<textarea class="form-control" id="description" rows="10">${productDTO.getDescription()}</textarea>
+				<textarea class="form-control" id="description" rows="10"
+					name="description">${productDTO.getDescription()}</textarea>
 			</div>
-
+			<div class="form-group">
+			<label for="">List Ảnh</label> 
+				<div>
+					<c:forEach items="${productDTO.getListImgUrl() }" var="productImageUrl">
+						<img style="width: auto;height: 200px;margin: 10px;" src="<c:url value='/uploads/images/${ productImageUrl}'/>">
+					</c:forEach>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="imagesUrl">Thêm Ảnh:</label> <input
+					class="form-control" type="file" multiple="multiple"
+					class="form-control" name="imagesUrl" id="file-input"
+					accept="image/png, image/jpeg"></input>
+				<div id="previewonly"></div>
+			</div>
 			<div class="form-group">
 				<label for="status">Trạng Thái</label> <select class="form-control"
-					id="status">
+					id="status" name="status">
 					<c:forEach items="${listStatus}" var="status">
 						<c:if test="${status.getStatusId() ==  status.getStatusId()}">
 							<option value="${status.getStatusId()}" selected="selected">${status.getStatusName()}</option>
@@ -86,11 +102,12 @@
 
 	</div>
 </div>
+
+
 <script src="<c:url value='/plugins/jquery/jquery-3.5.1.min.js'/>"></script>
 
 <script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-	crossorigin="anonymous"></script>
+	src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="<c:url value='/template/admin/dist/js/scripts.js'/>"></script>
 <script src="<c:url value='/plugins/jquery/jquery.validate.min.js'/>"></script>
 <script src="<c:url value='/template/admin/js/update-product.js'/>"></script>

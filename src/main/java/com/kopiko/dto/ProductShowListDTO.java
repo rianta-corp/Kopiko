@@ -4,7 +4,6 @@
 package com.kopiko.dto;
 
 import java.math.BigDecimal;
-import java.sql.Date;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

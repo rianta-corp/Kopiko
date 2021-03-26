@@ -27,6 +27,7 @@ public class ProductConverter {
 	ICategoryService categoryService;
 	@Autowired
 	IBrandService brandService;
+	
 	public Product toEntity(ProductDTO productDTO) {
 		if(productDTO == null) return null;
 		Product result = new Product();

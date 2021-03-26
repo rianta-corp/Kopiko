@@ -3,6 +3,7 @@ package com.kopiko.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesView;
 import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
@@ -25,23 +26,30 @@ public class ApplicationContextConfig {
 //    }
 
 	// View resolver - Tiles
-    @Bean(name = "viewResolver")
-    public TilesViewResolver getViewResolverTiles() {
-        System.out.println("getViewResolverTiles");
-        TilesViewResolver obj = new TilesViewResolver();
-        obj.setViewClass(TilesView.class);
-        return obj;
-    }
+	@Bean(name = "viewResolver")
+	public TilesViewResolver getViewResolverTiles() {
+		System.out.println("getViewResolverTiles");
+		TilesViewResolver obj = new TilesViewResolver();
+		obj.setViewClass(TilesView.class);
+		return obj;
+	}
 
-    // Tiles configuration
-    @Bean(name = "tilesConfigurer")
-    public TilesConfigurer getTilesConfigurer() {
-        System.out.println("getTilesConfigurer");
-        TilesConfigurer obj = new TilesConfigurer();
-        obj.setDefinitions("/WEB-INF/tiles.xml");
-        return obj;
-    }
-
+	// Tiles configuration
+	@Bean(name = "tilesConfigurer")
+	public TilesConfigurer getTilesConfigurer() {
+		System.out.println("getTilesConfigurer");
+		TilesConfigurer obj = new TilesConfigurer();
+		obj.setDefinitions("/WEB-INF/tiles.xml");
+		return obj;
+	}
+	
+	//Common configuration
+	@Bean(name = "multipartResolver")
+	public CommonsMultipartResolver multipartResolver() {
+		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+		multipartResolver.setMaxUploadSize(20848820);
+		return multipartResolver;
+	}
 //    // Config DataSource
 //    @Bean("dataSource")
 //    public DataSource getDataSource() {
