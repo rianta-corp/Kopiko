@@ -26,7 +26,7 @@ public interface IPaymentMethodService {
 	 * @param paymentMethodEntity
 	 * @return PaymentMethodEntity
 	 */
-	PaymentMethodEntity addNewPaymentMethod(PaymentMethodEntity paymentMethodEntity);
+	ResponseModel addNewPaymentMethod(PaymentMethodEntity paymentMethodEntity);
 
 	/**
 	 * Update payment method
@@ -34,7 +34,7 @@ public interface IPaymentMethodService {
 	 * @param paymentMethodEntity
 	 * @return PaymentMethodEntity
 	 */
-	PaymentMethodEntity updatePaymentMethod(PaymentMethodEntity paymentMethodEntity);
+	ResponseModel updatePaymentMethod(PaymentMethodEntity paymentMethodEntity);
 
 	/**
 	 * Delete payment method

@@ -237,6 +237,7 @@
 		</div>
 	</div>
 </section>
-<!--end of Category-->
 
+
+<!--end of Category-->
 <!-- End container-private -->

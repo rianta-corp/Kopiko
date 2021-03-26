@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <%@include file="/common/taglib.jsp" %>
 <h1 class="mt-4">Tables</h1>
 <ol class="breadcrumb mb-4">
-	<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-	<li class="breadcrumb-item active">Tables</li>
+	<li class="breadcrumb-item"><a href="index.html">Management</a></li>
+	<li class="breadcrumb-item active">Brand</li>
 </ol>
 
 
@@ -27,7 +26,7 @@
 
 <div class="card mb-4">
 	<div class="card-header">
-		<i class="fas fa-table mr-1"></i> Category Management
+		<i class="fas fa-table mr-1"></i> Brand Management
 	</div>
 	<div class="card-body">
 		<div class="table-responsive">
@@ -36,17 +35,19 @@
 				<thead data-detail-formatter="detailFormatter">
 					<tr id="list-header">
 						<th>No</th>
-						<th>Category Code</th>
-						<th>Category Name</th>
-						<th>Action</th>
+						<th>Brand Image</th>
+						<th>Brand Name</th>
+						<th>Brand Info</th>
+						<th></th>
 					</tr>
 				</thead>
 				<tfoot>
 					<tr>
 						<th>No</th>
-						<th>Category Code</th>
-						<th>Category Name</th>
-						<th>Action</th>
+						<th>Brand Image</th>
+						<th>Brand Name</th>
+						<th>Brand Info</th>
+						<th></th>
 					</tr>
 				</tfoot>
 				<tbody>
@@ -63,26 +64,30 @@
 
 			<!-- Modal Header -->
 			<div class="modal-header">
-				<h4 class="modal-title">Edit Category</h4>
+				<h4 class="modal-title">Edit Brand</h4>
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 			</div>
 
 			<!-- Modal body -->
 			<div class="modal-body">
-				<form action="" method="POST" id="categoryInfoForm">
+				<form action="" method="POST" id="brandInfoForm" enctype="multipart/form-data">
 					<div class="form-group">
-						<label for="categoryId">Category Id: </label>
-						<input type="number" class="form-control" id="categoryId" readonly="readonly" required="required">
+						<label for="brandId">Brand Id: </label>
+						<input type="number" class="form-control" id="brandId" readonly="readonly" required="required">
 					</div>
 					<div class="form-group">
-						<label for="categoryCode">Category Code:</label>
-						<input type="text" class="form-control" placeholder="Enter category code" id="categoryCode" name="categoryCode" required="required">
+						<label for="brandImgUrl">Brand Image:</label>
+						<input type="file" class="form-control" placeholder="Enter brand image" id="brandImgUrl" name="brandImgUrl" required="required">
 					</div>
 					<div class="form-group">
-						<label for="categoryName">Category Name:</label>
-						<input type="text" class="form-control" placeholder="Enter category name" name="categoryName" id="categoryName" required="required">
+						<label for="brandName">Brand Name:</label>
+						<input type="text" class="form-control" placeholder="Enter brand name" name="brandName" id="brandName" required="required">
 					</div>
-					<button type="submit" class="btn btn-primary" id="btnSubmitCategory">Submit</button>
+					<div class="form-group">
+						<label for="info">Infomation:</label>
+						<input type="text" class="form-control" placeholder="Enter infomation brand" name="info" id="info" required="required">
+					</div>
+					<button type="submit" class="btn btn-primary" id="btnSubmitBrand">Submit</button>
 				</form>
 			</div>
 
@@ -99,13 +104,13 @@
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title">Delete Category</h5>
+				<h5 class="modal-title">Delete Brand</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
 			<div class="modal-body">
-				<p>Do you want to delete <b id="deleteCategoryName"></b>?</p>
+				<p>Do you want to delete <b id="deleteBrandName"></b>?</p>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -114,6 +119,7 @@
 		</div>
 	</div>
 </div>
+<!-- Javascript render data  --> 
 <script src="<c:url value='/template/web/plugins/jquery/jquery-3.5.1.min.js'/>"></script>
 <script src="<c:url value='/template/web/plugins/jquery/jquery.validate.min.js'/>"></script>
 <script src="<c:url value='/template/web/plugins/bootstrap/js/bootstrap.min.js'/>"></script>
@@ -121,5 +127,4 @@
 <script src="<c:url value='/template/web/plugins/datatables/js/dataTables.buttons.min.js'/>"></script>
 <script src="<c:url value='/template/web/plugins/datatables/js/dataTables.bootstrap4.min.js'/>"></script>
 <script src="<c:url value='/template/admin/dist/js/scripts.js'/>"></script>
-<script src="<c:url value='/template/admin/dist/assets/demo/category-admin.js'/>"></script> 
-
+<script src="<c:url value='/template/admin/dist/assets/demo/brand-admin.js'/>"></script>
