@@ -1,5 +1,6 @@
 package com.kopiko.dto;
 
+import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.List;
 
@@ -17,6 +18,8 @@ public class ProductImageDTO {
 	private String productName;
 	private Long categoryId;
 	private Long brandId;
+	private BigDecimal price;
+	private BigDecimal salePrice;
 	private Date dateCreated;
 	private String description;
 	private Integer status;

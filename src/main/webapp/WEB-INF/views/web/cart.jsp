@@ -61,7 +61,7 @@
 											<div class="item-image">
 												<img class="cart-item-img"
 													alt="${map.value.product.productName}"
-													src="${map.value.product.imageUrl}">
+													src="<c:url value='/uploads/images/${map.value.product.imageUrl}'/>">
 
 											</div>
 										</div>

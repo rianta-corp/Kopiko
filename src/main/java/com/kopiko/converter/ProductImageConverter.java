@@ -36,6 +36,8 @@ public class ProductImageConverter {
 		result.setProductId(productImageDTO.getProductId());
 		result.setProductName(productImageDTO.getProductName());
 		result.setBrand(brand);
+		result.setPrice(productImageDTO.getPrice());
+		result.setSalePrice(productImageDTO.getSalePrice());
 		result.setDateCreated(productImageDTO.getDateCreated());
 		result.setCategory(category);
 		result.setDescription(productImageDTO.getDescription());
@@ -59,6 +61,8 @@ public class ProductImageConverter {
 		result.setProductName(product.getProductName());
 		result.setDateCreated(product.getDateCreated());
 		result.setBrandId(product.getBrand().getBrandId());
+		result.setPrice(product.getPrice());
+		result.setSalePrice(product.getSalePrice());
 		result.setCategoryId(product.getCategory().getCategoryId());
 		result.setDescription(product.getDescription());
 		result.setStatus(product.getStatus());

@@ -164,7 +164,7 @@
 						<h4 class="header__cart-heading">Sản phẩm đã thêm</h4>
 						<ul class="header__cart-list-item">
 							<c:forEach var="map" items="${sessionScope.myCartItems}">
-								<li class="header__cart-item"><img src="${map.value.product.imageUrl}"
+								<li class="header__cart-item"><img src="<c:url value='/uploads/images/${map.value.product.imageUrl}'/>"
 									alt="" class="header__cart-img">
 									<div class="header__cart-item-info">
 										<div class="header__cart-item-head">
