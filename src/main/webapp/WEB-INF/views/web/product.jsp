@@ -74,6 +74,7 @@
 				<div class="row category-information">
 
 					<div class="col-lg-12 pt-3 ">
+
 						<p class="font-weight-normal" style="font-size: 20px;">${product.getProductName()}</p>
 						<p class="font-weight-light">
 							Thương hiệu: <a
