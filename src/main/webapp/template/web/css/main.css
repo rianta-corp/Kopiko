@@ -449,9 +449,11 @@
 .header__cart-list-item {
     padding-left: 0;
     list-style: none;
+    height: 50vh;
+    overflow-y: auto;
 }
 .carousel-control-next, .carousel-control-prev { 
-    width: 10%;
+    width: 5%;
 }
 
 
@@ -488,10 +490,19 @@
 }
 
 .header__cart-item-name {
+    flex: 1;
     font-size: 1.4rem;
-    font-weight: 400;
+    font-weight: 500;
     color: var(--text-color);
     margin: 0;
+    line-height: 2rem;
+    max-height: 4rem;
+    overflow: hidden;
+    padding-right: 16px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    text-align: left;
 }
 
 .header__cart-item-price {
@@ -535,6 +546,7 @@
 .header__cart-view {
     float: right;
     margin: 8px 12px;
+    
 }
 
 .header__cart-view:hover {
@@ -986,7 +998,7 @@ div.carousel-caption > a > span{font-size: 2rem; color: var(--white-color);}
     color: var(--primary-color) !important;
 }
  
-/* Đăng ký thông tin */
+/* Ğăng ký thông tin */
 .navrbar__Signup-information{
     display: flex;
     align-items: center;
@@ -1086,3 +1098,5 @@ div.navrbar__Signup-search > div.header__search-input-wrap > input.search__text 
 .header__search-mobile {
     width: 100%;
 }
+
+
