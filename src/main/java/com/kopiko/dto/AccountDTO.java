@@ -3,6 +3,8 @@
  */
 package com.kopiko.dto;
 
+import java.sql.Date;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -21,4 +23,12 @@ public class AccountDTO {
 	private String address;
 	private String avatar;
 	private String role;
+	private String address;
+	private String phone;
+	private String email;
+	private Integer status;
+	private String password;
+	private Date dateCreated;
+	
+	
 }

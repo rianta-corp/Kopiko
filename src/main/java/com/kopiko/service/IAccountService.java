@@ -14,6 +14,7 @@ Account findOne(Long accountId);
 Account insert(Account account);
 Account update(Account account);
 List<Account> search(String A);
+boolean delete(Long accountId);
 boolean delete(Account account);
 Account save(Account account);
 /**
