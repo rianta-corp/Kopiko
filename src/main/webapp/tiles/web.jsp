@@ -16,10 +16,8 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
 <link rel="stylesheet"
 	href="<c:url value = '/template/web/plugins/bootstrap/css/bootstrap.min.css'/>">
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
 <link rel="stylesheet"
 	href="<c:url value = '/template/web/plugins/font-awesome/css/all.min.css'/>">
-<!-- <link rel="preconnect" href="https://fonts.gstatic.com"> -->
 <link
 	href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
 	rel="stylesheet">

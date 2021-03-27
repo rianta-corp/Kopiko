@@ -1,13 +1,22 @@
 package com.kopiko.service.impl;
 
 import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import com.kopiko.common.constant.Constants;
+import com.kopiko.converter.ProductShowListConverter;
 import com.kopiko.entity.Product;
-import com.kopiko.entity.ProductDetail;
+import com.kopiko.model.PageModel;
+import com.kopiko.model.ResponseModel;
 import com.kopiko.repository.IProductRepository;
 import com.kopiko.service.IProductService;
 
@@ -15,6 +24,9 @@ import com.kopiko.service.IProductService;
 public class ProductService implements IProductService{
 	@Autowired
 	private IProductRepository productRepository;
+	
+	@Autowired
+	private ProductShowListConverter productShowDetailConvert;
 	
 	@Override
 	public List<Product> findAll() {
@@ -85,6 +97,49 @@ public class ProductService implements IProductService{
 		}
 		else data = product;
 		return productRepository.saveAndFlush(data);
+	}
+
+	// Search product by category id! trungns4
+	@Override
+	public List<Product> searchProductByCategoryId(Long id) {
+		return productRepository.searchProductByCategoryId(id);
+	}
+	
+	// Find all product with page
+	@Override
+	public ResponseModel findAllProductWithPage(int pageNumber) {
+		int responseCode = Constants.RESULT_CD_FAIL;
+		Map<String, Object> responseMap = new HashMap<String, Object>();
+		try {
+			Sort sortList = Sort.by(Sort.Direction.DESC, "productId");
+			Pageable pageable = PageRequest.of(pageNumber - 1, Constants.PAGE_SIZE, sortList);
+			Page<Product> productPage = productRepository.findAll(pageable);
+			responseMap.put("products",  productShowDetailConvert.toProductShowListDTO(productPage.getContent()));
+			responseMap.put("paginationList", new PageModel(pageNumber, productPage.getTotalPages()));
+			responseCode = Constants.RESULT_CD_SUCCESS;
+		} catch (Exception e) {
+			System.out.println("Error when get all product with page: " + e);
+		}
+		
+		return new ResponseModel(responseMap, responseCode);
+	}
+
+	// Search product by category id with page
+	@Override
+	public ResponseModel searchProductByCategotyId(Long id, int pageNumber) {
+		int responseCode = Constants.RESULT_CD_FAIL;
+		Map<String, Object> responseMap = new HashMap<String, Object>();
+		try {
+			Sort sortList = Sort.by(Sort.Direction.DESC, "product_id");
+			Pageable pageable = PageRequest.of(pageNumber - 1, Constants.PAGE_SIZE, sortList);
+			Page<Product> productPage = productRepository.searchProductByCategoryIdWithPage(id, pageable);
+			responseMap.put("products",  productShowDetailConvert.toProductShowListDTO(productPage.getContent()));
+			responseMap.put("paginationList", new PageModel(pageNumber, productPage.getTotalPages()));
+			responseCode = Constants.RESULT_CD_SUCCESS;
+		} catch (Exception e) {
+			System.out.println("Error when search product with page: " + e);
+		}
+		return new ResponseModel(responseMap, responseCode);
 	}
 
 }
