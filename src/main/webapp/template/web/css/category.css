@@ -6,7 +6,6 @@ body {
 
 a {
     text-decoration: none !important;  
-    cursor: pointer;
 }
 .link-menu-list {
     list-style: none;
@@ -36,9 +35,7 @@ a {
 .category-list-name:hover, .category-list-name:active {
     color: var(--primary-color);
 }
-.active {
-	color: var(--primary-color) !important;
-}
+
 .category-list {
     display: flex;
 }
@@ -63,13 +60,6 @@ a {
     text-align: center;
     color: var(--text-color);
     padding: 15px 5px;
-    line-height: 18px;
-    height: 50px;
-    overflow: hidden;
-    display: block;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
 }
 
 .btn-add {
@@ -90,10 +80,6 @@ a {
     font-weight: bold ;
     font-size: 16px;
 }
-.img-responsive {
-	width: 200px;
-    height: 230px;
-}
 
 .vnd {
     font-family: 'Fascinate', cursive;
@@ -102,37 +88,6 @@ a {
 
 .btn-show-category-menu {
     display: none;
-}
-
-
-.pagination a {
-	display: block;
-	color: #111;
-	text-align: center;
-	text-decoration: none;
-	min-width: 40px;
-}
-.pagination-area {
-	display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50px;
-    font-size: 15px;
-}
-
-.pagination a.active {
-	color: #333;
-	background-color: #ccc;
-}
-
-.pagination a.disabled {
-	pointer-events: none;
-	color: #ccc;
-}
-
-.page-item {
-	display: block;
-	margin: 0 5px;
 }
 
 @media only screen and (max-width: 1199.98px) { 
