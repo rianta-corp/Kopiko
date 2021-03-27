@@ -56,7 +56,7 @@ public interface IBrandService {
 	ResponseModel deleteBrandById(Long brandId);
 
 	/**
-	 * Find brand by brand name 
+	 * Find brand by brand name
 	 * 
 	 * @param brandName
 	 * @return Brand
@@ -68,6 +68,4 @@ public interface IBrandService {
 	 * @return
 	 */
 	List<Brand> findAll();
-	
-	
 }
