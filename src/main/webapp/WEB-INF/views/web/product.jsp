@@ -6,10 +6,6 @@
 	href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
 	rel="stylesheet">
 
-<link rel="stylesheet" type="text/css"
-	href="<c:url value ='/template/web/plugins/bootstrap/css/bootstrap.min.css'/>">
-<link rel="stylesheet" type="text/css"
-	href="<c:url value ='/template/web/plugins/font-awesome/css/font-awesome.min.css'/>">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link rel="stylesheet"
 	href="<c:url value ='/template/web/css/product-page.css'/>">
