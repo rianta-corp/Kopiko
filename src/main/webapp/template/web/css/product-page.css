@@ -1,53 +1,76 @@
+.category-infor {
+    font-size: 16px;
+}
+
+.form-control {
+    font-size: 16px;
+}
+
 @media only screen and (min-width: 1200px) {
     .carousel-item img {
         width: 550px;
         height: 450px;
-        padding-top: 15px ;
+        padding-top: 15px;
     }
-} 
+}
+
 .carousel-item img {
     margin: auto;
 }
+
 htnl {
     overflow-x: hidden;
 }
-@media only screen and (max-width: 767.98px) { 
+
+@media only screen and (max-width: 767.98px) {
     .carousel-indicators img {
-        display: none;      
-    } 
+        display: none;
+    }
+
     .link-menu-name {
         font-size: 15px !important;
     }
+
     .add-respon {
         display: flex;
         flex-direction: column;
     }
+
     .btn-add-card button.submit {
         margin-top: 15px !important;
         margin-left: auto !important;
         margin-right: auto !important;
     }
+
     .category-information {
         padding-left: 0 !important;
     }
+
     .btn-add-card {
         padding-left: 0 !important
     }
-    
+
 }
+
+#myCarousel {
+    display: block;
+}
+
 .carousel-indicators {
-    bottom: -100px;
+    position: unset;
+    margin-top: 30px;
 }
+
 .carousel-indicators img {
-      max-width: 120px;
-      height: 80px;
-      padding: 5px;
-      cursor: pointer;      
+    max-width: 120px;
+    height: 80px;
+    padding: 5px;
+    cursor: pointer;
 }
 
 .carousel-indicators .active {
     opacity: 0.7;
-    box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.1);   
+    box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.1);
 }
 
 .category-infor-name {
@@ -63,7 +86,7 @@ htnl {
     font-size: 16px;
     padding-left: 55px;
     padding-top: 25px;
-    
+
 }
 
 .product-name {
@@ -78,6 +101,7 @@ htnl {
 .btn-add-card {
     display: flex;
 }
+
 .btn-add-card input {
     width: 50px;
     height: 30px;
@@ -90,9 +114,10 @@ htnl {
     width: 30px !important;
     height: 30px;
 }
+
 .btn-add-card .submit {
     min-width: 150px !important;
-    margin: 0px  15px ;
+    margin: 0px 15px;
     height: 40px;
     font-size: 16px;
 }
@@ -102,17 +127,21 @@ htnl {
     justify-content: space-between;
     margin: auto;
 }
+
 .add-respon-sl {
     padding-top: 15px;
 }
 
 .connect {
     background-color: var(--background-color);
+    width: 100%;
+    display: block;
 }
 
 .connect-menu {
     width: 100%;
 }
+
 .connect-menu-name {
     font-size: 2.5rem;
 }
@@ -121,13 +150,13 @@ htnl {
     font-size: 1.75rem;
 }
 
-.report{
+.comment {
     background-color: rgb(250, 250, 250);
     margin-bottom: 1px;
     border-radius: 4px;
 }
 
-.report img {
+.comment img {
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -159,5 +188,3 @@ htnl {
     align-items: center;
     line-height: 1.6rem;
 }
-
-

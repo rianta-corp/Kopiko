@@ -17,6 +17,10 @@ public class BrandService implements IBrandService{
 	@Autowired
 	private IBrandRepository brandRepository;
 	
+	@Override
+	public List<Brand> findAllBrand() {
+		return brandRepository.findAll();
+	}
 
 	@Override
 	public ResponseModel addNewBrand(Brand brandEntity) {
@@ -56,21 +60,17 @@ public class BrandService implements IBrandService{
 		return new ResponseModel(responseCode);
 	}
 
-
-	@Override
-	public List<Brand> findAll() {
-		return brandRepository.findAll();
-	}
-
 	@Override
 	public ResponseModel updateBrand(Brand brandEntity) {
 		int responseCode = Constants.RESULT_CD_FAIL;
+		Brand brandEntity = brandRepository.findByBrandId(brandId);
 		try {
 			if(brandRepository.findByBrandName(brandEntity.getBrandName()) != null) {
 				responseCode = Constants.RESULT_CD_DUPL;
 			} else {
 				brandRepository.saveAndFlush(brandEntity);
 				responseCode = Constants.RESULT_CD_SUCCESS;
+				System.out.println("Brand is not exist!");
 			}
 		} catch (Exception e) {
 			System.out.println("Update brand failed " + e.getMessage());
@@ -83,5 +83,8 @@ public class BrandService implements IBrandService{
 		return brandRepository.findByBrandName(brandName);
 	}
 
-	
+	@Override
+	public List<Brand> findAll() {
+		return brandRepository.findAll();
+	}	
 }
