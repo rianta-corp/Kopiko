@@ -39,28 +39,6 @@ public class BrandService implements IBrandService{
 	}
 
 	@Override
-	public Brand findByBrandId(Long brandId) {
-		return brandRepository.findByBrandId(brandId);
-	}
-
-	@Override
-	public ResponseModel deleteBrandById(Long brandId) {
-		int responseCode = Constants.RESULT_CD_FAIL;
-		Brand brandEntity = brandRepository.findByBrandId(brandId);
-		try {
-			if(brandEntity != null) {
-				brandRepository.deleteById(brandEntity.getBrandId());
-				responseCode = Constants.RESULT_CD_SUCCESS;
-			} else {
-				System.out.println("BrandEntity is not exist!");
-			}
-		} catch (Exception e) {
-			System.out.println("Delete brand failed!" + e.getMessage());
-		}
-		return new ResponseModel(responseCode);
-	}
-
-	@Override
 	public ResponseModel updateBrand(Brand brandEntity) {
 //		int responseCode = Constants.RESULT_CD_FAIL;
 //		Brand brandEntity = brandRepository.findByBrandId(brandId);
@@ -79,6 +57,26 @@ public class BrandService implements IBrandService{
 		//TODO: need to fix this method
 		return null;
 	}
+	public Brand findByBrandId(Long brandId) {
+		return brandRepository.findByBrandId(brandId);
+	}
+
+	@Override
+	public ResponseModel deleteBrandById(Long brandId) {
+		int responseCode = Constants.RESULT_CD_FAIL;
+		Brand brandEntity = brandRepository.findByBrandId(brandId);
+		try {
+			if(brandEntity != null) {
+				brandRepository.deleteById(brandEntity.getBrandId());
+				responseCode = Constants.RESULT_CD_SUCCESS;
+			} else {
+				System.out.println("Brand is not exist!");
+			}
+		} catch (Exception e) {
+			System.out.println("Delete brand failed!" + e.getMessage());
+		}
+		return new ResponseModel(responseCode);
+	}
 
 	@Override
 	public Brand findByBrandName(String brandName) {
@@ -88,5 +86,6 @@ public class BrandService implements IBrandService{
 	@Override
 	public List<Brand> findAll() {
 		return brandRepository.findAll();
-	}	
+	}
+	
 }

@@ -38,7 +38,7 @@ public class ControlBrandController {
 	@GetMapping(value = "/findAll")
 	@ResponseBody
 	public List<Brand> findAllBrand() {
-		return brandService.findAll();
+		return brandService.findAllBrand();
 	}
 	
 	@PostMapping(value = "/add")

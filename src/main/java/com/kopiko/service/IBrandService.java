@@ -14,7 +14,6 @@ public interface IBrandService {
 	 * @returnList<Brand>
 	 * 
 	 */
-	List<Brand> findAll();
 	List<Brand> findAllBrand();
 
 	/**
@@ -63,5 +62,12 @@ public interface IBrandService {
 	 * @return Brand
 	 * 
 	 */
-	Brand findByBrandName(String brandName);	
+	Brand findByBrandName(String brandName);
+
+	/**
+	 * @return
+	 */
+	List<Brand> findAll();
+	
+	
 }
