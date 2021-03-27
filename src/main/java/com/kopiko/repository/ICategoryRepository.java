@@ -25,4 +25,5 @@ public interface ICategoryRepository extends JpaRepository<CategoryEntity, Long>
 	CategoryEntity findByCategoryCode(String categoryCode);
 	
 	CategoryEntity findByCategoryCodeAndCategoryCodeNot(String categoryCode, String categoryName);
+	
 }

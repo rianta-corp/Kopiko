@@ -61,6 +61,16 @@
 			</div>
 			<div class="col-lg-10 col-md-8 category-list">
 				<div class="row" id="listProducts">
+				<ul class="navbar-nav flex-column mt-3">
+					<c:forEach items="${ categories }" var="category">
+						<li class="nav-item">
+							<a data-id="${ category.categoryId }" class="nav-link px-3 category-list-name product-search">${ category.categoryName }</a>
+						</li>
+					</c:forEach>
+				</ul>
+			</div>
+			<div class="col-lg-10 col-md-8 category-list">
+				<div class="row" id="listProductCategory">
 				</div>
 			</div>
 		</div>
@@ -73,8 +83,10 @@
 
 
 <!--end of Category-->
+<!-- end of Category-->
 <!-- End container-private -->
 <script src="<c:url value='/template/web/plugins/jquery/jquery-3.5.1.min.js'/>"></script>
 <script src="<c:url value='/template/web/plugins/jquery/jquery.validate.min.js'/>"></script>
 <script src="<c:url value='/template/web/plugins/bootstrap/js/bootstrap.min.js'/>"></script>
 <script src="<c:url value='/template/web/js/category-search.js'/>"></script> 
+<script src="<c:url value='/template/web/js/category.js'/>"></script> 
