@@ -30,7 +30,7 @@ public class ControlBrandController {
 	@Autowired
 	private BrandService brandService;
 	
-	@GetMapping
+	@GetMapping(value = "/list")
 	public String initPageBrand(Model model) {
 		return "admin/brand-admin";
 	}
@@ -38,7 +38,7 @@ public class ControlBrandController {
 	@GetMapping(value = "/findAll")
 	@ResponseBody
 	public List<Brand> findAllBrand() {
-		return brandService.findAll();
+		return brandService.findAllBrand();
 	}
 	
 	@PostMapping(value = "/add")

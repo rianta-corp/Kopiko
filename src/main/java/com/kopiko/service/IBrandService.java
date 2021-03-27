@@ -11,10 +11,10 @@ public interface IBrandService {
 	 * 
 	 * Get all brand
 	 * 
-	 * @returnList<BrandEntity>
+	 * @returnList<Brand>
 	 * 
 	 */
-	List<Brand> findAll();
+	List<Brand> findAllBrand();
 
 	/**
 	 * 
@@ -59,10 +59,15 @@ public interface IBrandService {
 	 * Find brand by brand name 
 	 * 
 	 * @param brandName
-	 * @return BrandEntity
+	 * @return Brand
 	 * 
 	 */
 	Brand findByBrandName(String brandName);
+
+	/**
+	 * @return
+	 */
+	List<Brand> findAll();
 	
 	
 }
