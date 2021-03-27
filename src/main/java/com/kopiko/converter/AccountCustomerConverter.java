@@ -7,16 +7,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.kopiko.dto.AccountCustomerDTO;
 import com.kopiko.entity.Account;
 import com.kopiko.service.IBrandService;
 import com.kopiko.service.ICategoryService;
 
+import lombok.extern.apachecommons.CommonsLog;
+
 /**
  * @author rianta9
  * @datecreated 26 thg 3, 2021 16:10:31
  */
+
+@Component
 public class AccountCustomerConverter {
 	@Autowired
 	ICategoryService categoryService;
