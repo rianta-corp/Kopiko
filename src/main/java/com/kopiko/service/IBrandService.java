@@ -68,5 +68,4 @@ public interface IBrandService {
 	 * @return
 	 */
 	List<Brand> findAll();
-
 }

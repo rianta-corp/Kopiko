@@ -13,7 +13,7 @@ public class Constants {
 	public static final String DATE_FORMAT_FOR_FILE_NAME = "yyyyMMdd-HHmm";
 	
 	/* The number of max item in page */
-	public static final int PAGE_SIZE = 5;
+	public static final int PAGE_SIZE = 10;
 	
 	/* Response Code */
 	public static final int RESULT_CD_FAIL = 0;

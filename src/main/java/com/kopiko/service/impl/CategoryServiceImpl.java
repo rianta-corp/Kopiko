@@ -54,6 +54,8 @@ public class CategoryServiceImpl implements ICategoryService {
 		} catch (Exception e) {
 			System.out.println("Delete category failed: " + e.getMessage());
 		}
+		
+	
 	}
 
 	@Override
@@ -90,9 +92,11 @@ public class CategoryServiceImpl implements ICategoryService {
 
 	@Override
 	public CategoryEntity findOne(Long categoryId) {
+		// TODO Auto-generated method stub
 		return categoryRepository.getOne(categoryId);
 	}
 
+	// To do someting
 	public CategoryEntity findByCategoryName(String categoryName) {
 		return categoryRepository.findByCategoryName(categoryName);
 	}
@@ -109,22 +113,26 @@ public class CategoryServiceImpl implements ICategoryService {
 
 	@Override
 	public CategoryEntity insert(CategoryEntity categoryEntity) {
+		// TODO Auto-generated method stub
 		return categoryRepository.saveAndFlush(categoryEntity);
 	}
 
 	@Override
 	public CategoryEntity update(CategoryEntity categoryEntity) {
+		// TODO Auto-generated method stub
 		return categoryRepository.saveAndFlush(categoryEntity);
 	}
 
 	@Override
 	public boolean delete(Long id) {
+		// TODO Auto-generated method stub
 		categoryRepository.deleteById(id);
 		return true;
 	}
 
 	@Override
 	public List<CategoryEntity> findAll() {
+		// TODO Auto-generated method stub
 		return categoryRepository.findAll();
 	}
 

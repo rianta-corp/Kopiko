@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.kopiko.entity.Product;
-import com.kopiko.model.ResponseModel;
 
 @Service
 public interface IProductService {
@@ -22,10 +21,4 @@ public interface IProductService {
 	List<Product> findByProductSale();
 	List<Product> findAllBySalePrice(BigDecimal minPrice, BigDecimal maxPrice);
 	
-	// Search product category id! trungns4
-	List<Product> searchProductByCategoryId(Long id);
-	
-	ResponseModel findAllProductWithPage(int pageNumber);
-	
-	ResponseModel searchProductByCategotyId(Long id, int pageNumber);
 }
