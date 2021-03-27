@@ -3,6 +3,8 @@ package com.kopiko.repository;
 import java.math.BigDecimal;
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -23,4 +25,9 @@ public interface IProductRepository extends JpaRepository<Product, Long>{
     
 	List<Product> findAllBySalePriceBetween(BigDecimal minPrice, BigDecimal maxPrice);
 
+	@Query(value = "select * from product where category_id = ?1", nativeQuery = true)
+	List<Product> searchProductByCategoryId(Long id);
+	
+	@Query(value = "select * from product where category_id = ?1", nativeQuery = true)
+	Page<Product> searchProductByCategoryIdWithPage(Long id, Pageable pageable);
 }
