@@ -5,13 +5,6 @@ package com.kopiko.dto;
 
 import java.math.BigDecimal;
 import java.sql.Date;
-import java.util.List;
-
-import com.kopiko.entity.Brand;
-import com.kopiko.entity.CategoryEntity;
-import com.kopiko.entity.Comment;
-import com.kopiko.entity.ProductDetail;
-import com.kopiko.entity.ProductImage;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

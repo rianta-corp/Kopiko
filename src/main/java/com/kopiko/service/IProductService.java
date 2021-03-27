@@ -20,5 +20,6 @@ public interface IProductService {
 	List<Product> findByProductNameIgnoreCaseContaining(String text);
 	List<Product> findByProductSale();
 	List<Product> findAllBySalePrice(BigDecimal minPrice, BigDecimal maxPrice);
-	
+	//Search product by category id! trungns4
+	List<Product> searchProductByCategoryId(Long id);
 }

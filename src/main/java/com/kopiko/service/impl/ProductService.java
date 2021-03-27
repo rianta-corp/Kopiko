@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kopiko.entity.Product;
-import com.kopiko.entity.ProductDetail;
 import com.kopiko.repository.IProductRepository;
 import com.kopiko.service.IProductService;
 
@@ -85,6 +84,12 @@ public class ProductService implements IProductService{
 		}
 		else data = product;
 		return productRepository.saveAndFlush(data);
+	}
+
+	// Search product by category id! trungns4
+	@Override
+	public List<Product> searchProductByCategoryId(Long id) {
+		return productRepository.searchProductByCategoryId(id);
 	}
 
 }

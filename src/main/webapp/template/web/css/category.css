@@ -6,6 +6,7 @@ body {
 
 a {
     text-decoration: none !important;  
+    cursor: pointer;
 }
 .link-menu-list {
     list-style: none;
@@ -60,6 +61,12 @@ a {
     text-align: center;
     color: var(--text-color);
     padding: 15px 5px;
+    line-height: 18px;
+    height: 50px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
 }
 
 .btn-add {

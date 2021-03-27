@@ -22,5 +22,9 @@ public interface IProductRepository extends JpaRepository<Product, Long>{
     List<Product> findByProductSale();
     
 	List<Product> findAllBySalePriceBetween(BigDecimal minPrice, BigDecimal maxPrice);
+	
+	// Search product by category id! trungns4
+	@Query(value = "select * from product as p where p.category_id = ?1", nativeQuery = true)
+	List<Product> searchProductByCategoryId(Long id);
 
 }

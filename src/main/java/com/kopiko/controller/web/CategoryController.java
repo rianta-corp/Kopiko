@@ -7,12 +7,17 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.kopiko.converter.ProductConverter;
+import com.kopiko.dto.ProductDTO;
 import com.kopiko.entity.CategoryEntity;
 import com.kopiko.service.ICategoryService;
+import com.kopiko.service.IProductService;
 
 /**
  * @author rianta9
@@ -27,8 +32,16 @@ public class CategoryController {
 	@Autowired
 	private ICategoryService categoryService;
 
+	@Autowired
+	private ProductConverter productConvert;
+	
+	@Autowired
+	private IProductService productService;
+	
 	@GetMapping
-	public String initPageCategory() {
+	public String initPageCategory(Model model) {
+		List<CategoryEntity> categories = categoryService.findAll();
+		model.addAttribute("categories", categories);
 		return "web/category";
 	}
 	
@@ -37,4 +50,17 @@ public class CategoryController {
 	public List<CategoryEntity> findAllCategory() {
 		return categoryService.getAllCategory();
 	}
+	
+	@GetMapping(value = "/{id}/products")
+	@ResponseBody
+	public List<ProductDTO> findProductByCategoryId(@PathVariable("id") Long id) {
+		return productConvert.toDTOList(productService.searchProductByCategoryId(id));
+	}
+	
+	@GetMapping(value = "/findAllProduct")
+	@ResponseBody
+	public List<ProductDTO> findAllProduct() {
+		return productConvert.toDTOList(productService.findAll());
+	}
+	
 }
