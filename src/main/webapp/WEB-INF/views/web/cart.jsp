@@ -11,13 +11,17 @@
 
 </head>
 
+<style type="text/css">
+body {
+	background: rbg(239, 239, 239)
+}
+</style>
+
 <!-- List giỏ hàng -->
 <section id="view">
 
 	<div class="container">
-		<div class="row mt-4">
-			<h3 class="ml-4">Giỏ Hàng</h3>
-		</div>
+		<h3 class="ml-4">Giỏ Hàng</h3>
 		<div class="row mt-4">
 			<c:choose>
 				<c:when test="${sessionScope.myCartNum == 0}">
@@ -74,35 +78,81 @@
 					</div>
 					<div class="col-md-4">
 
-						<div class="payment rounder-3">
-							<h4 align="center"
-								style="padding: 8px; margin: 0; border-bottom: 1px solid #DCDCDC;">Địa
-								Chỉ Giao Hàng</h4>
-							<h5 style="padding: 20px 40px 0 40px">
-								<span>Hoàng Quốc Khánh</span> | <span>0389829122</span>
-							</h5>
-							<h5 style="padding: 5px 40px">FPT Complex, Phường Hoà Hải, Quận Ngũ Hành Sơn, Đà Nẵng
+						<form action="/checkout/payment" method="post">
+							<c:if test="${account != null}">
+								<div class="payment rounder-3 mb-3">
+									<h4 align="center"
+										style="padding: 8px; margin: 0; border-bottom: 1px solid #DCDCDC;">Thông
+										Tin Giao Hàng</h4>
+									<h5 style="padding: 20px 40px 5px 40px">
+										<span>${account.fullName}</span> | <span>${account.phone}</span>
+									</h5>
+									<c:choose>
+										<c:when test="${account.address != null}">
+											<h5 style="padding: 5px 40px 20px 40px">Địa chỉ:
+												${account.address}</h5>
+										</c:when>
+										<c:otherwise>
+											<h5 style="padding: 5px 40px 20px 40px">Địa chỉ: Chưa có
+												thông tin!</h5>
+										</c:otherwise>
+									</c:choose>
+									<div class="w-100 d-flex justify-content-center">
+										<button type="button" class="  button dark rounder-4"
+											id="changeAddress">Thay đổi</button>
+									</div>
+								</div>
 
-							</h5>
-							<div class="w-100 d-flex justify-content-center">
-								<button type="button" class="  button dark rounder-3" id="changeAddress" >Thay đổi</button>
+								<div class="payment rounder-3 mb-3">
+									<h4 align="center"
+										style="padding: 8px; margin: 0; border-bottom: 1px solid #DCDCDC;">Phương
+										Thức Thanh Toán</h4>
+									<select class="form-control form-control-lg mt-4"
+										id="paymentMethodId" name="paymentMethodId">
+										<c:forEach items="${listPaymentMethod}" var="paymentMethod">
+											<option value="${paymentMethod.getPaymentMethodId()}"
+												selected="selected">${paymentMethod.getPaymentMethodName()}</option>
+										</c:forEach>
+									</select>
+								</div>
+							</c:if>
+
+
+
+							<div class="payment rounder-3 mb-3">
+								<h4 align="center"
+									style="padding: 8px; margin: 0; border-bottom: 1px solid #DCDCDC;">Thanh
+									Toán</h4>
+								<c:if test="${account != null}">
+									<h5 style="padding: 20px 40px 5px 40px">
+										Tạm tính: <span style="float: right">${sessionScope.myCartTotal}
+											đ</span>
+									</h5>
+									<h5 style="padding: 5px 40px">
+										Phí vận chuyển: <span style="float: right">50.000 đ</span>
+									</h5>
+								</c:if>
+
+								<h5 style="padding: 5px 40px 20px 40px">
+									Tổng tiền: <span style="float: right">${sessionScope.myCartTotal + 50000}
+										đ</span>
+								</h5>
+
+								<c:choose>
+									<c:when test="${account == null}">
+										<a href="/login" class="button dark br-10"
+											style="display: block; margin: 0 auto; width: 80%; border-radius: 3px">Đăng
+											Nhập & Thanh Toán</a>
+									</c:when>
+
+									<c:otherwise>
+										<input type="submit" name="thanhtoan" value="Thanh Toán"
+											class="button dark br-10"
+											style="display: block; margin: 0 auto; width: 80%; border-radius: 3px">
+									</c:otherwise>
+								</c:choose>
 							</div>
-						</div>
-
-						<div class="payment rounder-3 mt-2">
-							<h4 align="center"
-								style="padding: 8px; margin: 0; border-bottom: 1px solid #DCDCDC;">Thanh
-								Toán</h4>
-							<h5 style="padding: 20px 40px">
-								Tổng Tiền: <span style="float: right">${sessionScope.myCartTotal}
-									đ</span>
-							</h5>
-							<form action="/checkout/payment" method="post">
-								<input type="submit" name="thanhtoan" value="Thanh Toán"
-									class="button dark br-10"
-									style="display: block; margin: 0 auto; padding: 10px 100px; border-radius: 25px">
-							</form>
-						</div>
+						</form>
 					</div>
 				</c:otherwise>
 			</c:choose>

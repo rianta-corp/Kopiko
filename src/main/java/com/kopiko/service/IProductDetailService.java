@@ -14,5 +14,5 @@ public interface IProductDetailService {
 	boolean delete(Long Id);
 	ProductDetail findByProductDetailId(Long Id);
 	List<ProductDetail> findAllBySize(String size);
-	
+	ProductDetail findByProductIdAndSize(Long productId, String size);
 }

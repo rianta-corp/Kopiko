@@ -20,4 +20,9 @@ public interface IOrderService {
 	List<OrderEntity> findAllByAccountAccountId(Long accountId);
 	OrderEntity findByOrderId(Long id);
 	OrderEntity updateStatus(Long orderId, Long statusId);
+	/**
+	 * @param order
+	 * @return
+	 */
+	OrderEntity save(OrderEntity order);
 }

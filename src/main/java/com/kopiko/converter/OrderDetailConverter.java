@@ -28,8 +28,10 @@ public class OrderDetailConverter {
 		OrderDetailDTO result = new OrderDetailDTO();
 		result.setOrderDetailId(orderDetail.getOrderDetailId());
 		result.setOrderId(orderDetail.getOrder().getOrderId());
-		result.setProductId(orderDetail.getProduct().getProductId());
-		result.setProductName(orderDetail.getProduct().getProductName());
+		result.setProductId(orderDetail.getProductDetail().getProduct().getProductId());
+		result.setProductName(orderDetail.getProductDetail().getProduct().getProductName());
+		result.setProductDetailId(orderDetail.getProductDetail().getProductDetailId());
+		result.setSize(orderDetail.getProductDetail().getSize());
 		result.setQuantity(orderDetail.getQuantity());
 		result.setSalePrice(orderDetail.getSalePrice());
 		return result;

@@ -112,4 +112,10 @@ public class PaymentMethodServiceImpl implements IPaymentMethodService {
 		return new ResponseModel(responseMap, 100);
 	}
 
+	@Override
+	public List<PaymentMethodEntity> findAll() {
+		// TODO Auto-generated method stub
+		return paymentMethodRepository.findAll();
+	}
+
 }
