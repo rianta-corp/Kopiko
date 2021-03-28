@@ -11,6 +11,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kopiko.common.constant.Constants;
 import com.kopiko.entity.OrderEntity;
 import com.kopiko.entity.OrderStatusEntity;
 import com.kopiko.repository.IOrderRepository;
@@ -22,7 +23,9 @@ public class OrderServiceImpl implements IOrderService {
 	
 	@Autowired
 	private IOrderRepository orderRepository;
-	@Autowired IOrderStatusRepository orderStatusRepository;
+	@Autowired 
+	private IOrderStatusRepository orderStatusRepository;
+	
 	
 	@Override
 	public List<OrderEntity> findAll() {
@@ -63,6 +66,39 @@ public class OrderServiceImpl implements IOrderService {
 			return order;
 		}
 		return null;
+	}
+
+
+	@Override
+	public OrderEntity save(OrderEntity order) {
+		if(order == null) return null;
+		OrderEntity data;
+		if(order.getOrderId() == null) {
+			if(order.getAccount() == null || order.getDeliveryInfo() == null || order.getPaymentMethod() == null) {
+				System.out.println("Info in order null");
+				return null;
+			}
+			else {
+				data = order;
+				OrderStatusEntity orderStatus = orderStatusRepository.getOne(Constants.OrderStatus.WAITING_CONFIRM_STATUS);
+				if(orderStatus != null) {
+					order.setOrderStatus(orderStatus);
+					orderRepository.saveAndFlush(order);
+				}
+				data.setOrderStatus(orderStatus);
+			}
+		}
+		else { // update order
+			data = orderRepository.getOne(order.getOrderId());
+			if(data == null) return null;
+			
+			if(order.getAccount() != null)  data.setAccount(order.getAccount());
+			if(order.getDeliveryInfo() != null) data.setDeliveryInfo(order.getDeliveryInfo());
+			if(order.getPaymentMethod() != null) data.setPaymentMethod(order.getPaymentMethod());
+			if(order.getOrderStatus() != null) data.setOrderStatus(order.getOrderStatus());
+			System.out.println("Check order condition: valid!");
+		}
+		return orderRepository.saveAndFlush(data);
 	}
 
 }

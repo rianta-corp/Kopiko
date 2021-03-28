@@ -45,4 +45,10 @@ public class ProductDetailService implements IProductDetailService{
 	public List<ProductDetail> findAllBySize(String size) {
 		return productDetailRepository.findAllBySize(size);
 	}
+
+	@Override
+	public ProductDetail findByProductIdAndSize(Long productId, String size) {
+		// TODO Auto-generated method stub
+		return productDetailRepository.findByProductIdAndSize(productId, size);
+	}
 }
