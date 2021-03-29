@@ -79,6 +79,7 @@
 							<th>Order Detail ID</th>
 							<th>Product Name</th>
 							<th>Quantity</th>
+							<th>Size</th>
 							<th>Sale Price</th>
 						</tr>
 					</thead>
@@ -87,6 +88,7 @@
 							<th>Order Detail ID</th>
 							<th>Product Name</th>
 							<th>Quantity</th>
+							<th>Size</th>
 							<th>Sale Price</th>
 						</tr>
 					</tfoot>

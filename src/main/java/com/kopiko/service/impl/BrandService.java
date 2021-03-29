@@ -40,21 +40,23 @@ public class BrandService implements IBrandService{
 
 	@Override
 	public ResponseModel updateBrand(Brand brandEntity) {
-		int responseCode = Constants.RESULT_CD_FAIL;
-		try {
-			if(brandRepository.findByBrandName(brandEntity.getBrandName()) != null) {
-				responseCode = Constants.RESULT_CD_DUPL;
-			} else {
-				brandRepository.saveAndFlush(brandEntity);
-				responseCode = Constants.RESULT_CD_SUCCESS;
-			}
-		} catch (Exception e) {
-			System.out.println("Update brand failed " + e.getMessage());
-		}
-		return new ResponseModel(responseCode);
+//		int responseCode = Constants.RESULT_CD_FAIL;
+//		Brand brandEntity = brandRepository.findByBrandId(brandId);
+//		try {
+//			if(brandRepository.findByBrandName(brandEntity.getBrandName()) != null) {
+//				responseCode = Constants.RESULT_CD_DUPL;
+//			} else {
+//				brandRepository.saveAndFlush(brandEntity);
+//				responseCode = Constants.RESULT_CD_SUCCESS;
+//				System.out.println("Brand is not exist!");
+//			}
+//		} catch (Exception e) {
+//			System.out.println("Update brand failed " + e.getMessage());
+//		}
+//		return new ResponseModel(responseCode);
+		//TODO: need to fix this method
+		return null;
 	}
-
-	@Override
 	public Brand findByBrandId(Long brandId) {
 		return brandRepository.findByBrandId(brandId);
 	}

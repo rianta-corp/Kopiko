@@ -21,6 +21,8 @@ public class OrderDetailDTO {
 	private Long orderId;
 	private Long productId;
 	private String productName;
+	private Long productDetailId;
+	private String size;
 	private Integer quantity;
 	private BigDecimal salePrice;
 }

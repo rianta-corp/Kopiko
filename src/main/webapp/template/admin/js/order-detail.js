@@ -14,6 +14,7 @@ $(document).ready(function () {
 			{ "data": "orderDetailId" },
 			{ "data": "productName" },
 			{ "data": "quantity" },
+			{ "data": "size" },
 			{ "data": "salePrice" }
 		]
 	});

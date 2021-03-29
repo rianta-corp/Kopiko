@@ -21,5 +21,13 @@ public class AccountCustomerDTO {
 	private String phone;
 	private String address;
 	private String avatar;
+	
+	public String getDeliveryInfo() {
+		String result = "";
+		result += "Khách hàng: " + this.fullName;
+		result += ", Sđt: " + this.phone;
+		result += ", Địa chỉ: " + this.address;
+		return result;
+	}
 
 }
