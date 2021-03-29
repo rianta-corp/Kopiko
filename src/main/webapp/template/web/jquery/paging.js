@@ -1,34 +1,55 @@
-(function($) {
+(function ($) {
   "use strict";
 
-  $.fn.JPaging = function() {
+  $.fn.JPaging = function () {
 
     var $pageSize = 3; // số phần tử xuất hiện
 
     var $visiblePageSize = 3; // số paging xuất hiện
 
-    var $parentTag = 'ul'
+    var $parentTag = 'ul';
     // ParentsTag có id rồi khỏi lo
-    var $itemTag = 'li'
+    var $itemTag = 'li';
     // Nếu itemTag dùng div phải kèm class để phân biệt các itemTag và các div thông thường
+
+    var isReversed = true;
 
     var $thisId = $(this).attr("id");
 
+
     $("<div id='paging'></div>").insertAfter(this); // chèn list Paging
+
+
+
 
     var $countLi = $(this).find("li").length; // đếm số thẻ li trong phần đc paging
 
+    if (isReversed) {
+      // var items = $(this).getElementsByTagName("li");
+      // var reverseItems = []
+      // console.log(items)
+      // var i = $countLi - 1;
+      // while (i--)
+      //   reverseItems.appendChild(items.childNodes[i]);
+
+      // $(this).empty();
+      // $(this).append(reverseItems);
+      //
+      //TODO: Reverse
+    }
+
+
     var $currentIndex = 1;
     var $pageCount = Math.floor($countLi / $pageSize);
-    if ($pageCount*$pageSize < $countLi) {
+    if ($pageCount * $pageSize < $countLi) {
       $pageCount++;
     }
-    
+
 
     //Add list paging vào #paging
     if ($pageCount >= 1 && $visiblePageSize >= 1) {
       $("#paging").append(
-        "<a href='javascript:void(0)' style='font-weight:700;'>" + "<"+ "</a>"
+        "<a href='javascript:void(0)' style='font-weight:700;'>" + "<" + "</a>"
       );
       if ($pageCount > $visiblePageSize) { // Nếu số trang vượt quá số paging hiển thị
         $("#paging").append(
@@ -69,7 +90,7 @@
     }
 
     // bắt sự kiện click #pre_point(Nút đầu tiên có dấu ... Vd: < 1 ... 1 2 3 ... 50 >)
-    $("#pre_point").on("click", function(event) {
+    $("#pre_point").on("click", function (event) {
       event.preventDefault();
       var prevIndex = $(this)
         .nextAll("a:not('.hidden,#next_point')")
@@ -88,7 +109,7 @@
       $currentIndex = prevIndex - 1;
       var gt = $pageSize * ($currentIndex - 1);
       $($parentTag + "#" + $thisId + " " + $itemTag).hide(); // ẩn tất cả item
-       //demo: $("ul#listComment li").hide() 
+      //demo: $("ul#listComment li").hide() 
 
       // Hiển thị các item từ gt-pagesize đến gt-1
       for (var i = gt - $pageSize; i < gt; i++) {
@@ -110,7 +131,7 @@
     });
 
 
-    $("#next_point").on("click", function(event) {
+    $("#next_point").on("click", function (event) {
       event.preventDefault();
       var prevIndex = $(this)
         .prevAll("a:not('.hidden')")
@@ -145,15 +166,15 @@
     });
 
 
-    $("#paging").on("click", "a:not('#pre_point,#next_point')", function() {
+    $("#paging").on("click", "a:not('#pre_point,#next_point')", function () {
       var $index = $(this).index();
       console.log(
         "curindex:" +
-          $currentIndex +
-          " visible_page_count:" +
-          $visiblePageSize +
-          " pageCount:" +
-          $pageCount
+        $currentIndex +
+        " visible_page_count:" +
+        $visiblePageSize +
+        " pageCount:" +
+        $pageCount
       );
       if ($(this).is("#paging a:first") === true) {
         if ($currentIndex === 2 && $pageCount > $visiblePageSize) {
@@ -177,7 +198,7 @@
         }
         $currentIndex = $currentIndex - 1;
         var gtFirst = $pageSize * ($currentIndex - 1);
-        if($pageCount <= $visiblePageSize) gtFirst = $pageSize * $currentIndex;
+        if ($pageCount <= $visiblePageSize) gtFirst = $pageSize * $currentIndex;
         $("#paging a").removeClass("aktif");
         $("#paging a:not('#next_point'):eq(" + $currentIndex + ")").addClass(
           "aktif"
@@ -188,8 +209,8 @@
         if ($("#paging a.hidden").length >= 1) {
           $(
             "#paging a:not('#next_point,#paging a:last'):eq(" +
-              ($currentIndex + $visiblePageSize) +
-              ")"
+            ($currentIndex + $visiblePageSize) +
+            ")"
           ).addClass("hidden");
         }
         $($parentTag + "#" + $thisId + " " + $itemTag).hide();
@@ -198,17 +219,17 @@
         }
         console.log(
           "end curindex:" +
-            $currentIndex +
-            " visible_page_count:" +
-            $visiblePageSize +
-            " pageCount:" +
-            $pageCount
+          $currentIndex +
+          " visible_page_count:" +
+          $visiblePageSize +
+          " pageCount:" +
+          $pageCount
         );
         return false;
       }
-      
+
       if ($(this).is("#paging a:last") === true) {
-        if ($currentIndex -1 === $pageCount && $pageCount > $visiblePageSize) {
+        if ($currentIndex - 1 === $pageCount && $pageCount > $visiblePageSize) {
           return false;
         }
         if ($currentIndex === $pageCount && $pageCount <= $visiblePageSize) {
@@ -232,7 +253,7 @@
         }
         $currentIndex = $currentIndex + 1;
         var gtLast = $pageSize * ($currentIndex - 1);
-        if($pageCount <= $visiblePageSize) gtLast = $pageSize * $currentIndex;
+        if ($pageCount <= $visiblePageSize) gtLast = $pageSize * $currentIndex;
         $("#paging a").removeClass("aktif");
         $("#paging a:eq(" + $currentIndex + ")").addClass("aktif");
         $("#paging a:eq(" + $currentIndex + ")").removeClass("hidden");
@@ -243,8 +264,8 @@
           console.log("cc" + ($currentIndex - $visiblePageSize));
           $(
             "#paging a:not('#next_point,#paging a:last'):eq(" +
-              ($currentIndex - $visiblePageSize) +
-              ")"
+            ($currentIndex - $visiblePageSize) +
+            ")"
           ).addClass("hidden");
         }
         $($parentTag + "#" + $thisId + " " + $itemTag).hide();
@@ -256,7 +277,7 @@
 
       $currentIndex = $index - 1;
       var gt = $pageSize * $currentIndex;
-      if($pageCount <= $visiblePageSize) gt = $pageSize * ($currentIndex+1);
+      if ($pageCount <= $visiblePageSize) gt = $pageSize * ($currentIndex + 1);
       $("#paging a").removeClass("aktif");
       $(this).addClass("aktif");
       $($parentTag + "#" + $thisId + " " + $itemTag).hide();

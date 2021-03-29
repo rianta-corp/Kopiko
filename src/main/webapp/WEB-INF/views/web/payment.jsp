@@ -110,4 +110,3 @@
 	</div>
 </section>
 <!-- end of pay-page -->
-<script src="https://kit.fontawesome.com/c8c1e5cdb3.js"></script>

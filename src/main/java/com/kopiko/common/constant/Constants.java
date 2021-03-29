@@ -13,7 +13,7 @@ public class Constants {
 	public static final String DATE_FORMAT_FOR_FILE_NAME = "yyyyMMdd-HHmm";
 	
 	/* The number of max item in page */
-	public static final int PAGE_SIZE = 10;
+	public static final int PAGE_SIZE = 5;
 	
 	/* Response Code */
 	public static final int RESULT_CD_FAIL = 0;
@@ -37,5 +37,15 @@ public class Constants {
 	/*Default variable for Role*/
 	public static class Account{
 		public static final Integer ACTIVE_STATUS = 1;
+		public static final Integer BANDED_STATUS = 1;
 	}
+	
+	public static class OrderStatus{
+		public static final Long WAITING_CONFIRM_STATUS = 1l;
+		public static final Long CONFIRMED_STATUS = 2l;
+		public static final Long SHIPPING_STATUS = 2l;
+		public static final Long DELIVERED_STATUS = 2l;
+		public static final Long CANCEL_STATUS = 2l;
+	}
+
 }

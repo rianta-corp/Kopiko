@@ -18,6 +18,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Cart {
 	private ProductShowListDTO product;
+	private Long productDetailId;
 	private String size;
 	private Integer quantity;
 }

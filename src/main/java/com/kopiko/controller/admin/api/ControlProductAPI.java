@@ -3,33 +3,22 @@
  */
 package com.kopiko.controller.admin.api;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 
-import javax.servlet.ServletContext;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.context.ServletContextAware;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.kopiko.converter.ProductConverter;
 import com.kopiko.dto.ProductDTO;
 import com.kopiko.entity.Product;
 import com.kopiko.service.IProductService;
-import com.kopiko.util.RandomUUID;
+import com.kopiko.service.impl.ProductDetailService;
 
 /**
  * @author rianta9
@@ -38,7 +27,7 @@ import com.kopiko.util.RandomUUID;
 
 @RestController
 @RequestMapping("/api/v1/admin")
-public class ControlProductAPI implements ServletContextAware {
+public class ControlProductAPI {
 	@Autowired
 	private IProductService productService;
 
@@ -46,6 +35,9 @@ public class ControlProductAPI implements ServletContextAware {
 	private ProductConverter productConverter;
 
 	private ServletContext servletContex;
+
+	@Autowired
+	private ProductDetailService productDetailService;
 
 	@GetMapping("/product/list")
 	public List<ProductDTO> getListProduct() {
@@ -138,5 +130,5 @@ public class ControlProductAPI implements ServletContextAware {
 	public void setServletContext(ServletContext servletContext) {
 		this.servletContex = servletContext;
 
-	}
+	}	
 }

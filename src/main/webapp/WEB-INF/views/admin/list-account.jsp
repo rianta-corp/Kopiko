@@ -12,7 +12,7 @@
 		<i class="fas fa-table mr-1"></i> DataTable
 	</div>
 	<div class="card-body">
-		<a href="/admin/product/new" class="btn btn-success mb-3">Danh sách tài khoản</a>
+		<a href="/admin/product/new" class="btn btn-success mb-3">Thêm tài khoản</a>
 		<div class="table-responsive">
 			<table class="table table-bordered" id="dataTable" width="100%"
 				cellspacing="0">

@@ -18,6 +18,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 
 import lombok.Data;
@@ -44,6 +45,7 @@ public class OrderEntity {
 	
 	@ManyToOne
 	@JoinColumn(name = "order_status_id", nullable = false)
+	@ColumnDefault("1")
 	private OrderStatusEntity orderStatus;
 	
 	@Column(nullable = false, columnDefinition = "nvarchar(250)")

@@ -53,9 +53,9 @@ public class BrandService implements IBrandService{
 			System.out.println("Update brand failed " + e.getMessage());
 		}
 		return new ResponseModel(responseCode);
+		return null;
 	}
-
-	@Override
+  
 	public Brand findByBrandId(Long brandId) {
 		return brandRepository.findByBrandId(brandId);
 	}

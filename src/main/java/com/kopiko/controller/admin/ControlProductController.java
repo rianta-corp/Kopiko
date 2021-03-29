@@ -7,13 +7,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -31,6 +28,7 @@ import com.kopiko.entity.Product;
 import com.kopiko.entity.ProductImage;
 import com.kopiko.service.IBrandService;
 import com.kopiko.service.ICategoryService;
+import com.kopiko.service.IProductDetailService;
 import com.kopiko.service.IProductImageService;
 import com.kopiko.service.IProductService;
 import com.kopiko.service.IStatusService;
@@ -56,14 +54,17 @@ public class ControlProductController {
 	@Autowired
 	private IStatusService statusService;
 	
-	@Autowired
-	private ProductConverter productConverter;
+//	@Autowired
+//	private ProductConverter productConverter;
 	
 	@Autowired
 	private ProductImageConverter productImageConverter;
 	
 	@Autowired
 	private IProductImageService productImageService;
+	
+	@Autowired
+	private IProductDetailService productDetailService;
 	
 	@GetMapping("/product/list")
 	public String getListProduct(Model model) {
@@ -94,6 +95,7 @@ public class ControlProductController {
 	public String update(Model model, @PathVariable(name = "id") Long productId) {
 		model.addAttribute("productId", productId);
 		model.addAttribute("productDTO", productImageConverter.toDTO(productService.findByProductId(productId)));
+		model.addAttribute("listProductDetail", productDetailService.findByProductProductId(productId));
 		model.addAttribute("listBrand", brandService.findAll());
 		model.addAttribute("listCategory", categoryService.findAll());
 		model.addAttribute("listStatus", statusService.findAll());
@@ -101,6 +103,7 @@ public class ControlProductController {
 		return "admin/update-product";
 	}
 	
+	//update product theo ID
 	@PostMapping("/product/{id}/edit")
 	public String doUpdate(Model model,  @PathVariable(name = "id") Long productId, @ModelAttribute ProductImageDTO productData, HttpServletRequest servletRequest) {
 		System.out.println(productData.toString());
@@ -133,7 +136,46 @@ public class ControlProductController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "redirect:/admin/product/list";
+		String referer = servletRequest.getHeader("Referer");
+        return "redirect:" + referer;
+	}
+	
+	//insert product 
+	
+	@PostMapping("/product/insert")
+	public String doInsert(Model model, @ModelAttribute ProductImageDTO productData, HttpServletRequest servletRequest) {
+		System.out.println(productData.toString());
+		productData.setListImgUrl(new ArrayList<String>());
+		Product product = productImageConverter.toEntity(productData);
+		product= productService.save(product);
+		
+//		Product data = productService.findByProductId(productId); // lấy product từ database ra bằng productId
+		try {
+			System.out.println("File List:");
+			for(MultipartFile file : productData.getImagesUrl()) {
+				System.out.println("File name:" + file.getOriginalFilename());
+				System.out.println("File size:" + file.getSize());
+				System.out.println("File type:" + file.getContentType());
+				String imgUrl = save(file, servletRequest);
+				if(imgUrl != null) productData.getListImgUrl().add(imgUrl);
+			}
+			
+			// Save ảnh vào database
+			for (String imageUrl : productData.getListImgUrl()) {
+				System.out.println(imageUrl);
+				ProductImage image = new ProductImage();
+				image.setImageUrl(imageUrl); // set imageUrl
+				image.setProduct(productService.findByProductId(product.getProductId())); // set product
+				productImageService.save(image); // lưu dữ liệu vào database
+			}
+			
+			// Save product vào database
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "redirect:/admin/product/insert";
 	}
 	
 	private String save(MultipartFile file, HttpServletRequest servletRequest) {

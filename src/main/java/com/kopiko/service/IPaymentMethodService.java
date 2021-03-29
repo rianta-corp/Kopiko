@@ -79,4 +79,9 @@ public interface IPaymentMethodService {
 	 * @return
 	 */
 	ResponseModel getInfoHomePage();
+
+	/**
+	 * @return
+	 */
+	List<PaymentMethodEntity> findAll();
 }

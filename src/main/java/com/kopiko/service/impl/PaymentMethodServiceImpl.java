@@ -107,6 +107,11 @@ public class PaymentMethodServiceImpl implements IPaymentMethodService {
 	public PaymentMethodEntity findByPaymentMethodNameAndPaymentMethodIdNot(String paymentMethodName,
 			Long paymentMethodId) {
 		return paymentMethodRepository.findByPaymentMethodNameAndPaymentMethodIdNot(paymentMethodName, paymentMethodId);
+  }
+  
+  @Override
+	public List<PaymentMethodEntity> findAll() {
+		return paymentMethodRepository.findAll();
 	}
 
 }
