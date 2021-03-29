@@ -29,6 +29,7 @@ public class BrandService implements IBrandService{
 			if(brandRepository.findByBrandName(brandEntity.getBrandName()) != null) {
 				responseCode = Constants.RESULT_CD_DUPL;
 			} else {
+				
 				brandRepository.saveAndFlush(brandEntity);
 				responseCode = Constants.RESULT_CD_SUCCESS;
 			}
@@ -42,7 +43,7 @@ public class BrandService implements IBrandService{
 	public ResponseModel updateBrand(Brand brandEntity) {
 		int responseCode = Constants.RESULT_CD_FAIL;
 		try {
-			if(brandRepository.findByBrandName(brandEntity.getBrandName()) != null) {
+			if(brandRepository.findByBrandNameAndBrandIdNot(brandEntity.getBrandName(), brandEntity.getBrandId()) != null) {
 				responseCode = Constants.RESULT_CD_DUPL;
 			} else {
 				brandRepository.saveAndFlush(brandEntity);

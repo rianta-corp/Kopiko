@@ -8,7 +8,7 @@
 </ol>
 
 
-<div id="announcemnet" role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-animation="true" data-autohide="true" data-delay="3000" style="position: absolute; top: 70px; right: 30px; z-index: 100000;">
+<div id="announcemnet" role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-animation="true" data-autohide="true" data-delay="3000" style="position: absolute; top: 130px; right: 30px; z-index: 100000;">
   <div class="toast-header alert-success">
     <strong class="mr-auto text-success">Announcement</strong>
     <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
@@ -30,8 +30,7 @@
 	</div>
 	<div class="card-body">
 		<div class="table-responsive">
-			<table class="table table-bordered table-striped" id="dataTable"
-				width="100%">
+			<table class="table table-bordered table-striped" id="dataTable" width="100%">
 				<thead data-detail-formatter="detailFormatter">
 					<tr id="list-header">
 						<th>No</th>
@@ -73,19 +72,23 @@
 				<form action="" method="POST" id="brandInfoForm" enctype="multipart/form-data">
 					<div class="form-group">
 						<label for="brandId">Brand Id: </label>
-						<input type="number" class="form-control" id="brandId" readonly="readonly" required="required">
+						<input type="number" class="form-control" id="brandId" name="brandId" readonly="readonly" required="required" >
 					</div>
 					<div class="form-group">
 						<label for="brandImgUrl">Brand Image:</label>
-						<input type="file" class="form-control" placeholder="Enter brand image" id="brandImgUrl" name="brandImgUrl" required="required">
+						<input type="hidden" class="form-control" id="brandImgUrl" name="brandImgUrl">
+						<input accept="image/*" type="file" class="form-control" placeholder="Enter brand image" id="imageFile" name="imageFile" required="required">
+						<div id="previewonly">
+							<img src="">
+						</div>
 					</div>
 					<div class="form-group">
 						<label for="brandName">Brand Name:</label>
-						<input type="text" class="form-control" placeholder="Enter brand name" name="brandName" id="brandName" required="required">
+						<input type="text" class="form-control" placeholder="Enter brand name" name="brandName" id="brandName">
 					</div>
 					<div class="form-group">
-						<label for="info">Infomation:</label>
-						<input type="text" class="form-control" placeholder="Enter infomation brand" name="info" id="info" required="required">
+						<label for="info">Information:</label>
+						<input type="text" class="form-control" placeholder="Enter infomation brand" name="info" id="info">
 					</div>
 					<button type="submit" class="btn btn-primary" id="btnSubmitBrand">Submit</button>
 				</form>

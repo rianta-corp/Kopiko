@@ -27,8 +27,8 @@ public class CategoryServiceImpl implements ICategoryService {
 	public ResponseModel addCategory(CategoryEntity categoryEntity) {
 		int responseCode = Constants.RESULT_CD_FAIL;
 		try {
-			if(findByCategoryName(categoryEntity.getCategoryName()) != null 
-		       && findByCategoryCode(categoryEntity.getCategoryCode()) != null) {
+			if(findByCategoryName(categoryEntity.getCategoryName()) != null || 
+			   findByCategoryCode(categoryEntity.getCategoryCode()) != null) {
 				responseCode = Constants.RESULT_CD_DUPL;
 			} else {
 				responseCode = Constants.RESULT_CD_SUCCESS;
@@ -66,7 +66,8 @@ public class CategoryServiceImpl implements ICategoryService {
 		int responseCode = Constants.RESULT_CD_FAIL;
 		try {
 			/*Check category code and category name duplicated*/
-			if(findByCategoryCodeAndCategoryCodeNot(categoryEntity.getCategoryCode(), categoryEntity.getCategoryName()) != null) {
+			if(categoryRepository.findByCategoryCode(categoryEntity.getCategoryCode()) != null || 
+			   categoryRepository.findByCategoryName(categoryEntity.getCategoryName()) != null) {
 				responseCode = Constants.RESULT_CD_DUPL;
 			} else {
 				responseCode = Constants.RESULT_CD_SUCCESS;

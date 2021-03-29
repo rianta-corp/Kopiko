@@ -7,6 +7,10 @@
 .form-group > label{
 	font-weight: 600;
 }
+a {
+	cursor: pointer;
+	text-decoration: none;
+}
 div.error-message-invalid
 {
 	position: relative;
@@ -28,4 +32,17 @@ input.error-message-invalid
 }
 .fade {
       transition: opacity 0.2s linear !important;
+}
+
+.img-brand {
+	width: 60px;
+	height: 60px;
+	display: flex;
+	margin: 0 auto;
+}
+.edit-btn {
+	color: blue;
+}
+.delete-btn {
+	color: red;
 }
