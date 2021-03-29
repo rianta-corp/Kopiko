@@ -841,7 +841,7 @@
 <script src="<c:url value='/plugins/jquery/jquery-3.5.1.min.js'/>"></script>
 <script type="text/javascript"
 	src="<c:url value='/template/web/plugins/bootstrap/js/bootstrap.min.js'/>"></script>
-<script src="<c:url value='/template/web/jquery/paging.js'/>"></script>
+<script src="<c:url value='/template/web/jquery/comment-paging.js'/>"></script>
 
 <script type="text/javascript">
 	$("#listComment").JPaging();

@@ -94,11 +94,26 @@ public class OrderServiceImpl implements IOrderService {
 			
 			if(order.getAccount() != null)  data.setAccount(order.getAccount());
 			if(order.getDeliveryInfo() != null) data.setDeliveryInfo(order.getDeliveryInfo());
+			if(order.getShippingFee() != null) data.setShippingFee(order.getShippingFee());
 			if(order.getPaymentMethod() != null) data.setPaymentMethod(order.getPaymentMethod());
 			if(order.getOrderStatus() != null) data.setOrderStatus(order.getOrderStatus());
 			System.out.println("Check order condition: valid!");
 		}
 		return orderRepository.saveAndFlush(data);
+	}
+
+
+	@Override
+	public List<OrderEntity> findAllByUsername(String username) {
+		if(username == null) return null;
+		return orderRepository.findAllByUsername(username);
+	}
+
+
+	@Override
+	public OrderEntity findByOrderIdAndAccountId(Long orderId, Long accountId) {
+		if(orderId == null || accountId == null) return null;
+		return orderRepository.findByOrderIdAndAccountAccountId(orderId, accountId);
 	}
 
 }

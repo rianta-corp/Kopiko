@@ -66,6 +66,8 @@ public class OrderConverter {
 		result.setPaymentMethodName(order.getPaymentMethod().getPaymentMethodName());
 		result.setOrderStatusId(order.getOrderStatus().getOrderStatusId());
 		result.setStatusName(order.getOrderStatus().getStatusName());
+		result.setName(order.getName());
+		result.setTotalPrice(order.getTotalPrice());
 		return result;
 	}
 	

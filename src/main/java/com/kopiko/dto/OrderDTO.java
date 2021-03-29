@@ -26,4 +26,10 @@ public class OrderDTO {
 	private String statusName;
 	private Long paymentMethodId;
 	private String paymentMethodName;
+	/**
+	 * Tên hiển thị của order
+	 */
+	private String name;
+	
+	private Long totalPrice;
 }

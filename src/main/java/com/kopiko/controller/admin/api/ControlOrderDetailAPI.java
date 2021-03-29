@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kopiko.controller.web.OrderDetailController;
 import com.kopiko.converter.OrderDetailConverter;
 import com.kopiko.dto.OrderDetailDTO;
 import com.kopiko.entity.OrderDetailEntity;
