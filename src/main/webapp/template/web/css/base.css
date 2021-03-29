@@ -14,9 +14,7 @@
     --btn-color: #333;
     --filter-background: rgb(248, 248, 248);
 }
-a {
-	cursor: poiter;
-}
+
 * {
     box-sizing: inherit;
 }

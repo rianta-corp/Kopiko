@@ -30,6 +30,7 @@ public class PaymentController {
 	@Autowired
 	private AccountCustomerConverter customerConverter;
 	
+	
 	@GetMapping("/checkout/payment")
 	public String payment(HttpSession session) {
 		HashMap<Long, Cart> cartItems = (HashMap<Long, Cart>) session.getAttribute("myCartItems");
