@@ -53,16 +53,16 @@
 					</c:forEach>
 				</select>
 			</div>
-			
+
 			<div class="form-group">
 				<label for="price">Giá Gốc</label> <input type="number"
-					class="form-control" id="price"
+					class="form-control" id="price" name="price"
 					value="${productDTO.getPrice()}">
 			</div>
-			
+
 			<div class="form-group">
 				<label for="salePrice">Giá Sale</label> <input type="number"
-					class="form-control" id="salePrice"
+					name="salePrice" class="form-control" id="salePrice"
 					value="${productDTO.getSalePrice()}">
 			</div>
 
@@ -72,28 +72,73 @@
 					name="description">${productDTO.getDescription()}</textarea>
 			</div>
 			<div class="form-group">
-			<label for="">List Ảnh</label> 
+				<label for="">List Ảnh</label>
 				<div>
-					<c:forEach items="${productDTO.getListImgUrl() }" var="productImageUrl">
-						<img style="width: auto;height: 200px;margin: 10px;" src="<c:url value='/uploads/images/${ productImageUrl}'/>">
+					<c:forEach items="${productDTO.getListImgUrl() }"
+						var="productImageUrl">
+						<img style="width: auto; height: 200px; margin: 10px;"
+							src="<c:url value='/uploads/images/${ productImageUrl}'/>">
 					</c:forEach>
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="imagesUrl">Thêm Ảnh:</label> <input
-					class="form-control" type="file" multiple="multiple"
-					class="form-control" name="imagesUrl" id="file-input"
-					accept="image/png, image/jpeg"></input>
+				<label for="imagesUrl">Thêm Ảnh</label> <input class="form-control"
+					type="file" multiple="multiple" class="form-control"
+					name="imagesUrl" id="file-input" accept="image/png, image/jpeg"></input>
 				<div id="previewonly"></div>
+			</div>
+			<div class="form-group">
+				<label for="size">Chi tiết</label>
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th scope="col">ProductDetailID</th>
+							<th scope="col">Size</th>
+							<th scope="col">Quantity</th>
+							<th scope="col">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${listProductDetail }" var="productDetail">
+							<tr>
+								<th scope="row">${productDetail.getProductDetailId() }</th>
+								<td>${productDetail.getSize() }</td>
+								<td>${productDetail.getQuantity() }</td>
+								<td>
+									<button type="button" class="btn btn-info btn-danger delete" id="${productDetail.getProductDetailId() }">Delete</button>
+								</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+			<div class="row border align-items-center mt-5 p-3">
+				<div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+					<p class="font-weight-bold m-0">Edit ProductDetail</p>
+				</div>
+				<div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 d-flex">
+					<label class="font-weight-bold m-0 mr-2 d-flex  align-items-center">Size</label>
+					<input class="form-control" type="text" id="size" name="size">
+				</div>
+				<div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 d-flex">
+					<label class="font-weight-bold m-0 mr-2 d-flex align-items-center">Quantiy</label>
+					<input class="form-control" type="number" id="quantity"
+						name="quantity">
+				</div>
+				<div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 text-center">
+					<button class="btn btn-success" id="updateProductDetail">Update
+					</button>
+					<p id="msgdt" class="ml-4 pt-1 float-left"></p>
+				</div>
 			</div>
 			<div class="form-group">
 				<label for="status">Trạng Thái</label> <select class="form-control"
 					id="status" name="status">
 					<c:forEach items="${listStatus}" var="status">
-						<c:if test="${status.getStatusId() ==  status.getStatusId()}">
+						<c:if test="${status.getStatusId() ==  productDTO.getStatus()}">
 							<option value="${status.getStatusId()}" selected="selected">${status.getStatusName()}</option>
 						</c:if>
-						<c:if test="${status.getStatusId() !=  status.getStatusId()}">
+						<c:if test="${status.getStatusId() !=  productDTO.getStatus()}">
 							<option value="${status.getStatusId()}">${status.getStatusName()}</option>
 						</c:if>
 
@@ -105,13 +150,11 @@
 				<button type="button" class="btn btn-primary float-left"
 					onclick="window.location.href='/admin/product/list'">Back</button>
 				<p id="msg" class="ml-4 pt-1 float-left"></p>
-				<button type="submit" class="btn btn-primary mb-2 float-right"
-					id="update">Lưu</button>
+				<button type="submit" class="btn btn-primary mb-2 float-right">Lưu</button>
 			</div>
 
 
 		</form>
-
 	</div>
 </div>
 

@@ -10,9 +10,9 @@ import com.kopiko.entity.ProductDetail;
 public interface IProductDetailService {
 	List<ProductDetail> findAll();
 	ProductDetail insert(ProductDetail productDetail);
-	ProductDetail update(ProductDetail productDetail);
 	boolean delete(Long Id);
 	ProductDetail findByProductDetailId(Long Id);
 	List<ProductDetail> findAllBySize(String size);
-	
+	List<ProductDetail> findByProductProductId(Long Id);
+	 ProductDetail findByProductIdAndSize(Long poductId, String size);
 }
