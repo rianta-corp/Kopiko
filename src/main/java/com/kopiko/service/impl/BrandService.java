@@ -53,7 +53,6 @@ public class BrandService implements IBrandService{
 			System.out.println("Update brand failed " + e.getMessage());
 		}
 		return new ResponseModel(responseCode);
-		return null;
 	}
   
 	public Brand findByBrandId(Long brandId) {
