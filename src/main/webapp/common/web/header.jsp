@@ -263,7 +263,7 @@
 
 <!-- Form Login / Register -->
 <!-- Login -->
-<div id="login" class="modal">
+<!-- <div id="login" class="modal">
 	<div class="modal__overlay"></div>
 	<div class="modal__wrap">
 		<form class="modal-content animate" action="/login" method="post">
@@ -291,7 +291,7 @@
 	</div>
 </div>
 
-<!-- Register -->
+Register
 <div id="register" class="modal">
 	<div class="modal__overlay"></div>
 	<div class="modal__wrap">
@@ -323,4 +323,4 @@
 			</div>
 		</form>
 	</div>
-</div>
+</div> -->
