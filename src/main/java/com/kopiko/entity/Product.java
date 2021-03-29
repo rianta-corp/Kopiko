@@ -2,6 +2,8 @@ package com.kopiko.entity;
 
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -18,6 +20,7 @@ import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.kopiko.util.DateTimeUtil;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -78,5 +81,12 @@ public class Product {
 		return salePrice.longValue();
 	}
 	
-
+	public List<Comment> getListCommentReverse(){
+		Collections.reverse(listComment);
+		return listComment;
+	}
+	
+	public String getDateCreatedString() {
+		return DateTimeUtil.toStringType(dateCreated);
+	}
 }

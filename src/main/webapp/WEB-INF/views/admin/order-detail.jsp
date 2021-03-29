@@ -17,7 +17,7 @@
 	<div class="card-body">
 		<div class="row">
 			<div class="col-sm-4">
-				<div class="card">
+				<div class="card h-100">
 					<div class="card-body">
 						<h5 class="card-title">Thông Tin Khách Hàng</h5>
 						<p class="card-text">Họ tên:
@@ -28,7 +28,7 @@
 				</div>
 			</div>
 			<div class="col-sm-4">
-				<div class="card">
+				<div class="card h-100">
 					<div class="card-body">
 						<h5 class="card-title">Trạng Thái Đơn Hàng</h5>
 						<select class="form-control" id="orderStatusId">
@@ -60,7 +60,7 @@
 				</div>
 			</div>
 			<div class="col-sm-4">
-				<div class="card">
+				<div class="card h-100">
 					<div class="card-body">
 						<h5 class="card-title">Hình Thức Thanh Toán</h5>
 						<p class="card-text w-100">${order.getPaymentMethod().getPaymentMethodName()}</p>

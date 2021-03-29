@@ -15,7 +15,7 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
 <link rel="stylesheet"
-	href="<c:url value = '/template/web/plugins/bootstrap/css/bootstrap.min.css'/>">
+	href="<c:url value = '/template/web/plugins/bootstrap-4.6.0-dist/css/bootstrap.min.css'/>">
 <link rel="stylesheet"
 	href="<c:url value = '/template/web/plugins/font-awesome/css/all.min.css'/>">
 <link

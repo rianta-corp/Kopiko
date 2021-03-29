@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kopiko.common.constant.Constants;
+import com.kopiko.converter.AccountCustomerConverter;
 import com.kopiko.converter.OrderConverter;
 import com.kopiko.dto.OrderDTO;
 import com.kopiko.entity.Account;
@@ -38,6 +39,9 @@ public class OrderController {
 
 	@Autowired
 	private IAccountService accountService;
+	
+	@Autowired
+	private AccountCustomerConverter accountCustomerConverter;
 
 	@GetMapping("/order")
 	public String viewListOrder(Model model) {
@@ -51,7 +55,7 @@ public class OrderController {
 		else {
 			Account account = accountService.findByUsername(username);
 			if (account != null && account.getStatus() == Constants.Account.ACTIVE_STATUS) {
-				model.addAttribute("account", account);
+				model.addAttribute("account", accountCustomerConverter.toDTO(account));
 				
 				List<OrderEntity> listData = orderService.findAllByUsername(username);
 				if(listData != null) System.out.println("number of order for account " + username + ": " + listData.size());
@@ -63,7 +67,7 @@ public class OrderController {
 		return "web/control-order";
 	}
 	
-	@GetMapping("/order/{orderId}/detail")
+	@GetMapping("/order/{orderId}")
 	public String viewOrderDetail(@PathVariable Long orderId, Model model) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String username = auth.getName();
@@ -74,15 +78,15 @@ public class OrderController {
 		else {
 			Account account = accountService.findByUsername(username);
 			if (account != null && account.getStatus() == Constants.Account.ACTIVE_STATUS) {
-				model.addAttribute("account", account);
-				
-				List<OrderEntity> listData = orderService.findAllByUsername(username);
-				if(listData != null) System.out.println("number of order for account " + username + ": " + listData.size());
-				else System.out.println("List order null!");
-				List<OrderDTO> listOrder = orderConverter.toDTOList(listData);
-				model.addAttribute("listOrder", listOrder);
+				model.addAttribute("account", accountCustomerConverter.toDTO(account));
+				OrderEntity order = orderService.findByOrderIdAndAccountId(orderId, account.getAccountId());
+				if(order != null) {
+					model.addAttribute("order", order);
+				}
+				else return "web/control-order-detail?message=error";
 			}
+			else return "redirect:/login";
 		}
-		return "web/control-order";
+		return "web/control-order-detail";
 	}
 }

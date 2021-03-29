@@ -36,6 +36,7 @@ public class AccountCustomerConverter {
 		account.setFullName(accountDTO.getFullName());
 		account.setAddress(accountDTO.getAddress());
 		account.setPhone(accountDTO.getPhone());
+		account.setEmail(accountDTO.getEmail());
 		account.setAvatar(accountDTO.getAvatar());
 		return account;
 	}
@@ -47,6 +48,7 @@ public class AccountCustomerConverter {
 		result.setFullName(account.getFullName());
 		result.setUsername(account.getUsername());
 		result.setPhone(account.getPhone());
+		result.setEmail(account.getEmail());
 		result.setAddress(account.getAddress());
 		result.setAvatar(account.getAvatar());
 		result.setRole(account.getRole());

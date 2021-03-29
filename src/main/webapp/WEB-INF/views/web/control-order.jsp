@@ -10,13 +10,12 @@
 	<div class="container position-relative " style="height: 44px;">
 		<div class="d-flex align-items-center py-4 h-100 position-absolute">
 			<div class="nav-item nav-item-home">
-				<a href="" class="nav-link">Trang chủ</a>
+				<a href="/home" class="nav-link">Trang chủ</a>
 			</div>
 			<div class="item__pagination"></div>
 			<div class="nav-item nav-item-infomation">Đơn hàng của tôi</div>
 		</div>
 	</div>
-	<div class="container-fluid border-bottom"></div>
 	<div class="container mt-2">
 		<div class="row">
 			<div class="col-md-3 ">
@@ -32,9 +31,9 @@
 				</div>
 				<div class="w-100 mt-3">
 					<ul class="d-flex flex-wrap w-100 pl-0">
-						<li class="w-100 py-3 px-2 font__size-3"><a href="" class=""><i
+						<li class="w-100 py-3 px-2 font__size-3"><a href="/account/profile" class=""><i
 								class="fas fa-user pr-5 font__size-4"></i>Thông tin tài khoản</a></li>
-						<li class="w-100 py-3 px-2 font__size-3"><a href="" class=""><i
+						<li class="w-100 py-3 px-2 font__size-3"><a href="/account/order" class=""><i
 								class="fas fa-tasks pr-5 font__size-4"></i>Quản lý đơn hàng</a></li>
 					</ul>
 				</div>
@@ -50,7 +49,7 @@
 						<c:otherwise>
 							<div class="table-responsive">
 
-								<table class="table table-borderless table-hover"  style="border:1px; height: 5000px">
+								<table class="table table-borderless table-hover">
 									<thead>
 										<tr>
 											<th>Mã đơn hàng</th>

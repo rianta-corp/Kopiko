@@ -43,18 +43,6 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
                                         Authentication authentication)
             throws IOException, ServletException {
 
-//        String userName = "";
-//        HttpSession session = request.getSession();
-//        Collection< GrantedAuthority > authorities = null;
-//        if(authentication.getPrincipal() instanceof Principal ) {
-//            userName = ((Principal)authentication.getPrincipal()).getName();
-//            session.setAttribute("role", "none");
-//        }else {
-//            User userSpringSecu = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//            session.setAttribute("role", String.valueOf( userSpringSecu.getAuthorities()));
-//            session.setAttribute( "connectedUser" , managerFactory.getUserManager().findByUserName( userSpringSecu.getUsername() ) );
-//        }
-//        response.sendRedirect("/public/showAtlas" );
     	
     	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String username = auth.getName();

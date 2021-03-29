@@ -6,8 +6,8 @@
 <!-- Script -->
 <script
 	src="<c:url value='/template/web/plugins/jquery/jquery-3.5.1.min.js'/>"></script>
-<script
-	src="<c:url value='/template/web/plugins/bootstrap/js/bootstrap.min.js'/>"></script>
+<%-- <script
+	src="<c:url value='/template/web/plugins/bootstrap/js/bootstrap.min.js'/>"></script> --%>
 <script src="<c:url value='/template/web/js/app.js'/>"></script>
 <header class="header">
 	<!-- Heading -->
@@ -44,7 +44,7 @@
 				<div class="heading__navbar-user">
 
 					<img src="/img/avatar.jpg" alt="" class="heading__navbar-user-img">
-					<a href="/account" class="heading__navbar-user-name">${sessionScope.account.fullName}</a>
+					<a href="/account/profile" class="heading__navbar-user-name">${sessionScope.account.fullName}</a>
 
 					<ul class="heading__navbar-user-menu">
 						<li class="heading__navbar-user-item"><a

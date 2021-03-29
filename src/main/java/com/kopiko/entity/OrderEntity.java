@@ -9,6 +9,7 @@ package com.kopiko.entity;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
 
@@ -24,6 +25,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
+
+import com.kopiko.util.DateTimeUtil;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -69,7 +72,7 @@ public class OrderEntity {
 		
 		for (OrderDetailEntity orderDetail : listOrderDetail) {
 			if(orderDetail != null && orderDetail.getSalePrice() != null && orderDetail.getQuantity() != null) {
-				result += orderDetail.getSalePrice().longValue() + orderDetail.getQuantity();
+				result += orderDetail.getSalePrice().longValue()*orderDetail.getQuantity();
 			}
 		}
 		
@@ -89,8 +92,16 @@ public class OrderEntity {
 		if(listOrderDetail != null && !listOrderDetail.isEmpty()) {
 			result = listOrderDetail.get(0).getProductDetail().getProduct().getProductName();
 			int size = listOrderDetail.size();
-			if(size > 1) result += "...và " + size + "sản phẩm khác";
+			if(size > 1) result += "...và " + size + " sản phẩm khác";
 		}
 		return result;
+	}
+	
+	public String getDeliveryTypeHtml() {
+		return this.deliveryInfo.replace(";", "<br>");
+	}
+	
+	public String getDateCreatedString() {
+		return DateTimeUtil.toStringType(dateCreated);
 	}
 }

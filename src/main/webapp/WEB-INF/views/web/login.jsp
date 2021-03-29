@@ -36,7 +36,7 @@
 												type="text" placeholder="Nhập username" />
 										</div>
 										<div class="form-group">
-											<label class="small mb-1" for="password">Một khẩu</label> <input
+											<label class="small mb-1" for="password">Mật khẩu</label> <input
 												class="form-control py-4" id="password" name="password"
 												type="password" placeholder="Nhập mật khẩu" />
 										</div>

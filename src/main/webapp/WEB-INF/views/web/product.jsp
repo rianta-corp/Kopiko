@@ -473,7 +473,7 @@
 
 		<div style="display: block; width: 100%">
 			<ul id="listComment" style="display: block; width: 100%">
-				<c:forEach items="${product.getListComment()}" var="comment">
+				<c:forEach items="${product.getListCommentReverse()}" var="comment">
 					<li class="row comment">
 						<div class="col-md-3">
 							<div>
@@ -489,7 +489,7 @@
 							<p class="font-weight-bold mt-3">${comment.title }</p>
 							<p class="">${comment.getContent()}</p>
 							<p class="" style="font-size: 12px">Nhận xét vào:
-								${comment.getDateCreated()}</p>
+								${comment.getDateCreatedString()}</p>
 						</div>
 
 					</li>
