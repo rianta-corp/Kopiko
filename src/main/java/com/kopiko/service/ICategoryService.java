@@ -101,6 +101,17 @@ public interface ICategoryService {
 	 * @return CategoryEntity
 	 * 
 	 */
-	CategoryEntity findByCategoryCodeAndCategoryCodeNot(String categoryCode, String categoryName);
+	CategoryEntity findByCategoryCodeAndCategoryIdNot(String categoryCode, Long categoryId);
+	
+	/**
+	 * 
+	 * Find category by category name and category not
+	 * 
+	 * @param categoryCode
+	 * @param categoryName
+	 * @return CategoryEntity
+	 * 
+	 */
+	CategoryEntity findByCategoryNameAndCategoryIdNot(String categoryName, Long categoryId);
 	
 }

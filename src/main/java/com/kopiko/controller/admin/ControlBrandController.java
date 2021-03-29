@@ -32,7 +32,7 @@ public class ControlBrandController {
 	@Autowired
 	private BrandService brandService;
 
-	@GetMapping()
+	@GetMapping(value = "/list")
 	public String initPageBrand(Model model) {
 		return "admin/brand-admin";
 	}

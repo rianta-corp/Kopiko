@@ -19,6 +19,7 @@ $(function() {
 })
 
 function searchProductByCategoryId(id, pageNumber) {
+	$('#message-search').empty();
 	$.ajax({
 		url: '/search/category/'+ id +'/products/' + pageNumber,
 		type: 'GET',
@@ -26,9 +27,19 @@ function searchProductByCategoryId(id, pageNumber) {
 		success: function(responseData) {
 			if(responseData.responseCode == 100) {
 				renderProduct(responseData.data.products);
-				renderPagination(responseData.data.paginationList)
+				
+				if(responseData.data.products.length > 0) {
+					renderPagination(responseData.data.paginationList)
+				} else {
+					$('#message-search').append('Not found products about this category!');
+				}
+				
+				if (responseData.data.paginationList.pageNumberList.length < 2) {
+					$('.pagination').addClass("d-none");
+				} else {
+					$('.pagination').removeClass("d-none");
+				}
 			}
-			console.log('Find all product success!');
 		},
 		error: function(e) {
 			alert('Get all product failed ' + e);
