@@ -21,6 +21,7 @@ public class AccountCustomerDTO {
 	private String phone;
 	private String address;
 	private String avatar;
+	private String role;
 	
 	public String getDeliveryInfo() {
 		String result = "";

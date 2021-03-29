@@ -26,8 +26,8 @@
 					<a class="nav-link" href="/admin/account/list">Account</a> <a
 						class="nav-link" href="/admin/brand/list">Brand</a> <a
 						class="nav-link" href="/admin/category/list">Category</a> <a
-						class="nav-link" href="/admin/product/list">Product</a> <a
-						class="nav-link" href="/admin/payment/list">Payment Method</a>
+						class="nav-link" href="/admin/product/list">Product</a> 
+						<!-- <a class="nav-link" href="/admin/payment/list">Payment Method</a> -->
 
 
 				</nav>
@@ -64,6 +64,8 @@
 	</div>
 	<div class="sb-sidenav-footer">
 		<div class="small">Logged in as:</div>
-		Admin
+		<c:if test="${sessionScope.account == null}">
+		${sessionScope.account.fullName}
+		</c:if>
 	</div>
 </nav>

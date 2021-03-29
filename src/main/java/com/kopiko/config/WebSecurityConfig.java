@@ -11,10 +11,12 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
 import com.kopiko.security.AuthenticationProviderImpl;
+import com.kopiko.security.CustomAuthenticationSuccessHandler;
 import com.kopiko.security.UserDetailsServiceImpl;
 
 
@@ -33,6 +35,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private AuthenticationProviderImpl authenticationProvider;
+	
+	@Autowired
+	AuthenticationSuccessHandler authenticationSuccessHandler;
 
 	@Autowired
 	DataSource dataSource;
@@ -91,6 +96,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		// Trang chỉ dành cho ADMIN
 		http.authorizeRequests().antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')");
+		http.authorizeRequests().antMatchers("/api/v1/admin/**").access("hasRole('ROLE_ADMIN')");
 
 		// Khi người dùng đã login, với vai trò XX.
 		// Nhưng truy cập vào trang yêu cầu vai trò YY,
@@ -108,19 +114,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.defaultSuccessUrl("/home")//
 				.failureUrl("/login?error=true")//
 				.usernameParameter("username")//
-				.passwordParameter("password");
+				.passwordParameter("password")
+				.successHandler(authenticationSuccessHandler);
 
 		// Cấu hình cho Logout Page.
 		http.authorizeRequests().and().logout().logoutUrl("/logout").logoutSuccessUrl("/home");
 
 		// Cấu hình Remember Me.
-//	        http.authorizeRequests().and() //
-//	                .rememberMe()
-//	                // .alwaysRemember(true) // default : false : ko remember, phải chọn remember
-//	                .rememberMeParameter("remember-me-custom") // default : remember-me
-//	                .rememberMeCookieName("RememberMeApp") // default : remember-me
-//	                .tokenRepository(this.persistentTokenRepository()) //
-//	                .tokenValiditySeconds(1 * 24 * 60 * 60); // custom 24h // default : 2 weeks
+	        http.authorizeRequests().and() //
+	                .rememberMe()
+	                // .alwaysRemember(true) // default : false : ko remember, phải chọn remember
+	                .rememberMeParameter("remember-me") // default : remember-me
+	                .rememberMeCookieName("RememberMeApp") // default : remember-me
+	                .tokenRepository(this.persistentTokenRepository()) //
+	                .tokenValiditySeconds(1 * 24 * 60 * 60); // custom 24h // default : 2 weeks
 	}
 
 	// Token stored in Table (Persistent_Logins)

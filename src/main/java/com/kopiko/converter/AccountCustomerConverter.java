@@ -49,6 +49,7 @@ public class AccountCustomerConverter {
 		result.setPhone(account.getPhone());
 		result.setAddress(account.getAddress());
 		result.setAvatar(account.getAvatar());
+		result.setRole(account.getRole());
 		return result;
 	}
 	
