@@ -13,15 +13,16 @@
 		<i class="fas fa-table mr-1"></i> Sản Phẩm
 	</div>
 	<div class="card-body">
-		<form method="post">
+		<form  action="/admin/product/insert"
+			enctype="multipart/form-data" method="post">
 			<div class="form-group">
 				<label for="productName" class="font-weight-bold">Tên Sản
-					Phẩm</label> <input type="text" class="form-control" id="productName"
+					Phẩm</label> <input type="text" class="form-control" id="productName" name="productName"
 					placeholder="Nhập tên sản phẩm" required>
 			</div>
 			<div class="form-group">
 				<label for="categoryId" class="font-weight-bold">Danh Mục</label> <select
-					class="form-control" id="categoryId">
+					class="form-control" id="categoryId" name="categoryId">
 					<c:forEach items="${listCategory}" var="category">
 						<option value="${category.getCategoryId()}">${category.getCategoryName()}</option>
 					</c:forEach>
@@ -29,7 +30,7 @@
 			</div>
 			<div class="form-group">
 				<label for="brandId">Thương Hiệu</label> <select
-					class="form-control" id="brandId">
+					class="form-control" id="brandId" name="brandId">
 					<c:forEach items="${listBrand}" var="brand">
 						<option value="${brand.getBrandId()}">${brand.getBrandName()}</option>
 					</c:forEach>
@@ -37,22 +38,28 @@
 			</div>
 
 			<div class="form-group">
-				<label for="price">Giá Gốc</label> <input type="number"
+				<label for="price">Giá Gốc</label> <input type="number" name="price"
 					class="form-control" id="price">
 			</div>
 
 			<div class="form-group">
-				<label for="salePrice">Giá Sale</label> <input type="number"
+				<label for="salePrice">Giá Sale</label> <input type="number" name="salePrice"
 					class="form-control" id="salePrice">
 			</div>
 
 			<div class="form-group">
 				<label for="description">Mô Tả</label>
-				<textarea class="form-control" id="description" rows="10">${productDTO.getDescription()}</textarea>
+				<textarea class="form-control" id="description"  name="description" rows="10">${productDTO.getDescription()}</textarea>
 			</div>
-
 			<div class="form-group">
-				<label for="status">Trạng Thái</label> <select class="form-control"
+				<label for="imagesUrl">Thêm Ảnh:</label> <input
+					class="form-control" type="file" multiple="multiple"
+					class="form-control" name="imagesUrl" id="file-input"
+					accept="image/png, image/jpeg"></input>
+				<div id="previewonly"></div>
+			</div>
+			<div class="form-group"> 
+				<label for="status">Trạng Thái</label> <select class="form-control" name="status"
 					id="status">
 					<c:forEach items="${listStatus}" var="status">
 						<option value="${status.getStatusId()}">${status.getStatusName()}</option>
