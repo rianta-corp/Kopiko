@@ -4,6 +4,10 @@
 package com.kopiko.dto;
 
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
+import com.kopiko.util.DateTimeUtil;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,7 +22,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class OrderDTO {
 	private Long orderId;
-	private Date dateCreated;
+	private String dateCreated;
 	private String deliveryInfo;
 	private Long accountId;
 	private String fullName;
@@ -26,4 +30,14 @@ public class OrderDTO {
 	private String statusName;
 	private Long paymentMethodId;
 	private String paymentMethodName;
+	/**
+	 * Tên hiển thị của order
+	 */
+	private String name;
+	
+	private Long totalPrice;
+	
+	public Date getDateCreatedSQL() {
+		return DateTimeUtil.toDateSQL(dateCreated);
+	}
 }

@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.kopiko.converter.AccountCustomerConverter;
 import com.kopiko.converter.ProductShowListConverter;
 import com.kopiko.entity.Account;
 import com.kopiko.entity.Product;
@@ -54,6 +55,9 @@ public class CartController {
 	
 	@Autowired
 	private IProductDetailService productDetailService;
+	
+	@Autowired
+	private AccountCustomerConverter accountCustomerConverter;
 	
 	@PostMapping("/add/{productId}")
 	public String addCart(@PathVariable Long productId, @RequestParam(required = false) String size, @RequestParam(required = false) Integer quantity, HttpSession session, HttpServletRequest request) {
@@ -137,7 +141,7 @@ public class CartController {
 		System.out.println("username get from authentication:" + username);
 		if(username != null) {
 			Account account = accountService.findByUsername(username);
-			model.addAttribute("account", account);
+			model.addAttribute("account", accountCustomerConverter.toDTO(account));
 			model.addAttribute("listPaymentMethod", paymentMethodService.findAll()); // nếu như đã đăng nhập thì mới add những thông tin này lên
 		}
 		

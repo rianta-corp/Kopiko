@@ -63,6 +63,8 @@ public class AccountService implements IAccountService {
 	public Account save(Account account) {
 		Account data;
 		if (account.getAccountId() == null) { // insert data
+			if (checkIdentity(account.getUsername(), account.getEmail(), account.getPhone()) == false)
+				return null;
 			data = account;
 		} else { // update data
 			data = accountRepository.findByAccountId(account.getAccountId());
@@ -70,14 +72,14 @@ public class AccountService implements IAccountService {
 				data.setAddress(account.getAddress());
 			if (account.getAvatar() != null)
 				data.setAvatar(account.getAvatar());
-			if (account.getEmail() != null)
+			if (account.getEmail() != null
+					&& accountRepository.findByEmailAndAccountIdNot(account.getEmail(), account.getAccountId()) == null)
 				data.setEmail(account.getEmail());
 			if (account.getFullName() != null)
 				data.setFullName(account.getFullName());
-			if (account.getPhone() != null)
+			if (account.getPhone() != null
+					&& accountRepository.findByPhoneAndAccountIdNot(account.getPhone(), account.getAccountId()) == null)
 				data.setPhone(account.getPhone());
-			if (account.getUsername() != null)
-				data.setUsername(account.getUsername());
 			if (account.getPassword() != null)
 				data.setPassword(account.getPassword());
 			if (account.getRole() != null)
@@ -138,11 +140,11 @@ public class AccountService implements IAccountService {
 	}
 
 	public boolean checkIdentity(String username, String email, String phone) {
-		if (accountRepository.findByUsername(username) != null)
+		if (username != null && accountRepository.findByUsername(username) != null)
 			return false;
-		if (accountRepository.findByEmail(email) != null)
+		if (email != null && accountRepository.findByEmail(email) != null)
 			return false;
-		if (accountRepository.findByPhone(phone) != null)
+		if (phone != null && accountRepository.findByPhone(phone) != null)
 			return false;
 		return true;
 	}

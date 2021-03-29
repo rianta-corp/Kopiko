@@ -25,4 +25,16 @@ public interface IOrderService {
 	 * @return
 	 */
 	OrderEntity save(OrderEntity order);
+	/**
+	 * @param username
+	 * @return
+	 */
+	List<OrderEntity> findAllByUsername(String username);
+	/**
+	 * Tìm kiếm xem orderId có thuộc tài khoản accountId ko...Nếu có trả về order.
+	 * @param orderId
+	 * @param accountId
+	 * @return
+	 */
+	OrderEntity findByOrderIdAndAccountId(Long orderId, Long accountId);
 }

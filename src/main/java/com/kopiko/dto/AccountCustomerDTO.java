@@ -3,6 +3,8 @@
  */
 package com.kopiko.dto;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -19,8 +21,11 @@ public class AccountCustomerDTO {
 	private String username;
 	private String fullName;
 	private String phone;
+	private String email;
 	private String address;
 	private String avatar;
+	private MultipartFile avatarFile;
+	private String role;
 	
 	public String getDeliveryInfo() {
 		String result = "";

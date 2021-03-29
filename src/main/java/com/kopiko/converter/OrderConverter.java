@@ -47,7 +47,7 @@ public class OrderConverter {
 		
 		OrderEntity result = new OrderEntity();
 		result.setOrderId(orderDTO.getOrderId());
-		result.setDateCreated(orderDTO.getDateCreated());
+		result.setDateCreated(orderDTO.getDateCreatedSQL());
 		result.setDeliveryInfo(orderDTO.getDeliveryInfo());
 		result.setAccount(account);
 		result.setPaymentMethod(paymentMethod);
@@ -58,7 +58,7 @@ public class OrderConverter {
 	public OrderDTO toDTO(OrderEntity order) {
 		OrderDTO result = new OrderDTO();
 		result.setOrderId(order.getOrderId());
-		result.setDateCreated(order.getDateCreated());
+		result.setDateCreated(order.getDateCreatedString());
 		result.setDeliveryInfo(order.getDeliveryInfo());
 		result.setAccountId(order.getAccount().getAccountId());
 		result.setFullName(order.getAccount().getFullName());
@@ -66,6 +66,8 @@ public class OrderConverter {
 		result.setPaymentMethodName(order.getPaymentMethod().getPaymentMethodName());
 		result.setOrderStatusId(order.getOrderStatus().getOrderStatusId());
 		result.setStatusName(order.getOrderStatus().getStatusName());
+		result.setName(order.getName());
+		result.setTotalPrice(order.getTotalPrice());
 		return result;
 	}
 	

@@ -45,4 +45,8 @@ public class OrderDetailEntity {
 	@Column(nullable = false, columnDefinition = "money")
 	private BigDecimal salePrice;
 	
+	
+	public Long getLongSalePrice() {
+		return this.salePrice.longValue();
+	}
 }

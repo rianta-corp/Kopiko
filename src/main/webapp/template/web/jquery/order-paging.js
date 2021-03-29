@@ -3,26 +3,28 @@
 
   $.fn.JPaging = function () {
 
-    var $pageSize = 3; // số phần tử xuất hiện
+    var $pageSize = 5; // số phần tử xuất hiện
 
-    var $visiblePageSize = 3; // số paging xuất hiện
+    var $visiblePageSize = 5; // số paging xuất hiện
 
-    var $parentTag = 'ul';
+    var $parentTag = 'tbody';
     // ParentsTag có id rồi khỏi lo
-    var $itemTag = 'li';
+    var $itemTag = 'tr';
     // Nếu itemTag dùng div phải kèm class để phân biệt các itemTag và các div thông thường
+
+    var $colspan = 5; // set số cột nếu dùng table
 
     var isReversed = true;
 
     var $thisId = $(this).attr("id");
 
 
-    $("<div id='paging'></div>").insertAfter(this); // chèn list Paging
+    $("<tfoot><tr><th colspan='"+ $colspan + "'><div id='paging'></div></th></tr></tfoot>").insertAfter(this); // chèn list Paging
 
 
 
 
-    var $countLi = $(this).find("li").length; // đếm số thẻ li trong phần đc paging
+    var $countLi = $(this).find($itemTag).length; // đếm số thẻ li trong phần đc paging
 
     if (isReversed) {
       // var items = $(this).getElementsByTagName("li");
