@@ -48,7 +48,7 @@ public class PaymentMethodServiceImpl implements IPaymentMethodService {
 	public ResponseModel updatePaymentMethod(PaymentMethodEntity paymentMethodEntity) {
 		int responseCode = Constants.RESULT_CD_FAIL;
 		try {
-			if(paymentMethodRepository.findByPaymentMethodName(paymentMethodEntity.getPaymentMethodName()) != null) {
+			if(findByPaymentMethodNameAndPaymentMethodIdNot(paymentMethodEntity.getPaymentMethodName(), paymentMethodEntity.getPaymentMethodId()) != null) {
 				responseCode = Constants.RESULT_CD_DUPL;
 			} else {
 				paymentMethodRepository.saveAndFlush(paymentMethodEntity);
@@ -77,16 +77,7 @@ public class PaymentMethodServiceImpl implements IPaymentMethodService {
 
 	@Override
 	public List<PaymentMethodEntity> findAllPaymentMethodWithPage(int pageNumber) {
-//		Map<String, Object> responseMap = new HashMap<>();
 		List<PaymentMethodEntity> listPayment = new ArrayList<PaymentMethodEntity>();
-//		try {
-//			Sort sortList = Sort.by(Sort.Direction.DESC, "paymetMethodId");
-//			Pageable pageable = (Pageable) PageRequest.of(pageNumber - 1, Constants.PAGE_SIZE, sortList);
-//			Page<PaymentMethodEntity> paymentMethodEntitiesPage = (Page<PaymentMethodEntity>) paymentMethodRepository
-//					.findAll((Sort) pageable);
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//		}
 		return listPayment;
 	}
 
@@ -113,8 +104,13 @@ public class PaymentMethodServiceImpl implements IPaymentMethodService {
 	}
 
 	@Override
+	public PaymentMethodEntity findByPaymentMethodNameAndPaymentMethodIdNot(String paymentMethodName,
+			Long paymentMethodId) {
+		return paymentMethodRepository.findByPaymentMethodNameAndPaymentMethodIdNot(paymentMethodName, paymentMethodId);
+  }
+  
+  @Override
 	public List<PaymentMethodEntity> findAll() {
-		// TODO Auto-generated method stub
 		return paymentMethodRepository.findAll();
 	}
 

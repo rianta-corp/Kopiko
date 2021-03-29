@@ -25,7 +25,7 @@ public class Constants {
 	public static final String PROP_KEY_PRICE_FROM = "priceFrom";
 	public static final String PROP_KEY_PRICE_TO = "priceTo";
 	
-	/* Encrypt password contants */
+	/* Encrypt password contants  */
 	public static final String ENCRYPT_CONSTANTS = "!#$%^&*!#$%^&*";
 	
 	/*Default variable for Role*/
