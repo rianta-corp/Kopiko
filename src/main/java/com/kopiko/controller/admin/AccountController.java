@@ -27,10 +27,10 @@ public class AccountController {
 		return "list";
 	}
 
-	@GetMapping("/account/create")
+	@GetMapping("admin/account/create")
 	public String create(Model model) {
 		model.addAttribute("account", new Account());
-		return "form";
+		return "admin/insert-account";
 	}
 
 	@GetMapping("/account/{accountId}/insert")

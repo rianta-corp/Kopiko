@@ -31,7 +31,6 @@ public class AccountConverter {
 		account.setAvatar(accountDTO.getAvatar());
 		account.setPassword(accountDTO.getPassword());
 		account.setStatus(accountDTO.getStatus());
-		account.setDateCreated(accountDTO.getDateCreated());
 		return account;
 	}
 	

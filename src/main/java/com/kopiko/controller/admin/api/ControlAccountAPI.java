@@ -35,6 +35,8 @@ public class ControlAccountAPI {
 	public AccountDTO update(@PathVariable(name = "id" )Long accountId, @RequestBody AccountDTO accountDTO) {
 		System.out.println(accountDTO.toString());
 		Account account = accountConverter.toEntity(accountDTO);
+		if(account.getRole() == "ADMIN") account.setAvatar("avatar-admin.jpg");
+		else  account.setAvatar("avatar-user.png");
 		account = accountService.save(account);
 		return accountConverter.toDTO(account); 
 	}

@@ -4,8 +4,8 @@
 
 <ol class="breadcrumb mb-4">
 	<li class="breadcrumb-item"><a href="/admin/home">Dashboard</a></li>
-	<li class="breadcrumb-item"><a href="/admin/product/list">Control
-			Product</a></li>
+	<li class="breadcrumb-item"><a href="/admin/account/list">Control
+			Account</a></li>
 	<li class="breadcrumb-item active">Update Account</li>
 </ol>
 <div class="card mb-4 mt-3">
@@ -30,29 +30,32 @@
 					value="${accountDTO.getFullName()}">
 			</div>
 			<div class="form-group">
-				<label for="productName">Avatar</label> <input type="text"
-					class="form-control" id="avatar"
-					value="${accountDTO.getAvatar()}">
-			</div>
-			<div class="form-group">
 				<label for="address">Address:</label> <input type="text"
 					class="form-control" id="address"
 					value="${accountDTO.getAddress()}">
 			</div>
 			<div class="form-group">
 				<label for="phone">Phone:</label> <input type="text"
-					class="form-control" id="phone"
-					value="${accountDTO.getPhone()}">
+					class="form-control" id="phone" value="${accountDTO.getPhone()}">
 			</div>
 			<div class="form-group">
 				<label for="email">Email:</label> <input type="text"
-					class="form-control" id="email"
-					value="${accountDTO.getEmail()}">
+					class="form-control" id="email" value="${accountDTO.getEmail()}">
 			</div>
 			<div class="form-group">
-				<label for="status">Status</label> <input type="text"
-					class="form-control" id="status"
-					value="${accountDTO.getStatus()}">
+				<label for="status">Status <strong>(Ẩn: 0 , Hiện:
+						1)</strong></label> <select class="form-control" id="status" name="status">
+					<c:if test="${accountDTO.getStatus() != null}">
+						<option>${accountDTO.getStatus()}</option>
+					</c:if>
+					<c:if test="${accountDTO.getStatus() == 1}">
+						<option>0</option>
+					</c:if>
+					<c:if test="${accountDTO.getStatus() == 0}">
+						<option>1</option>
+					</c:if>
+				</select>
+
 			</div>
 			<div class="form-group">
 				<label for="password">PassWord:</label> <input type="password"
@@ -60,9 +63,18 @@
 					value="${accountDTO.getPassword()}">
 			</div>
 			<div class="form-group">
-				<label for="role">Role:</label> <input type="text"
-					class="form-control" id="role"
-					value="${accountDTO.getRole()}">
+				<label for="brandId">Role</label> <select class="form-control"
+					id="role" name="role">
+					<c:if test="${accountDTO.getRole() != null}">
+						<option>${accountDTO.getRole()}</option>
+					</c:if>
+					<c:if test="${accountDTO.getRole() == 'ADMIN'}">
+						<option>USER</option>
+					</c:if>
+					<c:if test="${accountDTO.getRole() == 'USER'}">
+						<option>ADMIN</option>
+					</c:if>
+				</select>
 			</div>
 			<div class="form-group">
 				<button type="button" class="btn btn-primary float-left"

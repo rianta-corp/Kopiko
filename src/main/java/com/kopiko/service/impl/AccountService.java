@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.kopiko.common.constant.Constants;
 import com.kopiko.entity.Account;
-import com.kopiko.entity.Product;
 import com.kopiko.repository.IAccountRepository;
 import com.kopiko.service.IAccountService;
 
@@ -87,7 +86,7 @@ public class AccountService implements IAccountService {
 			if (account.getStatus() != null)
 				data.setStatus(account.getStatus());
 		}
-		return accountRepository.saveAndFlush(account);
+		return accountRepository.saveAndFlush(data);
 	}
 
 	@Override
