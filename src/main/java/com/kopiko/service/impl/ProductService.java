@@ -19,6 +19,7 @@ import com.kopiko.model.PageModel;
 import com.kopiko.model.ResponseModel;
 import com.kopiko.repository.IProductRepository;
 import com.kopiko.service.IProductService;
+import com.kopiko.statistic.IProductStatistic;
 
 @Service
 public class ProductService implements IProductService{
@@ -151,6 +152,18 @@ public class ProductService implements IProductService{
 	public List<Product> searchProductOfCategoryByProductId(Long id) {
 		// TODO Auto-generated method stub
 		return productRepository.searchProductOfCategoryByProductId(id);
+	}
+
+	@Override
+	public List<IProductStatistic> getTop10SellingAllTime() {
+		// TODO Auto-generated method stub
+		return productRepository.getTop10SellingAllTime();
+	}
+
+	@Override
+	public List<IProductStatistic> getTop10SellingByMonthAndYear(Integer month, Integer year) {
+		// TODO Auto-generated method stub
+		return productRepository.getTop10SellingByMonthAndYear(month, year);
 	}
 
 }

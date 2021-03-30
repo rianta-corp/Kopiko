@@ -10,6 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.kopiko.entity.Product;
+import com.kopiko.statistic.IProductStatistic;
 
 @Repository
 public interface IProductRepository extends JpaRepository<Product, Long>{
@@ -46,4 +47,24 @@ public interface IProductRepository extends JpaRepository<Product, Long>{
 	
 	@Query(value = "select * from product where category_id = ?1", nativeQuery = true)
 	Page<Product> searchProductByCategoryIdWithPage(Long id, Pageable pageable);
+	
+	@Query(value = "select top 10 p.product_id as ProductId, p.product_name as ProductName, count(od.quantity) as QuantityOfProduct\r\n"
+			+ "from order_detail as od\r\n"
+			+ "join [order] as o on od.order_id = o.order_id\r\n"
+			+ "join product_detail as pd on od.product_detail_id = pd.product_detail_id\r\n"
+			+ "right join product as p on p.product_id = pd.product_id\r\n"
+			+ "group by p.product_id, p.product_name", nativeQuery = true)
+	List<IProductStatistic> getTop10SellingAllTime();
+
+	@Query(value="select top 10 p.product_id as ProductId, p.product_name as ProductName, case when tb1.quantity_of_product is null then 0 else tb1.quantity_of_product end as QuantityOfProduct\r\n"
+			+ "from(\r\n"
+			+ "	select pd.product_id, count(od.quantity) as quantity_of_product\r\n"
+			+ "	from order_detail as od\r\n"
+			+ "	join [order] as o on od.order_id = o.order_id\r\n"
+			+ "	join product_detail as pd on od.product_detail_id = pd.product_detail_id\r\n"
+			+ "	where month(o.date_created) = ?1 and year(o.date_created) = ?2\r\n"
+			+ "group by pd.product_id\r\n"
+			+ ") as tb1\r\n"
+			+ "right join product as p on p.product_id = tb1.product_id", nativeQuery = true)
+	List<IProductStatistic> getTop10SellingByMonthAndYear(Integer month, Integer year);
 }

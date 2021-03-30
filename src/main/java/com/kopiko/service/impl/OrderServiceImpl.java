@@ -17,6 +17,8 @@ import com.kopiko.entity.OrderStatusEntity;
 import com.kopiko.repository.IOrderRepository;
 import com.kopiko.repository.IOrderStatusRepository;
 import com.kopiko.service.IOrderService;
+import com.kopiko.statistic.IOrderStatistic;
+import com.kopiko.statistic.IRevenueStatistic;
 
 @Service
 public class OrderServiceImpl implements IOrderService {
@@ -114,6 +116,18 @@ public class OrderServiceImpl implements IOrderService {
 	public OrderEntity findByOrderIdAndAccountId(Long orderId, Long accountId) {
 		if(orderId == null || accountId == null) return null;
 		return orderRepository.findByOrderIdAndAccountAccountId(orderId, accountId);
+	}
+
+
+	@Override
+	public List<IOrderStatistic> getListQuantityOfOrderByYear(Integer year) {
+		return orderRepository.getListQuantityOfOrderByYear(year);
+	}
+
+
+	@Override
+	public List<IRevenueStatistic> getListRevenueOfOrderByYear(Integer year) {
+		return orderRepository.getListRevenueOfOrderByYear(year);
 	}
 
 }

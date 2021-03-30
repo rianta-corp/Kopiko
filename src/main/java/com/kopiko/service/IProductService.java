@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.kopiko.entity.Product;
 import com.kopiko.model.ResponseModel;
+import com.kopiko.statistic.IProductStatistic;
 
 @Service
 public interface IProductService {
@@ -34,4 +35,14 @@ public interface IProductService {
 	ResponseModel findAllProductWithPage(int pageNumber);
 	
 	ResponseModel searchProductByCategotyId(Long id, int pageNumber);
+	/**
+	 * @return
+	 */
+	List<IProductStatistic> getTop10SellingAllTime();
+	/**
+	 * @param month
+	 * @param year
+	 * @return
+	 */
+	List<IProductStatistic> getTop10SellingByMonthAndYear(Integer month, Integer year);
 }

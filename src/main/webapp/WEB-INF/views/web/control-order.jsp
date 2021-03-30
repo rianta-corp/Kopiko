@@ -21,7 +21,7 @@
 			<div class="col-md-3 pt-4 ">
 				<div class="d-flex w-100">
 					<div class="block__img-customer">
-						<img src="/img/avatar.jpg" class="img__customer" alt=""
+						<img src="<c:url value='/uploads/images/${account.avatar}'/>" class="img__customer" alt=""
 							srcset="">
 					</div>
 					<div class="name__customer ml-3">

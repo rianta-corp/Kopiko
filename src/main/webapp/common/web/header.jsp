@@ -50,8 +50,10 @@
 				access="hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') and isAuthenticated()">
 				<div class="heading__navbar-user">
 
-					<img src="/img/avatar.jpg" alt="" class="heading__navbar-user-img">
-					<a href="/account/profile" class="heading__navbar-user-name">${user.username}</a>
+					<img
+						src="<c:url value='/uploads/images/avatar-admin.jpg'/>"
+						alt="" class="heading__navbar-user-img"> <a
+						href="/account/profile" class="heading__navbar-user-name">${user.username}</a>
 
 					<ul class="heading__navbar-user-menu">
 						<li class="heading__navbar-user-item"><a
@@ -92,18 +94,6 @@
 								<div class="header__search-input-wrap">
 									<input type="text" class="header__search-input"
 										placeholder="Tìm kiếm sản phẩm">
-									<!-- <div class="header__search-history">
-										<h3 class="header__search-history-heading">Lịch sử tìm
-											kiếm</h3>
-										<ul class="header__search-history-list">
-											<li class="header__search-history-item"><a href="">Áo
-													khoác</a></li>
-											<li class="header__search-history-item"><a href="">Áo
-													sơ mi</a></li>
-											<li class="header__search-history-item"><a href="">Quần
-													ka ki</a></li>
-										</ul>
-									</div> -->
 								</div>
 								<button class="header__search-btn">
 									<i class="header__search-btn-icon fas fa-search"></i>
@@ -114,14 +104,14 @@
 							href="/home">TRANG CHỦ</a></li>
 						<li class="nav__mobile-list-item"><a href="/search/new"
 							class="nav__mobile-link">MỚI</a></li>
-						<li class="nav__mobile-list-item"><a href="/search/man"
-							class="nav__mobile-link">THỜI TRANG NAM</a></li>
-						<li class="nav__mobile-list-item"><a href="/search/woman"
-							class="nav__mobile-link">THỜI TRANG NỮ</a></li>
 						<li class="nav__mobile-list-item"><a href="/search/sale"
 							class="nav__mobile-link">SALE</a></li>
-						<li class="nav__mobile-list-item"><a href="/search/brand"
-							class="nav__mobile-link">THƯƠNG HIỆU</a></li>
+						<li class="nav__mobile-list-item"><a
+							href="/search/thoi-trang-nam" class="nav__mobile-link">THỜI
+								TRANG NAM</a></li>
+						<li class="nav__mobile-list-item"><a
+							href="/search/thoi-trang-nu" class="nav__mobile-link">THỜI
+								TRANG NỮ</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -136,33 +126,11 @@
 				<div class="header__search-input-wrap">
 					<input type="text" class="header__search-input"
 						placeholder="Tìm kiếm sản phẩm">
-					<!-- <div class="header__search-history">
-						<h3 class="header__search-history-heading">Lịch sử tìm kiếm</h3>
-						<ul class="header__search-history-list">
-							<li class="header__search-history-item"><a href="">Áo
-									khoác</a></li>
-							<li class="header__search-history-item"><a href="">Áo sơ
-									mi</a></li>
-							<li class="header__search-history-item"><a href="">Quần
-									ka ki</a></li>
-						</ul>
-					</div> -->
 				</div>
 				<button class="header__search-btn">
 					<i class="header__search-btn-icon fas fa-search"></i>
 				</button>
 			</div>
-
-			<!-- Header Cart -->
-			<!-- <div class="header__cart">
-                <div class="header__cart-wrap">
-                    <i class="header__cart-icon fas fa-shopping-cart"></i>
-                    Header No Item Cart  header__cart-list--no-cart
-                    <div class="header__cart-list">
-                        <img src="/img/no_cart.png" alt="No Cart" class="header__cart-no-cart-img">
-                    </div>
-                </div>
-            </div> -->
 
 			<!-- Cart -->
 			<div class="header__cart">
@@ -224,7 +192,9 @@
 					<li class="header__navbar-items"><a
 						class="header__navbar-items-link" href="/search/new">MỚI</a></li>
 					<li class="header__navbar-items"><a
-						class="header__navbar-items-link" href="/search/men">THỜI
+						class="header__navbar-items-link" href="/search/sale">SALE</a></li>
+					<li class="header__navbar-items"><a
+						class="header__navbar-items-link" href="/search/thoi-trang-nam">THỜI
 							TRANG NAM</a>
 						<div class="header__navbar-detail">
 							<ul class="header__navbar-detail-list">
@@ -239,7 +209,7 @@
 							</ul>
 						</div></li>
 					<li class="header__navbar-items"><a
-						class="header__navbar-items-link" href="/search/women">THỜI
+						class="header__navbar-items-link" href="/search/thoi-trang-nu">THỜI
 							TRANG NỮ</a>
 						<div class="header__navbar-detail">
 							<ul class="header__navbar-detail-list">
@@ -253,11 +223,7 @@
 									class="header__navbar-detail-link">Sweater</a></li>
 							</ul>
 						</div></li>
-					<li class="header__navbar-items"><a
-						class="header__navbar-items-link" href="/search/sale">SALE</a></li>
-					<li class="header__navbar-items"><a
-						class="header__navbar-items-link" href="/search/brand">THƯƠNG
-							HIỆU</a></li>
+
 				</ul>
 			</div>
 		</div>
