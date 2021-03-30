@@ -19,4 +19,9 @@ public interface IPaymentMethodRepository extends JpaRepository<PaymentMethodEnt
 	PaymentMethodEntity findByPaymentMethodId(Long paymentMethodId);
 	
 	List<PaymentMethodEntity> findByPaymentMethodNameContaining(String paymentMethodName);
+	
+	PaymentMethodEntity findByPaymentMethodName(String paymentMethodName);
+	
+	PaymentMethodEntity findByPaymentMethodNameAndPaymentMethodIdNot(String paymentMethodName, Long paymentMethodId);
+	
 }

@@ -10,7 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,9 +21,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.kopiko.converter.AccountCustomerConverter;
 import com.kopiko.converter.ProductShowListConverter;
+import com.kopiko.entity.Account;
 import com.kopiko.entity.Product;
+import com.kopiko.entity.ProductDetail;
 import com.kopiko.model.Cart;
+import com.kopiko.service.IAccountService;
+import com.kopiko.service.IPaymentMethodService;
+import com.kopiko.service.IProductDetailService;
 import com.kopiko.service.IProductService;
 
 /**
@@ -38,6 +47,18 @@ public class CartController {
 	@Autowired
 	private ProductShowListConverter productShowListConverter;
 	
+	@Autowired
+	private IAccountService accountService;
+	
+	@Autowired
+	private IPaymentMethodService paymentMethodService;
+	
+	@Autowired
+	private IProductDetailService productDetailService;
+	
+	@Autowired
+	private AccountCustomerConverter accountCustomerConverter;
+	
 	@PostMapping("/add/{productId}")
 	public String addCart(@PathVariable Long productId, @RequestParam(required = false) String size, @RequestParam(required = false) Integer quantity, HttpSession session, HttpServletRequest request) {
 		HashMap<Long, Cart> cartItems = (HashMap<Long, Cart>) session.getAttribute("myCartItems");
@@ -45,7 +66,9 @@ public class CartController {
             cartItems = new HashMap<>();
         }
         Product product = productService.findByProductId(productId);
-        if (product != null) {
+        ProductDetail productDetail = productDetailService.findByProductIdAndSize(productId,size);
+        String message = "";
+        if (product != null && productDetail != null) {
         	Cart item;
             if (cartItems.containsKey(productId)) item = cartItems.get(productId);
             else {
@@ -53,6 +76,7 @@ public class CartController {
             	item.setQuantity(0);
             }
             item.setProduct(productShowListConverter.toDTO(product));
+            item.setProductDetailId(productDetail.getProductDetailId());
             if(size != null && !size.isEmpty()) item.setSize(size);
             else {
             	if(product.getListProductDetail().get(0) != null) item.setSize(product.getListProductDetail().get(0).getSize());
@@ -61,12 +85,13 @@ public class CartController {
             if(quantity != null) item.setQuantity(item.getQuantity() + quantity);
             else item.setQuantity(1);
             cartItems.put(productId, item);
+            session.setAttribute("myCartItems", cartItems);
+            session.setAttribute("myCartNum", cartItems.size());
+            session.setAttribute("myCartTotal", totalPrice(cartItems));   
         }
-        session.setAttribute("myCartItems", cartItems);
-        session.setAttribute("myCartNum", cartItems.size());
-        session.setAttribute("myCartTotal", totalPrice(cartItems));
+        else message = "?message=error";
         String referer = request.getHeader("Referer");
-        return "redirect:" + referer;
+        return "redirect:" + referer + message;
 	}
 	
 	@PostMapping("/update/{productId}")
@@ -84,7 +109,7 @@ public class CartController {
             	item.setQuantity(0);
             }
             item.setProduct(productShowListConverter.toDTO(product));
-            if(quantity != null) item.setQuantity(item.getQuantity() + quantity);
+            if(quantity != null) item.setQuantity(quantity);
             else item.setQuantity(1);
             cartItems.put(productId, item);
         }
@@ -95,8 +120,8 @@ public class CartController {
         return "redirect:" + referer;
 	}
 	
-	public double totalPrice(HashMap<Long, Cart> cartItems) {
-        int count = 0;
+	public Long totalPrice(HashMap<Long, Cart> cartItems) {
+		Long count = 0l;
         for (Map.Entry<Long, Cart> list : cartItems.entrySet()) {
             count += list.getValue().getProduct().getSalePrice().longValue() * list.getValue().getQuantity();
         }
@@ -104,13 +129,22 @@ public class CartController {
     }
 	
 	@GetMapping(value = "/view")
-    public String viewCart(ModelMap mm, HttpSession session) {
+    public String viewCart(Model model, HttpSession session) {
         HashMap<Long, Cart> cartItems = (HashMap<Long, Cart>) session.getAttribute("myCartItems");
         if (cartItems == null) {
             cartItems = new HashMap<>();
         }
-        String username = (String)session.getAttribute("username");
-        //TODO: lấy use ra để push lên
+        
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String username = auth.getName();
+		// Lấy username ra
+		System.out.println("username get from authentication:" + username);
+		if(username != null) {
+			Account account = accountService.findByUsername(username);
+			model.addAttribute("account", accountCustomerConverter.toDTO(account));
+			model.addAttribute("listPaymentMethod", paymentMethodService.findAll()); // nếu như đã đăng nhập thì mới add những thông tin này lên
+		}
+		
         session.setAttribute("myCartItems", cartItems);
         session.setAttribute("myCartNum", cartItems.size());
         session.setAttribute("myCartTotal", totalPrice(cartItems));

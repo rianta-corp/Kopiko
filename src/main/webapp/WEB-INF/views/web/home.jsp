@@ -60,12 +60,12 @@
         </div>
          <!-- end Banner carousel -->
          <!--Banner layout -->
-        <div class="container Banner__layout-pt ">
-            <div class="row banner__layout-pt-responsive">
+        <div class="container Banner__layout-pt  " style="background-color: #eee;" >
+            <div class="row banner__layout-pt-responsive" style="background-color: #eee;">
                 <div class="col-md-6  col-sm-12 scroll__starup-banner-top">
-                    <div class="card">
-                        <div class="card-block position-relative banner__layout-opacity overflow-hidden box-sizing">
-                            <img src="/img/slider-2.jpg"  class="img-fluid banner__img-scale" alt="" srcset="">
+                    <div class="card" style="border-color: #eee!important; background-color: #eee;">
+                        <div class="card-block position-relative banner__layout-opacity overflow-hidden box-sizing" style="border-color: #eee!important;background-color: #eee;">
+                            <img src="/img/slider-2.jpg"  class="img-fluid banner__img-scale" alt="" srcset="" style="border-color: #eee!important; background-color: #eee;">
                             <div class="card-title text-left ml-2 position-absolute position__property-banner-layout">
                                 <h4 >Xu hướng 2019</h4>
                                 <div class="is-divider divider clearfix" 
@@ -77,10 +77,10 @@
                     </div>
                 </div>
                 <div class="col-md-6  col-sm-12 scroll__starup-banner-top">
-                    <div class="card">
-                        <div class="card-block position-relative banner__layout-opacity overflow-hidden box-sizing">
-                            <img src="/img/slider-2.jpg"  class="img-fluid banner__img-scale" alt="">
-                            <div class="card-title  text-left ml-2 position-absolute position__property-banner-layout">
+                    <div class="card" style="border-color: #eee!important; background-color: #eee;">
+                        <div class="card-block position-relative banner__layout-opacity overflow-hidden box-sizing" style="border-color: #eee!important; background-color: #eee;">
+                            <img src="/img/slider-2.jpg"  class="img-fluid banner__img-scale" alt="" style="border-color: #eee!important; background-color: #eee;">
+                            <div class="card-title  text-left ml-2 position-absolute position__property-banner-layout" >
                                 <h4>Xu hướng 2019</h4>
                                 <div class="is-divider divider clearfix" 
                                     style="margin-top:1.5em;margin-bottom:1.5em;max-width:50px;height:1px;background-color:rgb(200, 153, 121);">
@@ -174,11 +174,11 @@
         <!--  -->
  
         <!-- Banner Layout 2 -->
-        <div class="container Banner__layout-pt ">
+        <div class="container Banner__layout-pt " style="background-color: #eee;" >
             <div class="row banner__layout-pt-res">
-                <div class="col-md-6  col-sm-12 scroll__starup-banner-top">
-                    <div class="card">
-                        <div class="card-block position-relative banner__layout-opacity overflow-hidden box-sizing">
+                <div class="col-md-6  col-sm-12 scroll__starup-banner-top" >
+                    <div class="card" style="border-color: #eee!important; background-color: #eee; ">
+                        <div class="card-block position-relative banner__layout-opacity overflow-hidden box-sizing" style="border-color: #eee!important; background-color: #eee; ">
                             <img src="/img/slider-2.jpg"  class="img-fluid banner__img-scale" alt="" srcset="">
                             <div class="card-title text-left ml-2 position-absolute position__property-banner-layout position__top">
                                 <h1 >CỔ ĐIỂN</h4>>
@@ -187,11 +187,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6  col-sm-12 scroll__starup-banner-bottom">
-                    <div class="card">
-                        <div class="card-block position-relative banner__layout-opacity overflow-hidden box-sizing">
+                <div class="col-md-6  col-sm-12 scroll__starup-banner-bottom" style="border-color: #eee!important; background-color: #eee; ">
+                    <div class="card" style="border-color: #eee!important; background-color: #eee; ">
+                        <div class="card-block position-relative banner__layout-opacity overflow-hidden box-sizing" style="border-color: #eee!important; background-color: #eee; ">
                             <img src="/img/slider-2.jpg"  class="img-fluid banner__img-scale" alt="">
-                            <div class="card-title  text-left ml-2 position-absolute position__property-banner-layout position__bottom">
+                            <div class="card-title  text-left ml-2 position-absolute position__property-banner-layout position__bottom" style="border-color: #eee!important; ">
                                 <h1>SANG TRỌNG</h4>>
                                 <h5>Đa dạng về phong cách, kiểu dáng, màu sắc, kích cỡ…</h5>
                             </div>

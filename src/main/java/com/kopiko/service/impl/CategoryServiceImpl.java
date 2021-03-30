@@ -27,8 +27,8 @@ public class CategoryServiceImpl implements ICategoryService {
 	public ResponseModel addCategory(CategoryEntity categoryEntity) {
 		int responseCode = Constants.RESULT_CD_FAIL;
 		try {
-			if(findByCategoryName(categoryEntity.getCategoryName()) != null 
-		       && findByCategoryCode(categoryEntity.getCategoryCode()) != null) {
+			if(findByCategoryName(categoryEntity.getCategoryName()) != null || 
+			   findByCategoryCode(categoryEntity.getCategoryCode()) != null) {
 				responseCode = Constants.RESULT_CD_DUPL;
 			} else {
 				responseCode = Constants.RESULT_CD_SUCCESS;
@@ -42,8 +42,20 @@ public class CategoryServiceImpl implements ICategoryService {
 	}
 
 	@Override
-	public void deleteCategory(Long categortId) {
-		categoryRepository.deleteById(categortId);
+	public void deleteCategory(Long categorytId) {
+		CategoryEntity categoryEntity = categoryRepository.findByCategoryId(categorytId);
+		try {
+			if(categoryEntity != null) {
+				categoryRepository.deleteById(categorytId);
+				categoryRepository.flush();
+			} else {
+				System.out.println("CategoryEntity not exists");
+			}
+		} catch (Exception e) {
+			System.out.println("Delete category failed: " + e.getMessage());
+		}
+		
+	
 	}
 
 	@Override
@@ -56,7 +68,8 @@ public class CategoryServiceImpl implements ICategoryService {
 		int responseCode = Constants.RESULT_CD_FAIL;
 		try {
 			/*Check category code and category name duplicated*/
-			if(findByCategoryCodeAndCategoryCodeNot(categoryEntity.getCategoryCode(), categoryEntity.getCategoryName()) != null) {
+			if(findByCategoryCodeAndCategoryIdNot(categoryEntity.getCategoryCode(), categoryEntity.getCategoryId()) != null || 
+			   findByCategoryNameAndCategoryIdNot(categoryEntity.getCategoryName(), categoryEntity.getCategoryId()) != null) {
 				responseCode = Constants.RESULT_CD_DUPL;
 			} else {
 				responseCode = Constants.RESULT_CD_SUCCESS;
@@ -95,11 +108,6 @@ public class CategoryServiceImpl implements ICategoryService {
 	}
 
 	@Override
-	public CategoryEntity findByCategoryCodeAndCategoryCodeNot(String categoryCode, String categoryName) {
-		return categoryRepository.findByCategoryCodeAndCategoryCodeNot(categoryCode, categoryName);
-	}
-
-	@Override
 	public CategoryEntity insert(CategoryEntity categoryEntity) {
 		// TODO Auto-generated method stub
 		return categoryRepository.saveAndFlush(categoryEntity);
@@ -122,6 +130,16 @@ public class CategoryServiceImpl implements ICategoryService {
 	public List<CategoryEntity> findAll() {
 		// TODO Auto-generated method stub
 		return categoryRepository.findAll();
+	}
+
+	@Override
+	public CategoryEntity findByCategoryCodeAndCategoryIdNot(String categoryCode, Long categoryId) {
+		return categoryRepository.findByCategoryCodeAndCategoryIdNot(categoryCode, categoryId);
+	}
+
+	@Override
+	public CategoryEntity findByCategoryNameAndCategoryIdNot(String categoryName, Long categoryId) {
+		return categoryRepository.findByCategoryNameAndCategoryIdNot(categoryName, categoryId);
 	}
 
 }

@@ -5,13 +5,6 @@ package com.kopiko.dto;
 
 import java.math.BigDecimal;
 import java.sql.Date;
-import java.util.List;
-
-import com.kopiko.entity.Brand;
-import com.kopiko.entity.CategoryEntity;
-import com.kopiko.entity.Comment;
-import com.kopiko.entity.ProductDetail;
-import com.kopiko.entity.ProductImage;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,6 +12,7 @@ import lombok.NoArgsConstructor;
 /**
  * @author rianta9
  * @datecreated 17 thg 3, 2021 15:54:58
+ * Sử dụng để truy xuất thông tin product trong quản lý
  */
 
 @Data

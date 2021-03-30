@@ -14,6 +14,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kopiko.common.constant.Constants;
 import com.kopiko.entity.CategoryEntity;
 import com.kopiko.entity.PaymentMethodEntity;
 import com.kopiko.model.ResponseModel;
@@ -28,13 +29,35 @@ public class PaymentMethodServiceImpl implements IPaymentMethodService {
 	private IPaymentMethodRepository paymentMethodRepository;
 
 	@Override
-	public PaymentMethodEntity addNewPaymentMethod(PaymentMethodEntity paymentMethodEntity) {
-		return paymentMethodRepository.saveAndFlush(paymentMethodEntity);
+	public ResponseModel addNewPaymentMethod(PaymentMethodEntity paymentMethodEntity) {
+		int responseCode = Constants.RESULT_CD_FAIL;
+		try {
+			if(paymentMethodRepository.findByPaymentMethodName(paymentMethodEntity.getPaymentMethodName()) != null) {
+				responseCode = Constants.RESULT_CD_DUPL;
+			} else {
+				paymentMethodRepository.saveAndFlush(paymentMethodEntity);
+				responseCode = Constants.RESULT_CD_SUCCESS;
+			}
+		} catch (Exception e) {
+			System.out.println("Add new payment method " + e.getMessage());
+		}
+		return new ResponseModel(responseCode);
 	}
 
 	@Override
-	public PaymentMethodEntity updatePaymentMethod(PaymentMethodEntity paymentMethodEntity) {
-		return paymentMethodRepository.saveAndFlush(paymentMethodEntity);
+	public ResponseModel updatePaymentMethod(PaymentMethodEntity paymentMethodEntity) {
+		int responseCode = Constants.RESULT_CD_FAIL;
+		try {
+			if(findByPaymentMethodNameAndPaymentMethodIdNot(paymentMethodEntity.getPaymentMethodName(), paymentMethodEntity.getPaymentMethodId()) != null) {
+				responseCode = Constants.RESULT_CD_DUPL;
+			} else {
+				paymentMethodRepository.saveAndFlush(paymentMethodEntity);
+				responseCode = Constants.RESULT_CD_SUCCESS;
+			}
+		} catch (Exception e) {
+			System.out.println("Update new payment method " + e.getMessage());
+		}
+		return new ResponseModel(responseCode);
 	}
 
 	@Override
@@ -54,16 +77,7 @@ public class PaymentMethodServiceImpl implements IPaymentMethodService {
 
 	@Override
 	public List<PaymentMethodEntity> findAllPaymentMethodWithPage(int pageNumber) {
-//		Map<String, Object> responseMap = new HashMap<>();
 		List<PaymentMethodEntity> listPayment = new ArrayList<PaymentMethodEntity>();
-//		try {
-//			Sort sortList = Sort.by(Sort.Direction.DESC, "paymetMethodId");
-//			Pageable pageable = (Pageable) PageRequest.of(pageNumber - 1, Constants.PAGE_SIZE, sortList);
-//			Page<PaymentMethodEntity> paymentMethodEntitiesPage = (Page<PaymentMethodEntity>) paymentMethodRepository
-//					.findAll((Sort) pageable);
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//		}
 		return listPayment;
 	}
 
@@ -87,6 +101,17 @@ public class PaymentMethodServiceImpl implements IPaymentMethodService {
 		responseMap.put("paymentMethodList", paymentMethods);
 		responseMap.put("categoryList", categories);
 		return new ResponseModel(responseMap, 100);
+	}
+
+	@Override
+	public PaymentMethodEntity findByPaymentMethodNameAndPaymentMethodIdNot(String paymentMethodName,
+			Long paymentMethodId) {
+		return paymentMethodRepository.findByPaymentMethodNameAndPaymentMethodIdNot(paymentMethodName, paymentMethodId);
+  }
+  
+  @Override
+	public List<PaymentMethodEntity> findAll() {
+		return paymentMethodRepository.findAll();
 	}
 
 }

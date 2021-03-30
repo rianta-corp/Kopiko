@@ -33,6 +33,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private AuthenticationProviderImpl authenticationProvider;
+	
+	/*
+	 * @Autowired AuthenticationSuccessHandler authenticationSuccessHandler;
+	 */
 
 	@Autowired
 	DataSource dataSource;
@@ -86,10 +90,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		// Trang /userInfo yêu cầu phải login với vai trò ROLE_USER hoặc ROLE_ADMIN.
 		// Nếu chưa login, nó sẽ redirect tới trang /login.
 		http.authorizeRequests().antMatchers("/checkout/payment").access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')");
-		http.authorizeRequests().antMatchers("/comment").access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')");
+		http.authorizeRequests().antMatchers("/comment/**").access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')");
+		http.authorizeRequests().antMatchers("/account/**").access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')");
 
 		// Trang chỉ dành cho ADMIN
 		http.authorizeRequests().antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')");
+		http.authorizeRequests().antMatchers("/api/v1/admin/**").access("hasRole('ROLE_ADMIN')");
 
 		// Khi người dùng đã login, với vai trò XX.
 		// Nhưng truy cập vào trang yêu cầu vai trò YY,
@@ -108,18 +114,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.failureUrl("/login?error=true")//
 				.usernameParameter("username")//
 				.passwordParameter("password");
+//				.successHandler(authenticationSuccessHandler);
 
 		// Cấu hình cho Logout Page.
-		http.authorizeRequests().and().logout().logoutUrl("/logout").logoutSuccessUrl("/logoutSuccessful");
+		http.authorizeRequests().and().logout().logoutUrl("/logout").logoutSuccessUrl("/home");
 
 		// Cấu hình Remember Me.
-//	        http.authorizeRequests().and() //
-//	                .rememberMe()
-//	                // .alwaysRemember(true) // default : false : ko remember, phải chọn remember
-//	                .rememberMeParameter("remember-me-custom") // default : remember-me
-//	                .rememberMeCookieName("RememberMeApp") // default : remember-me
-//	                .tokenRepository(this.persistentTokenRepository()) //
-//	                .tokenValiditySeconds(1 * 24 * 60 * 60); // custom 24h // default : 2 weeks
+	        http.authorizeRequests().and() //
+	                .rememberMe()
+	                // .alwaysRemember(true) // default : false : ko remember, phải chọn remember
+	                .rememberMeParameter("remember-me") // default : remember-me
+	                .rememberMeCookieName("RememberMeApp") // default : remember-me
+	                .tokenRepository(this.persistentTokenRepository()) //
+	                .tokenValiditySeconds(1 * 24 * 60 * 60); // custom 24h // default : 2 weeks
 	}
 
 	// Token stored in Table (Persistent_Logins)

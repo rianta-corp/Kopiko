@@ -21,7 +21,6 @@
 <link href="<c:url value='/template/web/plugins/font-awesome/css/all.min.css'/>" rel="stylesheet"/>
 <link href="<c:url value='/template/admin/dist/css/admin.css'/>" rel="stylesheet"/>
 
-<!-- <script src="https://cdn.datatables.net/buttons/1.7.0/js/dataTables.buttons.min.js" crossorigin="anonymous"></script> -->
 </head>
 <body class="sb-nav-fixed">
 	<!-- HEADER -->

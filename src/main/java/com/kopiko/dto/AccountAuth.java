@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 /**
  * @author rianta9
  * @datecreated 21 thg 3, 2021 22:33:21
- * Dùng trong spring security thôi
+ * Dùng trong spring security thôi...sử dụng để đăng nhập hệ thống
  */
 
 @JsonInclude(JsonInclude.Include.NON_NULL)

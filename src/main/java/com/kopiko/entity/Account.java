@@ -27,9 +27,11 @@ public class Account {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(columnDefinition = "bigint", name = "account_id")
 	private Long accountId;
+	
+	@Column(unique = true)
 	private String username;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, unique = true)
 	private String phone;
 	
 	@Column(nullable = false)
@@ -41,6 +43,8 @@ public class Account {
 	@Column(columnDefinition = "nvarchar(255)")
 	private String address;
 	private String avatar;
+	
+	@Column(unique = true)
 	private String email;
 	
 	@Column(nullable = false, columnDefinition = "datetime")
@@ -52,5 +56,16 @@ public class Account {
 	
 	@ColumnDefault("1") // Active
 	private Integer status;
+
+	/**
+	 * @return
+	 */
+	public String getDeliveryInfo() {
+		String result = "";
+		result += "Khách hàng: " + this.fullName;
+		result += ";Sđt: " + this.phone;
+		result += ";Địa chỉ: " + this.address;
+		return result;
+	}
 
 }

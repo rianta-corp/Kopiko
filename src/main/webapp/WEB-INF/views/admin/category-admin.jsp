@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 
+<%@include file="/common/taglib.jsp" %>
 <h1 class="mt-4">Tables</h1>
 <ol class="breadcrumb mb-4">
 	<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
@@ -113,4 +114,12 @@
 		</div>
 	</div>
 </div>
+<script src="<c:url value='/template/web/plugins/jquery/jquery-3.5.1.min.js'/>"></script>
+<script src="<c:url value='/template/web/plugins/jquery/jquery.validate.min.js'/>"></script>
+<script src="<c:url value='/template/web/plugins/bootstrap/js/bootstrap.min.js'/>"></script>
+<script src="<c:url value='/template/web/plugins/datatables/js/jquery.dataTables.min.js'/>"></script>
+<script src="<c:url value='/template/web/plugins/datatables/js/dataTables.buttons.min.js'/>"></script>
+<script src="<c:url value='/template/web/plugins/datatables/js/dataTables.bootstrap4.min.js'/>"></script>
+<script src="<c:url value='/template/admin/dist/js/scripts.js'/>"></script>
+<script src="<c:url value='/template/admin/dist/assets/demo/category-admin.js'/>"></script> 
 

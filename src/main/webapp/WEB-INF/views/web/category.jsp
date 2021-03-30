@@ -42,201 +42,40 @@
 				id="categoryMenu">
 				<h5 class="font-weight-bold text-dark">DANH MỤC SẢN PHẨM</h5>
 				<ul class="navbar-nav flex-column mt-3">
-					<li class="nav-item"><a href="#"
-						class="nav-link px-3 category-list-name active"> Áo phông nam
-					</a></li>
-					<li class="nav-item"><a href="#"
-						class="nav-link  px-3 mb-2 category-list-name"> Sơ mi nam </a></li>
-					<li class="nav-item"><a href="#"
-						class="nav-link px-3 mb-2 category-list-name"> Áo phông nam </a></li>
-					<li class="nav-item"><a href="#"
-						class="nav-link  px-3 mb-2 category-list-name "> Sơ mi nam </a></li>
-					<li class="nav-item"><a href="#"
-						class="nav-link px-3 mb-2 category-list-name"> Áo phông nam </a></li>
-					<li class="nav-item"><a href="#"
-						class="nav-link  px-3 mb-2 category-list-name"> Sơ mi nam </a></li>
-					<li class="nav-item"><a href="#"
-						class="nav-link px-3 category-list-name"> Áo phông nam </a></li>
-					<li class="nav-item"><a href="#"
-						class="nav-link px-3 category-list-name"> Áo phông nam </a></li>
-					<li class="nav-item"><a href="#"
-						class="nav-link px-3 category-list-name"> Áo phông nam </a></li>
-					<li class="nav-item"><a href="#"
-						class="nav-link px-3 category-list-name"> Áo phông nam </a></li>
-					<li class="nav-item"><a href="#"
-						class="nav-link px-3 category-list-name"> Áo phông nam </a></li>
-					<li class="nav-item"><a href="#"
-						class="nav-link px-3 category-list-name"> Áo phông nam </a></li>
-					<li class="nav-item"><a href="#"
-						class="nav-link px-3 category-list-name"> Áo phông nam </a></li>
-					<li class="nav-item"><a href="#"
-						class="nav-link px-3 category-list-name"> Áo phông nam </a></li>
-					<li class="nav-item"><a href="#"
-						class="nav-link px-3 category-list-name"> Áo phông nam </a></li>
+				<c:forEach items="${ categories }" var="category">
+					<li class="nav-item">
+						<a data-id="${ category.categoryId }" class="nav-link px-3 category-list-name product-search">${ category.categoryName }</a>
+					</li>
+				</c:forEach>
 				</ul>
 			</div>
 			<div class="col-lg-2 col-md-4  category-menu-1  pt-3">
 				<h5 class="font-weight-bold text-dark">DANH MỤC SẢN PHẨM</h5>
 				<ul class="navbar-nav flex-column mt-3">
-					<li class="nav-item"><a href="#"
-						class="nav-link px-3 category-list-name"> Áo phông nam </a></li>
-					<li class="nav-item"><a href="#"
-						class="nav-link  px-3 mb-2 category-list-name"> Sơ mi nam </a></li>
-					<li class="nav-item"><a href="#"
-						class="nav-link px-3 mb-2 category-list-name"> Áo phông nam </a></li>
-					<li class="nav-item"><a href="#"
-						class="nav-link  px-3 mb-2 category-list-name "> Sơ mi nam </a></li>
-					<li class="nav-item"><a href="#"
-						class="nav-link px-3 mb-2 category-list-name"> Áo phông nam </a></li>
-					<li class="nav-item"><a href="#"
-						class="nav-link  px-3 mb-2 category-list-name"> Sơ mi nam </a></li>
-					<li class="nav-item"><a href="#"
-						class="nav-link px-3 category-list-name"> Áo phông nam </a></li>
-					<li class="nav-item"><a href="#"
-						class="nav-link px-3 category-list-name"> Áo phông nam </a></li>
-					<li class="nav-item"><a href="#"
-						class="nav-link px-3 category-list-name"> Áo phông nam </a></li>
-					<li class="nav-item"><a href="#"
-						class="nav-link px-3 category-list-name"> Áo phông nam </a></li>
-					<li class="nav-item"><a href="#"
-						class="nav-link px-3 category-list-name"> Áo phông nam </a></li>
-					<li class="nav-item"><a href="#"
-						class="nav-link px-3 category-list-name"> Áo phông nam </a></li>
-					<li class="nav-item"><a href="#"
-						class="nav-link px-3 category-list-name"> Áo phông nam </a></li>
-					<li class="nav-item"><a href="#"
-						class="nav-link px-3 category-list-name"> Áo phông nam </a></li>
-					<li class="nav-item"><a href="#"
-						class="nav-link px-3 category-list-name"> Áo phông nam </a></li>
+				<c:forEach items="${ categories }" var="category">
+					<li class="nav-item">
+						<a data-id="${ category.categoryId }" class="nav-link px-3 category-list-name product-search">${ category.categoryName }</a>
+					</li>
+				</c:forEach>
 				</ul>
 			</div>
 			<div class="col-lg-10 col-md-8 category-list">
-				<div class="row">
-					<div class="col-6 col-lg-3 col-md-4  ">
-						<div class="category-box">
-							<img src="/img/category2.jpg" alt="#" width="100%"
-								class="img img-responsive">
-							<p class="category-name">Giày thể thao nam.....</p>
-							<!-- <p class="category-price">777.777 <span class="vnd">₫</span></p> -->
-							<div
-								class="card-text text-left font-weight-bold d-flex justify-content-center">
-								<span class="product__price product__price-old">500,000đ</span>
-								<span class="product__price product__price-new">500,000đ</span>
-							</div>
-							<a href="" class="btn  margin__btn-add-cart m-auto">Thêm vào
-								Giỏ</a>
-						</div>
-					</div>
-					<div class="col-6 col-lg-3 col-md-4  ">
-						<div class="category-box">
-							<img src="/img/category2.jpg" alt="#" width="100%"
-								class="img img-responsive">
-							<p class="category-name">Giày thể thao nam.....</p>
-							<!-- <p class="category-price">777.777 <span class="vnd">₫</span></p> -->
-							<div
-								class="card-text text-left font-weight-bold d-flex justify-content-center">
-								<span class="product__price product__price-old">500,000đ</span>
-								<span class="product__price product__price-new">500,000đ</span>
-							</div>
-							<a href="" class="btn  margin__btn-add-cart m-auto">Thêm vào
-								Giỏ</a>
-						</div>
-					</div>
-					<div class="col-6 col-lg-3 col-md-4  ">
-						<div class="category-box">
-							<img src="/img/category2.jpg" alt="#" width="100%"
-								class="img img-responsive">
-							<p class="category-name">Giày thể thao nam.....</p>
-							<!-- <p class="category-price">777.777 <span class="vnd">₫</span></p> -->
-							<div
-								class="card-text text-left font-weight-bold d-flex justify-content-center">
-								<span class="product__price product__price-old">500,000đ</span>
-								<span class="product__price product__price-new">500,000đ</span>
-							</div>
-							<a href="" class="btn  margin__btn-add-cart m-auto">Thêm vào
-								Giỏ</a>
-						</div>
-					</div>
-					<div class="col-6 col-lg-3 col-md-4  ">
-						<div class="category-box">
-							<img src="/img/category2.jpg" alt="#" width="100%"
-								class="img img-responsive">
-							<p class="category-name">Giày thể thao nam.....</p>
-							<!-- <p class="category-price">777.777 <span class="vnd">₫</span></p> -->
-							<div
-								class="card-text text-left font-weight-bold d-flex justify-content-center">
-								<span class="product__price product__price-old">500,000đ</span>
-								<span class="product__price product__price-new">500,000đ</span>
-							</div>
-							<a href="" class="btn  margin__btn-add-cart m-auto">Thêm vào
-								Giỏ</a>
-						</div>
-					</div>
-					<div class="col-6 col-lg-3 col-md-4  ">
-						<div class="category-box">
-							<img src="/img/category2.jpg" alt="#" width="100%"
-								class="img img-responsive">
-							<p class="category-name">Giày thể thao nam.....</p>
-							<!-- <p class="category-price">777.777 <span class="vnd">₫</span></p> -->
-							<div
-								class="card-text text-left font-weight-bold d-flex justify-content-center">
-								<span class="product__price product__price-old">500,000đ</span>
-								<span class="product__price product__price-new">500,000đ</span>
-							</div>
-							<a href="" class="btn  margin__btn-add-cart m-auto">Thêm vào
-								Giỏ</a>
-						</div>
-					</div>
-					<div class="col-6 col-lg-3 col-md-4  ">
-						<div class="category-box">
-							<img src="/img/category2.jpg" alt="#" width="100%"
-								class="img img-responsive">
-							<p class="category-name">Giày thể thao nam.....</p>
-							<!-- <p class="category-price">777.777 <span class="vnd">₫</span></p> -->
-							<div
-								class="card-text text-left font-weight-bold d-flex justify-content-center">
-								<span class="product__price product__price-old">500,000đ</span>
-								<span class="product__price product__price-new">500,000đ</span>
-							</div>
-							<a href="" class="btn  margin__btn-add-cart m-auto">Thêm vào
-								Giỏ</a>
-						</div>
-					</div>
-					<div class="col-6 col-lg-3 col-md-4  ">
-						<div class="category-box">
-							<img src="/img/category2.jpg" alt="#" width="100%"
-								class="img img-responsive">
-							<p class="category-name">Giày thể thao nam.....</p>
-							<!-- <p class="category-price">777.777 <span class="vnd">₫</span></p> -->
-							<div
-								class="card-text text-left font-weight-bold d-flex justify-content-center">
-								<span class="product__price product__price-old">500,000đ</span>
-								<span class="product__price product__price-new">500,000đ</span>
-							</div>
-							<a href="" class="btn  margin__btn-add-cart m-auto">Thêm vào
-								Giỏ</a>
-						</div>
-					</div>
-					<div class="col-6 col-lg-3 col-md-4  ">
-						<div class="category-box">
-							<img src="/img/category2.jpg" alt="#" width="100%"
-								class="img img-responsive">
-							<p class="category-name">Giày thể thao nam.....</p>
-							<!-- <p class="category-price">777.777 <span class="vnd">₫</span></p> -->
-							<div
-								class="card-text text-left font-weight-bold d-flex justify-content-center">
-								<span class="product__price product__price-old">500,000đ</span>
-								<span class="product__price product__price-new">500,000đ</span>
-							</div>
-							<a href="" class="btn  margin__btn-add-cart m-auto">Thêm vào
-								Giỏ</a>
-						</div>
-					</div>
+				<p id="message-search"></p>
+				<div class="row" id="listProducts">
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
-<!--end of Category-->
+<div class="pagination-area">
+	<ul class="pagination">
+	</ul>
+</div>
 
+
+<!--end of Category-->
 <!-- End container-private -->
+<script src="<c:url value='/template/web/plugins/jquery/jquery-3.5.1.min.js'/>"></script>
+<script src="<c:url value='/template/web/plugins/jquery/jquery.validate.min.js'/>"></script>
+<script src="<c:url value='/template/web/plugins/bootstrap/js/bootstrap.min.js'/>"></script>
+<script src="<c:url value='/template/web/js/category-search.js'/>"></script> 
