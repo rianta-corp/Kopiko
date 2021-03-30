@@ -296,9 +296,9 @@
 				<c:forEach items="${product.getListCommentReverse()}" var="comment">
 					<li class="row comment">
 						<div class="col-md-3">
-							<div>
-								<img src="https://tiki.vn/assets/img/avatar.png" alt="#"
-									class="img img-resonsive mt-4 ml-4">
+							<div >
+								<img src="/uploads/images/${comment.getAccount().getAvatar()}" alt="#"
+									class="img img-resonsive mt-4 ">
 							</div>
 							<div>
 								<h4 class="font-weight-normal mt-3">${comment.getAccount().getFullName()}</h4>

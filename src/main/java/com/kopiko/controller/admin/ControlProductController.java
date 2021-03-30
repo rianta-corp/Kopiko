@@ -25,6 +25,7 @@ import com.kopiko.converter.ProductConverter;
 import com.kopiko.converter.ProductImageConverter;
 import com.kopiko.dto.ProductImageDTO;
 import com.kopiko.entity.Product;
+import com.kopiko.entity.ProductDetail;
 import com.kopiko.entity.ProductImage;
 import com.kopiko.service.IBrandService;
 import com.kopiko.service.ICategoryService;
@@ -149,6 +150,13 @@ public class ControlProductController {
 		Product product = productImageConverter.toEntity(productData);
 		product= productService.save(product);
 		
+		// thêm product detail có size mặc định
+		ProductDetail productDetail = new ProductDetail();
+		productDetail.setProduct(productService.findByProductId(product.getProductId()));
+		productDetail.setSize("Mặc định");
+		productDetail.setQuantity(0);
+		productDetailService.insert(productDetail);
+		
 //		Product data = productService.findByProductId(productId); // lấy product từ database ra bằng productId
 		try {
 			System.out.println("File List:");
@@ -167,6 +175,7 @@ public class ControlProductController {
 				image.setImageUrl(imageUrl); // set imageUrl
 				image.setProduct(productService.findByProductId(product.getProductId())); // set product
 				productImageService.save(image); // lưu dữ liệu vào database
+				
 			}
 			
 			// Save product vào database
@@ -175,7 +184,7 @@ public class ControlProductController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "redirect:/admin/product/insert";
+		return "redirect:/admin/product/new";
 	}
 	
 	private String save(MultipartFile file, HttpServletRequest servletRequest) {
