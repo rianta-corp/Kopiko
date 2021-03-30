@@ -106,8 +106,6 @@
 							class="nav__mobile-link">THỜI TRANG NỮ</a></li>
 						<li class="nav__mobile-list-item"><a href="/search/sale"
 							class="nav__mobile-link">SALE</a></li>
-						<li class="nav__mobile-list-item"><a href="/search/brand"
-							class="nav__mobile-link">THƯƠNG HIỆU</a></li>
 					</ul>
 				</nav>
 			</div>
