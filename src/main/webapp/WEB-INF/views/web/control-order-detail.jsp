@@ -3,7 +3,7 @@
 
 <%@ include file="/common/taglib.jsp"%>
 <link rel="stylesheet"
-	href="<c:url value='/template/web/jquery/PagingStyle.css'/>" />
+	href="<c:url value='/template/web/css/PagingOrderDetail.css'/>" />
 	
 <style>
 	.container {
@@ -89,7 +89,7 @@
 						<!-- Chi Tiết Đơn Hàng -->
 						<div class="row mt-4">
 							<div class="table-responsive">
-								<table class="table table-borderless table-hover" id="dataTable"
+								<table class="table table-borderless table-hover order-history" id="dataTable"
 									width="100%" cellspacing="0">
 									<thead>
 										<tr>

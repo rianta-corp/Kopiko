@@ -3,7 +3,7 @@
 <%@ include file="/common/taglib.jsp"%>
 <!-- CSS only -->
 <link rel="stylesheet"
-	href="<c:url value='/template/web/jquery/PagingStyle.css'/>" />
+	href="<c:url value='/template/web/css/PagingOrderDetail.css'/>" />
 
 <!-- Page of infomation of buy -->
 <div class="container-fluid bg-light border-bottom pb-5 buy-information">
@@ -17,7 +17,7 @@
 		</div>
 	</div>
 	<div class="container mt-2">
-		<div class="row user-infor">
+		<div class="row order-infor">
 			<div class="col-md-3 pt-4 ">
 				<div class="d-flex w-100">
 					<div class="block__img-customer">
