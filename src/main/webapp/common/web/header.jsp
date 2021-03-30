@@ -50,7 +50,7 @@
 				access="hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') and isAuthenticated()">
 				<div class="heading__navbar-user">
 
-					<img src="/img/avatar.jpg" alt="" class="heading__navbar-user-img">
+					<img src="<c:url value='/uploads/images/${map.value.product.imageUrl}'/>" alt="" class="heading__navbar-user-img">
 					<a href="/account/profile" class="heading__navbar-user-name">${user.username}</a>
 
 					<ul class="heading__navbar-user-menu">
@@ -114,14 +114,12 @@
 							href="/home">TRANG CHỦ</a></li>
 						<li class="nav__mobile-list-item"><a href="/search/new"
 							class="nav__mobile-link">MỚI</a></li>
-						<li class="nav__mobile-list-item"><a href="/search/man"
-							class="nav__mobile-link">THỜI TRANG NAM</a></li>
-						<li class="nav__mobile-list-item"><a href="/search/woman"
-							class="nav__mobile-link">THỜI TRANG NỮ</a></li>
 						<li class="nav__mobile-list-item"><a href="/search/sale"
 							class="nav__mobile-link">SALE</a></li>
-						<li class="nav__mobile-list-item"><a href="/search/brand"
-							class="nav__mobile-link">THƯƠNG HIỆU</a></li>
+						<li class="nav__mobile-list-item"><a href="/search/thoi-trang-nam"
+							class="nav__mobile-link">THỜI TRANG NAM</a></li>
+						<li class="nav__mobile-list-item"><a href="/search/thoi-trang-nu"
+							class="nav__mobile-link">THỜI TRANG NỮ</a></li>
 					</ul>
 				</nav>
 			</div>
