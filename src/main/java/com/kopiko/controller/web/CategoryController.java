@@ -64,9 +64,27 @@ public class CategoryController {
 		return productShowListConvert.toProductShowListDTO(productService.findAll());
 	}
 
-	@GetMapping(value = "/findAllProduct/{pageNumber}")
+	@GetMapping(value = "/{pageNumber}")
 	@ResponseBody
 	public ResponseModel findAllProductWithPage(@PathVariable("pageNumber") int pageNumber) {
 		return productService.findAllProductWithPage(pageNumber);
 	}
+	
+	@GetMapping(value = "/desc/{pageNumber}")
+	@ResponseBody
+	public ResponseModel searchProductSalePriceDesc(@PathVariable("pageNumber") int pageNumber) {
+		return productService.searchProductSalePriceDesc(pageNumber);
+	}
+	
+	@GetMapping(value = "/asc/{pageNumber}")
+	@ResponseBody
+	public ResponseModel searchProductSalePriceAsc(@PathVariable("pageNumber") int pageNumber) {
+		return productService.searchProductSalePriceAsc(pageNumber);
+	}
+	
+//	@GetMapping(value = "/newProduct/{pageNumber}")
+//	@ResponseBody
+//	public ResponseModel searchProductNearestMonth(@PathVariable("pageNumber") int pageNumber) {
+//		return productService.searchProductNearestMonth(pageNumber);
+//	}
 }
