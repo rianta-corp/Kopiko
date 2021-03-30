@@ -14,6 +14,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kopiko.common.constant.Constants;
 import com.kopiko.entity.CategoryEntity;
 import com.kopiko.entity.PaymentMethodEntity;
 import com.kopiko.model.ResponseModel;
@@ -28,13 +29,35 @@ public class PaymentMethodServiceImpl implements IPaymentMethodService {
 	private IPaymentMethodRepository paymentMethodRepository;
 
 	@Override
-	public PaymentMethodEntity addNewPaymentMethod(PaymentMethodEntity paymentMethodEntity) {
-		return paymentMethodRepository.saveAndFlush(paymentMethodEntity);
+	public ResponseModel addNewPaymentMethod(PaymentMethodEntity paymentMethodEntity) {
+		int responseCode = Constants.RESULT_CD_FAIL;
+		try {
+			if(paymentMethodRepository.findByPaymentMethodName(paymentMethodEntity.getPaymentMethodName()) != null) {
+				responseCode = Constants.RESULT_CD_DUPL;
+			} else {
+				paymentMethodRepository.saveAndFlush(paymentMethodEntity);
+				responseCode = Constants.RESULT_CD_SUCCESS;
+			}
+		} catch (Exception e) {
+			System.out.println("Add new payment method " + e.getMessage());
+		}
+		return new ResponseModel(responseCode);
 	}
 
 	@Override
-	public PaymentMethodEntity updatePaymentMethod(PaymentMethodEntity paymentMethodEntity) {
-		return paymentMethodRepository.saveAndFlush(paymentMethodEntity);
+	public ResponseModel updatePaymentMethod(PaymentMethodEntity paymentMethodEntity) {
+		int responseCode = Constants.RESULT_CD_FAIL;
+		try {
+			if(paymentMethodRepository.findByPaymentMethodName(paymentMethodEntity.getPaymentMethodName()) != null) {
+				responseCode = Constants.RESULT_CD_DUPL;
+			} else {
+				paymentMethodRepository.saveAndFlush(paymentMethodEntity);
+				responseCode = Constants.RESULT_CD_SUCCESS;
+			}
+		} catch (Exception e) {
+			System.out.println("Update new payment method " + e.getMessage());
+		}
+		return new ResponseModel(responseCode);
 	}
 
 	@Override

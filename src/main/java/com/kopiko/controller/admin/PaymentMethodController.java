@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kopiko.entity.PaymentMethodEntity;
@@ -25,48 +25,48 @@ import com.kopiko.model.ResponseModel;
 import com.kopiko.service.IPaymentMethodService;
 
 @Controller
-@RequestMapping(value = "/api/v1/admin")
+@RequestMapping(value = "/admin/payment")
 public class PaymentMethodController {
 
 	@Autowired
 	private IPaymentMethodService paymentMethodService;
 	
-	@GetMapping()
+	@GetMapping("/list")
 	public String initIndexPage(Model model) {
-		return "payment-method";
+		return "admin/payment-method-admin";
 	}
 	
-	@GetMapping(value = "/payment")
+	@GetMapping(value = "/findAll")
 	@ResponseBody
 	public List<PaymentMethodEntity> getAllPaymentMethod() {
 		return paymentMethodService.getListPaymentMethod();
 	}
 
-	@PostMapping(value = "/payment")
+	@PostMapping(value = "/add")
 	@ResponseBody
-	public PaymentMethodEntity addNewPaymentMethod(@ModelAttribute PaymentMethodEntity paymentMethodEntity) {
+	public ResponseModel addNewPaymentMethod(@ModelAttribute PaymentMethodEntity paymentMethodEntity) {
 		return paymentMethodService.addNewPaymentMethod(paymentMethodEntity);
 	}
 
-	@PutMapping(value = "/payment")
+	@RequestMapping(value = "/update", method = {RequestMethod.POST, RequestMethod.PUT})
 	@ResponseBody
-	public PaymentMethodEntity updatePaymentMethod(@ModelAttribute PaymentMethodEntity paymentMethodEntity) {
+	public ResponseModel updatePaymentMethod(@ModelAttribute PaymentMethodEntity paymentMethodEntity) {
 		return paymentMethodService.updatePaymentMethod(paymentMethodEntity);
 	}
 
-	@DeleteMapping(value = "/payment/{paymentMethodId}")
+	@DeleteMapping(value = "/delete/{paymentMethodId}")
 	@ResponseBody
 	public void deletePaymentMethod(@PathVariable("paymentMethodId") Long paymentMethodId) {
 		paymentMethodService.deletePaymentMethod(paymentMethodId);
 	}
 
-	@GetMapping(value = "/payment/{id}")
+	@GetMapping(value = "/find/{id}")
 	@ResponseBody
 	public PaymentMethodEntity findPaymentMethodById(@PathVariable("id") Long paymentMethodId) {
 		return paymentMethodService.findPaymentMethodById(paymentMethodId);
 	}
 	
-	@GetMapping(value = "/payment/search/{paymentMethodName}")
+	@GetMapping(value = "/search/{paymentMethodName}")
 	@ResponseBody
 	public List<PaymentMethodEntity> searchPaymetMethodByName(@PathVariable("paymentMethodName") String paymentMethodName) {
 		return paymentMethodService.findByPaymentMethodNameContaining(paymentMethodName);

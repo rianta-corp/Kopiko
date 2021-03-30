@@ -30,7 +30,7 @@ public class CategoryControllerAdmin {
 	@Autowired
 	private ICategoryService categoryService;
 
-	@GetMapping
+	@GetMapping("/list")
 	public String initPage() {
 		return "admin/category-admin";
 	}

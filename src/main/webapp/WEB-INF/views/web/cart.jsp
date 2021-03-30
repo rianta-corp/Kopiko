@@ -4,203 +4,119 @@
 <head>
 <link rel="stylesheet"
 	href="<c:url value='/template/web/css/cart-page.css'/>">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+
 </head>
 
-<!-- container-private -->
-<div class="cart-content">
-	<div class="container-private cart-content-container">
-		<!-- No Cart -->
-		<div class="no-cart">
-			<span class="no-cart__content">Chưa có sản phẩm nào trong giỏ
-				hàng!</span> <a href="index.html" class="btn btn-return">QUAY TRỞ LẠI
-				CỬA HÀNG</a>
+<!-- List giỏ hàng -->
+<section id="view">
+
+	<div class="container">
+		<div class="row mt-4">
+			<h3 class="ml-4">Giỏ Hàng</h3>
 		</div>
-		<!-- End No Cart -->
+		<div class="row mt-4">
+			<c:choose>
+				<c:when test="${sessionScope.myCartNum == 0}">
+					<div align="center" class="mb-4" style="width: 100%">
+						<h4 align="center">Bạn không có sản phẩm nào trong giỏ!</h4>
+						<br>
+						<h4 align="center">
+							Hãy tiếp tục <a class="button dark br-5" href="/home">Mua
+								Hàng</a>
+						</h4>
+					</div>
+				</c:when>
+				<c:otherwise>
+					<div class="col-md-8">
+						<div class="payment-cart">
+							<ul class="list-group">
+								<c:forEach var="map" items="${sessionScope.myCartItems}">
+									<li class="list-group-item rounder-4">
+										<div class="cart-item">
+											<div class="item-remove">
+												<a href="/checkout/cart/remove/${map.key}"
+													title="Xoá Sản Phẩm"><span
+													class="glyphicon glyphicon-remove-circle	
+									"></span></a>
+											</div>
+											<div class="item-content">
+												<h4>${map.value.product.productName}</h4>
+												<form method="post"
+													action="/checkout/cart/update/${map.key}" class="mb-3">
+													Số lượng: <input type="number" id="quantity"
+														value="${map.value.quantity}" name="quantity" min="1"
+														max="1000"> <input type="submit" name="update"
+														value="Lưu" class="dark-btn br-2">
+												</form>
 
-		<!-- Has cart -->
-		<div class="has-cart">
-			<div class="has-cart__list-item">
-				<table class="cart-list__table">
-					<thead>
-						<tr class="cart-list__table-header">
-							<td class="cart-list__table-header-1">SẢN PHẨM</td>
-							<td class="cart-list__table-header-2">GIÁ</td>
-							<td class="cart-list__table-header-3">SỐ LƯỢNG</td>
-							<td class="cart-list__table-header-4">TỔNG</td>
-						</tr>
-					</thead>
-					<tbody class="cart-list__table-body">
-						<tr class="cart-list__table-item">
-							<td>
-								<div class="table-item__header">
-									<a href="#" class="table-item__header-delete"><i
-										class="far fa-times-circle"></i></a> <img src="/img/avatar.jpg"
-										alt="" class="table-item__header-img">
-									<div class="table-item__header-type">Classic</div>
-								</div>
-							</td>
-							<td>
-								<div class="table-item__price">700.000đ</div>
-							</td>
-							<td>
-								<!-- <div class="table-item__quantity">1</div> -->
-								<div class="add-respon-sl table-item__quantity">
-									<button type="button"
-										class="quantity-left-minus btn btn-quantity btn-number float-left fas fa-minus"
-										data-type="minus" data-field=""></button>
-									<input type="text" id="quantity" name="quantity"
-										class="form-control input-number float-left" value="1" min="1"
-										max="100">
-									<button type="button"
-										class="quantity-right-plus btn btn-quantity btn-number float-left fas fa-plus"
-										data-type="plus" data-field=""></button>
-								</div>
-							</td>
-							<td>
-								<div class="table-item__total">700.000đ</div>
-							</td>
-						</tr>
-						<tr class="cart-list__table-item">
-							<td>
-								<div class="table-item__header">
-									<a href="#" class="table-item__header-delete"><i
-										class="far fa-times-circle"></i></a> <img src="/img/avatar.jpg"
-										alt="" class="table-item__header-img">
-									<div class="table-item__header-type">Classic</div>
-								</div>
-							</td>
-							<td>
-								<div class="table-item__price">700.000đ</div>
-							</td>
-							<td>
-								<!-- <div class="table-item__quantity">1</div> -->
-								<div class="add-respon-sl table-item__quantity">
-									<button type="button"
-										class="quantity-left-minus btn btn-quantity btn-number float-left fas fa-minus"
-										data-type="minus" data-field=""></button>
-									<input type="text" id="quantity-1" name="quantity"
-										class="form-control input-number float-left" value="1" min="1"
-										max="100">
-									<button type="button"
-										class="quantity-right-plus btn btn-quantity btn-number float-left fas fa-plus"
-										data-type="plus" data-field=""></button>
-								</div>
-							</td>
-							<td>
-								<div class="table-item__total">700.000đ</div>
-							</td>
-						</tr>
-						<tr class="cart-list__table-item">
-							<td>
-								<div class="table-item__header">
-									<a href="#" class="table-item__header-delete"><i
-										class="far fa-times-circle"></i></a> <img src="/img/avatar.jpg"
-										alt="" class="table-item__header-img">
-									<div class="table-item__header-type">Classic</div>
-								</div>
-							</td>
-							<td>
-								<div class="table-item__price">700.000đ</div>
-							</td>
-							<td>
-								<!-- <div class="table-item__quantity">1</div> -->
-								<div class="add-respon-sl table-item__quantity">
-									<button type="button"
-										class="quantity-left-minus btn btn-quantity btn-number float-left fas fa-minus"
-										data-type="minus" data-field=""></button>
-									<input type="text" id="quantity-2" name="quantity"
-										class="form-control input-number float-left" value="1" min="1"
-										max="100">
-									<button type="button"
-										class="quantity-right-plus btn btn-quantity btn-number float-left fas fa-plus"
-										data-type="plus" data-field=""></button>
-								</div>
-							</td>
-							<td>
-								<div class="table-item__total">700.000đ</div>
-							</td>
-						</tr>
-						<tr class="cart-list__table-item">
-							<td><a href="index.html" class="btn btn-return btn-continue"><i
-									class="fas fa-long-arrow-alt-left cart-list__table-item-icon"></i>TRỞ
-									VỀ</a></td>
-							<td><a href="#" class="btn btn-return btn-update-cart">UPDATE</a></td>
-						</tr>
-					</tbody>
 
-				</table>
-			</div>
-			<div class="has-cart__pay">
-				<div class="has-cart__pay-detail">
-					<table class="cart-list__table-pay">
-						<thead>
-							<tr class="table-pay__header">
-								<td class="table-pay__header-total">TỔNG SỐ LƯỢNG</td>
-								<td class="table-pay__header-total-2"></td>
-							</tr>
-						</thead>
-						<tbody class="table-pay__body">
-							<tr class="table-pay__body-row">
-								<td>
-									<div class="table-pay__body-total">Tổng phụ</div>
-								</td>
-								<td>
-									<div class="table-pay__body-price table-item__price">700.000đ</div>
-								</td>
-							</tr>
-							<tr class="table-pay__body-row">
-								<td>
-									<div class="table-pay__body-shipping">Giao hàng</div>
-								</td>
-								<td>
-									<ul class="table-pay__body-ship-detail">
-										<li class="pay__ship-detail">Giao hàng miễn phí</li>
-										<li class="pay__ship-detail">Ước tính cho Việt Nam</li>
-										<li class="pay__ship-detail">Đổi địa chỉ</li>
-									</ul>
-								</td>
-							</tr>
-							<tr class="table-pay__body-row">
-								<td>
-									<div class="table-pay__body-total">Tổng</div>
-								</td>
-								<td>
-									<div class="table-pay__body-price table-item__price">700.000đ</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="btn-offer"></td>
-								<td class="btn-offer"><a href="#"
-									class="btn btn-return btn-update-cart btn-offer">THANH TOÁN</a>
-								</td>
-							</tr>
-						</tbody>
+												<p>Đơn giá: ${map.value.product.getSalePrice() } đ</p>
 
-					</table>
-				</div>
+											</div>
 
-				<div class="has-cart__pay-offer">
-					<table class="cart-list__table-pay-offer">
-						<thead>
-							<tr class="table-pay__offer-header">
-								<td class="table-pay__offer-header">Phiếu ưu đãi</td>
-							</tr>
-						</thead>
-						<tbody class="table-pay-offer__body">
-							<tr class="table-pay-offer__body-input">
-								<td><input class="table-pay-offer__body-input-btn"
-									type="text" placeholder="Mã ưu đãi"></td>
-							</tr>
-							<tr class="table-pay-offer__body-btn">
-								<td><a href="#"
-									class="btn btn-return btn-update-cart btn-offer">ÁP DỤNG</a></td>
-							</tr>
-						</tbody>
+											<div class="item-image">
+												<img class="cart-item-img"
+													alt="${map.value.product.productName}"
+													src="<c:url value='/uploads/images/${map.value.product.imageUrl}'/>">
 
-					</table>
-				</div>
-			</div>
+											</div>
+										</div>
+									</li>
+
+
+								</c:forEach>
+							</ul>
+						</div>
+					</div>
+					<div class="col-md-4">
+
+						<div class="payment rounder-3">
+							<h4 align="center"
+								style="padding: 8px; margin: 0; border-bottom: 1px solid #DCDCDC;">Địa
+								Chỉ Giao Hàng</h4>
+							<h5 style="padding: 20px 40px 0 40px">
+								<span>Hoàng Quốc Khánh</span> | <span>0389829122</span>
+							</h5>
+							<h5 style="padding: 5px 40px">FPT Complex, Phường Hoà Hải, Quận Ngũ Hành Sơn, Đà Nẵng
+
+							</h5>
+							<div class="w-100 d-flex justify-content-center">
+								<button type="button" class="  button dark rounder-3" id="changeAddress" >Thay đổi</button>
+							</div>
+						</div>
+
+						<div class="payment rounder-3 mt-2">
+							<h4 align="center"
+								style="padding: 8px; margin: 0; border-bottom: 1px solid #DCDCDC;">Thanh
+								Toán</h4>
+							<h5 style="padding: 20px 40px">
+								Tổng Tiền: <span style="float: right">${sessionScope.myCartTotal}
+									đ</span>
+							</h5>
+							<form action="/checkout/payment" method="post">
+								<input type="submit" name="thanhtoan" value="Thanh Toán"
+									class="button dark br-10"
+									style="display: block; margin: 0 auto; padding: 10px 100px; border-radius: 25px">
+							</form>
+						</div>
+					</div>
+				</c:otherwise>
+			</c:choose>
 		</div>
+
 	</div>
-</div>
-<!-- End container-private -->
+</section>
+<script type="text/javascript">
+		$("input.product-quantity").on("keypress keyup blur",function (e) {    
+		    $(this).val($(this).val().replace(/^[a-zA-Z]+$/, ""));
+		        if ((e.which < 48 || e.which > 57)) {
+		            e.preventDefault();
+		    }
+		});
+	</script>
+
+<!-- SECTION FOOTER -->

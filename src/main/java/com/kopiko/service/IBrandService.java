@@ -2,19 +2,70 @@ package com.kopiko.service;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
 import com.kopiko.entity.Brand;
+import com.kopiko.model.ResponseModel;
 
-@Service
 public interface IBrandService {
-	List<Brand> findAll();
-	Brand insert(Brand brand);
-	Brand update(Brand brand);
-	boolean delete(Long id);
+
 	/**
-	 * @param brand
+	 * 
+	 * Get all brand
+	 * 
+	 * @returnList<Brand>
+	 * 
+	 */
+	List<Brand> findAllBrand();
+
+	/**
+	 * 
+	 * Add new brand
+	 * 
+	 * @param brandEntity
+	 * @return ResponseModel
+	 * 
+	 */
+	ResponseModel addNewBrand(Brand brandEntity);
+
+	/**
+	 * 
+	 * Update brand
+	 * 
+	 * @param brandEntity
+	 * @return ResponseModel
+	 * 
+	 */
+	ResponseModel updateBrand(Brand brandEntity);
+
+	/**
+	 * 
+	 * Find brand by brand id
+	 * 
+	 * @param brandId
+	 * @return
+	 * 
+	 */
+	Brand findByBrandId(Long brandId);
+
+	/**
+	 * 
+	 * Delete brand by id
+	 * 
+	 * @param brandId
+	 * 
+	 */
+	ResponseModel deleteBrandById(Long brandId);
+
+	/**
+	 * Find brand by brand name
+	 * 
+	 * @param brandName
+	 * @return Brand
+	 * 
+	 */
+	Brand findByBrandName(String brandName);
+
+	/**
 	 * @return
 	 */
-	Brand findByBrandId(Long id);	
+	List<Brand> findAll();
 }

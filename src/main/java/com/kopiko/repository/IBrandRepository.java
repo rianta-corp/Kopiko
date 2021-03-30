@@ -8,4 +8,7 @@ import com.kopiko.entity.Brand;
 @Repository
 public interface IBrandRepository extends JpaRepository<Brand, Long>{
 	
+	Brand findByBrandId(Long brandId);
+	
+	Brand findByBrandName(String brandName);
 }
