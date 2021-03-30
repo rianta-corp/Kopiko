@@ -57,6 +57,7 @@ public class CategoryController {
 		return productService.searchProductByCategotyId(id, pageNumber);
 	}
 
+	// Add new branch
 	@GetMapping(value = "/findAllProduct")
 	@ResponseBody
 	public List<ProductShowListDTO> findAllProduct() {
