@@ -12,6 +12,7 @@
 <link rel="stylesheet"
 	href="<c:url value='/template/web/jquery/PagingStyle.css'/>" />
 
+
 <!-- category-information -->
 <section class="category-infor">
 	<div class="container">
@@ -38,6 +39,8 @@
 
 					<c:set var="listProductDetail" scope="session"
 						value="${product.getListProductDetail()}" />
+						
+
 
 
 					<!-- The slideshow -->
@@ -79,371 +82,188 @@
 			</div>
 			<div class="col-md-6">
 				<div class="category-information">
-					<div>
-
-						<p class="font-weight-normal" style="font-size: 20px;">${product.getProductName()}</p>
-						<p class="font-weight-light">
-							Thương hiệu: <a
-								href="/search/brand/${product.getBrand().getBrandName()}">${product.getBrand().getBrandName()}</a>
-						</p>
-						<p class="font-weight-bold float-right">
+					<div class="row">
+						<p class="font-weight-normal" style="font-size: 20px;">${product.getProductName()}</p>						
+						<br>												
+					</div>
+					<div class="row">
+						<p class="font-weight-bold float-left">
 							<span style="font-size: 32px;">${product.getLongSalePrice()}đ</span>
 							<span style="font-size: 12px; text-decoration: line-through;">${product.getLongPrice()}đ</span>
 						</p>
 					</div>
-					<form action="/checkout/cart/add/${product.productId}"
-						method="POST">
-
-						<div class="pt-3 form-group">
-							<p class="font-weight-normal">Chọn size:</p>
-							<select name="size" id="size"
-								class="m-2 btn btn-light product-name float-left category-size">
-								<c:choose>
-									<c:when
-										test="${listProductDetail != null && listProductDetail.size() != 0}">
-										<c:forEach var="detail" items="${listProductDetail}">
-											<option value="${detail.size}">${detail.size}</option>
-										</c:forEach>
-									</c:when>
-									<c:otherwise>
-										<option value="default">Mặc định</option>
-									</c:otherwise>
-								</c:choose>
-
-							</select>
-						</div>
-
-						<div class=" btn-add-card">
-							<p class="font-weight-normal">Số lượng:</p>
-							<div class="btn-group mt-3" style="margin-right: 15%">
-								<button type="button" class="fas fa-minus" data-type="minus"
-									data-field="" onclick="sub()"></button>
-								<input type="number" id="quantity" name="quantity"
-									class="form-control input-number" value="1" min="1" max="100">
-								<button type="button" class="fas fa-plus" data-type="plus"
-									data-field="" onclick="add()"></button>
+					<div class="row">
+						<p class="font-weight-light float-left">
+							Thương hiệu: <a
+								href="/search/brand/${product.getBrand().getBrandName()}">${product.getBrand().getBrandName()}</a>
+						</p>
+					</div>
+					<div class="row">
+						<form action="/checkout/cart/add/${product.productId}"
+							method="POST" class="w-100">
+	
+							<div class="  pt-3 pl-3 form-group ">
+								<div class="row">
+									<p class="font-weight-normal">Chọn size:</p>
+								</div>
+								<div class="row">
+									<select name="size" id="size"
+									class=" btn btn-light product-name float-left category-size">
+										<c:choose>
+											<c:when
+												test="${listProductDetail != null && listProductDetail.size() != 0}">
+												<c:forEach var="detail" items="${listProductDetail}">
+													<option value="${detail.size}">${detail.size}</option>
+												</c:forEach>
+											</c:when>
+											<c:otherwise>
+												<option value="default">Mặc định</option>
+											</c:otherwise>
+										</c:choose>
+		
+									</select>
+								</div>
 							</div>
-							<button class="btn margin__btn-add-cart mt-2  submit"
-								style="margin-left: 24%">Thêm Vào Giỏ</button>
-						</div>
-					</form>
-
-
+	
+							<div class=" btn-add-card pl-3 pt-4 row">
+								<div class="col-12">
+									<p class="font-weight-normal d-plex">Số lượng:</p>
+								</div>
+								<div class="btn-group " style="margin-right: 15%">
+									<button type="button" class="fas fa-minus" data-type="minus"
+										data-field="" onclick="sub()"></button>
+									<input type="number" id="quantity" name="quantity"
+										class="form-control input-number" value="1" min="1" max="100">
+									<button type="button" class="fas fa-plus" data-type="plus"
+										data-field="" onclick="add()"></button>
+								</div>								
+							</div>
+							<button class="btn btn-add mt-5 w-75  submit">Thêm vào Giỏ</button>
+						</form>
+					</div>
 				</div>
-
 			</div>
 		</div>
 
 	</div>
 
+	<!-- đề xuất sản phẩm -->
 	<div class="container pt-4 mb-4 mt-4">
-		<div class="row">
-			<div class="row">
-				<div class="col-md-9">
-					<h3>Carousel Product Cart Slider</h3>
-				</div>
-				<div class="col-md-3">
-					<!-- Controls -->
-					<div class="controls pull-right hidden-xs">
-						<a class="left fa fa-chevron-left btn btn-success"
-							href="#carousel-example" data-slide="prev"></a><a
-							class="right fa fa-chevron-right btn btn-success"
-							href="#carousel-example" data-slide="next"></a>
+			
+		<div id="carousel-product-same" class="carousel slide  " data-ride="carousel">
+				
+				<div class="row ">
+					<div class="col-md-11">
+						<h2>Sản phẩm có thể bạn sẽ thích</h2>
+					</div>
+					<div class="col-md-1 ">
+						<!-- Controls-->
+						<div class=" text-center d-flex">
+							<a class=" left float-left fa fa-chevron-left  "
+								href="#carousel-product-same" data-slide="prev"></a>
+							<a class=" right float-right fa fa-chevron-right ml-5 "
+								href="#carousel-product-same" data-slide="next">
+							</a>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div id="carousel-example" class="carousel slide hidden-xs"
-				data-ride="carousel">
+				
 				<!-- Wrapper for slides -->
-				<div class="carousel-inner">
-					<div class="item active">
+				<div class="carousel-inner pt-3">
+					
+					<!-- set slide number -->
+					<c:set var="listProductSameSize" scope="session"
+						value="${listProductsOffer.size()}" />
+			        <c:if test = "${ listProductSameSize  >= 4 }">
+			         	<c:set var = "templistProductSameSize" scope = "session" value = "${3}"/>
+			        </c:if>
+			        <c:if test = "${ listProductSameSize  < 4 }">
+			         	<c:set var = "templistProductSameSize" scope = "session" value = "${ listProductSameSize }"/>
+			        </c:if>
+			        
+			        <%-- <p>size of listProductSameSize: <c:out value="${ listProductSameSize }" /></p>
+			        <p>size of templistProductSameSize: <c:out value="${ templistProductSameSize }" /></p>  --%>
+					
+					<div class="carousel-item active">
 						<div class="row">
-							<div class="col-sm-3">
-								<div class="col-item">
-									<div class="photo">
-										<img src="http://placehold.it/350x260" class="img-responsive"
-											alt="a" />
-									</div>
-									<div class="info">
-										<div class="row">
-											<div class="price col-md-6">
-												<h5>Sample Product</h5>
-												<h5 class="price-text-color">$199.99</h5>
-											</div>
-											<div class="rating hidden-sm col-md-6">
-												<i class="price-text-color fa fa-star"></i><i
-													class="price-text-color fa fa-star"> </i><i
-													class="price-text-color fa fa-star"></i><i
-													class="price-text-color fa fa-star"> </i><i
-													class="fa fa-star"></i>
-											</div>
-										</div>
-										<div class="separator clear-left">
-											<p class="btn-add">
-												<i class="fa fa-shopping-cart"></i><a
-													href="http://www.jquery2dotnet.com" class="hidden-sm">Add
-													to cart</a>
-											</p>
-											<p class="btn-details">
-												<i class="fa fa-list"></i><a
-													href="http://www.jquery2dotnet.com" class="hidden-sm">More
-													details</a>
-											</p>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-3">
-								<div class="col-item">
-									<div class="photo">
-										<img src="http://placehold.it/350x260" class="img-responsive"
-											alt="a" />
-									</div>
-									<div class="info">
-										<div class="row">
-											<div class="price col-md-6">
-												<h5>Product Example</h5>
-												<h5 class="price-text-color">$249.99</h5>
-											</div>
-											<div class="rating hidden-sm col-md-6"></div>
-										</div>
-										<div class="separator clear-left">
-											<p class="btn-add">
-												<i class="fa fa-shopping-cart"></i><a
-													href="http://www.jquery2dotnet.com" class="hidden-sm">Add
-													to cart</a>
-											</p>
-											<p class="btn-details">
-												<i class="fa fa-list"></i><a
-													href="http://www.jquery2dotnet.com" class="hidden-sm">More
-													details</a>
-											</p>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-3">
-								<div class="col-item">
-									<div class="photo">
-										<img src="http://placehold.it/350x260" class="img-responsive"
-											alt="a" />
-									</div>
-									<div class="info">
-										<div class="row">
-											<div class="price col-md-6">
-												<h5>Next Sample Product</h5>
-												<h5 class="price-text-color">$149.99</h5>
-											</div>
-											<div class="rating hidden-sm col-md-6">
-												<i class="price-text-color fa fa-star"></i><i
-													class="price-text-color fa fa-star"> </i><i
-													class="price-text-color fa fa-star"></i><i
-													class="price-text-color fa fa-star"> </i><i
-													class="fa fa-star"></i>
-											</div>
-										</div>
-										<div class="separator clear-left">
-											<p class="btn-add">
-												<i class="fa fa-shopping-cart"></i><a
-													href="http://www.jquery2dotnet.com" class="hidden-sm">Add
-													to cart</a>
-											</p>
-											<p class="btn-details">
-												<i class="fa fa-list"></i><a
-													href="http://www.jquery2dotnet.com" class="hidden-sm">More
-													details</a>
-											</p>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-3">
-								<div class="col-item">
-									<div class="photo">
-										<img src="http://placehold.it/350x260" class="img-responsive"
-											alt="a" />
-									</div>
-									<div class="info">
-										<div class="row">
-											<div class="price col-md-6">
-												<h5>Sample Product</h5>
-												<h5 class="price-text-color">$199.99</h5>
-											</div>
-											<div class="rating hidden-sm col-md-6">
-												<i class="price-text-color fa fa-star"></i><i
-													class="price-text-color fa fa-star"> </i><i
-													class="price-text-color fa fa-star"></i><i
-													class="price-text-color fa fa-star"> </i><i
-													class="fa fa-star"></i>
-											</div>
-										</div>
-										<div class="separator clear-left">
-											<p class="btn-add">
-												<i class="fa fa-shopping-cart"></i><a
-													href="http://www.jquery2dotnet.com" class="hidden-sm">Add
-													to cart</a>
-											</p>
-											<p class="btn-details">
-												<i class="fa fa-list"></i><a
-													href="http://www.jquery2dotnet.com" class="hidden-sm">More
-													details</a>
-											</p>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-								</div>
-							</div>
+							<c:forEach var="i" begin="0" end="${ templistProductSameSize }" >
+								<div class="col-6 col-lg-3 col-md-4  ">
+								
+	                                <div class="category-box">
+	
+	                                    <img src="<c:url value='/uploads/images/${listProductsOffer.get(i).getListProductImage().get(0).getImageUrl()}'/>" alt="#" width="25%" class=" w-100 h-75 img img-responsive">
+ 	 
+	                                    <p class="category-name">${listProductsOffer.get(i).getProductName() }</p>
+	                                    <!-- <p class="category-price">777.777 <span class="vnd">₫</span></p> -->
+	                                    <div class="card-text text-left font-weight-bold d-flex justify-content-center">
+	                                        <span class="product__price product__price-old">${listProductsOffer.get(i).getLongSalePrice() }</span>
+	                                        <span class="product__price product__price-new">${listProductsOffer.get(i).getLongPrice() }</span>
+	                                    </div>
+	                                    <a href="<c:url value='/product/${listProductsOffer.get(i).getProductId()}'/>" class="btn  margin__btn-add-cart m-auto">Xem Sản Phẩm</a>
+	                                </div>
+	                            </div>
+							</c:forEach>	
 						</div>
-					</div>
-					<div class="item">
-						<div class="row">
-							<div class="col-sm-3">
-								<div class="col-item">
-									<div class="photo">
-										<img src="http://placehold.it/350x260" class="img-responsive"
-											alt="a" />
-									</div>
-									<div class="info">
-										<div class="row">
-											<div class="price col-md-6">
-												<h5>Product with Variants</h5>
-												<h5 class="price-text-color">$199.99</h5>
-											</div>
-											<div class="rating hidden-sm col-md-6">
-												<i class="price-text-color fa fa-star"></i><i
-													class="price-text-color fa fa-star"> </i><i
-													class="price-text-color fa fa-star"></i><i
-													class="price-text-color fa fa-star"> </i><i
-													class="fa fa-star"></i>
-											</div>
-										</div>
-										<div class="separator clear-left">
-											<p class="btn-add">
-												<i class="fa fa-shopping-cart"></i><a
-													href="http://www.jquery2dotnet.com" class="hidden-sm">Add
-													to cart</a>
-											</p>
-											<p class="btn-details">
-												<i class="fa fa-list"></i><a
-													href="http://www.jquery2dotnet.com" class="hidden-sm">More
-													details</a>
-											</p>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-3">
-								<div class="col-item">
-									<div class="photo">
-										<img src="http://placehold.it/350x260" class="img-responsive"
-											alt="a" />
-									</div>
-									<div class="info">
-										<div class="row">
-											<div class="price col-md-6">
-												<h5>Grouped Product</h5>
-												<h5 class="price-text-color">$249.99</h5>
-											</div>
-											<div class="rating hidden-sm col-md-6"></div>
-										</div>
-										<div class="separator clear-left">
-											<p class="btn-add">
-												<i class="fa fa-shopping-cart"></i><a
-													href="http://www.jquery2dotnet.com" class="hidden-sm">Add
-													to cart</a>
-											</p>
-											<p class="btn-details">
-												<i class="fa fa-list"></i><a
-													href="http://www.jquery2dotnet.com" class="hidden-sm">More
-													details</a>
-											</p>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-3">
-								<div class="col-item">
-									<div class="photo">
-										<img src="http://placehold.it/350x260" class="img-responsive"
-											alt="a" />
-									</div>
-									<div class="info">
-										<div class="row">
-											<div class="price col-md-6">
-												<h5>Product with Variants</h5>
-												<h5 class="price-text-color">$149.99</h5>
-											</div>
-											<div class="rating hidden-sm col-md-6">
-												<i class="price-text-color fa fa-star"></i><i
-													class="price-text-color fa fa-star"> </i><i
-													class="price-text-color fa fa-star"></i><i
-													class="price-text-color fa fa-star"> </i><i
-													class="fa fa-star"></i>
-											</div>
-										</div>
-										<div class="separator clear-left">
-											<p class="btn-add">
-												<i class="fa fa-shopping-cart"></i><a
-													href="http://www.jquery2dotnet.com" class="hidden-sm">Add
-													to cart</a>
-											</p>
-											<p class="btn-details">
-												<i class="fa fa-list"></i><a
-													href="http://www.jquery2dotnet.com" class="hidden-sm">More
-													details</a>
-											</p>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-3">
-								<div class="col-item">
-									<div class="photo">
-										<img src="http://placehold.it/350x260" class="img-responsive"
-											alt="a" />
-									</div>
-									<div class="info">
-										<div class="row">
-											<div class="price col-md-6">
-												<h5>Product with Variants</h5>
-												<h5 class="price-text-color">$199.99</h5>
-											</div>
-											<div class="rating hidden-sm col-md-6">
-												<i class="price-text-color fa fa-star"></i><i
-													class="price-text-color fa fa-star"> </i><i
-													class="price-text-color fa fa-star"></i><i
-													class="price-text-color fa fa-star"> </i><i
-													class="fa fa-star"></i>
-											</div>
-										</div>
-										<div class="separator clear-left">
-											<p class="btn-add">
-												<i class="fa fa-shopping-cart"></i><a
-													href="http://www.jquery2dotnet.com" class="hidden-sm">Add
-													to cart</a>
-											</p>
-											<p class="btn-details">
-												<i class="fa fa-list"></i><a
-													href="http://www.jquery2dotnet.com" class="hidden-sm">More
-													details</a>
-											</p>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-								</div>
-							</div>
+					</div>	
+					
+					<c:if test = "${ listProductSameSize  < 8 }">
+			         	<c:set var = "templistProductSameSize1" scope = "session" value = "${ listProductSameSize }"/>
+			        </c:if>	
+			        <c:if test = "${ listProductSameSize  >= 8 }">
+			         	<c:set var = "templistProductSameSize1" scope = "session" value = "8"/>
+			        </c:if>	
+			        
+			        <c:if test = "${ listProductSameSize  >= 4 }">
+			         	<div class="carousel-item ">
+							<div class="row">
+								<c:forEach var="i" begin="4" end="${ templistProductSameSize1 -1 }" >
+									<div class="col-6 col-lg-3 col-md-4  ">
+									
+		                                <div class="category-box">
+		
+		                                    <img src="<c:url value='/uploads/images/${listProductsOffer.get(i).getListProductImage().get(0).getImageUrl()}'/>" alt="#" width="25%" class=" w-100 h-75 img img-responsive">
+	 	 
+		                                    <p class="category-name">${listProductsOffer.get(i).getProductName() }</p>
+		                                    <!-- <p class="category-price">777.777 <span class="vnd">₫</span></p> -->
+		                                    <div class="card-text text-left font-weight-bold d-flex justify-content-center">
+		                                        <span class="product__price product__price-old">${listProductsOffer.get(i).getLongSalePrice() }</span>
+		                                        <span class="product__price product__price-new">${listProductsOffer.get(i).getLongPrice() }</span>
+		                                    </div>
+		                                    <a href="<c:url value='/product/${listProductsOffer.get(i).getProductId()}'/>" class="btn  margin__btn-add-cart m-auto">Xem Sản Phẩm</a>
+		                                </div>
+		                            </div>
+								</c:forEach>	
+							</div>	
 						</div>
-					</div>
+			        </c:if>	
+			        
+			         <c:if test = "${ listProductSameSize  >= 8 }">
+			         	<div class="carousel-item ">
+							<div class="row">
+								<c:forEach var="i" begin="${ templistProductSameSize1 }" end="${ listProductSameSize -1}" >
+									<div class="col-6 col-lg-3 col-md-4  ">
+									
+		                                <div class="category-box">
+		
+		                                    <img src="<c:url value='/uploads/images/${listProductsOffer.get(i).getListProductImage().get(0).getImageUrl()}'/>" alt="#" width="25%" class=" w-100 h-75 img img-responsive">
+	 	 
+		                                    <p class="category-name">${listProductsOffer.get(i).getProductName() }</p>
+		                                    <!-- <p class="category-price">777.777 <span class="vnd">₫</span></p> -->
+		                                    <div class="card-text text-left font-weight-bold d-flex justify-content-center">
+		                                        <span class="product__price product__price-old">${listProductsOffer.get(i).getLongSalePrice() }</span>
+		                                        <span class="product__price product__price-new">${listProductsOffer.get(i).getLongPrice() }</span>
+		                                    </div>
+		                                    <a href="<c:url value='/product/${listProductsOffer.get(i).getProductId()}'/>" class="btn  margin__btn-add-cart m-auto">Xem Sản Phẩm</a>
+		                                </div>
+		                            </div>
+								</c:forEach>	
+							</div>	
+						</div>
+			        </c:if>				
+						
 				</div>
 			</div>
 		</div>
-	</div>
 
 	<div class="container pb-4 mt-4 mb-4">
 		<h3 class="font-weight-bold py-3">Thông Tin Chi Tiết</h3>
@@ -503,321 +323,31 @@
 	<div class="container pt-4 mb-4 mt-4">
 		<div class="row">
 			<div class="row">
-				<div class="col-md-9">
-					<h3 class="mt-4 mb-4">Sản Phẩm Liên Quan</h3>
-				</div>
-				<div class="col-md-3">
-					<!-- Controls -->
-					<div class="controls pull-right hidden-xs">
-						<a class="left fa fa-chevron-left btn btn"
-							href="#carousel-example" data-slide="prev"></a><a
-							class="right fa fa-chevron-right btn" href="#carousel-example"
-							data-slide="next"></a>
-					</div>
-				</div>
+					<h2 class=" mb-4 pl-4">Sản Phẩm Liên Quan</h2>
 			</div>
-			<div id="carousel-example" class="carousel slide hidden-xs"
-				data-ride="carousel">
-				<!-- Wrapper for slides -->
-				<div class="carousel-inner">
-					<div class="item active">
-						<div class="row">
-							<div class="col-sm-3">
-								<div class="col-item">
-									<div class="info">
-										<div class="row">
-											<div class="price col-md-6">
-												<h5>Product A</h5>
-												<h5 class="price-text-color">$7.99</h5>
-											</div>
-											<div class="rating hidden-sm col-md-6">
-												<i class="price-text-color fa fa-star"></i> <i
-													class="price-text-color fa fa-star"></i>
-											</div>
-										</div>
-									</div>
-
-									<div class="photo">
-										<img
-											src="http://www.prepbootstrap.com/Content/images/template/productslider/product_001.jpg"
-											class="img-responsive" alt="a" />
-									</div>
-									<div class="info">
-										<div class="separator clear-left">
-											<p class="btn-add">
-												<i class="fa fa-shopping-cart"></i><a href="#"
-													class="hidden-sm">Add to cart</a>
-											</p>
-											<p class="btn-details">
-												<i class="fa fa-list"></i><a href="#" class="hidden-sm">More
-													details</a>
-											</p>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-								</div>
-							</div>
-
-							<div class="col-sm-3">
-								<div class="col-item">
-									<div class="info">
-										<div class="row">
-											<div class="price col-md-6">
-												<h5>Product B</h5>
-												<h5 class="price-text-color">$9.99</h5>
-											</div>
-											<div class="rating hidden-sm col-md-6">
-												<i class="price-text-color fa fa-star"></i> <i
-													class="price-text-color fa fa-star"></i> <i
-													class="price-text-color fa fa-star"></i>
-											</div>
-										</div>
-									</div>
-
-									<div class="photo">
-										<img
-											src="http://www.prepbootstrap.com/Content/images/template/productslider/product_002.jpg"
-											class="img-responsive" alt="a" />
-									</div>
-									<div class="info">
-										<div class="separator clear-left">
-											<p class="btn-add">
-												<i class="fa fa-shopping-cart"></i><a href="#"
-													class="hidden-sm">Add to cart</a>
-											</p>
-											<p class="btn-details">
-												<i class="fa fa-list"></i><a href="#" class="hidden-sm">More
-													details</a>
-											</p>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-3">
-								<div class="col-item">
-									<div class="info">
-										<div class="row">
-											<div class="price col-md-6">
-												<h5>Product C</h5>
-												<h5 class="price-text-color">$7.58</h5>
-											</div>
-											<div class="rating hidden-sm col-md-6">
-												<i class="price-text-color fa fa-star"></i> <i
-													class="price-text-color fa fa-star"></i>
-											</div>
-										</div>
-									</div>
-
-									<div class="photo">
-										<img
-											src="http://www.prepbootstrap.com/Content/images/template/productslider/product_003.jpg"
-											class="img-responsive" alt="a" />
-									</div>
-									<div class="info">
-										<div class="separator clear-left">
-											<p class="btn-add">
-												<i class="fa fa-shopping-cart"></i><a href="#"
-													class="hidden-sm">Add to cart</a>
-											</p>
-											<p class="btn-details">
-												<i class="fa fa-list"></i><a href="#" class="hidden-sm">More
-													details</a>
-											</p>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-3">
-								<div class="col-item">
-									<div class="info">
-										<div class="row">
-											<div class="price col-md-6">
-												<h5>Another product</h5>
-												<h5 class="price-text-color">$3.75</h5>
-											</div>
-											<div class="rating hidden-sm col-md-6">
-												<i class="price-text-color fa fa-star"></i> <i
-													class="price-text-color fa fa-star"></i> <i
-													class="price-text-color fa fa-star"></i> <i
-													class="price-text-color fa fa-star"></i>
-											</div>
-										</div>
-									</div>
-
-									<div class="photo">
-										<img
-											src="http://www.prepbootstrap.com/Content/images/template/productslider/product_001.jpg"
-											class="img-responsive" alt="a" />
-									</div>
-									<div class="info">
-										<div class="separator clear-left">
-											<p class="btn-add">
-												<i class="fa fa-shopping-cart"></i><a href="#"
-													class="hidden-sm">Add to cart</a>
-											</p>
-											<p class="btn-details">
-												<i class="fa fa-list"></i><a href="#" class="hidden-sm">More
-													details</a>
-											</p>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="row">
-							<div class="col-sm-3">
-								<div class="col-item">
-									<div class="info">
-										<div class="row">
-											<div class="price col-md-6">
-												<h5>Product</h5>
-												<h5 class="price-text-color">$7.17</h5>
-											</div>
-											<div class="rating hidden-sm col-md-6">
-												<i class="price-text-color fa fa-star"></i> <i
-													class="price-text-color fa fa-star"></i>
-											</div>
-										</div>
-									</div>
-
-									<div class="photo">
-										<img
-											src="http://www.prepbootstrap.com/Content/images/template/productslider/product_001.jpg"
-											class="img-responsive" alt="a" />
-									</div>
-									<div class="info">
-										<div class="separator clear-left">
-											<p class="btn-add">
-												<i class="fa fa-shopping-cart"></i><a href="#"
-													class="hidden-sm">Add to cart</a>
-											</p>
-											<p class="btn-details">
-												<i class="fa fa-list"></i><a href="#" class="hidden-sm">More
-													details</a>
-											</p>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-								</div>
-							</div>
-
-							<div class="col-sm-3">
-								<div class="col-item">
-									<div class="info">
-										<div class="row">
-											<div class="price col-md-6">
-												<h5>Product</h5>
-												<h5 class="price-text-color">$19.99</h5>
-											</div>
-											<div class="rating hidden-sm col-md-6">
-												<i class="price-text-color fa fa-star"></i> <i
-													class="price-text-color fa fa-star"></i>
-											</div>
-										</div>
-									</div>
-
-									<div class="photo">
-										<img
-											src="http://www.prepbootstrap.com/Content/images/template/productslider/product_002.jpg"
-											class="img-responsive" alt="a" />
-									</div>
-									<div class="info">
-										<div class="separator clear-left">
-											<p class="btn-add">
-												<i class="fa fa-shopping-cart"></i><a href="#"
-													class="hidden-sm">Add to cart</a>
-											</p>
-											<p class="btn-details">
-												<i class="fa fa-list"></i><a href="#" class="hidden-sm">More
-													details</a>
-											</p>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-3">
-								<div class="col-item">
-									<div class="info">
-										<div class="row">
-											<div class="price col-md-6">
-												<h5>Product</h5>
-												<h5 class="price-text-color">$1.99</h5>
-											</div>
-											<div class="rating hidden-sm col-md-6">
-												<i class="price-text-color fa fa-star"></i> <i
-													class="price-text-color fa fa-star"></i> <i
-													class="price-text-color fa fa-star"></i>
-											</div>
-										</div>
-									</div>
-
-									<div class="photo">
-										<img
-											src="http://www.prepbootstrap.com/Content/images/template/productslider/product_003.jpg"
-											class="img-responsive" alt="a" />
-									</div>
-									<div class="info">
-										<div class="separator clear-left">
-											<p class="btn-add">
-												<i class="fa fa-shopping-cart"></i><a href="#"
-													class="hidden-sm">Add to cart</a>
-											</p>
-											<p class="btn-details">
-												<i class="fa fa-list"></i><a href="#" class="hidden-sm">More
-													details</a>
-											</p>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-3">
-								<div class="col-item">
-									<div class="info">
-										<div class="row">
-											<div class="price col-md-6">
-												<h5>Product</h5>
-												<h5 class="price-text-color">$1.09</h5>
-											</div>
-											<div class="rating hidden-sm col-md-6">
-												<i class="price-text-color fa fa-star"></i> <i
-													class="price-text-color fa fa-star"></i> <i
-													class="price-text-color fa fa-star"></i> <i
-													class="price-text-color fa fa-star"></i>
-											</div>
-										</div>
-									</div>
-
-									<div class="photo">
-										<img
-											src="http://www.prepbootstrap.com/Content/images/template/productslider/product_001.jpg"
-											class="img-responsive" alt="a" />
-									</div>
-									<div class="info">
-										<div class="separator clear-left">
-											<p class="btn-add">
-												<i class="fa fa-shopping-cart"></i><a href="#"
-													class="hidden-sm">Add to cart</a>
-											</p>
-											<p class="btn-details">
-												<i class="fa fa-list"></i><a href="#" class="hidden-sm">More
-													details</a>
-											</p>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+			
+			<c:set var="listProductsByCategorySize" scope="session"
+						value="${listProductsByCategory.size()}" />			
+			<div class="row">
+				 <c:if test = "${ listProductsByCategorySize  > 0 }">
+			      	<c:forEach var="i" begin="0" end="${ listProductsByCategorySize -1}" >
+						<div class="col-6 col-lg-3 col-md-4  ">
+                              <div class="category-box">
+                                  <img src="<c:url value='/uploads/images/${listProductsByCategory.get(i).getListProductImage().get(0).getImageUrl()}'/>" alt="#" width="25%" class=" w-100 h-75 img img-responsive">
+                                  <p class="category-name">${listProductsByCategory.get(i).getProductName() }</p>
+                                  <!-- <p class="category-price">777.777 <span class="vnd">₫</span></p> -->
+                                  <div class="card-text text-left font-weight-bold d-flex justify-content-center">
+                                      <span class="product__price product__price-old">${listProductsByCategory.get(i).getLongSalePrice() }</span>
+                                      <span class="product__price product__price-new">${listProductsByCategory.get(i).getLongPrice() }</span>
+                                  </div>
+                                  <a href="<c:url value='/product/${listProductsByCategory.get(i).getProductId()}'/>" class="btn  margin__btn-add-cart m-auto">Xem Sản Phẩm</a>
+                              </div>
+                          </div>
+					</c:forEach>
+			     </c:if>
+				
 			</div>
+			
 		</div>
 	</div>
 </section>

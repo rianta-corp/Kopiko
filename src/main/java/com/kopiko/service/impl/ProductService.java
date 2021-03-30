@@ -142,4 +142,15 @@ public class ProductService implements IProductService{
 		return new ResponseModel(responseMap, responseCode);
 	}
 
+	@Override
+	public List<Product> searchProductByCategoryIdOrBrandId(Long id) {	
+		return productRepository.searchProductByCategoryIdOrBrandId(id);
+	}
+
+	@Override
+	public List<Product> searchProductOfCategoryByProductId(Long id) {
+		// TODO Auto-generated method stub
+		return productRepository.searchProductOfCategoryByProductId(id);
+	}
+
 }

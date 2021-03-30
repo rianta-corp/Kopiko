@@ -25,6 +25,12 @@ public interface IProductService {
 	// Search product category id! trungns4
 	List<Product> searchProductByCategoryId(Long id);
 	
+	// search product of category id of product id
+	List<Product> searchProductOfCategoryByProductId(Long id);
+	
+	//Search product by categoryid or brandid 
+	List<Product> searchProductByCategoryIdOrBrandId(Long id);
+	
 	ResponseModel findAllProductWithPage(int pageNumber);
 	
 	ResponseModel searchProductByCategotyId(Long id, int pageNumber);
