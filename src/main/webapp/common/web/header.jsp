@@ -9,6 +9,8 @@
 <%-- <script
 	src="<c:url value='/template/web/plugins/bootstrap/js/bootstrap.min.js'/>"></script> --%>
 <script src="<c:url value='/template/web/js/app.js'/>"></script>
+
+
 <header class="header">
 	<!-- Heading -->
 	<div class="heading">
@@ -28,7 +30,11 @@
 				<span class="heading__welcome-content">Chào mừng đến với
 					KopiKo</span> <i class="heading__welcome-icon fas fa-heart"></i>
 			</div>
-			<c:if test="${sessionScope.account == null}">
+
+			<sec:authentication var="user" property="principal" />
+
+
+			<sec:authorize access="!isAuthenticated()">
 				<div class="heading__log">
 					<ul class="heading__log-io">
 						<li class="heading__log-items"><a class="heading__log-link"
@@ -37,14 +43,15 @@
 							href="/register">Đăng ký</a></li>
 					</ul>
 				</div>
-			</c:if>
+			</sec:authorize>
 
 			<!-- Header Navbar User -->
-			<c:if test="${sessionScope.account != null}">
+			<sec:authorize
+				access="hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') and isAuthenticated()">
 				<div class="heading__navbar-user">
 
 					<img src="/img/avatar.jpg" alt="" class="heading__navbar-user-img">
-					<a href="/account/profile" class="heading__navbar-user-name">${sessionScope.account.fullName}</a>
+					<a href="/account/profile" class="heading__navbar-user-name">${user.username}</a>
 
 					<ul class="heading__navbar-user-menu">
 						<li class="heading__navbar-user-item"><a
@@ -55,7 +62,8 @@
 								xuất</a></li>
 					</ul>
 				</div>
-			</c:if>
+			</sec:authorize>
+
 
 			<!-- End Header Navbar User -->
 		</div>
