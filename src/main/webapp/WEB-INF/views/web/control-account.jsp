@@ -2,10 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/common/taglib.jsp"%>
 <link rel="stylesheet"
-	href="<c:url value='/template/web/jquery/PagingStyle.css'/>" />
+	href="<c:url value='/template/web/css/PagingOrderDetail.css'/>" />
 	
 <!-- Page of infomation of customer -->
-<div class="container-fluid bg-light border-bottom pb-5">
+<div class="container-fluid bg-light border-bottom py-5">
 	<div class="container position-relative " style="height: 44px;">
 		<div class="d-flex align-items-center py-4 h-100 position-absolute">
 			<div class="nav-item nav-item-home">
@@ -30,10 +30,10 @@
 				</div>
 				<div class="w-100 mt-3">
 					<ul class="d-flex flex-wrap w-100 pl-0">
-						<li class="w-100 py-3 px-2 font__size-3"><a href="/account/profile" class=""><i
-								class="fas fa-user pr-5 font__size-4"></i>Thông tin tài khoản</a></li>
-						<li class="w-100 py-3 px-2 font__size-3"><a href="/account/order" class=""><i
-								class="fas fa-tasks pr-5 font__size-4"></i>Quản lý đơn hàng</a></li>
+						<li class="w-100 py-3 px-2 font__size-3"><a href="/account/profile" class="buy-infor-headers"><i
+								class="fas fa-user pr-5 font__size-4 buy-infor-header"></i>Thông tin tài khoản</a></li>
+						<li class="w-100 py-3 px-2 font__size-3"><a href="/account/order" class="buy-infor-headers"><i
+								class="fas fa-tasks pr-5 font__size-4 buy-infor-header"></i>Quản lý đơn hàng</a></li>
 					</ul>
 				</div>
 
