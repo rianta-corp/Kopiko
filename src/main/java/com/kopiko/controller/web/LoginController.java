@@ -9,13 +9,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.kopiko.converter.AccountCustomerConverter;
+import com.kopiko.dto.AccountCustomerDTO;
+import com.kopiko.entity.Account;
 import com.kopiko.service.IAccountService;
-
-
 
 /**
  * @author rianta9
@@ -26,46 +28,40 @@ import com.kopiko.service.IAccountService;
 public class LoginController {
 
 	@Autowired
-    IAccountService service;
+	IAccountService accountService;
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String showLoginPage(ModelMap model) {
-        System.out.println("LoginController - showLoginPage");
+	@Autowired
+	private AccountCustomerConverter accountCustomConverter;
 
-        return "web/login";
-    }
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String showLoginPage(ModelMap model) {
+		System.out.println("LoginController - showLoginPage");
 
-    // Action này không được Call.
-    // Do login form đang setting gọi url của Security
-    // @RequestMapping(value = "/login-check", method = RequestMethod.POST)
-    @RequestMapping(value = "/login-check", method = RequestMethod.GET)
-    public String showWelcomePage(ModelMap model, @RequestParam String username, @RequestParam String password, HttpSession session) {
-        System.out.println("LoginController - showWelcomePage");
+		return "web/login";
+	}
 
-        if (service.checkAdmin(username, password)) {
-            model.put("name", username);
-            model.put("password", password);
-            session.setAttribute("username", username);
-            return "admin/home";
-        }
+	@PostMapping("/login")
+	public String login(@RequestParam String username, @RequestParam String password, ModelMap model,
+			HttpSession session) {
+		if (accountService.checkAdmin(username, password)) {
+			System.out.println("Login success admin");
+			Account data = accountService.findByUsername(username);
+			AccountCustomerDTO account = accountCustomConverter.toDTO(data);
+			session.setAttribute("account", account);
+			return "redirect:/admin/home";
+		}
 
-        if (service.checkUser(username, password)) {
-            model.put("name", username);
-            model.put("password", password);
-            session.setAttribute("username", username);
-            return "web/home";
-        }
+		if (accountService.checkUser(username, password)) {
+			System.out.println("Login success user");
+			session.setAttribute("username", username);
+			Account data = accountService.findByUsername(username);
+			AccountCustomerDTO account = accountCustomConverter.toDTO(data);
+			session.setAttribute("account", account);
+			return "redirect:/home";
+		}
 
-        model.put("errorMessage", "Invalid Credentials");
+		model.put("errorMessage", "Invalid Credentials");
 
-        return "login";
-    }
-
-    @RequestMapping(value = "/logoutSuccessful", method = RequestMethod.GET)
-    public String logoutSuccessfulPage(Model model) {
-        System.out.println("MainController - logoutSuccessfulPage");
-
-        model.addAttribute("title", "Logout");
-        return "login";
-    }
+		return "redirect:/login";
+	}
 }

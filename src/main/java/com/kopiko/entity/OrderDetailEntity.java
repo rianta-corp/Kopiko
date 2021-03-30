@@ -36,12 +36,17 @@ public class OrderDetailEntity {
 	private OrderEntity order;
 
 	@ManyToOne
-	@JoinColumn(name = "product_id", nullable = false)
-	private Product product;
-
+	@JoinColumn(name = "product_detail_id", nullable = false)
+	private ProductDetail productDetail;
+	
 	@Column(nullable = false)
 	private Integer quantity;
 
 	@Column(nullable = false, columnDefinition = "money")
 	private BigDecimal salePrice;
+	
+	
+	public Long getLongSalePrice() {
+		return this.salePrice.longValue();
+	}
 }

@@ -921,7 +921,7 @@ div.carousel-caption > a > span{font-size: 2rem; color: var(--white-color);}
     width: 50%;
 }
 .position__property-banner-layout > h4 , h1,h5{
-        color: var(--white-color);
+        /* color: var(--white-color); */
 }
  
 .position__property-banner-layout > h4 {font-size: 2rem;}

@@ -64,8 +64,24 @@ public interface IPaymentMethodService {
 	List<PaymentMethodEntity> findByPaymentMethodNameContaining(String paymentMethodName);
 	
 	/**
+	 * 
+	 * Find payment method by payment method name and not payment method id
+	 * 
+	 * @param paymentMethodName
+	 * @param paymentMethodId
+	 * 
+	 */
+	PaymentMethodEntity findByPaymentMethodNameAndPaymentMethodIdNot(String paymentMethodName, Long paymentMethodId);
+
+	
+	/**
 	 * Test get info for Home page
 	 * @return
 	 */
 	ResponseModel getInfoHomePage();
+
+	/**
+	 * @return
+	 */
+	List<PaymentMethodEntity> findAll();
 }

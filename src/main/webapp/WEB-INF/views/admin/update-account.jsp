@@ -66,7 +66,7 @@
 			</div>
 			<div class="form-group">
 				<button type="button" class="btn btn-primary float-left"
-					onclick="window.location.href='/admin/account/view/list'">Back</button>
+					onclick="window.location.href='/admin/account/list'">Back</button>
 				<p id="msg" class="ml-4 pt-1 float-left"></p>
 				<button type="submit" class="btn btn-primary mb-2 float-right"
 					id="update">Cập nhật</button>

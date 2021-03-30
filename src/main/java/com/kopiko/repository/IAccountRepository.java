@@ -36,4 +36,18 @@ public interface IAccountRepository extends JpaRepository<Account , Long>{
 	 * @return
 	 */
 	Account findByPhone(String phone);
+
+	/**
+	 * @param email
+	 * @param accountId
+	 * @return
+	 */
+	Account findByEmailAndAccountIdNot(String email, Long accountId);
+
+	/**
+	 * @param phone
+	 * @param accountId
+	 * @return
+	 */
+	Account findByPhoneAndAccountIdNot(String phone, Long accountId);
 }

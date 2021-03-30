@@ -57,4 +57,15 @@ public class Account {
 	@ColumnDefault("1") // Active
 	private Integer status;
 
+	/**
+	 * @return
+	 */
+	public String getDeliveryInfo() {
+		String result = "";
+		result += "Khách hàng: " + this.fullName;
+		result += ";Sđt: " + this.phone;
+		result += ";Địa chỉ: " + this.address;
+		return result;
+	}
+
 }

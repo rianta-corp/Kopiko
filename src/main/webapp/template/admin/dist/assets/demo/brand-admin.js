@@ -11,7 +11,10 @@ function initTableData() {
 			data: responseData,
 			columns: [
 				{ data: 'brandId' },
-				{ data: 'brandImgUrl' },
+				{ render: function(data, type, row) {
+						return `<img class="img-brand" src="/uploads/images/${row.brandImgUrl}"/>`;
+					} 
+				},
 				{ data: 'brandName' },
 				{ data: 'info' },
 				{
@@ -28,14 +31,18 @@ function initTableData() {
 				}
 			],
 			dom: 'Bfrtip',
+			lengthMenu: [
+			[ 10, 25, 50, -1 ],
+			[ '10 Filas', '25 Filas', '50 Filas', 'Mostrar todo' ]
+			],
 			buttons: [
 				{
 					text: 'Add New Brand',
 					action: function(e, dt, node, config) {
+						resetFormModal($('#brandInfoForm'));
 						$('.modal-title').text('Add New Brand');
 						$('#brandId').parent().addClass("d-none");
 						$('#myModal').modal('toggle')
-						resetForm();
 					}
 				}
 			]
@@ -58,19 +65,6 @@ $(document).ready(function() {
 		}
 	})
 
-	/** Add input search header datatable */
-	$('#dataTable thead tr').clone(true).appendTo('#dataTable thead');
-	$('#dataTable thead tr:eq(1) th').each(function(i) {
-		var title = $(this).text();
-		$(this).html('<input type="text" placeholder="Search ' + title + '" />');
-		$('input', this).on('keyup change', function() {
-			if (table.column(i).search() !== this.value) {
-				table.column(i).search(this.value).draw();
-			}
-		});
-	});
-	$('#dataTable thead tr:eq(1) th').addClass('d-none')
-
 	/** Show modal form update brand */
 	$("#dataTable").on('click', '.edit-btn', function() {
 		$('#brandId').parent().removeClass("d-none");
@@ -79,6 +73,8 @@ $(document).ready(function() {
 			url: '/admin/brand/find/' + $(this).data('id'),
 			type: 'GET',
 			success: function(responseData) {
+				resetFormModal($('#brandInfoForm'));
+				console.log('responseData: ' + JSON.stringify(responseData))
 				$("#brandId").val(responseData.brandId);
 				$("#brandName").val(responseData.brandName);
 				$("#info").val(responseData.info);
@@ -93,22 +89,27 @@ $(document).ready(function() {
 		var $brandId = $("#brandId")
 		var $brandImgUrl = $("#brandImgUrl")
 		var $brandName = $("#brandName")
+		var $imageFile = $("#imageFile")
 		var $info = $("#info")
-		var isAction = $brandId.val() == undefined || $brandId.val() == "";
+		var isAddAction = $brandId.val() == undefined || $brandId.val() == "";
 		var brandEntity = {
 			brandId: $brandId.val() ? $brandId.val() : null,
 			brandImgUrl: $brandImgUrl.val(),
 			brandName: $brandName.val(),
+			imageFile: $imageFile.val(),
 			info: $info.val(),
 		}
+		var formData = new FormData($("#brandInfoForm")[0]);
 		console.log('brandEntity: ' + JSON.stringify(brandEntity))
-		
 		$("#brandInfoForm").validate({
 			rules: {
 				brandName: {
 					required: true,
 					minlength: 2,
 					maxlength: 100,
+				},
+				imageFile: {
+					required: isAddAction
 				}
 			},
 			messages: {
@@ -116,6 +117,9 @@ $(document).ready(function() {
 					required: "Brand Name  is required",
 					minlength: "Your brand name must consist of at least 2 characters",
 					maxlength: "Your brand name must less than 100 characters"
+				},
+				imageFile: {
+					required: "Image brand is required",
 				}
 			},
 			errorElement: "div",
@@ -123,20 +127,21 @@ $(document).ready(function() {
 		});
 		if ($("#brandInfoForm").valid()) {
 			$.ajax({
-				url: '/admin/brand/' + (isAction ? "add" : "update"),
+				url: '/admin/brand/' + (isAddAction ? "add" : "update"),
 				type: 'POST',
-				dataType: 'JSON',
-				data: brandEntity,
+				processData: false,
+				contentType: false,
 				enctype: 'multipart/form-data',
+				data: formData,
 				success: function(responseData) {
-					if (responseData.resonseCode == 100) {
+					if (responseData.responseCode == 100) {
 						/**Reload datatable */
 						reloadDataTable();
 						$('#myModal').modal('toggle');
 						$('#announcemnet strong:eq(0)').removeClass("text-warning").addClass("text-success");
-						$('#notification').text((isAction ? "Add New Brand " : "Update Brand ") + "Success!");
+						$('#notification').text((isAddAction ? "Add New Brand " : "Update Brand ") + "Success!");
 						$("#announcemnet").toast('show');
-					} else {
+					} else if(responseData.responseCode == 1) {
 						$('#announcemnet strong:eq(0)').removeClass("text-success").addClass("text-warning");
 						$('#notification').text("The value you entered has been duplicated!");
 						$("#announcemnet").toast('show');
@@ -156,6 +161,7 @@ $(document).ready(function() {
 		$("#deleteBrandName").text($(this).data("name"));
 		$("#btnSubmitDelete").attr('data-id', $(this).data('id'));
 	})
+	
 
 	/** Submit delete brand */
 	$("#btnSubmitDelete").on('click', function() {
@@ -178,6 +184,8 @@ $(document).ready(function() {
 		})
 		console.log('Brand id after:' + $(this).data('id'))
 	})
+	
+	$('#imageFile').on('change', previewImages);
 })
 
 function reloadDataTable() {
@@ -185,11 +193,34 @@ function reloadDataTable() {
 	initTableData();
 }
 
-function resetForm() {
-	$("#brandId").val('');
-	$("#brandName").val('');
-	$("#brandImgUrl").val('');
-	$("#info").val('');
+function previewImages() {
+	  var preview = document.querySelector('#previewonly');
+	  if (this.files) {
+	    [].forEach.call(this.files, readAndPreview);
+	  }
+	  function readAndPreview(file) {
+	    if (!/\.(jpe?g|png|gif)$/i.test(file.name)) {
+	      return alert(file.name + " is not an image");
+	    } 
+	    var reader = new FileReader();
+	    reader.addEventListener("load", function() {
+	      var image = new Image();
+	      image.height = 100;
+	      image.margin = 5;
+	      image.src    = this.result;
+	      preview.appendChild(image);
+	    });
+	    reader.readAsDataURL(file);
+	  }
+	}
+
+/* Rest form add new brand*/
+function resetFormModal($formElement) {
+	$formElement[0].reset();
+	$formElement.find("input[type*='file']").val("");
+	$formElement.validate().destroy();
+	$formElement.find(".error-message-invalid").removeClass('error-message-invalid');
+	$formElement.find("img").attr('src', '');
+	$('#previewonly img').attr('src', '');
+	$('#imageFile').attr('src', '');
 }
-
-

@@ -60,6 +60,7 @@
 				</ul>
 			</div>
 			<div class="col-lg-10 col-md-8 category-list">
+				<p id="message-search"></p>
 				<div class="row" id="listProducts">
 				</div>
 			</div>

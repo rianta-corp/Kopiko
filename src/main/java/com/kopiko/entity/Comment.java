@@ -15,6 +15,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.kopiko.util.DateTimeUtil;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -51,4 +53,8 @@ public class Comment {
 	
 	@OneToMany(mappedBy = "comment")
 	private List<CommentImage> listCommentImage;
+	
+	public String getDateCreatedString() {
+		return DateTimeUtil.toStringType(dateCreated);
+	}
 }

@@ -20,4 +20,21 @@ public interface IOrderService {
 	List<OrderEntity> findAllByAccountAccountId(Long accountId);
 	OrderEntity findByOrderId(Long id);
 	OrderEntity updateStatus(Long orderId, Long statusId);
+	/**
+	 * @param order
+	 * @return
+	 */
+	OrderEntity save(OrderEntity order);
+	/**
+	 * @param username
+	 * @return
+	 */
+	List<OrderEntity> findAllByUsername(String username);
+	/**
+	 * Tìm kiếm xem orderId có thuộc tài khoản accountId ko...Nếu có trả về order.
+	 * @param orderId
+	 * @param accountId
+	 * @return
+	 */
+	OrderEntity findByOrderIdAndAccountId(Long orderId, Long accountId);
 }
