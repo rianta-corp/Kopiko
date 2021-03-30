@@ -175,7 +175,7 @@ public class ControlProductController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "redirect:/admin/product/insert";
+		return "redirect:/admin/product/new";
 	}
 	
 	private String save(MultipartFile file, HttpServletRequest servletRequest) {

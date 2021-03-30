@@ -11,12 +11,10 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
 import com.kopiko.security.AuthenticationProviderImpl;
-import com.kopiko.security.CustomAuthenticationSuccessHandler;
 import com.kopiko.security.UserDetailsServiceImpl;
 
 
@@ -36,8 +34,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private AuthenticationProviderImpl authenticationProvider;
 	
-	@Autowired
-	AuthenticationSuccessHandler authenticationSuccessHandler;
+	/*
+	 * @Autowired AuthenticationSuccessHandler authenticationSuccessHandler;
+	 */
 
 	@Autowired
 	DataSource dataSource;
@@ -114,8 +113,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.defaultSuccessUrl("/home")//
 				.failureUrl("/login?error=true")//
 				.usernameParameter("username")//
-				.passwordParameter("password")
-				.successHandler(authenticationSuccessHandler);
+				.passwordParameter("password");
+//				.successHandler(authenticationSuccessHandler);
 
 		// Cấu hình cho Logout Page.
 		http.authorizeRequests().and().logout().logoutUrl("/logout").logoutSuccessUrl("/home");
