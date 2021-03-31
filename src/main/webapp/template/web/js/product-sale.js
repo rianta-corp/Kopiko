@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	
+ 
 	var dataSend = {
 		productName : $().val()
 	};
@@ -17,7 +17,7 @@ $(document).ready(function() {
 				result = `
 					<div class="col-6 col-lg-3 col-md-4  ">
 						<div class="category-box">
-							<img src="${item.imageUrl}" alt="#" width="100%"
+							<img src="/uploads/images/${item.imageUrl}" alt="#" width="100%"
 								class="img img-responsive">
 							<p class="category-name">${item.productName}</p>
 							<div
@@ -34,8 +34,8 @@ $(document).ready(function() {
 			});
 		}
 	})
-	
-	
+ 
+ 
 	/*//var dataSend = JSON.stringify({ productName : 123});
 	var dataSend = {
 		productName : $().val()
