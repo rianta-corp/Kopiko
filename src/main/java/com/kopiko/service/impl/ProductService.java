@@ -1,6 +1,7 @@
 package com.kopiko.service.impl;
 
 import java.math.BigDecimal;
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,10 +16,12 @@ import org.springframework.stereotype.Service;
 import com.kopiko.common.constant.Constants;
 import com.kopiko.converter.ProductShowListConverter;
 import com.kopiko.entity.Product;
+import com.kopiko.model.ITop12ProductSelling;
 import com.kopiko.model.PageModel;
 import com.kopiko.model.ResponseModel;
 import com.kopiko.repository.IProductRepository;
 import com.kopiko.service.IProductService;
+import com.kopiko.model.Top12ProductSelling;
 
 @Service
 public class ProductService implements IProductService{
@@ -152,5 +155,18 @@ public class ProductService implements IProductService{
 		// TODO Auto-generated method stub
 		return productRepository.searchProductOfCategoryByProductId(id);
 	}
+
+	@Override
+	public List<ITop12ProductSelling> Selling(int month, int year) {
+		return productRepository.Top12ProductSelling(month, year);
+	}
+
+	@Override
+	public List<Product> HotNewMonth(Date dateStart, Date dateEnd) {
+		return productRepository.HotNewMonth(dateStart, dateEnd);
+	}
+
+
+
 
 }
