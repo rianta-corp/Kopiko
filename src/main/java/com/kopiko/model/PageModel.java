@@ -36,7 +36,6 @@ public class PageModel {
 		if (currentPage == totalPage) {
 			this.nextPage = DISABLE_PAGE;
 		} else if ( totalPage > 0) {
-			this.lastPage = totalPage;
 			this.nextPage = currentPage + 1;
 		}
 		this.pageNumberList = getPageNumberList( currentPage, totalPage, NUMBER_OF_MAX_PAGE);

@@ -22,6 +22,7 @@ import com.kopiko.model.ResponseModel;
 import com.kopiko.repository.IProductRepository;
 import com.kopiko.service.IProductService;
 import com.kopiko.model.Top12ProductSelling;
+import com.kopiko.statistic.IProductStatistic;
 
 @Service
 public class ProductService implements IProductService{
@@ -101,6 +102,17 @@ public class ProductService implements IProductService{
 		else data = product;
 		return productRepository.saveAndFlush(data);
 	}
+	
+
+	@Override
+	public List<Product> searchProductByCategoryIdOrBrandId(Long id) {	
+		return productRepository.searchProductByCategoryIdOrBrandId(id);
+	}
+
+	@Override
+	public List<Product> searchProductOfCategoryByProductId(Long id) {
+		return productRepository.searchProductOfCategoryByProductId(id);
+	}
 
 	// Search product by category id! trungns4
 	@Override
@@ -144,16 +156,54 @@ public class ProductService implements IProductService{
 		}
 		return new ResponseModel(responseMap, responseCode);
 	}
+	
+	// Search product sale by price desc
+	@Override
+	public ResponseModel searchProductSalePriceDesc(int pageNumber) {
+		int responseCode = Constants.RESULT_CD_FAIL;
+		Map<String, Object> responseMap = new HashMap<String, Object>();
+		try {
+			Sort sort = Sort.by(Sort.Direction.DESC, "salePrice");
+			Pageable pageable = PageRequest.of(pageNumber - 1, Constants.PAGE_SIZE, sort);
+			Page<Product> productPage = productRepository.findAll(pageable);
+			responseMap.put("products", productShowDetailConvert.toProductShowListDTO(productPage.getContent()));
+			responseMap.put("paginationList", new PageModel(pageNumber, productPage.getTotalPages()));
+			responseCode = Constants.RESULT_CD_SUCCESS;
+		} catch (Exception e) {
+			System.out.println("Search product sale by price desc failed " + e);
+		}
+		return new ResponseModel(responseMap, responseCode);
+	}
+
+	// Search product sale by price asc
+	@Override
+	public ResponseModel searchProductSalePriceAsc(int pageNumber) {
+		int responseCode = Constants.RESULT_CD_FAIL;
+		Map<String, Object> responseMap = new HashMap<String, Object>();
+		try {
+			Sort sort = Sort.by(Sort.Direction.ASC, "salePrice");
+			Pageable pageable = PageRequest.of(pageNumber - 1, Constants.PAGE_SIZE, sort);
+			Page<Product> productPage = productRepository.findAll(pageable);
+			responseMap.put("products", productShowDetailConvert.toProductShowListDTO(productPage.getContent()));
+			responseMap.put("paginationList", new PageModel(pageNumber, productPage.getTotalPages()));
+			responseCode = Constants.RESULT_CD_SUCCESS;
+		} catch (Exception e) {
+			System.out.println("Search product sale by price desc failed " + e);
+		}
+		return new ResponseModel(responseMap, responseCode);
+	}
+
 
 	@Override
-	public List<Product> searchProductByCategoryIdOrBrandId(Long id) {	
-		return productRepository.searchProductByCategoryIdOrBrandId(id);
+	public List<IProductStatistic> getTop10SellingAllTime() {
+		// TODO Auto-generated method stub
+		return productRepository.getTop10SellingAllTime();
 	}
 
 	@Override
-	public List<Product> searchProductOfCategoryByProductId(Long id) {
+	public List<IProductStatistic> getTop10SellingByMonthAndYear(Integer month, Integer year) {
 		// TODO Auto-generated method stub
-		return productRepository.searchProductOfCategoryByProductId(id);
+		return productRepository.getTop10SellingByMonthAndYear(month, year);
 	}
 
 	@Override

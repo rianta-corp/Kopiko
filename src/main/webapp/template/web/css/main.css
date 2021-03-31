@@ -70,6 +70,7 @@
     margin: 0 4px;
     font-size: 2rem;
     color: var(--white-color);
+    padding-top: 11px
 }
 
 .heading__socials-icon:hover {
@@ -578,6 +579,7 @@
 .header__navbar-items>a {
     padding-bottom: 6px;
     margin: 0 30px;
+    padding-top: 11px;
 }
 
 .header__navbar-items,
@@ -919,6 +921,7 @@ div.carousel-caption > a > span{font-size: 2rem; color: var(--white-color);}
     top: 40%;
     left: 2%;
     width: 50%;
+    color: white;
 }
 .position__property-banner-layout > h4 , h1,h5{
         color: var(--white-color); 

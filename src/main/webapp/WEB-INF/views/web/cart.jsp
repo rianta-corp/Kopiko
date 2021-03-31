@@ -44,7 +44,7 @@ body {
 											<div class="item-remove">
 												<a href="/checkout/cart/remove/${map.key}"
 													title="Xoá Sản Phẩm"><span
-													class="glyphicon glyphicon-remove-circle	
+													class="glyphicon glyphicon-remove-circle text-dark	
 									"></span></a>
 											</div>
 											<div class="item-content">

@@ -10,6 +10,7 @@ import com.kopiko.entity.Product;
 import com.kopiko.model.ITop12ProductSelling;
 import com.kopiko.model.ResponseModel;
 import com.kopiko.model.Top12ProductSelling;
+import com.kopiko.statistic.IProductStatistic;
 
 @Service
 public interface IProductService {
@@ -41,4 +42,19 @@ public interface IProductService {
 	List<ITop12ProductSelling> Selling(int month , int year);
 	
 	List<Product> HotNewMonth(Date dateStart, Date dateEnd);
+	ResponseModel searchProductSalePriceDesc(int pageNumber);
+	
+	ResponseModel searchProductSalePriceAsc(int pageNumber);
+	
+//	ResponseModel searchProductNearestMonth(int pageNumber);
+	/**
+	 * @return
+	 */
+	List<IProductStatistic> getTop10SellingAllTime();
+	/**
+	 * @param month
+	 * @param year
+	 * @return
+	 */
+	List<IProductStatistic> getTop10SellingByMonthAndYear(Integer month, Integer year);
 }

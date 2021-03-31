@@ -1,16 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/common/taglib.jsp"%>
-
-
+ 
+ 
 <link rel="stylesheet"
 	href="<c:url value='/template/web/css/search-page.css'/>">
 <link rel="stylesheet"
 	href="<c:url value='/template/web/css/category-infor.css'/>">
 <link rel="stylesheet"
 	href="<c:url value='/template/web/css/category.css'/>">
-
-
+ 
+ 
 <!-- search-page-->
 <section class="search-page pb-3">
 	<div class="container">
@@ -19,12 +19,11 @@
 				<div class="category-menu ">
 					<h4 class="font-weight-bold">DANH MỤC SẢN PHẨM</h4>
 					<ul class="navbar-nav flex-column mt-3">
-						<li class="nav-item"><a href="#"
-							class="nav-link px-3 category-list-name"> Áo phông nam </a></li>
-						<li class="nav-item"><a href="#"
-							class="nav-link  px-3 mb-2 category-list-name"> Sơ mi nam </a></li>
-						<li class="nav-item"><a href="#"
-							class="nav-link  px-3 mb-2 category-list-name"> Sơ mi nam </a></li>
+						<c:forEach items="${ listcategory }" var = "category">
+							<li class="nav-item"><a href="#"
+							class="nav-link  px-3 mb-2 category-list-name"> ${category.categoryName} </a></li>
+						</c:forEach>
+ 
 					</ul>
 				</div>
 				<div class="search-price pt-3">
@@ -40,42 +39,26 @@
 				<div class="category-menu ">
 					<h4 class="font-weight-bold pt-5">NHÀ CUNG CẤP</h4>
 					<form action="#" method="POST" class="">
-						<div class="form-check p-3">
-							<input class="form-check-input" type="checkbox" value=""
-								id="flexCheckChecked" checked> <label
-								class="form-check-label pl-3" for="flexCheckChecked">
-								Vinfast </label>
-						</div>
-						<div class="form-check p-3">
-							<input class="form-check-input" type="checkbox" value=""
-								id="flexCheckChecked"> <label
-								class="form-check-label  pl-3" for="flexCheckChecked">
-								ABC groups </label>
-						</div>
-						<div class="form-check p-3">
-							<input class="form-check-input" type="checkbox" value=""
-								id="flexCheckChecked"> <label
-								class="form-check-label  pl-3" for="flexCheckChecked">
-								Đồng Khởi Group </label>
-						</div>
-						<div class="form-check p-3">
-							<input class="form-check-input" type="checkbox" value=""
-								id="flexCheckChecked"> <label
-								class="form-check-label  pl-3" for="flexCheckChecked">
-								ESLY </label>
-						</div>
+						<c:forEach items="${listBrand}" var="brand">
+							<div class="form-check p-3">
+								<input class="form-check-input" type="checkbox" value=""
+									id="flexCheckChecked" checked> <label
+									class="form-check-label pl-3" for="flexCheckChecked">
+									${brand.brandName} </label>
+							</div>
+						</c:forEach>
 					</form>
 				</div>
 			</div>
 			<div class="col-lg-9 search-content">
 				<div class="search-message">
 					<p>
-						Kết quả tìm kiếm cho 'Áo khoác nam' : <span class="text-secondary">&nbsp;
-							111 kết quả</span>
+						Sản phẩm khuyến mãi : <span class="text-secondary">&nbsp;
+							</span>
 					</p>
 				</div>
 				<div class="row" id="productSale">
-						
+ 
 				</div>
 			</div>
 		</div>
@@ -88,5 +71,5 @@
 	<script
 		src="<c:url value='/template/web/plugins/bootstrap/js/bootstrap.min.js'/>"></script>
 	<script src="<c:url value='/template/web/js/app.js'/>"></script>
-<script src="https://kit.fontawesome.com/c8c1e5cdb3.js"></script>
+<script src="https://k...content-available-to-author-only...e.com/c8c1e5cdb3.js"></script>
 <script src="<c:url value='/template/web/js/product-sale.js'/>"></script>

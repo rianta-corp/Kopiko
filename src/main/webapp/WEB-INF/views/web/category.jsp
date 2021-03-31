@@ -21,10 +21,11 @@
 		<div class="row pb-2">
 			<div class=" filter ">
 				<p class="pr-3 float-left">Hiển thị một kết quả duy nhất</p>
-				<select name="" id="#" class=" float-left">
-					<option value="">Thứ tự mặc định</option>
-					<option value="">Thứ tự tăng theo tên</option>
-					<option value="">Thứ tự giảm theo tên</option>
+				<select id="salePriceSelected" class=" float-left">
+					<option value="0" selected="selected">Thứ tự mặc định</option>
+					<option value="1">Thứ tự tăng theo giá</option>
+					<option value="2">Thứ tự giảm theo giá</option>
+					<!-- <option value="3">Theo sản phẩm mới ra mắt</option> -->
 				</select> <a
 					class="navbar-toggler nav-button float-right pr-5 btn-show-category-menu"
 					type="button" data-toggle="collapse" data-target="#categoryMenu">

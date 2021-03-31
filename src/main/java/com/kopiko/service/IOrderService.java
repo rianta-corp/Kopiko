@@ -9,6 +9,8 @@ package com.kopiko.service;
 import java.util.List;
 
 import com.kopiko.entity.OrderEntity;
+import com.kopiko.statistic.IOrderStatistic;
+import com.kopiko.statistic.IRevenueStatistic;
 
 public interface IOrderService {
 
@@ -37,4 +39,17 @@ public interface IOrderService {
 	 * @return
 	 */
 	OrderEntity findByOrderIdAndAccountId(Long orderId, Long accountId);
+	/**
+	 * Thống kê số lượng order theo mỗi tháng của năm(12 tháng)
+	 * @param year
+	 * @return
+	 */
+	List<IOrderStatistic> getListQuantityOfOrderByYear(Integer year);
+	
+	/**
+	 * Thống kế tổng doanh thu theo mỗi tháng(12 tháng) của một năm
+	 * @param year
+	 * @return
+	 */
+	List<IRevenueStatistic> getListRevenueOfOrderByYear(Integer year);
 }
