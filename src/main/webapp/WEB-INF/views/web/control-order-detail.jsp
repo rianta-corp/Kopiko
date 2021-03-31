@@ -3,7 +3,7 @@
 
 <%@ include file="/common/taglib.jsp"%>
 <link rel="stylesheet"
-	href="<c:url value='/template/web/jquery/PagingStyle.css'/>" />
+	href="<c:url value='/template/web/css/PagingOrderDetail.css'/>" />
 	
 <style>
 	.container {
@@ -27,7 +27,7 @@
 			<div class="col-md-3 mt-4">
 				<div class="d-flex w-100">
 					<div class="block__img-customer">
-						<img src="/img/avatar.jpg" class="img__customer" alt="" srcset="">
+						<img src="<c:url value='/uploads/images/${account.avatar}'/>" class="img__customer" alt="" srcset="">
 					</div>
 					<div class="name__customer ml-3">
 						<h4>Tài khoản của</h4>
@@ -37,11 +37,11 @@
 				<div class="w-100 mt-3">
 					<ul class="d-flex flex-wrap w-100 pl-0">
 						<li class="w-100 py-3 px-2 font__size-3"><a
-							href="/account/profile" class=""><i
-								class="fas fa-user pr-5 font__size-4"></i>Thông tin tài khoản</a></li>
+							href="/account/profile" class="buy-infor-header"><i
+								class="fas fa-user pr-5 font__size-4 buy-infor-headers"></i>Thông tin tài khoản</a></li>
 						<li class="w-100 py-3 px-2 font__size-3"><a
-							href="/account/order" class=""><i
-								class="fas fa-tasks pr-5 font__size-4"></i>Quản lý đơn hàng</a></li>
+							href="/account/order" class="buy-infor-headers"><i
+								class="fas fa-tasks pr-5 font__size-4 buy-infor-header"></i>Quản lý đơn hàng</a></li>
 					</ul>
 				</div>
 			</div>
@@ -89,7 +89,7 @@
 						<!-- Chi Tiết Đơn Hàng -->
 						<div class="row mt-4">
 							<div class="table-responsive">
-								<table class="table table-borderless table-hover" id="dataTable"
+								<table class="table table-borderless table-hover order-history" id="dataTable"
 									width="100%" cellspacing="0">
 									<thead>
 										<tr>

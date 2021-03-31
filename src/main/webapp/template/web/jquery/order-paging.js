@@ -19,7 +19,7 @@
     var $thisId = $(this).attr("id");
 
 
-    $("<tfoot><tr><th colspan='"+ $colspan + "'><div id='paging'></div></th></tr></tfoot>").insertAfter(this); // chèn list Paging
+    $("<tfoot><tr><th colspan='"+ $colspan + "'><div id='pagingOrder'></div></th></tr></tfoot>").insertAfter(this); // chèn list Paging
 
 
 
@@ -48,33 +48,33 @@
     }
 
 
-    //Add list paging vào #paging
+    //Add list paging vào #padingOrder
     if ($pageCount >= 1 && $visiblePageSize >= 1) {
-      $("#paging").append(
+      $("#pagingOrder").append(
         "<a href='javascript:void(0)' style='font-weight:700;'>" + "<" + "</a>"
       );
       if ($pageCount > $visiblePageSize) { // Nếu số trang vượt quá số paging hiển thị
-        $("#paging").append(
+        $("#pagingOrder").append(
           "<a href='javascript:void(0)' id='pre_point' class='hidden'>" + "..."
         );
       }
 
       for (var i = 1; i <= $pageCount; i++) {
         if (i <= $visiblePageSize) {
-          $("#paging").append("<a href='javascript:void(0)'>" + i + "</a>");
+          $("#pagingOrder").append("<a href='javascript:void(0)'>" + i + "</a>");
         } else if (i > $visiblePageSize) {
-          $("#paging").append(
+          $("#pagingOrder").append(
             "<a href='javascript:void(0)' class='hidden'>" + i + "</a>"
           );
         }
       }
 
       if ($pageCount > $visiblePageSize) {
-        $("#paging").append(
+        $("#pagingOrder").append(
           "<a href='javascript:void(0)' id='next_point'>" + "..."
         );
       }
-      $("#paging").append(
+      $("#pagingOrder").append(
         "<a href='javascript:void(0)' style='font-weight:700;'>" + ">" + "</a>"
       );
 
@@ -88,7 +88,7 @@
 
       // lấy phần tử $currentIndex và chèn vào phần tử đó class aktif
       //ex: <li class="hehe hihi">ái chà chà</li>
-      $("#paging a:eq(" + $currentIndex + ")").addClass("aktif");
+      $("#pagingOrder a:eq(" + $currentIndex + ")").addClass("aktif");
     }
 
     // bắt sự kiện click #pre_point(Nút đầu tiên có dấu ... Vd: < 1 ... 1 2 3 ... 50 >)
@@ -101,9 +101,9 @@
       // ko tìm thấy trả về -1...Mà trong trường hợp này chắc chắn có giá trị
 
       var hideIndex = prevIndex + $visiblePageSize - 1;
-      $("#paging a:eq(" + hideIndex + ")").addClass("hidden"); // ẩn paging cuối cùng có thể nhìn
-      $("#paging a").removeClass("aktif"); // xoá thẻ có class aktif
-      $("#paging a:eq(" + (prevIndex - 1) + ")")
+      $("#pagingOrder a:eq(" + hideIndex + ")").addClass("hidden"); // ẩn paging cuối cùng có thể nhìn
+      $("#pagingOrder a").removeClass("aktif"); // xoá thẻ có class aktif
+      $("#pagingOrder a:eq(" + (prevIndex - 1) + ")")
         .removeClass("hidden")
         .addClass("aktif"); // tạo thẻ có aktif cho phần tử trước prevIndex
 
@@ -141,9 +141,9 @@
         .index();
       console.log("prevIndex:" + prevIndex);
       var hideIndex = prevIndex - $visiblePageSize + 1;
-      $("#paging a:eq(" + hideIndex + ")").addClass("hidden");
-      $("#paging a").removeClass("aktif");
-      $("#paging a:eq(" + (prevIndex + 1) + ")")
+      $("#pagingOrder a:eq(" + hideIndex + ")").addClass("hidden");
+      $("#pagingOrder a").removeClass("aktif");
+      $("#pagingOrder a:eq(" + (prevIndex + 1) + ")")
         .removeClass("hidden")
         .addClass("aktif");
       $currentIndex = prevIndex;
@@ -168,7 +168,7 @@
     });
 
 
-    $("#paging").on("click", "a:not('#pre_point,#next_point')", function () {
+    $("#pagingOrder").on("click", "a:not('#pre_point,#next_point')", function () {
       var $index = $(this).index();
       console.log(
         "curindex:" +
@@ -178,7 +178,7 @@
         " pageCount:" +
         $pageCount
       );
-      if ($(this).is("#paging a:first") === true) {
+      if ($(this).is("#pagingOrder a:first") === true) {
         if ($currentIndex === 2 && $pageCount > $visiblePageSize) {
           return false; // chặn ko cho lùi tiếp
         }
@@ -201,16 +201,16 @@
         $currentIndex = $currentIndex - 1;
         var gtFirst = $pageSize * ($currentIndex - 1);
         if ($pageCount <= $visiblePageSize) gtFirst = $pageSize * $currentIndex;
-        $("#paging a").removeClass("aktif");
-        $("#paging a:not('#next_point'):eq(" + $currentIndex + ")").addClass(
+        $("#pagingOrder a").removeClass("aktif");
+        $("#pagingOrder a:not('#next_point'):eq(" + $currentIndex + ")").addClass(
           "aktif"
         );
-        $("#paging a:not('#next_point'):eq(" + $currentIndex + ")").removeClass(
+        $("#pagingOrder a:not('#next_point'):eq(" + $currentIndex + ")").removeClass(
           "hidden"
         );
-        if ($("#paging a.hidden").length >= 1) {
+        if ($("#pagingOrder a.hidden").length >= 1) {
           $(
-            "#paging a:not('#next_point,#paging a:last'):eq(" +
+            "#pagingOrder a:not('#next_point,#paging a:last'):eq(" +
             ($currentIndex + $visiblePageSize) +
             ")"
           ).addClass("hidden");
@@ -230,7 +230,7 @@
         return false;
       }
 
-      if ($(this).is("#paging a:last") === true) {
+      if ($(this).is("#pagingOrder a:last") === true) {
         if ($currentIndex - 1 === $pageCount && $pageCount > $visiblePageSize) {
           return false;
         }
@@ -256,16 +256,16 @@
         $currentIndex = $currentIndex + 1;
         var gtLast = $pageSize * ($currentIndex - 1);
         if ($pageCount <= $visiblePageSize) gtLast = $pageSize * $currentIndex;
-        $("#paging a").removeClass("aktif");
-        $("#paging a:eq(" + $currentIndex + ")").addClass("aktif");
-        $("#paging a:eq(" + $currentIndex + ")").removeClass("hidden");
+        $("#pagingOrder a").removeClass("aktif");
+        $("#pagingOrder a:eq(" + $currentIndex + ")").addClass("aktif");
+        $("#pagingOrder a:eq(" + $currentIndex + ")").removeClass("hidden");
         if (
           $currentIndex - 1 > $visiblePageSize &&
-          $("#paging a.hidden").length >= 1
+          $("#pagingOrder a.hidden").length >= 1
         ) {
           console.log("cc" + ($currentIndex - $visiblePageSize));
           $(
-            "#paging a:not('#next_point,#paging a:last'):eq(" +
+            "#pagingOrder a:not('#next_point,#paging a:last'):eq(" +
             ($currentIndex - $visiblePageSize) +
             ")"
           ).addClass("hidden");
@@ -280,7 +280,7 @@
       $currentIndex = $index - 1;
       var gt = $pageSize * $currentIndex;
       if ($pageCount <= $visiblePageSize) gt = $pageSize * ($currentIndex + 1);
-      $("#paging a").removeClass("aktif");
+      $("#pagingOrder a").removeClass("aktif");
       $(this).addClass("aktif");
       $($parentTag + "#" + $thisId + " " + $itemTag).hide();
       for (var i = gt - $pageSize; i < gt; i++) {

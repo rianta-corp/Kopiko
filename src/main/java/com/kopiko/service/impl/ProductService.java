@@ -19,6 +19,7 @@ import com.kopiko.model.PageModel;
 import com.kopiko.model.ResponseModel;
 import com.kopiko.repository.IProductRepository;
 import com.kopiko.service.IProductService;
+import com.kopiko.statistic.IProductStatistic;
 
 @Service
 public class ProductService implements IProductService{
@@ -189,21 +190,17 @@ public class ProductService implements IProductService{
 		return new ResponseModel(responseMap, responseCode);
 	}
 
-//	@Override
-//	public ResponseModel searchProductNearestMonth(int pageNumber) {
-//		int responseCode = Constants.RESULT_CD_FAIL;
-//		Map<String, Object> responseMap = new HashMap<String, Object>();
-//		try {
-////			Sort sort = Sort.by(Sort.Direction.DESC, "productId");
-//			Pageable pageable = PageRequest.of(pageNumber - 1, Constants.PAGE_SIZE, Sort.unsorted());
-//			Page<Product> productPage = productRepository.searchProductNearestMonth(1, pageable);
-//			responseMap.put("products", productShowDetailConvert.toProductShowListDTO(productPage.getContent()));
-//			responseMap.put("paginationList", new PageModel(pageNumber, productPage.getTotalPages()));
-//			responseCode = Constants.RESULT_CD_SUCCESS;
-//		} catch (Exception e) {
-//			System.out.println("Search product for the nearest month failed " + e.getMessage());
-//		}
-//		return new ResponseModel(responseMap, responseCode);
-//	}
+
+	@Override
+	public List<IProductStatistic> getTop10SellingAllTime() {
+		// TODO Auto-generated method stub
+		return productRepository.getTop10SellingAllTime();
+	}
+
+	@Override
+	public List<IProductStatistic> getTop10SellingByMonthAndYear(Integer month, Integer year) {
+		// TODO Auto-generated method stub
+		return productRepository.getTop10SellingByMonthAndYear(month, year);
+	}
 
 }

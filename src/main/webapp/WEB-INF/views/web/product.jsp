@@ -169,7 +169,7 @@
 				</div>
 				
 				<!-- Wrapper for slides -->
-				<div class="carousel-inner pt-3">
+				<%-- <div class="carousel-inner pt-3">
 					
 					<!-- set slide number -->
 					<c:set var="listProductSameSize" scope="session"
@@ -181,8 +181,8 @@
 			         	<c:set var = "templistProductSameSize" scope = "session" value = "${ listProductSameSize }"/>
 			        </c:if>
 			        
-			        <%-- <p>size of listProductSameSize: <c:out value="${ listProductSameSize }" /></p>
-			        <p>size of templistProductSameSize: <c:out value="${ templistProductSameSize }" /></p>  --%>
+			        <p>size of listProductSameSize: <c:out value="${ listProductSameSize }" /></p>
+			        <p>size of templistProductSameSize: <c:out value="${ templistProductSameSize }" /></p> 
 					
 					<div class="carousel-item active">
 						<div class="row">
@@ -261,7 +261,7 @@
 						</div>
 			        </c:if>				
 						
-				</div>
+				</div> --%>
 			</div>
 		</div>
 
@@ -326,7 +326,7 @@
 					<h2 class=" mb-4 pl-4">Sản Phẩm Liên Quan</h2>
 			</div>
 			
-			<c:set var="listProductsByCategorySize" scope="session"
+			<%-- <c:set var="listProductsByCategorySize" scope="session"
 						value="${listProductsByCategory.size()}" />			
 			<div class="row">
 				 <c:if test = "${ listProductsByCategorySize  > 0 }">
@@ -346,7 +346,7 @@
 					</c:forEach>
 			     </c:if>
 				
-			</div>
+			</div> --%>
 			
 		</div>
 	</div>

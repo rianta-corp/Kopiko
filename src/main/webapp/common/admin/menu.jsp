@@ -55,12 +55,24 @@
 						class="nav-link" href="/admin/logout">Logout</a>
 				</nav>
 			</div>
-			<div class="sb-sidenav-menu-heading">Addons</div>
-			<a class="nav-link" href="charts.html">
+			<div class="sb-sidenav-menu-heading">Adons</div>
+			<a class="nav-link collapsed" href="#" data-toggle="collapse"
+				data-target="#collapseStatistic" aria-expanded="false"
+				aria-controls="collapseStatistic">
 				<div class="sb-nav-link-icon">
-					<i class="fas fa-chart-area"></i>
-				</div> Charts
+					<i class="fas fa-chart-line"></i>
+				</div> Statistics
+				<div class="sb-sidenav-collapse-arrow">
+					<i class="fas fa-angle-down"></i>
+				</div>
 			</a>
+			<div class="collapse" id="collapseStatistic"
+				aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+				<nav class="sb-sidenav-menu-nested nav">
+					<a class="nav-link" href="/admin/statistic/product">Product</a> <a
+						class="nav-link" href="/admin/statistic/order">Order</a> 
+				</nav>
+			</div>
 		</div>
 	</div>
 	<div class="sb-sidenav-footer">
