@@ -15,4 +15,9 @@ public interface IProductDetailService {
 	List<ProductDetail> findAllBySize(String size);
 	List<ProductDetail> findByProductProductId(Long Id);
 	ProductDetail findByProductIdAndSize(Long poductId, String size);
+	/**
+	 * @param productDetail
+	 * @return
+	 */
+	ProductDetail save(ProductDetail productDetail);
 }

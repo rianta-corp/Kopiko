@@ -66,29 +66,35 @@ public class CartController {
             cartItems = new HashMap<>();
         }
         Product product = productService.findByProductId(productId);
+        if(size == null) size = "Mặc định";
+        if(quantity == null) quantity = 1;
+        
         ProductDetail productDetail = productDetailService.findByProductIdAndSize(productId,size);
         String message = "";
-        if (product != null && productDetail != null) {
+        
+        // kiểm tra database
+        if (product != null && productDetail != null && product.getStatus() == 1 && productDetail.getQuantity() > quantity) {
+        	System.out.println("Tìm thấy dữ liệu từ data!");
         	Cart item;
             if (cartItems.containsKey(productId)) item = cartItems.get(productId);
             else {
             	item = new Cart();
             	item.setQuantity(0);
+            	item.setProduct(productShowListConverter.toDTO(product));
+                item.setProductDetailId(productDetail.getProductDetailId());
+                cartItems.put(productId, item);
             }
-            item.setProduct(productShowListConverter.toDTO(product));
-            item.setProductDetailId(productDetail.getProductDetailId());
-            if(size != null && !size.isEmpty()) item.setSize(size);
-            else {
-            	if(product.getListProductDetail().get(0) != null) item.setSize(product.getListProductDetail().get(0).getSize());
-            	else item.setSize("Mặc định");
-            }
-            if(quantity != null) item.setQuantity(item.getQuantity() + quantity);
-            else item.setQuantity(1);
-            cartItems.put(productId, item);
+            
+            item.setSize(size);            
+            item.setQuantity(item.getQuantity() + quantity);
+            
+            
+            
             session.setAttribute("myCartItems", cartItems);
             session.setAttribute("myCartNum", cartItems.size());
             session.setAttribute("myCartTotal", totalPrice(cartItems));   
         }
+        
         else message = "?message=error";
         String referer = request.getHeader("Referer");
         return "redirect:" + referer + message;
@@ -97,27 +103,29 @@ public class CartController {
 	@PostMapping("/update/{productId}")
 	public String updateCart(@PathVariable Long productId, @RequestParam Integer quantity, HttpSession session, HttpServletRequest request) {
 		HashMap<Long, Cart> cartItems = (HashMap<Long, Cart>) session.getAttribute("myCartItems");
+		String message = "";
         if (cartItems == null) {
             cartItems = new HashMap<>();
+            message = "?message=error";
         }
-        Product product = productService.findByProductId(productId);
-        if (product != null) {
-        	Cart item;
-            if (cartItems.containsKey(productId)) item = cartItems.get(productId);
-            else {
-            	item = new Cart();
-            	item.setQuantity(0);
+        else if(quantity != null && quantity > 0){
+        	Product product = productService.findByProductId(productId); // kiểm tra database
+            ProductDetail productDetail;
+            if (product != null) { // tồn tại product
+            	Cart item;
+                if (cartItems.containsKey(productId)) { // kiểm tra tồn tại sản phẩm trong giỏ hàng
+                	item = cartItems.get(productId); // lây sản phẩm ra
+                	productDetail = productDetailService.findByProductDetailId(item.getProductDetailId()); // kiểm tra database
+                	if(productDetail != null && productDetail.getQuantity() >= quantity) item.setQuantity(quantity); // sản phẩm còn hàng
+                }
             }
-            item.setProduct(productShowListConverter.toDTO(product));
-            if(quantity != null) item.setQuantity(quantity);
-            else item.setQuantity(1);
-            cartItems.put(productId, item);
         }
+        else message = "?message=error";
         session.setAttribute("myCartItems", cartItems);
         session.setAttribute("myCartNum", cartItems.size());
         session.setAttribute("myCartTotal", totalPrice(cartItems));
         String referer = request.getHeader("Referer");
-        return "redirect:" + referer;
+        return "redirect:" + referer + message;
 	}
 	
 	public Long totalPrice(HashMap<Long, Cart> cartItems) {

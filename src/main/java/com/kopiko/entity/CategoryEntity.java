@@ -34,5 +34,8 @@ public class CategoryEntity {
 
 	@Column(nullable = false, columnDefinition = "nvarchar(50)", unique = true)
 	private String categoryName;
+	
+	@Column(columnDefinition = "bigint", nullable = true)
+	private Long parentsCategoryId;
 
 }

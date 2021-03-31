@@ -32,7 +32,7 @@ public class ProductDetailService implements IProductDetailService {
 		if (productDetail.getProductDetailId() == null) {
 			if (productDetail.getProduct() == null)
 				return null;
-			if (productDetail.getQuantity() == null)
+			if (productDetail.getQuantity() == null || productDetail.getQuantity() < 0)
 				return null;
 			if (productDetail.getSize() == null)
 				return null;
@@ -42,7 +42,7 @@ public class ProductDetailService implements IProductDetailService {
 			data = productDetailRepository.findByProductDetailId(productDetail.getProductDetailId());
 			if (productDetail.getProduct() != null)
 				data.setProduct(productDetail.getProduct());
-			if (productDetail.getQuantity() != null)
+			if (productDetail.getQuantity() != null && productDetail.getQuantity() >= 0)
 				data.setQuantity(productDetail.getQuantity());
 			if (productDetail.getSize() != null)
 				data.setSize(productDetail.getSize());

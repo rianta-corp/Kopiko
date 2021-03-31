@@ -101,7 +101,7 @@ public class PaymentController {
 						ProductDetail productDetail = productDetailService
 								.findByProductDetailId(item.getProductDetailId()); // lấy thông tin productdetail
 						// cho add vào db khi productDetail khác null và productdetail còn hàng
-						if (productDetail != null && productDetail.getQuantity() > 0)
+						if (productDetail != null && productDetail.getQuantity() >= item.getQuantity())
 							orderDetail.setProductDetail(productDetail);
 						else {
 							System.out.println("Product detail ko hợp lệ!");
@@ -109,8 +109,11 @@ public class PaymentController {
 						}
 						orderDetail.setQuantity(item.getQuantity());
 						orderDetail.setSalePrice(item.getProduct().getSalePrice());
+						
 						// save vào database
 						orderDetail = orderDetailService.save(orderDetail);
+						productDetail.setQuantity(productDetail.getQuantity()-item.getQuantity()); // cập nhật số lượng mặt hàng
+						productDetail = productDetailService.save(productDetail);
 						if (orderDetail == null) {
 							System.out.println("Order detail null!");
 							return "redirect:/checkout/cart/view?message=error";
