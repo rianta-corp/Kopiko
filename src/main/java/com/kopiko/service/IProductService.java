@@ -35,6 +35,12 @@ public interface IProductService {
 	ResponseModel findAllProductWithPage(int pageNumber);
 	
 	ResponseModel searchProductByCategotyId(Long id, int pageNumber);
+	
+	ResponseModel searchProductSalePriceDesc(int pageNumber);
+	
+	ResponseModel searchProductSalePriceAsc(int pageNumber);
+	
+//	ResponseModel searchProductNearestMonth(int pageNumber);
 	/**
 	 * @return
 	 */

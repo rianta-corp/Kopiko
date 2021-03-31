@@ -1,20 +1,30 @@
 $(function() {
 	var $categoryIdTemp = 0;
+	var $sortType = 0;
 	findAllProduct(1);
 	$('.pagination').on('click', '.page-link', function() {
 		var pageNumber = $(this).attr("data-index");
+		console.log('$sortType' + $sortType);
 		if($categoryIdTemp) {
 			searchProductByCategoryId($categoryIdTemp, pageNumber);
+		} else if($sortType) {
+			findProductSalePrice($sortType, pageNumber);
 		} else {
 			findAllProduct(pageNumber);
 		}
 		
 	})
 	$('.product-search').on('click', function() {
+		$('select option[value="0"]').attr("selected",true);
 		$('.product-search').removeClass('active');
 		$(this).addClass('active');
 		$categoryIdTemp = $(this).data("id");
 		searchProductByCategoryId($(this).data("id"), 1);
+	})
+	
+	$('select').on('change', function() {
+		$sortType = $(this).val();
+		findProductSalePrice(this.value, 1);
 	})
 })
 
@@ -50,7 +60,7 @@ function searchProductByCategoryId(id, pageNumber) {
 
 function findAllProduct(pageNumber) {
 	$.ajax({
-		url: '/search/category/findAllProduct/' + pageNumber,
+		url: '/search/category/' + pageNumber,
 		type: 'GET',
 		contentType: 'application/json',
 		success: function(responseData) {
@@ -66,6 +76,25 @@ function findAllProduct(pageNumber) {
 	})
 }
 
+function findProductSalePrice(sortType, pageNumber) {
+	var sortTypeTemp = sortType == 1 ? 'asc/': (sortType == 2 ? 'desc/': ( sortType == 3 ? 'newProduct/' : ''));
+	console.log('sortTypeTemp:' + sortTypeTemp)
+	$.ajax({
+	url: '/search/category/' + sortTypeTemp + pageNumber,
+	type: 'GET',
+	contentType: 'application/json',
+	success: function(responseData) {
+		if(responseData.responseCode == 100) {
+			renderProduct(responseData.data.products);
+			renderPagination(responseData.data.paginationList)
+		}
+	},
+	error: function(e) {
+		alert('Get all product failed ' + e);
+	}
+})
+}
+
 function renderProduct(products) {
 	var rowHTML = "";
 	var $listProducts = $('#listProducts');
@@ -79,7 +108,7 @@ function renderProduct(products) {
 								<span class="product__price product__price-old">${ value.longPrice }đ</span>
 								<span class="product__price product__price-new">${ value.longSalePrice }đ</span>
 							</div>
-							<a href="" class="btn  margin__btn-add-cart m-auto">Thêm vào giỏ</a>
+							<a href="/product/${ value.productId }" class="btn  margin__btn-add-cart m-auto">Xem sản phẩm</a>
 						</div>
 					</div>`;
 		$listProducts.append(rowHTML);
