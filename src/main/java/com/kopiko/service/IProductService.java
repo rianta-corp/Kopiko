@@ -1,12 +1,15 @@
 package com.kopiko.service;
 
 import java.math.BigDecimal;
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import com.kopiko.entity.Product;
+import com.kopiko.model.ITop12ProductSelling;
 import com.kopiko.model.ResponseModel;
+import com.kopiko.model.Top12ProductSelling;
 import com.kopiko.statistic.IProductStatistic;
 
 @Service
@@ -36,6 +39,9 @@ public interface IProductService {
 	
 	ResponseModel searchProductByCategotyId(Long id, int pageNumber);
 	
+	List<ITop12ProductSelling> Selling(int month , int year);
+	
+	List<Product> HotNewMonth(Date dateStart, Date dateEnd);
 	ResponseModel searchProductSalePriceDesc(int pageNumber);
 	
 	ResponseModel searchProductSalePriceAsc(int pageNumber);

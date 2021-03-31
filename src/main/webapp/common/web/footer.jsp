@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ include file="/common/taglib.jsp"%>
 <!-- Footer -->
 <footer class="footer">
 	<div class="footer-wrap">
@@ -54,3 +55,4 @@
 
 </footer>
 <!-- End Footer -->
+ <script src="<c:url value = '/template/web/plugins/bootstrap-4.6.0-dist/js/bootstrap.min.js'/>"></script>

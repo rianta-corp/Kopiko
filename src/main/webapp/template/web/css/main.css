@@ -924,7 +924,7 @@ div.carousel-caption > a > span{font-size: 2rem; color: var(--white-color);}
     color: white;
 }
 .position__property-banner-layout > h4 , h1,h5{
-        /* color: var(--white-color); */
+        color: var(--white-color); 
 }
  
 .position__property-banner-layout > h4 {font-size: 2rem;}
@@ -953,7 +953,7 @@ div.carousel-caption > a > span{font-size: 2rem; color: var(--white-color);}
  
 .img-fluid {height: 280px;}
  
-.card-title> h2{
+.card-title> h3{
     text-align:center;
 	/* font-size: 1.5rem;
 	font-weight: 400; */
@@ -1102,4 +1102,35 @@ div.navrbar__Signup-search > div.header__search-input-wrap > input.search__text 
     width: 100%;
 }
 
+.btn__flickity_prev ,.btn__flickity_next{
+	color: var(--btn-color);
+}
 
+.btn__flickity_prev :hover{
+	color: var(--btn-color);
+}
+
+
+.btn__flickity_next:hover{
+	color: var(--btn-color);
+}
+
+
+.btn__flickity_prev > i:active {
+		color: var( --primary-color);
+}
+
+
+.btn__flickity_next > i:active {
+		color: var( --primary-color);
+}
+
+.nav-tabs .nav-link {
+	font-size: 2.5rem;
+	font-weight: 400;
+	color: var(--text-color);
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{
+		color: var( --primary-color);
+}
