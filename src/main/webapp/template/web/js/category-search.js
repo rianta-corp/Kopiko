@@ -101,14 +101,14 @@ function renderProduct(products) {
 	$listProducts.empty();
 	$.each(products, function(key, value) {
 		rowHTML = `<div class="col-6 col-lg-3 col-md-4  ">
-						<div class="category-box">
+						<div class="category-box-search">
 							<img src="/uploads/images/${ value.imageUrl }" alt="${ value.productName }" width="100%" class="img img-responsive">
 							<p class="category-name">${ value.productName }</p>
 							<div class="card-text text-left font-weight-bold d-flex justify-content-center">
 								<span class="product__price product__price-old">${ value.longPrice }đ</span>
 								<span class="product__price product__price-new">${ value.longSalePrice }đ</span>
 							</div>
-							<a href="/product/${ value.productId }" class="btn  margin__btn-add-cart m-auto">Xem sản phẩm</a>
+							<a href="/product/${ value.productId }" class="btn  margin__btn-add-cart m-3">Xem sản phẩm</a>
 						</div>
 					</div>`;
 		$listProducts.append(rowHTML);

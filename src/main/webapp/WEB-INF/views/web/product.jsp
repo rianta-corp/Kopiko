@@ -154,8 +154,8 @@
 				
 				<div class="row ">
 					<div class="col-md-11">
-						<h2>Sản phẩm có thể bạn sẽ thích</h2>
-					</div>
+						<h2>Gợi Ý Cho Bạn</h2>
+					</div>	
 					<div class="col-md-1 ">
 						<!-- Controls-->
 						<div class=" text-center d-flex">
@@ -169,7 +169,7 @@
 				</div>
 				
 				<!-- Wrapper for slides -->
-				<%-- <div class="carousel-inner pt-3">
+				<div class="carousel-inner pt-3">
 					
 					<!-- set slide number -->
 					<c:set var="listProductSameSize" scope="session"
@@ -261,7 +261,7 @@
 						</div>
 			        </c:if>				
 						
-				</div> --%>
+				</div>
 			</div>
 		</div>
 
@@ -326,7 +326,7 @@
 					<h2 class=" mb-4 pl-4">Sản Phẩm Liên Quan</h2>
 			</div>
 			
-			<%-- <c:set var="listProductsByCategorySize" scope="session"
+			<c:set var="listProductsByCategorySize" scope="session"
 						value="${listProductsByCategory.size()}" />			
 			<div class="row">
 				 <c:if test = "${ listProductsByCategorySize  > 0 }">
@@ -346,7 +346,7 @@
 					</c:forEach>
 			     </c:if>
 				
-			</div> --%>
+			</div>
 			
 		</div>
 	</div>
